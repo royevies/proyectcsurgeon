@@ -19,7 +19,7 @@
 		}
 
 		public function get_contactos(){
-			$query = $this->db->query("select * from contacto");
+			$query = $this->db->query("select * from contacto order by fecha_contacto desc");
 			return $query;	
 		}
 
@@ -85,7 +85,11 @@
 
 
 		   public function crear_contacto($nombres_contacto,$servicio,$telefono_movil_contacto,$email_contacto,$asunto_contacto,$descripcion_contacto){
-		   	$this->db->insert("contacto", [ "nombres_contacto" => $nombres_contacto , "servicio" => $servicio , "telefono_movil_contacto" => $telefono_movil_contacto , "email_contacto" => $email_contacto, "asunto_contacto" => $asunto_contacto, "descripcion_contacto" => $descripcion_contacto ] );
+		   	$this->db->insert("contacto", [ "nombres_contacto" => $nombres_contacto , "servicio" => $servicio , "telefono_movil_contacto" => $telefono_movil_contacto , "email_contacto" => $email_contacto, "asunto_contacto" => $asunto_contacto, "descripcion_contacto" => $descripcion_contacto ,"fecha_contacto" => date("Y-m-d") ] );
+		   }
+
+		   public function ver_img_procedimientos($id_img_procedimiento){
+		   	return  $this->db->query("select * from img_procedimientos where id_img_procedimiento = $id_img_procedimiento ");
 		   }
 
 

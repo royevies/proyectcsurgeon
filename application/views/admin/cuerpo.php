@@ -137,7 +137,7 @@
 						foreach ($procedimientos->result() as $proc_img) {
 							?>
 							<div class="sobre_img_procedimientos" style="position:relative;width:200px;height:200px;float:left;cursor:pointer;border:1px solid black;background:url('<?=$this->config->base_url()?>fronted_inicio/procedimientos/<?=( $proc_img->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc_img->img_principal_procedimiento )?>');background-size:cover;background-repeat:no-repeat;">
-								<div class="sobre_img_procedimientos_disparador" style="width:100%;height:100%;background:rgba(0,0,0,0.6);position:absolute;top:0;left:0;display:none;">
+								<div class="sobre_img_procedimientos_disparador" style="width:100%;height:100%;background:rgba(0,0,0,0.6);position:absolute;top:0;left:0;display:none;" data-idimagen='<?=$proc_img->id_procedimiento; ?>' data-nombrepro='<?=$proc_img->titulo; ?>' >
 									<p style="text-align:center;margin-top:90px;font-size:1.4em;color:#F1F1F1;"> <?=$proc_img->titulo; ?> </p>
 									<hr>
 								</div>
@@ -156,13 +156,48 @@
 					</div>
 					<div style="clear:both;"></div>
 					<hr>
+					<div id="titulo_antes_despues" style="background:#f1f1f1;width:80%;font-size:1.4em;border:1px solid gray;padding:10px;float:left;">
+						
+					</div>
 
-					dsfgsdgjfdngjdfjngkndfnjgnjkdfngjkjkdfngjkdf
-					dfighdfnkgnkjdfnjgnjkdfngjdf
-					dfjgdfkjgnkjdfnjkgndfkjngjkdnfjkgnfdn
-				</div>
+					<div id="desplegar_guardado" style="background:#f1f1f1;width:20%;float:left;padding:10px;cursor:pointer;">
+						<span class="glyphicon glyphicon-floppy-disk"></span> Guardar Nuevo
+					</div>
 
-				<?php 
+					<div style="clear:both;"></div>
+
+					<div id="nuevo_galeria_especifica" style="display:none;">
+						<form id="form_agregar_imgs" action="" method="post" enctype="multipart/form-data">
+							<input type="hidden" id="id_procedimiento" name="id_procedimiento">
+							
+							<table class="table table-bordered">
+								<tr style="background:#1ABC9C;">
+									<th style="text-align:center;">Antes</th>
+									<th style="text-align:center;">Despues</th>
+								</tr>
+
+								<tr>
+									<td>
+										<input id="img_antes" name="img_antes"  type="file" style="height:auto" class="form-control">
+									</td>
+									
+									<td>
+										<input  id="img_despues" name="img_despues" type="file" style="height:auto" class="form-control">										
+									</td>
+								</tr>
+							</table>
+							<hr>
+							<button id="boton_antes_despues" class="btn btn-success" style="float:right;">
+								<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+							</button>
+						</form>
+					</div>
+
+					<div id="contenido_galeria_especifica">
+						
+					</div>
+
+					<?php 
 				/*
 				if($galeria->result() != null){
 
@@ -196,330 +231,252 @@
 					</form>
 				</div>
 				<?php */ ?>
-
 			</div>
+		</div>
 
 
-			<div id="panel_curriculum" class="contenido_panel" style="display:none;">
-				<p style="font-size:1.4em;"> Curriculum , para mayor comodidad presione el boton de pantalla completa <span class="glyphicon glyphicon-fullscreen"></span></p>
-				<hr/>
-				<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post">
+		<div id="panel_curriculum" class="contenido_panel" style="display:none;">
+			<p style="font-size:1.4em;"> Curriculum , para mayor comodidad presione el boton de pantalla completa <span class="glyphicon glyphicon-fullscreen"></span></p>
+			<hr/>
+			<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post">
 
-					<textarea id="text_curriculum" name="text_curriculum" class="form-control" rows="12" style="resize:none;">
+				<textarea id="text_curriculum" name="text_curriculum" class="form-control" rows="12" style="resize:none;">
 
-						<?php
-						if( $curriculum->result() != null ){
-							foreach ( $curriculum->result() as $perfil ) {
-								echo $perfil->curriculum_completo;	
-							}
-
+					<?php
+					if( $curriculum->result() != null ){
+						foreach ( $curriculum->result() as $perfil ) {
+							echo $perfil->curriculum_completo;	
 						}
-						?>
+
+					}
+					?>
+				</textarea>
+				<hr>
+				<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+				<div style="clear:both;"></div>
+			</form>
+		</div>
+
+		<div id="panel_contacto" class="contenido_panel" style="display:none;">
+			<p style="font-size:1.4em;"> Contacto </p>
+			<!--<a href="https://www.google.co.ve/maps/place/1035+5th+Avenue+Corporation/@40.7804296,-73.9618858,17z/data=!4m2!3m1!1s0x89c25897eca2da3d:0xc35556cc09cc117">Ir a nueva york</a>-->
+			<hr>
+			<table class="table table-hover" id="tabla_contacto">
+				<thead>					
+					<tr>
+						<th>Nombres</th>
+						<th>Servicio</th>
+						<th>Email</th>
+						<th>Celular</th>
+						<th>Asunto</th>
+						<th>Ver</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+
+				<?php if( $contactos->result() != null ) { ?>
+
+				<?php foreach ($contactos->result() as $contacto) : ?>
+
+					<tr class="contacto_tr">
+						<td><?php echo $contacto->nombres_contacto; ?></td>
+						<td><?php echo $contacto->servicio; ?></td>
+						<td><?php echo $contacto->email_contacto; ?></td>
+						<td><?php echo $contacto->telefono_movil_contacto; ?></td>
+						<td><?php echo $contacto->asunto_contacto; ?></td>
+						<td><button class="btn btn-success ver_contacto" data-nombres="<?=$contacto->nombres_contacto;?>" data-apellidos="<?=$contacto->servicio;?>" data-email="<?=$contacto->email_contacto;?>"  data-telefono="<?=$contacto->telefono_movil_contacto;?>" data-asunto="<?=$contacto->asunto_contacto;?>" data-detalle="<?=$contacto->descripcion_contacto;?>" ><span class="glyphicon glyphicon-eye-open"></span></button></td>
+						<td><button class="btn btn-danger del_contacto" data-id="<?=$contacto->id_contacto;?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+					</tr>
+
+				<?php endforeach; } ?>
+
+				<tfoot style="display:none;">
+					<tr>
+						<th>Nombres</th>
+						<th>Servicio</th>
+						<th>Email</th>
+						<th>Celular</th>
+						<th>Asunto</th>
+						<th>Ver</th>
+						<th>Eliminar</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+		<div id="panel_procedimientos" class="contenido_panel" style="display:none;">
+			<p style="font-size:1.4em;"> Procedimientos <button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo</span>	</button></p>
+
+			<div id="new_procedimiento" style="display:none;">
+				<form action="<?=$this->config->base_url()?>index.php/admin/crear_procedimiento" method="post" enctype="multipart/form-data">
+					<p>Nombre procedimiento:</p>
+					<input type="text" id="nombre_procedure" name="nombre_procedure" class="form-control" maxlength="140">
+					<p>Subtitulo procedimiento:</p>
+					<input type="text" id="subtitulo_procedure" name="subtitulo_procedure" class="form-control" maxlength="140">
+					<p>Detalle procedimiento:</p>
+					<textarea id="detalle_procedure" name="detalle_procedure" class="form-control" maxlength="500">
+
 					</textarea>
+					<p>Imagen procedimiento:</p>
+					<input type="file" class="form-control" style="height:auto;" name="img_procedimiento">
+
 					<hr>
-					<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
-					<div style="clear:both;"></div>
+					<button type="submit" class="btn btn-success" style="float:right;">
+						<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+					</button>
 				</form>
 			</div>
 
-			<div id="panel_contacto" class="contenido_panel" style="display:none;">
-				<p style="font-size:1.4em;"> Contacto </p>
-				<!--<a href="https://www.google.co.ve/maps/place/1035+5th+Avenue+Corporation/@40.7804296,-73.9618858,17z/data=!4m2!3m1!1s0x89c25897eca2da3d:0xc35556cc09cc117">Ir a nueva york</a>-->
-				<hr>
-				<table class="table table-hover" id="tabla_contacto">
-					<thead>					
-						<tr>
-							<th>Nombres</th>
-							<th>Servicio</th>
-							<th>Email</th>
-							<th>Celular</th>
-							<th>Asunto</th>
-							<th>Ver</th>
-							<th>Eliminar</th>
-						</tr>
-					</thead>
+			<hr>
+			<table class="table table-hover" id="tabla_procedimientos">
+				<thead>					
+					<tr>
+						<th>Nombre</th>
+						<th>Detalle</th>
+						<th>Editar</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
 
-					<?php if( $contactos->result() != null ) { ?>
+				<?php if( $procedimientos->result() != null ){ ?>
 
-					<?php foreach ($contactos->result() as $contacto) : ?>
+				<?php foreach ($procedimientos->result() as $proc) : ?>
 
-						<tr class="contacto_tr">
-							<td><?php echo $contacto->nombres_contacto; ?></td>
-							<td><?php echo $contacto->servicio; ?></td>
-							<td><?php echo $contacto->email_contacto; ?></td>
-							<td><?php echo $contacto->telefono_movil_contacto; ?></td>
-							<td><?php echo $contacto->asunto_contacto; ?></td>
-							<td><button class="btn btn-success ver_contacto" data-nombres="<?=$contacto->nombres_contacto;?>" data-apellidos="<?=$contacto->servicio;?>" data-email="<?=$contacto->email_contacto;?>"  data-telefono="<?=$contacto->telefono_movil_contacto;?>" data-asunto="<?=$contacto->asunto_contacto;?>" data-detalle="<?=$contacto->descripcion_contacto;?>" ><span class="glyphicon glyphicon-eye-open"></span></button></td>
-							<td><button class="btn btn-danger del_contacto" data-id="<?=$contacto->id_contacto;?>"><span class="glyphicon glyphicon-remove"></span></button></td>
-						</tr>
+					<tr class="procedimiento_tr">
+						<td><?php echo $proc->titulo; ?></td>
+						<td><?php echo $proc->detalle; ?></td>
+						<td><button class="btn btn-success edit-proc" data-id="<?=$proc->id_procedimiento;?>" data-titulo="<?=$proc->titulo;?>" data-subtitulo="<?=$proc->sub_titulo;?>" data-detalle="<?=$proc->detalle;?>" data-imgprincipal="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+						<td><button class="btn btn-danger del-proc" data-id="<?=$proc->id_procedimiento; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+					</tr>
 
-					<?php endforeach; } ?>
+				<?php endforeach; ?>
 
-					<tfoot style="display:none;">
-						<tr>
-							<th>Nombres</th>
-							<th>Servicio</th>
-							<th>Email</th>
-							<th>Celular</th>
-							<th>Asunto</th>
-							<th>Ver</th>
-							<th>Eliminar</th>
-						</tr>
-					</tfoot>
-				</table>
-			</div>
+				<?php } ?>
 
-			<div id="panel_procedimientos" class="contenido_panel" style="display:none;">
-				<p style="font-size:1.4em;"> Procedimientos <button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo</span>	</button></p>
+				<tfoot style="display:none;">
+					<tr>
+						<td>Nombre</td>
+						<td>Detalle</td>
+						<td>Editar</td>
+						<td>Eliminar</td>
+					</tr>
+				</tfoot>
+			</table>
 
-				<div id="new_procedimiento" style="display:none;">
-					<form action="<?=$this->config->base_url()?>index.php/admin/crear_procedimiento" method="post" enctype="multipart/form-data">
-						<p>Nombre procedimiento:</p>
-						<input type="text" id="nombre_procedure" name="nombre_procedure" class="form-control" maxlength="140">
-						<p>Subtitulo procedimiento:</p>
-						<input type="text" id="subtitulo_procedure" name="subtitulo_procedure" class="form-control" maxlength="140">
-						<p>Detalle procedimiento:</p>
-						<textarea id="detalle_procedure" name="detalle_procedure" class="form-control" maxlength="500">
-							
-						</textarea>
-						<p>Imagen procedimiento:</p>
-						<input type="file" class="form-control" style="height:auto;" name="img_procedimiento">
-
-						<hr>
-						<button type="submit" class="btn btn-success" style="float:right;">
-							<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
-						</button>
-					</form>
-				</div>
-
-				<hr>
-				<table class="table table-hover" id="tabla_procedimientos">
-					<thead>					
-						<tr>
-							<th>Nombre</th>
-							<th>Detalle</th>
-							<th>Editar</th>
-							<th>Eliminar</th>
-						</tr>
-					</thead>
-
-					<?php if( $procedimientos->result() != null ){ ?>
-
-					<?php foreach ($procedimientos->result() as $proc) : ?>
-
-						<tr class="procedimiento_tr">
-							<td><?php echo $proc->titulo; ?></td>
-							<td><?php echo $proc->detalle; ?></td>
-							<td><button class="btn btn-success edit-proc" data-id="<?=$proc->id_procedimiento;?>" data-titulo="<?=$proc->titulo;?>" data-subtitulo="<?=$proc->sub_titulo;?>" data-detalle="<?=$proc->detalle;?>" data-imgprincipal="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-							<td><button class="btn btn-danger del-proc" data-id="<?=$proc->id_procedimiento; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
-						</tr>
-
-					<?php endforeach; ?>
-
-					<?php } ?>
-
-					<tfoot style="display:none;">
-						<tr>
-							<td>Nombre</td>
-							<td>Detalle</td>
-							<td>Editar</td>
-							<td>Eliminar</td>
-						</tr>
-					</tfoot>
-				</table>
-
-			</div>
-
-			<div id="panel_testimonios" class="contenido_panel" style="display:none;">
-				<p style="font-size:1.4em;"> Testimonios </p>
-				<table class="table table-hover" id="tabla_testimonios">
-					<thead>					
-						<tr>
-							<th>Nombres</th>
-							<th>Email</th>
-							<th>Estado</th>
-							<th>Ver</th>
-							<th>Eliminar</th>
-						</tr>
-					</thead>
-					<?php if( $testimonios->result() != null ){ ?>
-
-					<?php foreach ($testimonios->result() as $test) : ?>
-
-						<tr class="testimonio_tr">
-							<td><img src="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>
-							<td><?php echo $test->email_del_descriptor; ?></td>
-							<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
-							<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-							<td><button class="btn btn-danger del_test" data-id="<?=$test->id_testimonio;?>" ><span class="glyphicon glyphicon-remove"></span></button></td>
-						</tr>
-
-					<?php endforeach; ?>
-
-					<?php } ?>
-
-					<tfoot style="display:none;">
-						<tr>
-							<td>Nombre</td>
-							<td>Detalle</td>
-							<th>Estado</th>
-							<td>Ver</td>
-							<td>Eliminar</td>
-						</tr>
-					</tfoot>
-				</table>
-			</div>
-
-			<?php /*****Panels********************/ ?>
 		</div>
-	</div>
 
-	<?php /********************************************************************************/ ?>
-	<div id="ventana_cambio_clave" style="display:none;	">
-		<form action="<?=$this->config->base_url()?>index.php/Admin/cambiar_clave" method="post" id="form_cambiaclave">
-			<p style="font-size:1.1em;">Nueva Clave:</p>
-			<input type="password" class="form-control" name="clave" id="clave" maxlength="10">
+		<div id="panel_testimonios" class="contenido_panel" style="display:none;">
+			<p style="font-size:1.4em;"> Testimonios </p>
+			<table class="table table-hover" id="tabla_testimonios">
+				<thead>					
+					<tr>
+						<th>Nombres</th>
+						<th>Email</th>
+						<th>Estado</th>
+						<th>Ver</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				<?php if( $testimonios->result() != null ){ ?>
 
-			<p style="font-size:1.1em;">Confirmar Clave:</p>
-			<input type="password" class="form-control" id="clave1" maxlength="10">
+				<?php foreach ($testimonios->result() as $test) : ?>
 
-			<hr>
-			<p id="mensaje_cambia_clave" style="font-size:1.1em;"></p>
-			<button type="submit" class="btn btn-success" style="float:right;" id="boton_cambiar_clave">
-				<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
-			</button>
-		</form>
-	</div>
+					<tr class="testimonio_tr">
+						<td><img src="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>
+						<td><?php echo $test->email_del_descriptor; ?></td>
+						<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
+						<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+						<td><button class="btn btn-danger del_test" data-id="<?=$test->id_testimonio;?>" ><span class="glyphicon glyphicon-remove"></span></button></td>
+					</tr>
 
-	<div id="ventana_edit_procedimientos" style="display:none;padding:16px;">
-		<form action="<?=$this->config->base_url()?>index.php/Admin/editar_proc" method="post" enctype="multipart/form-data">
-			<input type="hidden" id="id_procedimiento" name="id_procedimiento">
-			<p style="font-size:1.1em;">Nombre Procedimiento:</p>
-			<input type="text" class="form-control" id="nombre_procedimiento" name="nombre_procedimiento" maxlength="140">
-			<p style="font-size:1.1em;">Subtitulo Procedimiento:</p>
-			<input type="text" class="form-control" id="subtitulo_procedimiento" name="subtitulo_procedimiento" maxlength="140">
-			<p>Descripción Procedimiento:</p>
-			<textarea class="form-control" id="detalle_procedimiento" name="detalle_procedimiento" style="resizable:none;overflow-y:scroll;height:150px;" maxlength="500">
+				<?php endforeach; ?>
 
-			</textarea>
+				<?php } ?>
 
-			<p style="font-size:1.1em;">Imagen Procedimiento:</p>
-			<img id="img_proc_edit" class="img img-responsive" >		
-			<a id="cambiar_img_procedimiento" style="cursor:pointer;display:inline;"><span class="caret"></span> Cambiar Imagen</a><hr>
-
-			<div id="caja_cambiar_archivo" class="alert alert-info" style="float:left;width:400px;display:none;">
-				<input type="file" name="nueva_img_procedimiento" class="form-control" style="height:auto;">
-			</div>
-
-			<hr>
-			<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
-		</form>
-	</div>
-
-	<div id="ventana_ver_contacto" style="display:none;">
-		<div style="width:100%;margin:auto;padding:1em;">
-			<table class="table table-hover">
-				<tr>
-					<th>Nombres</th>
-					<td id="mostrar_nombre_contacto"> </td>
-				</tr>
-
-				<tr>
-					<th>
-						Servicio
-					</th>	
-
-					<td id="mostrar_apellido_contacto">
-
-					</td>					
-				</tr>
-
-				<tr>
-					<th>
-						Celular
-					</th>	
-
-					<td id="mostrar_telefono_contacto">
-
-					</td>					
-				</tr>
-
-				<tr>
-					<th>
-						Email
-					</th>	
-
-					<td id="mostrar_email_contacto">
-
-					</td>					
-				</tr>
-
-				<tr>
-					<th>
-						Asunto
-					</th>	
-
-					<td id="mostrar_asunto_contacto">
-
-					</td>					
-				</tr>
-
-				<tr class="info">
-					<th colspan="2" style="text-align:center;">
-						Detalle
-					</th>			
-				</tr>
-
-				<tr>
-					<td colspan="2" >
-						<p  id="mostrar_detalle_contacto" style="margin:auto;text-indent:16px;padding:7px;text-align:justify;width:700px;height:200px;overflow-y:scroll;word-wrap: break-word; ">
-							
-						</p>
-					</td>	
-				</tr>
-
+				<tfoot style="display:none;">
+					<tr>
+						<td>Nombre</td>
+						<td>Detalle</td>
+						<th>Estado</th>
+						<td>Ver</td>
+						<td>Eliminar</td>
+					</tr>
+				</tfoot>
 			</table>
 		</div>
+
+		<?php /*****Panels********************/ ?>
 	</div>
+</div>
 
-	<div id="ventana_eliminar_contacto" style="display:none;">
+<?php /********************************************************************************/ ?>
+<div id="ventana_cambio_clave" style="display:none;	">
+	<form action="<?=$this->config->base_url()?>index.php/Admin/cambiar_clave" method="post" id="form_cambiaclave">
+		<p style="font-size:1.1em;">Nueva Clave:</p>
+		<input type="password" class="form-control" name="clave" id="clave" maxlength="10">
 
-		<form action="<?=$this->config->base_url()?>index.php/Admin/eliminar_contacto" method="post">
-			<input type="hidden" id="id_eliminar_contacto" name="id_eliminar_contacto">
+		<p style="font-size:1.1em;">Confirmar Clave:</p>
+		<input type="password" class="form-control" id="clave1" maxlength="10">
 
-			<div style="margin:auto;padding:16px;width:115px;">
-				<button class="btn btn-danger" id="boton_eliminar_contacto">Aceptar</button>
-			</div>
+		<hr>
+		<p id="mensaje_cambia_clave" style="font-size:1.1em;"></p>
+		<button type="submit" class="btn btn-success" style="float:right;" id="boton_cambiar_clave">
+			<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+		</button>
+	</form>
+</div>
 
-		</form>
+<div id="ventana_edit_procedimientos" style="display:none;padding:16px;">
+	<form action="<?=$this->config->base_url()?>index.php/Admin/editar_proc" method="post" enctype="multipart/form-data">
+		<input type="hidden" id="id_procedimiento" name="id_procedimiento">
+		<p style="font-size:1.1em;">Nombre Procedimiento:</p>
+		<input type="text" class="form-control" id="nombre_procedimiento" name="nombre_procedimiento" maxlength="140">
+		<p style="font-size:1.1em;">Subtitulo Procedimiento:</p>
+		<input type="text" class="form-control" id="subtitulo_procedimiento" name="subtitulo_procedimiento" maxlength="140">
+		<p>Descripción Procedimiento:</p>
+		<textarea class="form-control" id="detalle_procedimiento" name="detalle_procedimiento" style="resizable:none;overflow-y:scroll;height:150px;" maxlength="500">
 
-	</div>
+		</textarea>
 
-	<div id="ventana_eliminar_procedimiento" style="display:none;">
-		
-		<form action="<?=$this->config->base_url()?>index.php/Admin/eliminar_procedimiento" method="post">
-			<input type="hidden" id="id_eliminar_procedimiento" name="id_eliminar_procedimiento">
+		<p style="font-size:1.1em;">Imagen Procedimiento:</p>
+		<img id="img_proc_edit" class="img img-responsive" >		
+		<a id="cambiar_img_procedimiento" style="cursor:pointer;display:inline;"><span class="caret"></span> Cambiar Imagen</a><hr>
 
-			<div style="margin:auto;padding:16px;width:115px;">
-				<button class="btn btn-danger" id="boton_eliminar_procedimiento">Aceptar</button>
-			</div>
+		<div id="caja_cambiar_archivo" class="alert alert-info" style="float:left;width:400px;display:none;">
+			<input type="file" name="nueva_img_procedimiento" class="form-control" style="height:auto;">
+		</div>
 
-		</form>
+		<hr>
+		<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+	</form>
+</div>
 
-	</div>	
-
-	<div id="ventana_testimonio" style="display:none;">
+<div id="ventana_ver_contacto" style="display:none;">
+	<div style="width:100%;margin:auto;padding:1em;">
 		<table class="table table-hover">
 			<tr>
-				<td colspan="2" style="text-align:center;">
-					<div style="padding:1px;margin:auto;margin-bottom:0px;">
-						<img id="img_testimonio_view" class="img img-responsive">
-					</div>
-				</td>
-			</tr>
-			<tr>
 				<th>Nombres</th>
-				<td id="mostrar_nombre_testimonio"> </td>
+				<td id="mostrar_nombre_contacto"> </td>
+			</tr>
+
+			<tr>
+				<th>
+					Servicio
+				</th>	
+
+				<td id="mostrar_apellido_contacto">
+
+				</td>					
+			</tr>
+
+			<tr>
+				<th>
+					Celular
+				</th>	
+
+				<td id="mostrar_telefono_contacto">
+
+				</td>					
 			</tr>
 
 			<tr>
@@ -527,17 +484,17 @@
 					Email
 				</th>	
 
-				<td id="mostrar_email_testimonio">
+				<td id="mostrar_email_contacto">
 
 				</td>					
 			</tr>
 
 			<tr>
 				<th>
-					Titulo
+					Asunto
 				</th>	
 
-				<td id="mostrar_asunto_testimonio">
+				<td id="mostrar_asunto_contacto">
 
 				</td>					
 			</tr>
@@ -550,61 +507,139 @@
 
 			<tr>
 				<td colspan="2" >
-					<p  id="mostrar_detalle_testimonio" style="margin:auto;text-indent:16px;padding:7px;text-align:justify;width:700px;height:150px;overflow-y:scroll;word-wrap: break-word; ">
+					<p  id="mostrar_detalle_contacto" style="margin:auto;text-indent:16px;padding:7px;text-align:justify;width:700px;height:200px;overflow-y:scroll;word-wrap: break-word; ">
 
 					</p>
 				</td>	
 			</tr>
 
-			<tr>
-				<td colspan="2">
-
-					<a id="abrir_opcion_testimmonio" style="cursor:pointer;">  <span class="caret"></span> Procesar Testimonio</a>
-				</td>
-			</tr>	
-
-			<tr style="display:none;" id="procesar_testimoniio">
-				<form action="<?=$this->config->base_url()?>index.php/Admin/procesar_testimonio" method="post">
-					<td>
-						<input type="hidden" id="id_testimonio_aprobado" name="id_testimonio_aprobado">
-						<div class="radio" style="display:inline;margin-right:25px;">
-							<label>
-								<input type="radio" name="aprobar" value="1">
-								<p style="font-weight:bold; ">Activar</p>
-							</label>
-						</div>
-
-						<div class="radio" style="display:inline;">
-							<label>
-								<input type="radio" name="aprobar" value="0" checked="checked">
-								<p style="font-weight:bold; ">Ocultar</p>
-							</label>
-						</div>
-					</td>
-
-					<td>
-						<button type="submit" class="btn btn-success" style="float:right;">
-							<span class="glyphicon glyphicon-floppy-saved"></span> Confirmar
-						</button>
-					</td>
-				</form>
-			</tr>
 		</table>
 	</div>
+</div>
+
+<div id="ventana_eliminar_contacto" style="display:none;">
+
+	<form action="<?=$this->config->base_url()?>index.php/Admin/eliminar_contacto" method="post">
+		<input type="hidden" id="id_eliminar_contacto" name="id_eliminar_contacto">
+
+		<div style="margin:auto;padding:16px;width:115px;">
+			<button class="btn btn-danger" id="boton_eliminar_contacto">Aceptar</button>
+		</div>
+
+	</form>
+
+</div>
+
+<div id="ventana_eliminar_procedimiento" style="display:none;">
+
+	<form action="<?=$this->config->base_url()?>index.php/Admin/eliminar_procedimiento" method="post">
+		<input type="hidden" id="id_eliminar_procedimiento" name="id_eliminar_procedimiento">
+
+		<div style="margin:auto;padding:16px;width:115px;">
+			<button class="btn btn-danger" id="boton_eliminar_procedimiento">Aceptar</button>
+		</div>
+
+	</form>
+
+</div>	
+
+<div id="ventana_testimonio" style="display:none;">
+	<table class="table table-hover">
+		<tr>
+			<td colspan="2" style="text-align:center;">
+				<div style="padding:1px;margin:auto;margin-bottom:0px;">
+					<img id="img_testimonio_view" class="img img-responsive">
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th>Nombres</th>
+			<td id="mostrar_nombre_testimonio"> </td>
+		</tr>
+
+		<tr>
+			<th>
+				Email
+			</th>	
+
+			<td id="mostrar_email_testimonio">
+
+			</td>					
+		</tr>
+
+		<tr>
+			<th>
+				Titulo
+			</th>	
+
+			<td id="mostrar_asunto_testimonio">
+
+			</td>					
+		</tr>
+
+		<tr class="info">
+			<th colspan="2" style="text-align:center;">
+				Detalle
+			</th>			
+		</tr>
+
+		<tr>
+			<td colspan="2" >
+				<p  id="mostrar_detalle_testimonio" style="margin:auto;text-indent:16px;padding:7px;text-align:justify;width:700px;height:150px;overflow-y:scroll;word-wrap: break-word; ">
+
+				</p>
+			</td>	
+		</tr>
+
+		<tr>
+			<td colspan="2">
+
+				<a id="abrir_opcion_testimmonio" style="cursor:pointer;">  <span class="caret"></span> Procesar Testimonio</a>
+			</td>
+		</tr>	
+
+		<tr style="display:none;" id="procesar_testimoniio">
+			<form action="<?=$this->config->base_url()?>index.php/Admin/procesar_testimonio" method="post">
+				<td>
+					<input type="hidden" id="id_testimonio_aprobado" name="id_testimonio_aprobado">
+					<div class="radio" style="display:inline;margin-right:25px;">
+						<label>
+							<input type="radio" name="aprobar" value="1">
+							<p style="font-weight:bold; ">Activar</p>
+						</label>
+					</div>
+
+					<div class="radio" style="display:inline;">
+						<label>
+							<input type="radio" name="aprobar" value="0" checked="checked">
+							<p style="font-weight:bold; ">Ocultar</p>
+						</label>
+					</div>
+				</td>
+
+				<td>
+					<button type="submit" class="btn btn-success" style="float:right;">
+						<span class="glyphicon glyphicon-floppy-saved"></span> Confirmar
+					</button>
+				</td>
+			</form>
+		</tr>
+	</table>
+</div>
 
 
 
-	<div id="ventana_eliminar_testimonio" style="display:none;">
-		<form action="<?=$this->config->base_url()?>index.php/Admin/eliminar_testimonio" method="post">
-			<input type="hidden" id="id_eliminar_testimonio" name="id_eliminar_testimonio">
+<div id="ventana_eliminar_testimonio" style="display:none;">
+	<form action="<?=$this->config->base_url()?>index.php/Admin/eliminar_testimonio" method="post">
+		<input type="hidden" id="id_eliminar_testimonio" name="id_eliminar_testimonio">
 
-			<div style="margin:auto;padding:16px;width:115px;">
-				<button class="btn btn-danger" id="boton_eliminar_contacto">Aceptar</button>
-			</div>
+		<div style="margin:auto;padding:16px;width:115px;">
+			<button class="btn btn-danger" id="boton_eliminar_contacto">Aceptar</button>
+		</div>
 
-		</form>
-	</div>
-	<?php /********************************************************************************/ ?>
+	</form>
+</div>
+<?php /********************************************************************************/ ?>
 
 </body>
 
@@ -623,7 +658,40 @@ jQuery(window).load(function(){
 
 $(document).on("ready",function(){
 
-	$("#tabla_procedimientos,#tabla_contacto,#tabla_testimonios").dataTable();
+	$(".sobre_img_procedimientos_disparador").on("click",function(){
+
+//$("#form_agregar_imgs").submit)(;)
+$("#titulo_antes_despues").html( $(this).data("nombrepro") );
+$("#id_procedimiento").val( $(this).data("idimagen") );
+
+$("#desplegar_guardado").on("click",function(){
+	$("#nuevo_galeria_especifica").slideToggle();
+});
+
+$.ajax({
+	dataType: "json",
+	data: { id_procedimiento : $(this).data("idimagen") },
+	url:   '<?=$this->config->base_url()?>index.php/admin/ver_img_procedimientos',
+	type:  'post',
+	timeout:7000,
+	beforeSend: function(){
+		//$("#contenido_galeria_especifica").html("<img src='../../../../public_html/imagenes/484_azul.GIF'>");
+	},
+	success: function(respuesta){
+                    //lo que se si el destino devuelve algo
+                    $("#contenido_galeria_especifica").html(respuesta);
+                    alert(respuesta);
+                },
+                error:  function(xhr,err){ 
+                    //alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status+"\n \n responseText: "+xhr.responseText);
+                    $("#contenido_galeria_especifica").html("<p style='color:red;'></p>");
+                }
+            });
+
+
+});
+
+$("#tabla_procedimientos,#tabla_contacto,#tabla_testimonios").dataTable();
 
 	//CKEDITOR.replace( 'text_curriculum' );
 

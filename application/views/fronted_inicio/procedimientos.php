@@ -1,4 +1,6 @@
-
+<?php 
+#La variable procedimientos contiene un arreglo con todos los procedimientos
+?>
 
 <body class="stretched">
 

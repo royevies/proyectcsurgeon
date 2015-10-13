@@ -267,6 +267,18 @@
 
 		}
 
+		public function ver_img_procedimientos(){
+			if( $this->input->post() ){
+
+				$id_img_procedimiento = $this->input->post("id_procedimiento");
+
+				foreach ($this->Cirujano_model->ver_img_procedimientos($id_img_procedimiento)->result() as $imagenes) {
+					echo $imagenes->img_antes;
+				}
+
+			}
+			
+		}
 
 		///*************************************************************///
 		public function salir(){
