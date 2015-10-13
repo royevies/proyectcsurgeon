@@ -669,7 +669,6 @@ $("#desplegar_guardado").on("click",function(){
 });
 
 $.ajax({
-	dataType: "json",
 	data: { id_procedimiento : $(this).data("idimagen") },
 	url:   '<?=$this->config->base_url()?>index.php/admin/ver_img_procedimientos',
 	type:  'post',
@@ -680,7 +679,6 @@ $.ajax({
 	success: function(respuesta){
                     //lo que se si el destino devuelve algo
                     $("#contenido_galeria_especifica").html(respuesta);
-                    alert(respuesta);
                 },
                 error:  function(xhr,err){ 
                     //alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status+"\n \n responseText: "+xhr.responseText);
