@@ -84,6 +84,10 @@
 		   }
 
 
+		   public function crear_contacto($nombres_contacto,$servicio,$telefono_movil_contacto,$email_contacto,$asunto_contacto,$descripcion_contacto){
+		   	$this->db->insert("contacto", [ "nombres_contacto" => $nombres_contacto , "servicio" => $servicio , "telefono_movil_contacto" => $telefono_movil_contacto , "email_contacto" => $email_contacto, "asunto_contacto" => $asunto_contacto, "descripcion_contacto" => $descripcion_contacto ] );
+		   }
+
 
 		   public function actualizar_clave($usuario,$clave){
 		   	$update="update usuario set clave = '$clave' where usuario = '$usuario' ";

@@ -609,24 +609,24 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 										<div class="col_one_third">
 											<label for="template-contactform-name">Nombre <small>*</small></label>
-											<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" />
+											<input type="text" id="template-contactform-name" name="template-contactform-name" class="sm-form-control required" />
 										</div>
 
 										<div class="col_one_third">
 											<label for="template-contactform-email">Correo Electrónico <small>*</small></label>
-											<input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" />
+											<input type="email" id="template-contactform-email" name="template-contactform-email" class="required email sm-form-control" />
 										</div>
 
 										<div class="col_one_third col_last">
 											<label for="template-contactform-phone">Teléfono</label>
-											<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
+											<input type="text" id="template-contactform-phone" name="template-contactform-phone" class="sm-form-control" />
 										</div>
 
 										<div class="clear"></div>
 
 										<div class="col_two_third">
 											<label for="template-contactform-subject">Asunto <small>*</small></label>
-											<input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control" />
+											<input type="text" id="template-contactform-subject" name="template-contactform-subject" class="required sm-form-control" />
 										</div>
 
 										<div class="col_one_third col_last">

@@ -240,11 +240,30 @@
 		}
 
 		public function crear_contacto(){
-			echo "hola<br>";
 
-			echo "<pre>";
-			print_r($_POST);
-			echo "<pre>";
+			if( $this->input->post() ){
+
+				$nombres_contacto	= $this->input->post("template-contactform-name");
+				$servicio	= $this->input->post("template-contactform-service");
+				$telefono_movil_contacto	= $this->input->post("template-contactform-phone");
+				$email_contacto	= $this->input->post("template-contactform-email");
+				$asunto_contacto	= $this->input->post("template-contactform-subject");
+				$descripcion_contacto	= $this->input->post("template-contactform-message");
+
+				$this->Cirujano_model->crear_contacto(
+					$nombres_contacto,
+					$servicio,
+					$telefono_movil_contacto,
+					$email_contacto,
+					$asunto_contacto,
+					$descripcion_contacto
+					);
+
+				echo "Mensaje Enviado Exitosamente";
+
+			}else{
+				redirect( $this->config->base_url()."index.php/web" );
+			}
 
 		}
 
