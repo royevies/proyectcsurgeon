@@ -103,6 +103,8 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li id="cambio_datos" style="cursor:pointer;"><a><span class="glyphicon glyphicon-wrench"></span> Cambiar Datos</a></li>
+							<li id="cambio_dir" style="cursor:pointer;"><a><span class="glyphicon glyphicon-globe"></span> Cambiar Dirección</a></li>
 							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave</a></li>
 						</ul>
 					</div>
@@ -203,15 +205,15 @@
 				<hr/>
 				<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post">
 
-					<textarea id="text_curriculum" name="text_curriculum">
-										
+					<textarea id="text_curriculum" name="text_curriculum" class="form-control" rows="12" style="resize:none;">
+
 						<?php
 						if( $curriculum->result() != null ){
-						foreach ( $curriculum->result() as $perfil ) {
-							echo $perfil->curriculum_completo;	
+							foreach ( $curriculum->result() as $perfil ) {
+								echo $perfil->curriculum_completo;	
+							}
+
 						}
-										
-					 }
 						?>
 					</textarea>
 					<hr>
@@ -623,7 +625,7 @@ $(document).on("ready",function(){
 
 	$("#tabla_procedimientos,#tabla_contacto,#tabla_testimonios").dataTable();
 
-	CKEDITOR.replace( 'text_curriculum' );
+	//CKEDITOR.replace( 'text_curriculum' );
 
 
 	$("#cambio_clave").on("click",function(){
