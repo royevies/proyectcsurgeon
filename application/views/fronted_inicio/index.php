@@ -603,7 +603,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 									<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
-									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="<?=$this->config->base_url();?>fronted_inicio/include/sendemail.php" method="post">
+									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="<?=$this->config->base_url();?>index.php/Admin/crear_contacto" method="post">
 
 										<div class="form-process"></div>
 

@@ -239,6 +239,15 @@
 			
 		}
 
+		public function crear_contacto(){
+			echo "hola<br>";
+
+			echo "<pre>";
+			print_r($_POST);
+			echo "<pre>";
+
+		}
+
 
 		///*************************************************************///
 		public function salir(){
