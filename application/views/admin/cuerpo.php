@@ -77,7 +77,7 @@
 </style>
 <body>
 	<!--Header-->
-	<div class="header" style="background:#1ABC9C;">
+	<div class="header" style="background:#8CCEBB;">
 		<div class="container ">
 			<div class="row">
 				<div class="col-xs-1">
@@ -156,22 +156,28 @@
 					</div>
 					<div style="clear:both;"></div>
 					<hr>
-					<div id="titulo_antes_despues" style="background:#f1f1f1;width:80%;font-size:1.4em;border:1px solid gray;padding:10px;float:left;">
+
+					<div style="border-bottom:1px dotted black;">
 						
+						<div id="titulo_antes_despues" style="background:#f9f9f9;width:80%;font-size:1.4em;border-right:1px solid gray;padding:10px;float:left;">
+							
+						</div>
+
+						<div id="desplegar_guardado" style="background:#f9f9f9;width:20%;float:left;padding:10px;cursor:pointer;">
+							<button class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar Nuevo</button>
+						</div>
+
+						<div style="clear:both;"></div>
 					</div>
 
-					<div id="desplegar_guardado" style="background:#f1f1f1;width:20%;float:left;padding:10px;cursor:pointer;">
-						<span class="glyphicon glyphicon-floppy-disk"></span> Guardar Nuevo
-					</div>
 
-					<div style="clear:both;"></div>
 
 					<div id="nuevo_galeria_especifica" style="display:none;">
 						<form id="form_agregar_imgs" action="" method="post" enctype="multipart/form-data">
 							<input type="hidden" id="id_procedimiento" name="id_procedimiento">
 							
 							<table class="table table-bordered">
-								<tr style="background:#1ABC9C;">
+								<tr style="background:#8CCEBB;">
 									<th style="text-align:center;">Antes</th>
 									<th style="text-align:center;">Despues</th>
 								</tr>
@@ -191,6 +197,8 @@
 								<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
 							</button>
 						</form>
+
+						<div style="clear:both"></div>
 					</div>
 
 					<div id="contenido_galeria_especifica">
@@ -682,7 +690,7 @@ $.ajax({
                 },
                 error:  function(xhr,err){ 
                     //alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status+"\n \n responseText: "+xhr.responseText);
-                    $("#contenido_galeria_especifica").html("<p style='color:red;'></p>");
+                    $("#contenido_galeria_especifica").html("<p style='color:red;'>Ha ocurrido un error por favor recargue la página</p>");
                 }
             });
 

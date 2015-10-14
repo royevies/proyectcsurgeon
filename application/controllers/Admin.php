@@ -272,9 +272,15 @@
 
 				$id_img_procedimiento = $this->input->post("id_procedimiento");
 
-				foreach ($this->Cirujano_model->ver_img_procedimientos($id_img_procedimiento)->result() as $imagenes) {
-					echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_antes."' style='width:150px;height:150px;'>";
-					echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_despues."' style='width:150px;height:150px;'>";
+				if($this->Cirujano_model->ver_img_procedimientos($id_img_procedimiento)->result() != null){ 
+
+					foreach ($this->Cirujano_model->ver_img_procedimientos($id_img_procedimiento)->result() as $imagenes) {
+						echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_antes."' style='width:150px;height:150px;cursor:pointer;'>";
+						echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_despues."' style='width:150px;height:150px;cursor:pointer;'>";
+					}
+
+				}else{
+					echo "<div style='padding:25px;font-size:1.4em;'>Este procedimiento no tiene imagenes relacionadas.</div>";
 				}
 
 			}
