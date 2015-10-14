@@ -74,6 +74,14 @@
 		display: block !important;		
 	}
 
+	.sobre_img_antes_despues:hover{
+		cursor:pointer;
+	}
+
+	.sobre_img_antes_despues:hover > div.sobre_img_antes_despues_disparador{
+		display:block !important;
+	}
+
 </style>
 <body>
 	<!--Header-->
@@ -87,19 +95,19 @@
 				</div>
 
 				<div class="col-xs-7 col-xs-offset-1 titulo">
-					<h1>Dr. Julio Reyes <small style="color:#CCC;font-size:0.5em;"> Administrador de Contendios</small></h1>
+					<h1 style="color:#555 !important;">Dr. Julio Reyes <small style="color:#555;font-size:0.5em;"> Administrador de Contendios</small></h1>
 				</div>
 
 				<div class="col-xs-3">
 					<div style="padding:7px;float:left;">			
-						<p style="color:white;margin-top:16px;font-size:1.3em;display:inline-block;">
+						<p style="color:#555;margin-top:16px;font-size:1.3em;display:inline-block;">
 							<?php echo strtoupper($usuario)." "; ?>
 						</p>
 						<div style="display:inline-block;background:#f1f1f1;width:43px;border-radius:50%;"><img src="<?=$this->config->base_url();?>fronted/img/iconos2/user.png" class="img img-circle" style="width:43px;"></div>
 					</div>
 
-					<div class="dropdown" style="float:left;margin-top:16px;">
-						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:none;border-radius:50%;">
+					<div class="dropdown" style="float:left;margin-top:16px;" >
+						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:#1ABC9C;border-radius:50%;">
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -160,7 +168,7 @@
 					<div style="border-bottom:1px dotted black;">
 						
 						<div id="titulo_antes_despues" style="background:#f9f9f9;width:80%;font-size:1.4em;border-right:1px solid gray;padding:10px;float:left;">
-							
+
 						</div>
 
 						<div id="desplegar_guardado" style="background:#f9f9f9;width:20%;float:left;padding:10px;cursor:pointer;">
@@ -172,8 +180,8 @@
 
 
 
-					<div id="nuevo_galeria_especifica" style="display:none;">
-						<form id="form_agregar_imgs" action="" method="post" enctype="multipart/form-data">
+					<div id="nuevo_galeria_especifica" style="display:none;margin-bottom:10px;">
+						<form id="form_agregar_imgs" action="<?=$this->config->base_url()?>index.php/admin/crear_parejas" method="post" enctype="multipart/form-data">
 							<input type="hidden" id="id_procedimiento" name="id_procedimiento">
 							
 							<table class="table table-bordered">
@@ -353,7 +361,7 @@
 					<tr class="procedimiento_tr">
 						<td><?php echo $proc->titulo; ?></td>
 						<td><?php echo $proc->detalle; ?></td>
-						<td><button class="btn btn-success edit-proc" data-id="<?=$proc->id_procedimiento;?>" data-titulo="<?=$proc->titulo;?>" data-subtitulo="<?=$proc->sub_titulo;?>" data-detalle="<?=$proc->detalle;?>" data-imgprincipal="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+						<td><button class="btn btn-success edit-proc" data-id="<?=$proc->id_procedimiento;?>" data-titulo="<?=$proc->titulo;?>" data-subtitulo="<?=$proc->sub_titulo;?>" data-detalle="<?=$proc->detalle;?>" data-imgsola="<?=( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento ) ?>" data-imgprincipal="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
 						<td><button class="btn btn-danger del-proc" data-id="<?=$proc->id_procedimiento; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
 					</tr>
 
@@ -436,7 +444,8 @@
 
 <div id="ventana_edit_procedimientos" style="display:none;padding:16px;">
 	<form action="<?=$this->config->base_url()?>index.php/Admin/editar_proc" method="post" enctype="multipart/form-data">
-		<input type="hidden" id="id_procedimiento" name="id_procedimiento">
+		<input type="hidden" id="id_procedimiento_proc" name="id_procedimiento">
+		<input type="hidden" id="imgsola" name="imgsola">
 		<p style="font-size:1.1em;">Nombre Procedimiento:</p>
 		<input type="text" class="form-control" id="nombre_procedimiento" name="nombre_procedimiento" maxlength="140">
 		<p style="font-size:1.1em;">Subtitulo Procedimiento:</p>
@@ -652,17 +661,18 @@
 </body>
 
 <script>
-// espera hasta que el DOM este cargado
+/*
 jQuery(document).ready(function () {
      // esconder el body para luego mostrarlo
      $('body').hide("fast");
 
  });
-// espera hasta que todo el contenido este descargado
+
 jQuery(window).load(function(){
      // mostrar la etiqueta body lentamente
      $('body').fadeIn("fast");
  });
+*/
 
 $(document).on("ready",function(){
 
@@ -675,6 +685,7 @@ $("#id_procedimiento").val( $(this).data("idimagen") );
 $("#desplegar_guardado").on("click",function(){
 	$("#nuevo_galeria_especifica").slideToggle();
 });
+
 
 $.ajax({
 	data: { id_procedimiento : $(this).data("idimagen") },
@@ -692,7 +703,36 @@ $.ajax({
                     //alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status+"\n \n responseText: "+xhr.responseText);
                     $("#contenido_galeria_especifica").html("<p style='color:red;'>Ha ocurrido un error por favor recargue la página</p>");
                 }
-            });
+            }).done(function(){
+            	$(".sobre_img_antes_despues_disparador").on("click",function(){
+            		var id_pareja = $(this).data("id");
+            		var img_antes = $(this).data("imgantes");
+            		var img_despues = $(this).data("imgdespues");        
+
+            		var html = '<div style="width:100%;overflow:hidden;margin-bottom:16px;">';
+            		html +='<div style="width:50%;float:left;">';
+            		html +='<div style="width:100%;padding:12px;text-align:center;font-size:1.3em;">Antes</div>';
+            		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/Procedimientos/'+img_antes+'" class="img img-responsive">';
+            		html +='</div>';
+            		html +='<div style="width:50%;float:left;">';
+            		html +='<div style="width:100%;padding:12px;text-align:center;font-size:1.3em;">Despues</div>';
+            		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/Procedimientos/'+img_despues+'" class="img img-responsive">';
+            		html +='</div>';
+            		html +='</div>';
+            		html +='<hr>';
+            		html +='<div class="alert alert-danger" style="text-align:center;border-radius:0px;">';
+            		html +='<p style="text-align:center;">¿Desea Eliminar Esta pareja?</p>'
+            		html +='<hr>';
+            		html +='<form action="<?=$this->config->base_url()?>index.php/admin/eliminar_img_parejas" method="post">';
+            		html +='<input type="checkbox" name="eliminar_pareja" value="'+id_pareja+'" > Eliminar Pareja <input type="submit" class="btn btn-danger" value="Eliminar" ></form>';
+            		html +='</div>';
+
+            		$("#modal_antes_despues_view").html(html); 
+
+            		$("#modal_antes_despues_view").dialog({width:"850px",title:"Antes y despues",modal:true,Height:"500px","resizable":false,position: "top"});	
+            	});
+
+});
 
 
 });
@@ -774,8 +814,8 @@ $("#new_procedimiento").dialog({width:"800px",title:"Guardar nuevo Procedimiento
 
 
 $("#tabla_procedimientos").on("click",".procedimiento_tr .edit-proc",function(){
-
-	$("#id_procedimiento").val( $(this).data("id") );
+	$("#imgsola").val( $(this).data("imgsola") );
+	$("#id_procedimiento_proc").val( $(this).data("id") );
 	$("#nombre_procedimiento").val( $(this).data("titulo") );
 	$("#subtitulo_procedimiento").val( $(this).data("subtitulo") );
 	$("#detalle_procedimiento").val( $(this).data("detalle") );

@@ -97,5 +97,13 @@
 		   	$update="update usuario set clave = '$clave' where usuario = '$usuario' ";
 		   	$this->db->query($update);
 		   }
+
+		   public function crear_parejas($id_procedimiento,$img_antes,$img_despues){
+		   	$this->db->insert("img_procedimientos", [ "id_procedimiento" => $id_procedimiento , "img_antes" => $img_antes , "img_despues" => $img_despues ] );
+		   }
+
+		   public function eliminar_parejas($id_pareja){
+		   	$this->db->query("delete from img_procedimientos where id_img_procedimiento = $id_pareja");
+		   }
 		   /*******************************Llave clase********************************************/
 		}

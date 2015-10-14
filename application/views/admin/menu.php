@@ -14,7 +14,7 @@
     .item-menu{
         width:150px;
         height:75px;
-        background:#8CCEBB;
+        background:#8CCEAA;
         border-top:1px dotted #f1f1f1;
         padding:5px;
         text-align: center;
@@ -76,7 +76,7 @@
     </a>
 
     <a id="procedimientos" class="item_panel_control" data-panel="panel_procedimientos" data-original-title="Gestión de procedimientos" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
-       <div class="item-menu">       
+     <div class="item-menu">       
         <img src="<?=$this->config->base_url();?>fronted/img/iconos2/relax8.png" class="img_menu" />        
         <p>Procedimientos</p>
     </div>
@@ -101,6 +101,6 @@
 
 <script>
     $(document).on("ready",function(){
-     $('#curriculum, #contacto, #galeria, #procedimientos ,#testimonios ,#cerrar').popover({ trigger: "hover" });
- });
+       $('#curriculum, #contacto, #galeria, #procedimientos ,#testimonios ,#cerrar').popover({ trigger: "hover" });
+   });
 </script>

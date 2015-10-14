@@ -63,6 +63,8 @@
 				
 				$this->load->view("layout/head.php",[ "titulo" => "Panel administrativo"]);
 				$this->load->view("admin/menu");
+				$this->load->view("admin/modals");
+
 				$this->load->view("admin/cuerpo",[ 
 					"usuario" => $this->session->userdata('usuario') , 
 					"procedimientos" => $this->Cirujano_model->get_procedimientos(),
@@ -141,11 +143,15 @@
 				$detalle = $this->input->post("detalle_procedimiento");
 
 				$uploads_procedure_update ='./fronted_inicio/procedimientos/';
-				$img_procedimiento_nueva = $_FILES["nueva_img_procedimiento"]["name"];
+				$img_procedimiento_nueva = ( isset($_FILES["nueva_img_procedimiento"]["name"]) && $_FILES["nueva_img_procedimiento"]["name"] != null ? $_FILES["nueva_img_procedimiento"]["name"] : $this->input->post("imgsola") );
 
 				opendir($uploads_procedure_update);
 
 				move_uploaded_file($_FILES["nueva_img_procedimiento"]["tmp_name"],$uploads_procedure_update.$img_procedimiento_nueva);
+
+				echo "<pre>";
+				print_r($_POST);
+				echo "</pre>";
 
 				$this->Cirujano_model->actualizar_procedimiento($id_procedimiento,$titulo,$subtitulo,$detalle,$img_procedimiento_nueva);
 				redirect('Admin');
@@ -275,8 +281,11 @@
 				if($this->Cirujano_model->ver_img_procedimientos($id_img_procedimiento)->result() != null){ 
 
 					foreach ($this->Cirujano_model->ver_img_procedimientos($id_img_procedimiento)->result() as $imagenes) {
-						echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_antes."' style='width:150px;height:150px;cursor:pointer;'>";
-						echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_despues."' style='width:150px;height:150px;cursor:pointer;'>";
+						echo "<div class='sobre_img_antes_despues' style='position:relative;border:1px solid black;float:left'>";
+						echo '<div class="sobre_img_antes_despues_disparador" style="width:100%;height:100%;background:rgba(0,0,0,0.8);position:absolute;top:0;left:0;display:none;font-size:1.3em;color:white;padding-top:40px;text-align:center;" data-id="'.$imagenes->id_img_procedimiento.'" data-imgantes="'.$imagenes->img_antes.'" data-imgdespues="'.$imagenes->img_despues.'" ><span class="glyphicon glyphicon-fullscreen"></span> Ver pareja<hr></div>';
+						echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_antes."' style='width:140px;height:140px;cursor:pointer;'>";
+						echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_despues."' style='width:140px;height:140px;cursor:pointer;'>";
+						echo "</div>";
 					}
 
 				}else{
@@ -285,6 +294,42 @@
 
 			}
 			
+		}
+
+		public function crear_parejas(){
+			
+			if( $this->input->post() ){
+
+				$id_procedimiento = $this->input->post("id_procedimiento");
+
+				$img_pareja = $_FILES["img_antes"]["name"];
+				$img_pareja2 = $_FILES["img_despues"]["name"];
+				
+				$galeria_procedure ='./fronted_inicio/procedimientos/';
+				opendir($galeria_procedure);
+
+				move_uploaded_file($_FILES["img_antes"]["tmp_name"],$galeria_procedure.$img_pareja);
+				move_uploaded_file($_FILES["img_despues"]["tmp_name"],$galeria_procedure.$img_pareja2);
+				
+				$this->Cirujano_model->crear_parejas($id_procedimiento,$img_pareja,$img_pareja2);
+
+				redirect("Admin");
+			}else{
+				redirect("Admin");
+			}
+		}
+
+		public function eliminar_img_parejas(){
+			if( $this->input->post() ){
+				
+				$id_pareja =	$this->input->post("eliminar_pareja");
+				$this->Cirujano_model->eliminar_parejas($id_pareja);
+				redirect("Admin");
+
+			}else{
+				redirect("Admin");
+			}
+
 		}
 
 		///*************************************************************///
