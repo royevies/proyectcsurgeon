@@ -35,7 +35,9 @@
 				<div class="container clearfix">
 
 					
-
+                                        <div class="heading-block center">
+                                                <h2><span>Esto es lo que dicen mis clientes.</span></h2>
+                                        </div>
 					
 
 					<div class="line"></div>
@@ -45,85 +47,66 @@
 					
 					<div class="clear"></div>
 
-					<div class="fslider testimonial testimonial-full bottommargin" data-animation="fade" data-arrows="false">
-						<div class="flexslider">
-							<!--<div class="slider-wrap">-->
-							<div class="slide">
+					<ul class="testimonials-grid clearfix">
+						<li>
+							<div class="testimonial">
 								<div class="testi-image">
-									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/images/testimonials/3.jpg" alt="Customer Testimonails"></a>
+									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/1.jpg" alt="Customer Testimonails"></a>
 								</div>
 								<div class="testi-content">
-									<p>Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?</p>
+									<p>El Dr. Julio Reyes cambió mi vida, ahora soy una mujer mas hermosa y mucho mas feliz!</p>
 									<div class="testi-meta">
-										Steve Jobs
-										<span>Apple Inc.</span>
+										Julia Roberts
+										<span>...</span>
 									</div>
 								</div>
 							</div>
-							<!--</div>-->
-						</div>
-					</div>
-					
-					<div class="fslider testimonial testimonial-full bottommargin" data-animation="fade" data-arrows="false">
-						<div class="flexslider">
-							<!--<div class="slider-wrap">-->
-							<div class="slide">
+						</li>
+						<li>
+							<div class="testimonial">
 								<div class="testi-image">
-									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/images/testimonials/2.jpg" alt="Customer Testimonails"></a>
+									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/2.jpg" alt="Customer Testimonails"></a>
 								</div>
 								<div class="testi-content">
-									<p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
+									<p>Después de mucho tiempo decidí consultar con el Dr. Reyes la posibilidad de realizarme una rinoplastia y les cuento que desde que 
+									entre en su consultorio me generó mucha confianza, la confianza que necesitaba para dar ese paso definitivo a una nueva apariencia.</p>
 									<div class="testi-meta">
-										Collis Ta'eed
-										<span>Envato Inc.</span>
+										Angelina Jolie
+										<span>...</span>
 									</div>
 								</div>
 							</div>
-							<!--</div>-->
-						</div>
-					</div>
-					
-					<div class="fslider testimonial testimonial-full bottommargin" data-animation="fade" data-arrows="false">
-						<div class="flexslider">
-							<!--<div class="slider-wrap">-->
-							<div class="slide">
+						</li>
+						<li>
+							<div class="testimonial">
 								<div class="testi-image">
-									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/images/testimonials/1.jpg" alt="Customer Testimonails"></a>
+									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/4.jpg" alt="Customer Testimonails"></a>
 								</div>
 								<div class="testi-content">
-									<p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum!</p>
+									<p>El Dr. Reyes y todo su equipo de trabajo me trataron muy bien, el resultado fue excelente pienso que después de haber investigado mucho y estudiar todas mis posibilidades escogí el mejor cirujano, quede tal y como yo esperaba. Muchas Gracias Doctor.</p>
 									<div class="testi-meta">
-										John Doe
-										<span>XYZ Inc.</span>
+										Jennifer Lopez
+										<span>...</span>
 									</div>
 								</div>
 							</div>
-							<!--</div>-->
-						</div>
-					</div>
-
-
-					<script type="text/javascript">
-
-						jQuery(document).ready(function($) {
-
-							var ocTesti = $("#oc-testi");
-
-							ocTesti.owlCarousel({
-								margin: 20,
-								nav: true,
-								navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>'],
-								dots: true,
-								responsive:{
-									0:{ items:1 },
-									768:{ items:2 },
-									992:{ items:3 }
-								}
-							});
-
-						});
-
-					</script>
+						</li>
+						<li>
+							<div class="testimonial">
+								<div class="testi-image">
+									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/3.jpg" alt="Customer Testimonails"></a>
+								</div>
+								<div class="testi-content">
+									<p>Me siento feliz, cuando me miro en el espejo y veo mi nuevo aspecto solo puedo sonreír, la verdad es que quede muy satisfecha,me siento muy bonita y segura de mi misma.</p>
+									<div class="testi-meta">
+										Mary Jane
+										<span>...</span>
+									</div>
+								</div>
+							</div>
+						</li>
+						
+					</ul>
 
 				</div>
 
@@ -145,7 +128,7 @@
 		</section><!-- #content end -->
 
 		<!-- Footer
-		============================================= -->
+		============================================== -->
 		
 		<!-- #footer end -->
 
