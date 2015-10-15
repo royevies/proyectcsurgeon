@@ -71,7 +71,6 @@
 					"contactos" => $this->Cirujano_model->get_contactos(),
 					"curriculum" => $this->Cirujano_model->get_curriculum(),
 					"curriculum_por" =>$this->Cirujano_model->get_curriculum_por(),
-					"galeria" => $this->Cirujano_model->get_galeria(),
 					"testimonios" => $this->Cirujano_model->get_testimonios()
 					]);
 
@@ -143,6 +142,10 @@
 				$subtitulo = $this->input->post("subtitulo_procedimiento");
 				$detalle = $this->input->post("detalle_procedimiento");
 
+				$titulo_portugues = $this->input->post("nombre_procedimiento_portugues");
+				$subtitulo_portugues = $this->input->post("subtitulo_procedimiento_portugues");
+				$detalle_portugues = $this->input->post("detalle_procedimiento_portugues");
+
 				$uploads_procedure_update ='./fronted_inicio/procedimientos/';
 				$img_procedimiento_nueva = ( isset($_FILES["nueva_img_procedimiento"]["name"]) && $_FILES["nueva_img_procedimiento"]["name"] != null ? $_FILES["nueva_img_procedimiento"]["name"] : $this->input->post("imgsola") );
 
@@ -150,12 +153,19 @@
 
 				move_uploaded_file($_FILES["nueva_img_procedimiento"]["tmp_name"],$uploads_procedure_update.$img_procedimiento_nueva);
 
-				$this->Cirujano_model->actualizar_procedimiento($id_procedimiento,$titulo,$subtitulo,$detalle,$img_procedimiento_nueva);
+				$this->Cirujano_model->actualizar_procedimiento($id_procedimiento,$id_procedimiento_portugues,$titulo,$titulo_portugues,$subtitulo,$sub_titulo_portugues,$detalle,$detalle_portugues,$img_procedimiento_nueva);
+
 				redirect('Admin');
 			}else{
 				redirect('Admin');
 			}
 
+		}
+
+		public function procedimiento_edit_idioma(){
+			$id_procedimiento  =16;
+
+			echo json_encode($this->Cirujano_model->get_procedimiento_idiomas($id_procedimiento)->result());
 		}
 
 		public function editar_curriculum(){
@@ -218,12 +228,16 @@
 
 
 		public function crear_procedimiento(){
-			/*echo "<pre>"; print_r($_POST);echo "</pre>";*/
+			echo "<pre>"; print_r($_POST);echo "</pre>";
+			echo "<pre>"; print_r($_FILES);echo "</pre>";
 			if( $this->input->post() ){
 				$titulo = $this->input->post("nombre_procedure");
 				$sub_titulo = $this->input->post("subtitulo_procedure");
 				$detalle = $this->input->post("detalle_procedure");
-
+				
+				$titulo_portugues = $this->input->post("nombre_procedure_por");
+				$sub_titulo_portugues = $this->input->post("subtitulo_procedure_por");
+				$detalle_portugues = $this->input->post("detalle_procedure_por");
 
 				$uploads_procedure ='./fronted_inicio/procedimientos/';
 				$img_procedimiento = $_FILES["img_procedimiento"]["name"];
@@ -232,7 +246,7 @@
 
 				move_uploaded_file($_FILES["img_procedimiento"]["tmp_name"],$uploads_procedure.$img_procedimiento);
 
-				$this->Cirujano_model->crear_procedimiento($titulo,$sub_titulo,$detalle,$img_procedimiento);
+				$this->Cirujano_model->crear_procedimiento($titulo,$titulo_portugues,$sub_titulo,$sub_titulo_portugues,$detalle,$detalle_portugues,$img_procedimiento);
 
 				redirect("Admin");
 			}else{

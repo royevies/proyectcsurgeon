@@ -14,7 +14,7 @@
 		}
 
 		public function get_procedimientos(){
-			$query = $this->db->query("select * from procedimientos");
+			$query = $this->db->query("SELECT * FROM procedimientos as p left outer join contenido_procedimiento as c on p.id_procedimiento = c.id_procedimiento GROUP BY p.id_procedimiento");
 			return $query;	
 		}
 
@@ -51,9 +51,17 @@
 			$this->db->query($update);
 		}
 
-		public function actualizar_procedimiento($id_procedimiento,$titulo,$subtitulo,$detalle,$img_procedimiento){
-			$update="update procedimientos set titulo= '$titulo',sub_titulo ='$subtitulo', detalle= '$detalle', img_principal_procedimiento = '$img_procedimiento' where id_procedimiento = $id_procedimiento";
-			$this->db->query($update);
+		public function get_procedimiento_idiomas($id_procedimiento){
+			$query[0]= $this->db->query("select * from contenido_procedimiento where id_procedimiento = $id_procedimiento and id_idioma = 1");
+			$query[1]=$this->db->query("select * from contenido_procedimiento where id_procedimiento = $id_procedimiento and id_idioma = 1");
+			
+			return  $query;
+		}
+
+		public function actualizar_procedimiento($id_procedimiento,$id_procedimiento_portugues,$titulo,$titulo_portugues,$subtitulo,$sub_titulo_portugues,$detalle,$detalle_portugues,$img_procedimiento){
+			$this->db->query("update contenido_procedimiento set titulo= '$titulo',sub_titulo ='$subtitulo', detalle= '$detalle' where id_procedimiento = $id_procedimiento and id_idioma = 1");
+			$this->db->query("update contenido_procedimiento set titulo= '$titulo_portugues',sub_titulo ='$subtitulo_portugues', detalle= '$detalle_portugues' where id_procedimiento = $id_procedimiento and id_idioma = 2");
+			$this->db->query("update procedimientos set img_procedimiento='$img_procedimiento' where id_procedimiento = $id_procedimiento");
 		}
 
 		public function insert_galeria($nombreArchivos,$num_archivos){
@@ -66,13 +74,13 @@
 		   	}#llave for
 		   }
 
-		   public function crear_procedimiento($titulo,$sub_titulo,$detalle,$img_procedimiento){
-		   	$this->db->insert("procedimientos", [ "titulo" => $titulo , "sub_titulo" => $sub_titulo , "detalle" => $detalle , "img_principal_procedimiento" => $img_procedimiento ] );
-		   }
+		   public function crear_procedimiento($titulo,$titulo_portugues,$sub_titulo,$sub_titulo_portugues,$detalle,$detalle_portugues,$img_procedimiento){
+		   	$this->db->insert("procedimientos", [ "img_principal_procedimiento" => $img_procedimiento ] );
 
-		   public function get_galeria(){
-		   	$query = $this->db->query("select * from galeria");
-		   	return $query;	
+		   	$id_procedimiento = $this->db->insert_id();
+
+		   	$this->db->insert("contenido_procedimiento", [ "id_procedimiento" => $id_procedimiento , "titulo" => $titulo , "sub_titulo" => $sub_titulo , "detalle" => $detalle  ,"id_idioma" => 1] );
+		   	$this->db->insert("contenido_procedimiento", [ "id_procedimiento" => $id_procedimiento , "titulo" => $titulo_portugues , "sub_titulo" => $sub_titulo_portugues , "detalle" => $detalle_portugues ,"id_idioma" => 2 ] );
 		   }
 
 		   public function get_testimonios(){

@@ -21,16 +21,42 @@
 
 <div id="ventana_edit_procedimientos" style="display:none;padding:16px;">
 	<form action="<?=$this->config->base_url()?>index.php/Admin/editar_proc" method="post" enctype="multipart/form-data">
+		<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
+
+			<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;border-right:1px dotted gray;">
+				Español
+			</div>
+
+			<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;">
+				Portugues
+			</div>	
+
+		</div>
 		<input type="hidden" id="id_procedimiento_proc" name="id_procedimiento">
 		<input type="hidden" id="imgsola" name="imgsola">
-		<p style="font-size:1.1em;">Nombre Procedimiento:</p>
-		<input type="text" class="form-control" id="nombre_procedimiento" name="nombre_procedimiento" maxlength="140">
-		<p style="font-size:1.1em;">Subtitulo Procedimiento:</p>
-		<input type="text" class="form-control" id="subtitulo_procedimiento" name="subtitulo_procedimiento" maxlength="140">
-		<p>Descripción Procedimiento:</p>
-		<textarea class="form-control" id="detalle_procedimiento" name="detalle_procedimiento" style="resizable:none;overflow-y:scroll;height:150px;" maxlength="500">
 
-		</textarea>
+		<div style="width:50%;float:left;padding:12px;border-right:1px dotted gray;">
+
+			<p style="font-size:1.1em;">Nombre Procedimiento:</p>
+			<input type="text" class="form-control" id="nombre_procedimiento" name="nombre_procedimiento" maxlength="140">
+			<p style="font-size:1.1em;">Subtitulo Procedimiento:</p>
+			<input type="text" class="form-control" id="subtitulo_procedimiento" name="subtitulo_procedimiento" maxlength="140">
+			<p>Descripción Procedimiento:</p>
+			<textarea class="form-control" id="detalle_procedimiento" name="detalle_procedimiento" style="resizable:none;overflow-y:scroll;height:150px;" maxlength="500">
+
+			</textarea>
+		</div>
+
+		<div style="width:50%;float:left;padding:12px;">
+			<p style="font-size:1.1em;">Nome Procedimiento:</p>
+			<input type="text" class="form-control" id="nombre_procedimiento_portugues" name="nombre_procedimiento_portugues" maxlength="140">
+			<p style="font-size:1.1em;">Subtitulo Procedimiento:</p>
+			<input type="text" class="form-control" id="subtitulo_procedimiento_portugues" name="subtitulo_procedimiento_portugues" maxlength="140">
+			<p>Detalhe Procedimiento:</p>
+			<textarea class="form-control" id="detalle_procedimiento_portugues" name="detalle_procedimiento_portugues" style="resizable:none;overflow-y:scroll;height:150px;" maxlength="500">
+
+			</textarea>
+		</div>
 
 		<p style="font-size:1.1em;">Imagen Procedimiento:</p>
 		<img id="img_proc_edit" class="img img-responsive" >		

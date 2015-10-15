@@ -252,9 +252,9 @@
 		</div>
 
 
-		<div id="panel_curriculum" class="contenido_panel" style="display:none;background:rgba(39,40,34,1);">
-			<p style="font-size:1.8em;color:white;text-shadow:5px 3px 12px #CAC2FF;"> Curriculum </p>
-			<hr/>
+		<div id="panel_curriculum" class="contenido_panel" style="display:none;background:rgba(255,255,255,0.5);">
+			<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Curriculum </p>
+			<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 			<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post" enctype="multipart/form-data">
 				<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
 
@@ -268,7 +268,7 @@
 
 				</div>
 
-				<textarea id="text_curriculum" name="text_curriculum" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;">
+				<textarea id="text_curriculum" name="text_curriculum" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;text-align:justify;">
 
 					<?php
 					if( $curriculum->result() != null ){
@@ -280,7 +280,7 @@
 					?>
 				</textarea>
 
-				<textarea id="text_curriculum2" name="text_curriculum2" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;">
+				<textarea id="text_curriculum2" name="text_curriculum2" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;text-align:justify;">
 
 					<?php
 					if( $curriculum_por->result() != null ){
@@ -360,14 +360,40 @@
 
 			<div id="new_procedimiento" style="display:none;">
 				<form action="<?=$this->config->base_url()?>index.php/admin/crear_procedimiento" method="post" enctype="multipart/form-data">
-					<p>Nombre procedimiento:</p>
-					<input type="text" id="nombre_procedure" name="nombre_procedure" class="form-control" maxlength="140">
-					<p>Subtitulo procedimiento:</p>
-					<input type="text" id="subtitulo_procedure" name="subtitulo_procedure" class="form-control" maxlength="140">
-					<p>Detalle procedimiento:</p>
-					<textarea id="detalle_procedure" name="detalle_procedure" class="form-control" maxlength="500">
+					<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
 
-					</textarea>
+						<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;border-right:1px dotted gray;">
+							Español
+						</div>
+
+						<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;">
+							Portugues
+						</div>	
+
+					</div>
+
+					<div style="width:50%;float:left;padding:12px;border-right:1px dotted gray;">
+						<p>Nombre procedimiento:</p>
+						<input type="text" id="nombre_procedure" name="nombre_procedure" class="form-control" maxlength="140" required="required">
+						<p>Subtitulo procedimiento:</p>
+						<input type="text" id="subtitulo_procedure" name="subtitulo_procedure" class="form-control" maxlength="140" >
+						<p>Detalle procedimiento:</p>
+						<textarea id="detalle_procedure" name="detalle_procedure" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
+
+						</textarea>
+					</div>
+
+					<div style="width:50%;float:left;padding:12px;">
+						<p>Nome procedimiento:</p>
+						<input type="text" id="nombre_procedure_por" name="nombre_procedure_por" class="form-control" maxlength="140" required="required">
+						<p>Subtitulo procedimiento:</p>
+						<input type="text" id="subtitulo_procedure_por" name="subtitulo_procedure_por" class="form-control" maxlength="140" >
+						<p>Detalhe procedimiento:</p>
+						<textarea id="detalle_procedure_por" name="detalle_procedure_por" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
+
+						</textarea>
+					</div>
+
 					<p>Imagen procedimiento:</p>
 					<input type="file" class="form-control" style="height:auto;" name="img_procedimiento">
 
@@ -644,7 +670,7 @@ $("#ventana_ver_contacto").dialog({width:"800px",title:"Detalle del Contacto",mo
 
 
 $("#nuevo_procedimiento").on("click",function(){
-$("#new_procedimiento").dialog({width:"800px",title:"Guardar nuevo Procedimiento",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});
+$("#new_procedimiento").dialog({width:"900px",title:"Guardar nuevo Procedimiento",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});
 });
 
 
@@ -658,7 +684,7 @@ $("#tabla_procedimientos").on("click",".procedimiento_tr .edit-proc",function(){
 	$("#img_proc_edit").attr("src", $(this).data("imgprincipal") );
 
 		//$("#detalle_procedimiento").after("<img src='<?=$this->config->base_url()?>fronted/img/cirujano/'>");
-		$("#ventana_edit_procedimientos").dialog({minWidth:"600px",width:"600px",title:"Detalle Procedimiento",modal:true,minHeight:"300px","resizable":false,position: "top"});
+		$("#ventana_edit_procedimientos").dialog({width:"900px",title:"Detalle Procedimiento",modal:true,minHeight:"300px","resizable":false,position: "top"});
 	});
 
 $("#tabla_procedimientos").on("click",".procedimiento_tr .del-proc",function(){
