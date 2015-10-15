@@ -165,8 +165,11 @@
 				echo "<pre>";
 				print_r($_POST);
 				echo "</pre>";
+				echo "<pre>";
+				print_r($_FILES);
+				echo "</pre>";
 
-				$img_procedimiento_nueva = ( isset($_FILES["img_curriculum"]["name"]) && $_FILES["img_curriculum"]["name"] != null ? $_FILES["img_curriculum"]["name"] : $this->input->post("imgsola") );
+				$img_curriculum_nueva = ( isset($_FILES["img_curriculum"]["name"]) && $_FILES["img_curriculum"]["name"] != null ? $_FILES["img_curriculum"]["name"] : $this->input->post("imgsola") );
 
 				$uploads_curriculum_update ='./fronted_inicio/curriculum/';
 				opendir($uploads_curriculum_update);

@@ -252,10 +252,10 @@
 		</div>
 
 
-		<div id="panel_curriculum" class="contenido_panel" style="display:none;background:rgba(0,0,0,0.5);">
+		<div id="panel_curriculum" class="contenido_panel" style="display:none;background:rgba(39,40,34,1);">
 			<p style="font-size:1.8em;color:white;text-shadow:5px 3px 12px #CAC2FF;"> Curriculum </p>
 			<hr/>
-			<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post">
+			<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post" enctype="multipart/form-data">
 				<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
 
 					<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;border-right:1px dotted gray;">
@@ -268,7 +268,7 @@
 
 				</div>
 
-				<textarea id="text_curriculum" name="text_curriculum" class="form-control" rows="15" style="width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;">
+				<textarea id="text_curriculum" name="text_curriculum" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;">
 
 					<?php
 					if( $curriculum->result() != null ){
@@ -280,7 +280,7 @@
 					?>
 				</textarea>
 
-				<textarea id="text_curriculum2" name="text_curriculum2" class="form-control" rows="15" style="width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;">
+				<textarea id="text_curriculum2" name="text_curriculum2" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;">
 
 					<?php
 					if( $curriculum_por->result() != null ){
@@ -291,8 +291,16 @@
 					}
 					?>
 				</textarea>
+				<div style="clear:both;"></div>
 
-				<hr>
+				<div id="desplegar_cambio_img_curriculum" style="overflow:hidden;background:#f1f1f1;width:100%;margin-bottom:16px;color:#555;font-size:1.4em;padding:7px;cursor:pointer;">
+					<span class="caret" style="font-size:1.4em;"></span> Cambiar imagen del curriculum
+					<div style="padding:16px;margin-bottom:10px;border-top:1px dotted #555;display:none;" id="input_cambio_curriculum">
+						<input type="file" name="img_curriculum" class="form-control" style="height:auto;">
+					</div> 
+				</div>
+
+
 				<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 				<div style="clear:both;"></div>
 			</form>
@@ -473,6 +481,10 @@ jQuery(window).load(function(){
 */
 
 $(document).on("ready",function(){
+
+	$("#desplegar_cambio_img_curriculum").on("click",function(){
+		$("#input_cambio_curriculum").slideToggle();	
+	});
 
 	$(".sobre_img_procedimientos_disparador").on("click",function(){
 
