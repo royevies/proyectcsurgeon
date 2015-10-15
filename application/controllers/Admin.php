@@ -70,6 +70,7 @@
 					"procedimientos" => $this->Cirujano_model->get_procedimientos(),
 					"contactos" => $this->Cirujano_model->get_contactos(),
 					"curriculum" => $this->Cirujano_model->get_curriculum(),
+					"curriculum_por" =>$this->Cirujano_model->get_curriculum_por(),
 					"galeria" => $this->Cirujano_model->get_galeria(),
 					"testimonios" => $this->Cirujano_model->get_testimonios()
 					]);
@@ -149,10 +150,6 @@
 
 				move_uploaded_file($_FILES["nueva_img_procedimiento"]["tmp_name"],$uploads_procedure_update.$img_procedimiento_nueva);
 
-				echo "<pre>";
-				print_r($_POST);
-				echo "</pre>";
-
 				$this->Cirujano_model->actualizar_procedimiento($id_procedimiento,$titulo,$subtitulo,$detalle,$img_procedimiento_nueva);
 				redirect('Admin');
 			}else{
@@ -165,9 +162,19 @@
 			if( $this->input->post() ){
 				$curriculum_completo = $this->input->post("text_curriculum");
 				$this->Cirujano_model->actualizar_curriculum($curriculum_completo);
-				redirect('Admin');
+				echo "<pre>";
+				print_r($_POST);
+				echo "</pre>";
+
+				$img_procedimiento_nueva = ( isset($_FILES["img_curriculum"]["name"]) && $_FILES["img_curriculum"]["name"] != null ? $_FILES["img_curriculum"]["name"] : $this->input->post("imgsola") );
+
+				$uploads_curriculum_update ='./fronted_inicio/curriculum/';
+				opendir($uploads_curriculum_update);
+				move_uploaded_file($_FILES["img_curriculum"]["tmp_name"],$uploads_curriculum_update.$img_curriculum_nueva);
+
+				//redirect('Admin');
 			}else{
-				redirect('Admin');
+				//redirect('Admin');
 			}
 		}
 

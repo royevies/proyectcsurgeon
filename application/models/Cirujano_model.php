@@ -37,7 +37,12 @@
 		}
 
 		public function get_curriculum(){
-			$query = $this->db->query("select * from curriculum_doc limit 1");
+			$query = $this->db->query("select * from curriculum_doc where id_idioma = 1 ");
+			return $query;	
+		}
+
+		public function get_curriculum_por(){
+			$query = $this->db->query("select * from curriculum_doc where id_idioma = 2 ");
 			return $query;	
 		}
 
