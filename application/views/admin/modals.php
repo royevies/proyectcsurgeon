@@ -1,6 +1,7 @@
 <div id="modal_antes_despues_view" style="display:none;">
 	
 </div>
+<?php /**************************Esta vacio pero se llena con javascript***************************/ ?>
 
 <?php /********************************************************************************/ ?>
 <div id="ventana_cambio_clave" style="display:none;	">
@@ -18,7 +19,9 @@
 		</button>
 	</form>
 </div>
+<?php /********************************************************************************/ ?>
 
+<?php /********************************************************************************/ ?>
 <div id="ventana_edit_procedimientos" style="display:none;padding:16px;">
 	<form action="<?=$this->config->base_url()?>index.php/Admin/editar_proc" method="post" enctype="multipart/form-data">
 		<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
@@ -70,7 +73,9 @@
 		<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 	</form>
 </div>
+<?php /********************************************************************************/ ?>
 
+<?php /********************************************************************************/ ?>
 <div id="ventana_ver_contacto" style="display:none;">
 	<div style="width:100%;margin:auto;padding:1em;">
 		<table class="table table-hover">
@@ -136,7 +141,9 @@
 		</table>
 	</div>
 </div>
+<?php /********************************************************************************/ ?>
 
+<?php /********************************************************************************/ ?>
 <div id="ventana_eliminar_contacto" style="display:none;">
 
 	<form action="<?=$this->config->base_url()?>index.php/Admin/eliminar_contacto" method="post">
@@ -149,7 +156,9 @@
 	</form>
 
 </div>
+<?php /********************************************************************************/ ?>
 
+<?php /********************************************************************************/ ?>
 <div id="ventana_eliminar_procedimiento" style="display:none;">
 
 	<form action="<?=$this->config->base_url()?>index.php/Admin/eliminar_procedimiento" method="post">
@@ -162,7 +171,9 @@
 	</form>
 
 </div>	
+<?php /********************************************************************************/ ?>
 
+<?php /********************************************************************************/ ?>
 <div id="ventana_testimonio" style="display:none;">
 	<table class="table table-hover">
 		<tr>
@@ -246,9 +257,9 @@
 		</tr>
 	</table>
 </div>
+<?php /********************************************************************************/ ?>
 
-
-
+<?php /********************************************************************************/ ?>
 <div id="ventana_eliminar_testimonio" style="display:none;">
 	<form action="<?=$this->config->base_url()?>index.php/Admin/eliminar_testimonio" method="post">
 		<input type="hidden" id="id_eliminar_testimonio" name="id_eliminar_testimonio">
@@ -258,5 +269,11 @@
 		</div>
 
 	</form>
+</div>
+<?php /********************************************************************************/ ?>
+
+<?php /********************************************************************************/ ?>
+<div id="datos_contacto_doctor" style="display:none;">
+	fgf
 </div>
 <?php /********************************************************************************/ ?>

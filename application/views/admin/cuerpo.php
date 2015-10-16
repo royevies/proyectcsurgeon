@@ -112,7 +112,6 @@
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 							<li id="cambio_datos" style="cursor:pointer;"><a><span class="glyphicon glyphicon-wrench"></span> Cambiar Datos</a></li>
-							<li id="cambio_dir" style="cursor:pointer;"><a><span class="glyphicon glyphicon-globe"></span> Cambiar Dirección</a></li>
 							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave</a></li>
 						</ul>
 					</div>
@@ -271,9 +270,11 @@
 				<textarea id="text_curriculum" name="text_curriculum" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;text-align:justify;">
 
 					<?php
+
 					if( $curriculum->result() != null ){
 						foreach ( $curriculum->result() as $perfil ) {
-							echo $perfil->curriculum_completo;	
+							$curriculum_spanish = $perfil->curriculum_completo;
+							echo $perfil->curriculum_completo;
 						}
 
 					}
@@ -285,6 +286,7 @@
 					<?php
 					if( $curriculum_por->result() != null ){
 						foreach ( $curriculum_por->result() as $perfil ) {
+							$curriculum_portugues = $perfil->curriculum_completo;
 							echo $perfil->curriculum_completo;	
 						}
 
@@ -293,10 +295,30 @@
 				</textarea>
 				<div style="clear:both;"></div>
 
-				<div id="desplegar_cambio_img_curriculum" style="overflow:hidden;background:#f1f1f1;width:100%;margin-bottom:16px;color:#555;font-size:1.4em;padding:7px;cursor:pointer;">
-					<span class="caret" style="font-size:1.4em;"></span> Cambiar imagen del curriculum
-					<div style="padding:16px;margin-bottom:10px;border-top:1px dotted #555;display:none;" id="input_cambio_curriculum">
-						<input type="file" name="img_curriculum" class="form-control" style="height:auto;">
+				<div style="overflow:hidden;background:#f1f1f1;width:100%;margin-bottom:16px;color:#555;font-size:1.4em;padding:7px;cursor:pointer;">
+					<div id="desplegar_cambio_img_curriculum" class="alert alert-info"><span class="caret" style="font-size:1.4em;"></span> Imagen del curriculum 	</div>	
+					<div style="padding:16px;margin-bottom:10px;display:none;" id="input_cambio_curriculum">
+						<div class="col-xs-4">
+							<div style="font-size:1.3em;border-bottom:1px dotted #555;padding:5px;margin-bottom:12px;">Actual</div>
+
+							<?php 
+								//$img_curriculum_vitae = "";
+							if( $curriculum_img->result() != null ){
+								foreach ( $curriculum_img->result() as $img ) {
+									$img_curriculum_vitae = $img->img_curriculum;	
+									$id_curriculum = $img->id_curriculum;	
+								}
+							}
+							?>
+
+							<img class="img img-responsive" style="width:200px;height:200px;" src="<?=$this->config->base_url().'fronted_inicio/curriculum/'.($img_curriculum_vitae == null ? 'foto.jpg' : $img_curriculum_vitae );?>"> 	
+						</div>
+
+						<div class="col-xs-8">
+							<div style="font-size:1.3em;border-bottom:1px dotted #555;padding:5px;margin-bottom:12px;">Nueva</div>
+							<input type="hidden" id="id_curriculum" name="id_curriculum" value="<?=$id_curriculum?>">
+							<input type="file" name="img_curriculum" class="form-control" style="height:auto;">							
+						</div>
 					</div> 
 				</div>
 
@@ -313,8 +335,8 @@
 			<table class="table table-hover" id="tabla_contacto">
 				<thead>					
 					<tr>
+						<th>Leido</th>
 						<th>Nombres</th>
-						<th>Servicio</th>
 						<th>Email</th>
 						<th>Celular</th>
 						<th>Asunto</th>
@@ -328,12 +350,12 @@
 				<?php foreach ($contactos->result() as $contacto) : ?>
 
 					<tr class="contacto_tr">
+						<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($contacto->visto == 0 ? "<span class='glyphicon glyphicon-envelope' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
 						<td><?php echo $contacto->nombres_contacto; ?></td>
-						<td><?php echo $contacto->servicio; ?></td>
 						<td><?php echo $contacto->email_contacto; ?></td>
 						<td><?php echo $contacto->telefono_movil_contacto; ?></td>
 						<td><?php echo $contacto->asunto_contacto; ?></td>
-						<td><button class="btn btn-success ver_contacto" data-nombres="<?=$contacto->nombres_contacto;?>" data-apellidos="<?=$contacto->servicio;?>" data-email="<?=$contacto->email_contacto;?>"  data-telefono="<?=$contacto->telefono_movil_contacto;?>" data-asunto="<?=$contacto->asunto_contacto;?>" data-detalle="<?=$contacto->descripcion_contacto;?>" ><span class="glyphicon glyphicon-eye-open"></span></button></td>
+						<td><button class="btn btn-success ver_contacto" data-id="<?=$contacto->id_contacto;?>" data-nombres="<?=$contacto->nombres_contacto;?>" data-apellidos="<?=$contacto->servicio;?>" data-email="<?=$contacto->email_contacto;?>"  data-telefono="<?=$contacto->telefono_movil_contacto;?>" data-asunto="<?=$contacto->asunto_contacto;?>" data-detalle="<?=$contacto->descripcion_contacto;?>" ><span class="glyphicon glyphicon-new-window"></span></button></td>
 						<td><button class="btn btn-danger del_contacto" data-id="<?=$contacto->id_contacto;?>"><span class="glyphicon glyphicon-remove"></span></button></td>
 					</tr>
 
@@ -341,8 +363,8 @@
 
 				<tfoot style="display:none;">
 					<tr>
+						<th>Leido</th>
 						<th>Nombres</th>
-						<th>Servicio</th>
 						<th>Email</th>
 						<th>Celular</th>
 						<th>Asunto</th>
@@ -493,26 +515,38 @@
 </body>
 
 <script>
-/*
-jQuery(document).ready(function () {
-     // esconder el body para luego mostrarlo
-     $('body').hide("fast");
+	/*
+	jQuery(document).ready(function () {
+	// esconder el body para luego mostrarlo
+	$('body').hide("fast");
 
- });
+});
 
 jQuery(window).load(function(){
-     // mostrar la etiqueta body lentamente
-     $('body').fadeIn("fast");
- });
+// mostrar la etiqueta body lentamente
+$('body').fadeIn("fast");
+});
 */
 
 $(document).on("ready",function(){
 
-	$("#desplegar_cambio_img_curriculum").on("click",function(){
-		$("#input_cambio_curriculum").slideToggle();	
-	});
+	<?php 
+	/*if( $curriculum_spanish == "" || $curriculum_portugues == "" ){
+		?>
 
-	$(".sobre_img_procedimientos_disparador").on("click",function(){
+		$("#desplegar_cambio_img_curriculum").removeAttr("id");
+
+		<?php  } */?>
+		$("#cambio_datos").on("click",function(){
+			$("#datos_contacto_doctor").dialog({width:"850px",title:"Mis datos de contacto",modal:true,Height:"500px","resizable":false,position: "top"});	
+		});
+
+
+		$("#desplegar_cambio_img_curriculum").on("click",function(){
+			$("#input_cambio_curriculum").slideToggle();	
+		});
+
+		$(".sobre_img_procedimientos_disparador").on("click",function(){
 
 //$("#form_agregar_imgs").submit)(;)
 $("#titulo_antes_despues").html( $(this).data("nombrepro") );
@@ -529,70 +563,70 @@ $.ajax({
 	type:  'post',
 	timeout:7000,
 	beforeSend: function(){
-		//$("#contenido_galeria_especifica").html("<img src='../../../../public_html/imagenes/484_azul.GIF'>");
-	},
-	success: function(respuesta){
-                    //lo que se si el destino devuelve algo
-                    $("#contenido_galeria_especifica").html(respuesta);
-                },
-                error:  function(xhr,err){ 
-                    //alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status+"\n \n responseText: "+xhr.responseText);
-                    $("#contenido_galeria_especifica").html("<p style='color:red;'>Ha ocurrido un error por favor recargue la página</p>");
-                }
-            }).done(function(){
-            	$(".sobre_img_antes_despues_disparador").on("click",function(){
-            		var id_pareja = $(this).data("id");
-            		var img_antes = $(this).data("imgantes");
-            		var img_despues = $(this).data("imgdespues");        
+//$("#contenido_galeria_especifica").html("<img src='../../../../public_html/imagenes/484_azul.GIF'>");
+},
+success: function(respuesta){
+//lo que se si el destino devuelve algo
+$("#contenido_galeria_especifica").html(respuesta);
+},
+error:  function(xhr,err){ 
+//alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status+"\n \n responseText: "+xhr.responseText);
+$("#contenido_galeria_especifica").html("<p style='color:red;'>Ha ocurrido un error por favor recargue la página</p>");
+}
+}).done(function(){
+	$(".sobre_img_antes_despues_disparador").on("click",function(){
+		var id_pareja = $(this).data("id");
+		var img_antes = $(this).data("imgantes");
+		var img_despues = $(this).data("imgdespues");        
 
-            		var html = '<div style="width:100%;overflow:hidden;margin-bottom:16px;">';
-            		html +='<div style="width:50%;float:left;">';
-            		html +='<div style="width:100%;padding:12px;text-align:center;font-size:1.3em;">Antes</div>';
-            		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/Procedimientos/'+img_antes+'" class="img img-responsive">';
-            		html +='</div>';
-            		html +='<div style="width:50%;float:left;">';
-            		html +='<div style="width:100%;padding:12px;text-align:center;font-size:1.3em;">Despues</div>';
-            		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/Procedimientos/'+img_despues+'" class="img img-responsive">';
-            		html +='</div>';
-            		html +='</div>';
-            		html +='<hr>';
-            		html +='<div class="alert alert-danger" style="text-align:center;border-radius:0px;">';
-            		html +='<p style="text-align:center;">¿Desea Eliminar Esta pareja?</p>'
-            		html +='<hr>';
-            		html +='<form id="form_eliminar_pareja" action="<?=$this->config->base_url()?>index.php/admin/eliminar_img_parejas" method="post">';
-            		html +='<input id="checkbox_pareja" type="checkbox" name="eliminar_pareja" value="'+id_pareja+'" > Si <input id="submit_pareja" type="submit" class="btn btn-danger" value="Eliminar" ></form>';
-            		html +='<div id="mensaje_eliminar_pareja" style="display:none;font-size:text-align:center;">¡ Marque la opción si y luego presione el boton eliminar para confirmar !</div>'            		
-            		html +='</div>';
+		var html = '<div style="width:100%;overflow:hidden;margin-bottom:16px;">';
+		html +='<div style="width:50%;float:left;">';
+		html +='<div style="width:100%;padding:12px;text-align:center;font-size:1.3em;">Antes</div>';
+		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/Procedimientos/'+img_antes+'" class="img img-responsive">';
+		html +='</div>';
+		html +='<div style="width:50%;float:left;">';
+		html +='<div style="width:100%;padding:12px;text-align:center;font-size:1.3em;">Despues</div>';
+		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/Procedimientos/'+img_despues+'" class="img img-responsive">';
+		html +='</div>';
+		html +='</div>';
+		html +='<hr>';
+		html +='<div class="alert alert-danger" style="text-align:center;border-radius:0px;">';
+		html +='<p style="text-align:center;">¿Desea Eliminar Esta pareja?</p>'
+		html +='<hr>';
+		html +='<form id="form_eliminar_pareja" action="<?=$this->config->base_url()?>index.php/admin/eliminar_img_parejas" method="post">';
+		html +='<input id="checkbox_pareja" type="checkbox" name="eliminar_pareja" value="'+id_pareja+'" > Si <input id="submit_pareja" type="submit" class="btn btn-danger" value="Eliminar" ></form>';
+		html +='<div id="mensaje_eliminar_pareja" style="display:none;font-size:text-align:center;">¡ Marque la opción si y luego presione el boton eliminar para confirmar !</div>'            		
+		html +='</div>';
 
-            		$("#modal_antes_despues_view").html(html); 
+		$("#modal_antes_despues_view").html(html); 
 
-            		$("#modal_antes_despues_view").dialog({width:"850px",title:"Antes y despues",modal:true,Height:"500px","resizable":false,position: "top"});	
+		$("#modal_antes_despues_view").dialog({width:"850px",title:"Antes y despues",modal:true,Height:"500px","resizable":false,position: "top"});	
 
-            		$("#checkbox_pareja").on("click",function(){
+		$("#checkbox_pareja").on("click",function(){
 
-            			if( $("#checkbox_pareja").attr("checked") == "checked" ){
-            				$("#checkbox_pareja").removeAttr("checked");
-            			}else{
-            				$("#checkbox_pareja").attr("checked","checked");
-            			}
+			if( $("#checkbox_pareja").attr("checked") == "checked" ){
+				$("#checkbox_pareja").removeAttr("checked");
+			}else{
+				$("#checkbox_pareja").attr("checked","checked");
+			}
 
-            			$("#mensaje_eliminar_pareja").hide();
+			$("#mensaje_eliminar_pareja").hide();
 
-            		});
+		});
 
-            		$("#submit_pareja").on("click",function(e){
-            			e.preventDefault();
-            			if( $("#checkbox_pareja").attr("checked") == "checked" ){
-            				$("#form_eliminar_pareja").submit();
-            			}else{
-            				$("#mensaje_eliminar_pareja").show();
-            			}
+		$("#submit_pareja").on("click",function(e){
+			e.preventDefault();
+			if( $("#checkbox_pareja").attr("checked") == "checked" ){
+				$("#form_eliminar_pareja").submit();
+			}else{
+				$("#mensaje_eliminar_pareja").show();
+			}
 
-            		});
+		});
 
 
 
-            	});
+	});
 
 });
 
@@ -601,70 +635,88 @@ $.ajax({
 
 $("#tabla_procedimientos,#tabla_contacto,#tabla_testimonios").dataTable();
 
-	//CKEDITOR.replace( 'text_curriculum' );
+//CKEDITOR.replace( 'text_curriculum' );
 
 
-	$("#cambio_clave").on("click",function(){
+$("#cambio_clave").on("click",function(){
 
-	$("#ventana_cambio_clave").dialog({width:"400px",title:"Cambiar Clave",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});	
+$("#ventana_cambio_clave").dialog({width:"400px",title:"Cambiar Clave",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});	
 });
 
 
-	$("#boton_cambiar_clave").on("click",function(e){
-		e.preventDefault();
+$("#boton_cambiar_clave").on("click",function(e){
+	e.preventDefault();
 
-		if( $("#clave").val() == $("#clave1").val() ){
-			$("#form_cambiaclave").submit();
-		}else{
-			$("#mensaje_cambia_clave").html("Las contraseñas no son iguales");
-		}
+	if( $("#clave").val() == $("#clave1").val() ){
+		$("#form_cambiaclave").submit();
+	}else{
+		$("#mensaje_cambia_clave").html("Las contraseñas no son iguales");
+	}
 
-	});
+});
 
-	$("#tabla_contacto ").on("click",".contacto_tr .ver_contacto",function(){
-		
-		$("#mostrar_nombre_contacto").html( $(this).data("nombres") );
-		$("#mostrar_apellido_contacto").html( $(this).data("apellidos") );
-		$("#mostrar_telefono_contacto").html( $(this).data("telefono") );
-		$("#mostrar_email_contacto").html( $(this).data("email") );
+$("#tabla_contacto ").on("click",".contacto_tr .ver_contacto",function(){
+	var id_contacto = $(this).data("id");
+	$("#mostrar_nombre_contacto").html( $(this).data("nombres") );
+	$("#mostrar_apellido_contacto").html( $(this).data("apellidos") );
+	$("#mostrar_telefono_contacto").html( $(this).data("telefono") );
+	$("#mostrar_email_contacto").html( $(this).data("email") );
 
 //"<a href='mailto:"+$(this).data("email")+"' target='_blank' style='border:none;'>"+$(this).data("email")+"</a>" 
 
 $("#mostrar_asunto_contacto").html( $(this).data("asunto") );
 $("#mostrar_detalle_contacto").html( $(this).data("detalle") );
 $("#ventana_ver_contacto").dialog({width:"800px",title:"Detalle del Contacto",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});
+
+$.ajax({
+	data: { id_contacto : id_contacto },
+	url:   '<?=$this->config->base_url()?>index.php/admin/visto',
+	type:  'post',
+	beforeSend: function(){
+//$("#contenido_galeria_especifica").html("<img src='../../../../public_html/imagenes/484_azul.GIF'>");
+},
+success: function(respuesta){
+
+
+},
+error:  function(xhr,err){ 
+//alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status+"\n \n responseText: "+xhr.responseText);
+//$("#contenido_galeria_especifica").html("<p style='color:red;'>Ha ocurrido un error por favor recargue la página</p>");
+}
+});
+
 });
 
 
-	$("#tabla_testimonios").on("click"," .testimonio_tr .edit_test", function(){
-		$("#ventana_testimonio").dialog({minWidth:"800px",width:"800px",title:"Detalle Testimonio",modal:true,minHeight:"300px","resizable":false,position: "top"});
-		$("#img_testimonio_view").attr("src", $(this).data("imgtestview") );
-		$("#mostrar_nombre_testimonio").html( $(this).data("nombres") );
-		$("#mostrar_email_testimonio").html( $(this).data("email") );
-		$("#mostrar_asunto_testimonio").html( $(this).data("titulo") );
-		$("#mostrar_detalle_testimonio").html( $(this).data("detalle") );
-		$("#id_testimonio_aprobado").val( $(this).data("id") );
-	});
+$("#tabla_testimonios").on("click"," .testimonio_tr .edit_test", function(){
+	$("#ventana_testimonio").dialog({minWidth:"800px",width:"800px",title:"Detalle Testimonio",modal:true,minHeight:"300px","resizable":false,position: "top"});
+	$("#img_testimonio_view").attr("src", $(this).data("imgtestview") );
+	$("#mostrar_nombre_testimonio").html( $(this).data("nombres") );
+	$("#mostrar_email_testimonio").html( $(this).data("email") );
+	$("#mostrar_asunto_testimonio").html( $(this).data("titulo") );
+	$("#mostrar_detalle_testimonio").html( $(this).data("detalle") );
+	$("#id_testimonio_aprobado").val( $(this).data("id") );
+});
 
-	$("#tabla_testimonios").on("click"," .testimonio_tr .del_test",function(){
-		$("#id_eliminar_testimonio").val( $(this).data("id") );
+$("#tabla_testimonios").on("click"," .testimonio_tr .del_test",function(){
+	$("#id_eliminar_testimonio").val( $(this).data("id") );
 
-	$("#ventana_eliminar_testimonio").dialog({minWidth:"600px",width:"600px",title:"¿Esta seguro de eliminar este testimonio?",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});
+$("#ventana_eliminar_testimonio").dialog({minWidth:"600px",width:"600px",title:"¿Esta seguro de eliminar este testimonio?",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});
 
 });
 
-	$("#cambiar_img_procedimiento").on("click",function(){
-		$("#caja_cambiar_archivo").slideToggle();
-	});
+$("#cambiar_img_procedimiento").on("click",function(){
+	$("#caja_cambiar_archivo").slideToggle();
+});
 
 
-	$("#abrir_opcion_testimmonio").on("click",function(){
-		$("#procesar_testimoniio").slideToggle("fast");
-	});
+$("#abrir_opcion_testimmonio").on("click",function(){
+	$("#procesar_testimoniio").slideToggle("fast");
+});
 
 /*
-	$("#nueva_galeria").on("click",function(){
-	$("#mas_imagenes_galeria").dialog({minWidth:"600px",width:"600px",title:"Galeria",modal:true,minHeight:"300px","resizable":false,position: "top"});
+$("#nueva_galeria").on("click",function(){
+$("#mas_imagenes_galeria").dialog({minWidth:"600px",width:"600px",title:"Galeria",modal:true,minHeight:"300px","resizable":false,position: "top"});
 });
 */
 
@@ -676,16 +728,43 @@ $("#new_procedimiento").dialog({width:"900px",title:"Guardar nuevo Procedimiento
 
 
 $("#tabla_procedimientos").on("click",".procedimiento_tr .edit-proc",function(){
+	var id_procedimiento_up = $(this).data("id");
+
 	$("#imgsola").val( $(this).data("imgsola") );
-	$("#id_procedimiento_proc").val( $(this).data("id") );
-	$("#nombre_procedimiento").val( $(this).data("titulo") );
-	$("#subtitulo_procedimiento").val( $(this).data("subtitulo") );
-	$("#detalle_procedimiento").val( $(this).data("detalle") );
 	$("#img_proc_edit").attr("src", $(this).data("imgprincipal") );
 
-		//$("#detalle_procedimiento").after("<img src='<?=$this->config->base_url()?>fronted/img/cirujano/'>");
-		$("#ventana_edit_procedimientos").dialog({width:"900px",title:"Detalle Procedimiento",modal:true,minHeight:"300px","resizable":false,position: "top"});
-	});
+	$.ajax({
+		dataType: "json",
+		data: { id_procedimiento : id_procedimiento_up },
+		url:   '<?=$this->config->base_url()?>index.php/admin/procedimiento_edit_idioma',
+		type:  'post',
+		beforeSend: function(){
+//$("#contenido_galeria_especifica").html("<img src='../../../../public_html/imagenes/484_azul.GIF'>");
+},
+success: function(respuesta){
+
+	$("#id_procedimiento_proc").val( id_procedimiento_up );
+
+	$("#nombre_procedimiento").val( respuesta.spanish.titulo );
+	$("#subtitulo_procedimiento").val( respuesta.spanish.sub_titulo );
+	$("#detalle_procedimiento").val( respuesta.spanish.detalle );
+
+	$("#nombre_procedimiento_portugues").val( respuesta.portugues.titulo );
+	$("#subtitulo_procedimiento_portugues").val( respuesta.portugues.sub_titulo );
+	$("#detalle_procedimiento_portugues").val( respuesta.portugues.detalle );
+
+},
+error:  function(xhr,err){ 
+//alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status+"\n \n responseText: "+xhr.responseText);
+//$("#contenido_galeria_especifica").html("<p style='color:red;'>Ha ocurrido un error por favor recargue la página</p>");
+}
+});
+
+
+
+//$("#detalle_procedimiento").after("<img src='<?=$this->config->base_url()?>fronted/img/cirujano/'>");
+$("#ventana_edit_procedimientos").dialog({width:"900px",title:"Detalle Procedimiento",modal:true,minHeight:"300px","resizable":false,position: "top"});
+});
 
 $("#tabla_procedimientos").on("click",".procedimiento_tr .del-proc",function(){
 
@@ -747,18 +826,18 @@ $(".item_panel_control").on("click",function(){
 /**********************************************************************************************/
 /*
 $("#mas_file").on("click",function(e){
-	e.preventDefault();
+e.preventDefault();
 
-	if($(".archivosgaleria").length < 7 ){agregar();}   
+if($(".archivosgaleria").length < 7 ){agregar();}   
 });
 
 
 
 $("#menos_file").on("click",function(e){
-	e.preventDefault();
-	if($(".archivosgaleria").length > 1){ 
-		$(".archivosgaleria:last").css("background","red").remove(); 
-	}
+e.preventDefault();
+if($(".archivosgaleria").length > 1){ 
+$(".archivosgaleria:last").css("background","red").remove(); 
+}
 });
 */
 

@@ -62,7 +62,7 @@
 			if($this->session->userdata('usuario')){
 				
 				$this->load->view("layout/head.php",[ "titulo" => "Panel administrativo"]);
-				$this->load->view("admin/menu");
+				$this->load->view("admin/menu", [ "novistos" => $this->Cirujano_model->no_vistos()->num_rows() ] );
 				$this->load->view("admin/modals");
 
 				$this->load->view("admin/cuerpo",[ 
@@ -71,6 +71,7 @@
 					"contactos" => $this->Cirujano_model->get_contactos(),
 					"curriculum" => $this->Cirujano_model->get_curriculum(),
 					"curriculum_por" =>$this->Cirujano_model->get_curriculum_por(),
+					"curriculum_img" => $this->Cirujano_model->get_curriculum_img(),
 					"testimonios" => $this->Cirujano_model->get_testimonios()
 					]);
 
@@ -153,7 +154,7 @@
 
 				move_uploaded_file($_FILES["nueva_img_procedimiento"]["tmp_name"],$uploads_procedure_update.$img_procedimiento_nueva);
 
-				$this->Cirujano_model->actualizar_procedimiento($id_procedimiento,$id_procedimiento_portugues,$titulo,$titulo_portugues,$subtitulo,$sub_titulo_portugues,$detalle,$detalle_portugues,$img_procedimiento_nueva);
+				$this->Cirujano_model->actualizar_procedimiento($id_procedimiento,$titulo,$titulo_portugues,$subtitulo,$subtitulo_portugues,$detalle,$detalle_portugues,$img_procedimiento_nueva);
 
 				redirect('Admin');
 			}else{
@@ -163,15 +164,45 @@
 		}
 
 		public function procedimiento_edit_idioma(){
-			$id_procedimiento  =16;
+			
+			if( $this->input->post() ){ 
+				$id_procedimiento  =  $this->input->post("id_procedimiento");		
 
-			echo json_encode($this->Cirujano_model->get_procedimiento_idiomas($id_procedimiento)->result());
+				$procedimientos = $this->Cirujano_model->get_procedimiento_idiomas($id_procedimiento);
+
+				$spanish   = $procedimientos[0]->result();
+				$portugues = $procedimientos[1]->result();
+
+
+				foreach ($spanish as $procedure1) {
+
+					$idioma["spanish"] = [
+					"titulo"    =>  $procedure1->titulo ,
+					"sub_titulo" =>  $procedure1->sub_titulo,
+					"detalle"   =>  $procedure1->detalle
+					];				
+				}
+
+				foreach ($portugues as $procedure2) {
+
+					$idioma["portugues"] = [
+					"titulo"    =>  $procedure2->titulo ,
+					"sub_titulo" =>  $procedure2->sub_titulo,
+					"detalle"   =>  $procedure2->detalle
+					];				
+				}
+
+				echo json_encode($idioma);
+
+			}else{
+				redirect('Admin');
+			}
+			
 		}
 
 		public function editar_curriculum(){
 			if( $this->input->post() ){
-				$curriculum_completo = $this->input->post("text_curriculum");
-				$this->Cirujano_model->actualizar_curriculum($curriculum_completo);
+
 				echo "<pre>";
 				print_r($_POST);
 				echo "</pre>";
@@ -179,7 +210,12 @@
 				print_r($_FILES);
 				echo "</pre>";
 
+				$id_curriculum = $this->input->post("id_curriculum");
+				$curriculum_completo = $this->input->post("text_curriculum");
+				$curriculum_completo_portugues = $this->input->post("text_curriculum_portugues");
 				$img_curriculum_nueva = ( isset($_FILES["img_curriculum"]["name"]) && $_FILES["img_curriculum"]["name"] != null ? $_FILES["img_curriculum"]["name"] : $this->input->post("imgsola") );
+
+				$this->Cirujano_model->actualizar_curriculum($id_curriculum,$curriculum_completo,$curriculum_completo_portugues,$img_curriculum_nueva);
 
 				$uploads_curriculum_update ='./fronted_inicio/curriculum/';
 				opendir($uploads_curriculum_update);
@@ -227,9 +263,20 @@
 		}
 
 
+		public function visto(){
+			if( $this->input->post() ){
+				
+				$id_contacto =  $this->input->post("id_contacto");
+				$this->Cirujano_model->actualizar_visto($id_contacto);
+
+			}else{
+				redirect('Admin');
+			}
+
+		}
+
+
 		public function crear_procedimiento(){
-			echo "<pre>"; print_r($_POST);echo "</pre>";
-			echo "<pre>"; print_r($_FILES);echo "</pre>";
 			if( $this->input->post() ){
 				$titulo = $this->input->post("nombre_procedure");
 				$sub_titulo = $this->input->post("subtitulo_procedure");

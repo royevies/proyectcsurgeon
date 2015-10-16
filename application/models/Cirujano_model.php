@@ -28,8 +28,9 @@
 		}
 
 		public function del_procedimiento( $id_procedimiento){
-			$this->db->query("delete from procedimientos where id_procedimiento = $id_procedimiento");
+			$this->db->query("delete from contenido_procedimiento where id_procedimiento = $id_procedimiento");
 			$this->db->query("delete from img_procedimientos where id_procedimiento = $id_procedimiento");
+			$this->db->query("delete from procedimientos where id_procedimiento = $id_procedimiento");			
 		}
 
 		public function curriculum( $contenido_curriculum ){
@@ -37,31 +38,47 @@
 		}
 
 		public function get_curriculum(){
-			$query = $this->db->query("select * from curriculum_doc where id_idioma = 1 ");
+			$query = $this->db->query("select * from contenido_curriculum where id_idioma = 1 ");
 			return $query;	
 		}
 
 		public function get_curriculum_por(){
-			$query = $this->db->query("select * from curriculum_doc where id_idioma = 2 ");
+			$query = $this->db->query("select * from contenido_curriculum where id_idioma = 2 ");
 			return $query;	
 		}
 
-		public function actualizar_curriculum($curriculum_completo){
-			$update="update curriculum_doc set curriculum_completo= '$curriculum_completo' where id_curriculum = 1";
-			$this->db->query($update);
+		public function get_curriculum_img(){
+			$query = $this->db->query("select * from curriculum_doc where id_curriculum = 1 ");
+			return $query;	
+		}
+
+		public function no_vistos(){
+			return $this->db->query("select * from contacto where visto = 0");
+		}
+
+		public function actualizar_visto($id_contacto){
+			$this->db->query("update contacto set visto = 1 where id_contacto = $id_contacto");
+		}
+
+		public function actualizar_curriculum($id_curriculum,$curriculum_completo,$curriculum_completo_portugues,$img_curriculum){
+			$this->db->query("update contenido_curriculum set curriculum_completo= '$curriculum_completo' where id_curriculum = $id_curriculum and id_idioma = 1");
+			$this->db->query("update contenido_curriculum set curriculum_completo= '$curriculum_completo_portugues' where id_curriculum = $id_curriculum and id_idioma = 2");
+			$this->db->query("update curriculum_doc set img_curriculum = '$img_curriculum' where id_curriculum = $id_curriculum");
 		}
 
 		public function get_procedimiento_idiomas($id_procedimiento){
-			$query[0]= $this->db->query("select * from contenido_procedimiento where id_procedimiento = $id_procedimiento and id_idioma = 1");
-			$query[1]=$this->db->query("select * from contenido_procedimiento where id_procedimiento = $id_procedimiento and id_idioma = 1");
-			
-			return  $query;
+			//$query =  $this->db->query("select GROUP_CONCAT(titulo,'(-------idioma-------)') titulo,GROUP_CONCAT(sub_titulo,'(-------idioma-------)') sub_titulo,GROUP_CONCAT(detalle,'(-------idioma-------)') detalle from contenido_procedimiento where id_procedimiento = $id_procedimiento order by id_idioma asc");					
+			$query = array();
+			$query[0] = $this->db->query("select * from contenido_procedimiento where id_procedimiento = $id_procedimiento and id_idioma = 1");
+			$query[1] = $this->db->query("select * from contenido_procedimiento where id_procedimiento = $id_procedimiento and id_idioma = 2");
+
+			return $query;
 		}
 
-		public function actualizar_procedimiento($id_procedimiento,$id_procedimiento_portugues,$titulo,$titulo_portugues,$subtitulo,$sub_titulo_portugues,$detalle,$detalle_portugues,$img_procedimiento){
+		public function actualizar_procedimiento($id_procedimiento,$titulo,$titulo_portugues,$subtitulo,$subtitulo_portugues,$detalle,$detalle_portugues,$img_procedimiento){
 			$this->db->query("update contenido_procedimiento set titulo= '$titulo',sub_titulo ='$subtitulo', detalle= '$detalle' where id_procedimiento = $id_procedimiento and id_idioma = 1");
 			$this->db->query("update contenido_procedimiento set titulo= '$titulo_portugues',sub_titulo ='$subtitulo_portugues', detalle= '$detalle_portugues' where id_procedimiento = $id_procedimiento and id_idioma = 2");
-			$this->db->query("update procedimientos set img_procedimiento='$img_procedimiento' where id_procedimiento = $id_procedimiento");
+			$this->db->query("update procedimientos set img_principal_procedimiento ='$img_procedimiento' where id_procedimiento = $id_procedimiento");
 		}
 
 		public function insert_galeria($nombreArchivos,$num_archivos){
