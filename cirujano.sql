@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.5.0.2
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2015 a las 17:12:46
--- Versión del servidor: 5.6.26
--- Versión de PHP: 5.6.12
+-- Tiempo de generación: 20-10-2015 a las 20:01:03
+-- Versión del servidor: 10.0.17-MariaDB
+-- Versión de PHP: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,7 +28,7 @@ USE `cirujano`;
 -- Estructura de tabla para la tabla `cirujias`
 --
 
-CREATE TABLE IF NOT EXISTS `cirujias` (
+CREATE TABLE `cirujias` (
   `id_cirujia` int(11) NOT NULL,
   `nombre_cirujia` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
   `detalle_cirujia` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -43,22 +43,60 @@ CREATE TABLE IF NOT EXISTS `cirujias` (
 -- Estructura de tabla para la tabla `contacto`
 --
 
-CREATE TABLE IF NOT EXISTS `contacto` (
+CREATE TABLE `contacto` (
   `id_contacto` int(11) NOT NULL,
   `nombres_contacto` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `servicio` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `telefono_movil_contacto` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `email_contacto` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `asunto_contacto` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `descripcion_contacto` text COLLATE utf8_spanish_ci
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `descripcion_contacto` text COLLATE utf8_spanish_ci,
+  `fecha_contacto` date NOT NULL,
+  `visto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `contacto`
 --
 
-INSERT INTO `contacto` (`id_contacto`, `nombres_contacto`, `servicio`, `telefono_movil_contacto`, `email_contacto`, `asunto_contacto`, `descripcion_contacto`) VALUES
-(2, 'Maria lujan', 'Mamoplastia', '04123596241', 'maria.lujan@gmail.com', 'Cita para contactar mamoplastia.', 'Hol esta es una pruaba blablbalbalablbalbalalbala');
+INSERT INTO `contacto` (`id_contacto`, `nombres_contacto`, `servicio`, `telefono_movil_contacto`, `email_contacto`, `asunto_contacto`, `descripcion_contacto`, `fecha_contacto`, `visto`) VALUES
+(2, 'Maria lujan', 'Mamoplastia', '04123596241', 'maria.lujan@gmail.com', 'Cita para contactar mamoplastia.', 'Hol esta es una pruaba blablbalbalablbalbalalbala', '0000-00-00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contenido_curriculum`
+--
+
+CREATE TABLE `contenido_curriculum` (
+  `id_contenido_curriculum` int(11) NOT NULL,
+  `id_curriculum` int(11) NOT NULL,
+  `id_idioma` int(11) NOT NULL,
+  `curriculum_completo` text COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `contenido_curriculum`
+--
+
+INSERT INTO `contenido_curriculum` (`id_contenido_curriculum`, `id_curriculum`, `id_idioma`, `curriculum_completo`) VALUES
+(1, 1, 1, 'detalle español'),
+(2, 1, 2, 'detalle portugues');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contenido_procedimiento`
+--
+
+CREATE TABLE `contenido_procedimiento` (
+  `id_contenido_procedimiento` int(11) NOT NULL,
+  `id_procedimiento` int(11) NOT NULL,
+  `id_idioma` int(11) NOT NULL,
+  `titulo` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `sub_titulo` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `detalle` text COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -66,45 +104,36 @@ INSERT INTO `contacto` (`id_contacto`, `nombres_contacto`, `servicio`, `telefono
 -- Estructura de tabla para la tabla `curriculum_doc`
 --
 
-CREATE TABLE IF NOT EXISTS `curriculum_doc` (
+CREATE TABLE `curriculum_doc` (
   `id_curriculum` int(11) NOT NULL,
-  `curriculum_completo` text COLLATE utf8_spanish_ci NOT NULL,
-  `img_curriculum` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `datos_personales` text COLLATE utf8_spanish_ci,
-  `estudios_realizados` text COLLATE utf8_spanish_ci,
-  `cursos_realizados` text COLLATE utf8_spanish_ci,
-  `experiencia_laboral` text COLLATE utf8_spanish_ci
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `img_curriculum` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `curriculum_doc`
 --
 
-INSERT INTO `curriculum_doc` (`id_curriculum`, `curriculum_completo`, `img_curriculum`, `datos_personales`, `estudios_realizados`, `cursos_realizados`, `experiencia_laboral`) VALUES
-(1, '<h1>Curriculum Dr. Julio Reyes&nbsp;</h1>\r\n\r\n<hr />\r\n<table border="1" cellpadding="1" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>Estudios Realizados</td>\r\n			<td>Universidad pepe</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Cursos Realizados</td>\r\n			<td>sfjnsajkfn</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Experiencia</td>\r\n			<td>dsflsdklfmkadkfmd</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p><img alt="" src="http://www.billboard.com/files/styles/promo_650/public/media/shakira-billboard-cover-650c.jpg" style="height:132px; width:200px" /></p>\r\n', 'foto.jpg', 'sdkjnfsdjknfsdjnfnjksdnjnfjknasdf', 'jsdnjfnjksdkjnfsdjk', 'njnnjknkjnjkjknj', 'jknjknjjj');
+INSERT INTO `curriculum_doc` (`id_curriculum`, `img_curriculum`) VALUES
+(1, '');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `galeria`
+-- Estructura de tabla para la tabla `idioma`
 --
 
-CREATE TABLE IF NOT EXISTS `galeria` (
-  `id_galeria` int(11) NOT NULL,
-  `nombre_img` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `titulo` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+CREATE TABLE `idioma` (
+  `id_idioma` int(11) NOT NULL,
+  `idioma` varchar(250) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `galeria`
+-- Volcado de datos para la tabla `idioma`
 --
 
-INSERT INTO `galeria` (`id_galeria`, `nombre_img`, `titulo`) VALUES
-(1, '11892116_10153609988559658_1060985035743962673_n.jpg', NULL),
-(2, 'Ajedrez-venezolano.jpg', NULL),
-(3, 'algo2.png', NULL),
-(4, 'cagando.jpg', NULL),
-(5, 'Wallpaper_SMTT_V9.1_1920x1080.jpg', NULL);
+INSERT INTO `idioma` (`id_idioma`, `idioma`) VALUES
+(1, 'spanish'),
+(2, 'portugues');
 
 -- --------------------------------------------------------
 
@@ -112,11 +141,11 @@ INSERT INTO `galeria` (`id_galeria`, `nombre_img`, `titulo`) VALUES
 -- Estructura de tabla para la tabla `img_procedimientos`
 --
 
-CREATE TABLE IF NOT EXISTS `img_procedimientos` (
+CREATE TABLE `img_procedimientos` (
   `id_img_procedimiento` int(11) NOT NULL,
   `id_procedimiento` int(5) DEFAULT NULL,
-  `titulo_img` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `nombre_img` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL
+  `img_antes` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `img_despues` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -125,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `img_procedimientos` (
 -- Estructura de tabla para la tabla `img_testimonios`
 --
 
-CREATE TABLE IF NOT EXISTS `img_testimonios` (
+CREATE TABLE `img_testimonios` (
   `id_img_testimonio` int(11) NOT NULL,
   `id_testimonio` int(5) DEFAULT NULL,
   `nombre_img` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL
@@ -137,32 +166,10 @@ CREATE TABLE IF NOT EXISTS `img_testimonios` (
 -- Estructura de tabla para la tabla `procedimientos`
 --
 
-CREATE TABLE IF NOT EXISTS `procedimientos` (
+CREATE TABLE `procedimientos` (
   `id_procedimiento` int(11) NOT NULL,
-  `titulo` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `sub_titulo` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `detalle` text COLLATE utf8_spanish_ci,
   `img_principal_procedimiento` varchar(150) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `procedimientos`
---
-
-INSERT INTO `procedimientos` (`id_procedimiento`, `titulo`, `sub_titulo`, `detalle`, `img_principal_procedimiento`) VALUES
-(1, 'Mamoplastia', 'yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'Se inserta una protesis mamaria para el busto.', 'Jellyfish.jpg'),
-(2, 'Rinoplastia', 'se arregla nariz', 'la operación se quita la nariz para desmantelarla :D', 'Koala.jpg'),
-(4, 'Narizplastia', 'operacion de nariz', 'se quita la nariz para probar							\r\n						', 'Penguins.jpg'),
-(5, 'Clastomania', 'fngjnjn', 'editado clastomania		', 'Chrysanthemum.jpg'),
-(6, 'NeuroMania', 'jdsfgnsdj', 'dsjnfjnsdfsdf							\r\n						', '8483546751_86494ae914_b.jpg'),
-(7, 'Pruebamania', 'dsjfgdsn', 'jnjnjknjn							\r\n						', '8971419780_cb88b22947_b.jpg'),
-(8, 'PoliFaceto oplkn', 'HGGGVvg', 'dsfgbsdbgfdgfd							\r\n						', 'Lighthouse.jpg'),
-(9, 'dfgdfg', 'dfgfd', 'fgdfgdsfgfdg					\r\n						', 'Desert.jpg'),
-(10, 'dfhgdfngj', 'jhbhjbbhj', 'jhbjhbjh							\r\n						', 'Penguins.jpg'),
-(11, 'hbjjhbjhb', 'jhbjhbhj', 'hjbjhbjhbjhb							\r\n						', 'Tulips.jpg'),
-(12, 'fdvgbfdv', 'xcvxcvxcv', 'dfgdfxcvxcbfdhdfh					\r\n						', 'Hydrangeas.jpg'),
-(13, 'dfgdfgfdgghgj', 'gfhfgh', 'shggf							\r\n		fgh				', 'Lighthouse.jpg'),
-(14, 'position', 'position', '	position						\r\n						', 'Chrysanthemum.jpg');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -170,7 +177,7 @@ INSERT INTO `procedimientos` (`id_procedimiento`, `titulo`, `sub_titulo`, `detal
 -- Estructura de tabla para la tabla `testimonios`
 --
 
-CREATE TABLE IF NOT EXISTS `testimonios` (
+CREATE TABLE `testimonios` (
   `id_testimonio` int(11) NOT NULL,
   `nombres_del_descriptor` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `email_del_descriptor` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -178,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `testimonios` (
   `detalle_testimonio` text COLLATE utf8_spanish_ci,
   `img_principal_testimonio` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `aprobado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `testimonios`
@@ -204,21 +211,21 @@ INSERT INTO `testimonios` (`id_testimonio`, `nombres_del_descriptor`, `email_del
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
+CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `usuario` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `clave` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `nombres` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `apellidos` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `rol` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `nombres`, `apellidos`, `rol`) VALUES
-(1, 'doctor', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Jhonny', 'Vasquez', 1);
+(1, 'doctor', '8cb2237d0679ca88db6464eac60da96345513964', 'Jhonny', 'Vasquez', 1);
 
 --
 -- Índices para tablas volcadas
@@ -237,16 +244,28 @@ ALTER TABLE `contacto`
   ADD PRIMARY KEY (`id_contacto`);
 
 --
+-- Indices de la tabla `contenido_curriculum`
+--
+ALTER TABLE `contenido_curriculum`
+  ADD PRIMARY KEY (`id_contenido_curriculum`);
+
+--
+-- Indices de la tabla `contenido_procedimiento`
+--
+ALTER TABLE `contenido_procedimiento`
+  ADD PRIMARY KEY (`id_contenido_procedimiento`);
+
+--
 -- Indices de la tabla `curriculum_doc`
 --
 ALTER TABLE `curriculum_doc`
   ADD PRIMARY KEY (`id_curriculum`);
 
 --
--- Indices de la tabla `galeria`
+-- Indices de la tabla `idioma`
 --
-ALTER TABLE `galeria`
-  ADD PRIMARY KEY (`id_galeria`);
+ALTER TABLE `idioma`
+  ADD PRIMARY KEY (`id_idioma`);
 
 --
 -- Indices de la tabla `img_procedimientos`
@@ -291,22 +310,32 @@ ALTER TABLE `cirujias`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `contenido_curriculum`
+--
+ALTER TABLE `contenido_curriculum`
+  MODIFY `id_contenido_curriculum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `contenido_procedimiento`
+--
+ALTER TABLE `contenido_procedimiento`
+  MODIFY `id_contenido_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `curriculum_doc`
 --
 ALTER TABLE `curriculum_doc`
-  MODIFY `id_curriculum` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_curriculum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `galeria`
+-- AUTO_INCREMENT de la tabla `idioma`
 --
-ALTER TABLE `galeria`
-  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+ALTER TABLE `idioma`
+  MODIFY `id_idioma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `img_procedimientos`
 --
 ALTER TABLE `img_procedimientos`
-  MODIFY `id_img_procedimiento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_img_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `img_testimonios`
 --
@@ -316,17 +345,17 @@ ALTER TABLE `img_testimonios`
 -- AUTO_INCREMENT de la tabla `procedimientos`
 --
 ALTER TABLE `procedimientos`
-  MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `testimonios`
 --
 ALTER TABLE `testimonios`
-  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

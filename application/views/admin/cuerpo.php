@@ -274,7 +274,7 @@
 					if( $curriculum->result() != null ){
 						foreach ( $curriculum->result() as $perfil ) {
 							$curriculum_spanish = $perfil->curriculum_completo;
-							echo $perfil->curriculum_completo;
+							echo trim( $perfil->curriculum_completo );
 						}
 
 					}
@@ -287,7 +287,7 @@
 					if( $curriculum_por->result() != null ){
 						foreach ( $curriculum_por->result() as $perfil ) {
 							$curriculum_portugues = $perfil->curriculum_completo;
-							echo $perfil->curriculum_completo;	
+							echo trim( $perfil->curriculum_completo );	
 						}
 
 					}

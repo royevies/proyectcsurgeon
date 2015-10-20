@@ -202,17 +202,18 @@
 
 		public function editar_curriculum(){
 			if( $this->input->post() ){
-
+/*
 				echo "<pre>";
 				print_r($_POST);
 				echo "</pre>";
 				echo "<pre>";
 				print_r($_FILES);
 				echo "</pre>";
+				*/
 
 				$id_curriculum = $this->input->post("id_curriculum");
-				$curriculum_completo = $this->input->post("text_curriculum");
-				$curriculum_completo_portugues = $this->input->post("text_curriculum_portugues");
+				$curriculum_completo = trim( $this->input->post("text_curriculum") );
+				$curriculum_completo_portugues =trim(  $this->input->post("text_curriculum2") );
 				$img_curriculum_nueva = ( isset($_FILES["img_curriculum"]["name"]) && $_FILES["img_curriculum"]["name"] != null ? $_FILES["img_curriculum"]["name"] : $this->input->post("imgsola") );
 
 				$this->Cirujano_model->actualizar_curriculum($id_curriculum,$curriculum_completo,$curriculum_completo_portugues,$img_curriculum_nueva);
@@ -221,9 +222,9 @@
 				opendir($uploads_curriculum_update);
 				move_uploaded_file($_FILES["img_curriculum"]["tmp_name"],$uploads_curriculum_update.$img_curriculum_nueva);
 
-				//redirect('Admin');
+				redirect('Admin');
 			}else{
-				//redirect('Admin');
+				redirect('Admin');
 			}
 		}
 
