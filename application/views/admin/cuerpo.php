@@ -82,6 +82,14 @@
 		display:block !important;
 	}
 
+	.contenido_panel {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=14, Direction=131, Color=#000111)";/*IE 8*/
+		-moz-box-shadow: 6px 7px 14px #000111;/*FF 3.5+*/
+		-webkit-box-shadow: 6px 7px 14px #000111;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+		box-shadow: 6px 7px 14px #000111;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+		filter: progid:DXImageTransform.Microsoft.Shadow(Strength=14, Direction=135, Color=#000111); /*IE 5.5-7*/
+	}
+
 </style>
 <body>
 	<!--Header-->
@@ -95,7 +103,7 @@
 				</div>
 
 				<div class="col-xs-7 col-xs-offset-1 titulo">
-					<h1 style="color:#555 !important;font-size:0.8em;">Dr. Julio Reyes <small style="color:#555;font-size:0.5em;"> Administrador de Contendios</small></h1>
+					<h1 style="color:#555 !important;font-size:0.8em;" class="doctortitle">Dr. Julio Reyes <small style="color:#555;font-size:0.5em;"> Administrador de Contendios</small></h1>
 				</div>
 
 				<div class="col-xs-3">
@@ -152,9 +160,10 @@
 							</div>
 							<?php 
 						}
+					}else{
+						echo '<p style="font-size:1.3em;">Agregue un procedimiento antes por favor</p>';
 					}
 					?>
-
 				</div>
 
 				<div id="galeria_especifica" style="display:none;">
@@ -842,9 +851,11 @@ $(".archivosgaleria:last").css("background","red").remove();
 */
 
 
-$(".boxer").boxer({
-	fixed: true
-});
+
+/******************************Ventanas de información******************************/	
+
+/******************************Ventanas de información******************************/	
+
 /******************************Fin ready******************************/	
 });
 

@@ -304,7 +304,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										<img src="<?=$this->config->base_url();?>fronted_inicio/foto/beyonce.jpg" alt="Open Imagination">
 									</a>
 									<div class="portfolio-overlay">
-										<a href="<?=$this->config->base_url();?>fronted_inicio/images/portfolio/full/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+										<a href="<?=$this->config->base_url();?>fronted_inicio/images/parallax/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
 										<a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
 									</div>
 								</div>

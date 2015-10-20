@@ -6,15 +6,20 @@
 
     .content-menu{
         width:150px;
+        background:transparent;
         position:absolute;
         top:84px;
         left:0;
         z-index:10;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=11, Direction=135, Color=#000111)";/*IE 8*/
+        -moz-box-shadow: 5px 5px 11px 3px #000111;/*FF 3.5+*/
+        -webkit-box-shadow: 5px 5px 11px 3px #000111;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+        box-shadow: 5px 5px 11px 3px #000111;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+        filter: progid:DXImageTransform.Microsoft.Shadow(Strength=11, Direction=135, Color=#000111); /*IE 5.5-7*/
     }
     .item-menu{
         width:150px;
         height:75px;
-        background:#8CCEAA;
         border-top:1px dotted #f1f1f1;
         padding:5px;
         text-align: center;
