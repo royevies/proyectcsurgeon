@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2015 a las 20:01:03
+-- Tiempo de generación: 20-10-2015 a las 20:07:04
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -21,21 +21,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `cirujano` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `cirujano`;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `cirujias`
---
-
-CREATE TABLE `cirujias` (
-  `id_cirujia` int(11) NOT NULL,
-  `nombre_cirujia` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `detalle_cirujia` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `img_principal_cirujia` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `costo_cirujia` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `formas_pago` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -232,12 +217,6 @@ INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `nombres`, `apellidos`,
 --
 
 --
--- Indices de la tabla `cirujias`
---
-ALTER TABLE `cirujias`
-  ADD PRIMARY KEY (`id_cirujia`);
-
---
 -- Indices de la tabla `contacto`
 --
 ALTER TABLE `contacto`
@@ -301,11 +280,6 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
---
--- AUTO_INCREMENT de la tabla `cirujias`
---
-ALTER TABLE `cirujias`
-  MODIFY `id_cirujia` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `contacto`
 --
