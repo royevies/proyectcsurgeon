@@ -97,7 +97,7 @@
 		<div class="container ">
 			<div class="row">
 				<div class="col-xs-1">
-					<div class="fondologo">
+					<div class="fondologo" onclick="window.location.reload()" style="cursor:pointer;" title="Recargar Página">
 						<img src="<?=$this->config->base_url();?>fronted_inicio/foto/logo1.png"  width="60" height="60">
 					</div>
 				</div>
