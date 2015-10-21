@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2015 a las 20:07:04
+-- Tiempo de generación: 21-10-2015 a las 02:09:09
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -45,7 +45,8 @@ CREATE TABLE `contacto` (
 --
 
 INSERT INTO `contacto` (`id_contacto`, `nombres_contacto`, `servicio`, `telefono_movil_contacto`, `email_contacto`, `asunto_contacto`, `descripcion_contacto`, `fecha_contacto`, `visto`) VALUES
-(2, 'Maria lujan', 'Mamoplastia', '04123596241', 'maria.lujan@gmail.com', 'Cita para contactar mamoplastia.', 'Hol esta es una pruaba blablbalbalablbalbalalbala', '0000-00-00', 1);
+(2, 'Maria lujan', 'Mamoplastia', '04123596241', 'maria.lujan@gmail.com', 'Cita para contactar mamoplastia.', 'Hol esta es una pruaba blablbalbalablbalbalalbala', '0000-00-00', 1),
+(3, 'zddsff', 'Wordpress', '3243243243', 'zdfdsf@gmail.com', 'dsfdsfsd', 'xzcxczx', '2015-10-20', 1);
 
 -- --------------------------------------------------------
 
@@ -82,6 +83,14 @@ CREATE TABLE `contenido_procedimiento` (
   `sub_titulo` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `detalle` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `contenido_procedimiento`
+--
+
+INSERT INTO `contenido_procedimiento` (`id_contenido_procedimiento`, `id_procedimiento`, `id_idioma`, `titulo`, `sub_titulo`, `detalle`) VALUES
+(3, 2, 1, 'Mamoplastia', 'Sub mamaria español', 'se inserta un implante mamario.\r\n						'),
+(4, 2, 2, 'Mamoplastia portugues', 'sub_portugues', 'se inserta un implante mamario.\r\n						\r\n						');
 
 -- --------------------------------------------------------
 
@@ -133,6 +142,13 @@ CREATE TABLE `img_procedimientos` (
   `img_despues` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `img_procedimientos`
+--
+
+INSERT INTO `img_procedimientos` (`id_img_procedimiento`, `id_procedimiento`, `img_antes`, `img_despues`) VALUES
+(1, 2, 'Desert.jpg', 'Penguins.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -155,6 +171,13 @@ CREATE TABLE `procedimientos` (
   `id_procedimiento` int(11) NOT NULL,
   `img_principal_procedimiento` varchar(150) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `procedimientos`
+--
+
+INSERT INTO `procedimientos` (`id_procedimiento`, `img_principal_procedimiento`) VALUES
+(2, 'my_menu_bootstrap.PNG');
 
 -- --------------------------------------------------------
 
@@ -284,7 +307,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `contenido_curriculum`
 --
@@ -294,7 +317,7 @@ ALTER TABLE `contenido_curriculum`
 -- AUTO_INCREMENT de la tabla `contenido_procedimiento`
 --
 ALTER TABLE `contenido_procedimiento`
-  MODIFY `id_contenido_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_contenido_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `curriculum_doc`
 --
@@ -319,7 +342,7 @@ ALTER TABLE `img_testimonios`
 -- AUTO_INCREMENT de la tabla `procedimientos`
 --
 ALTER TABLE `procedimientos`
-  MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `testimonios`
 --
