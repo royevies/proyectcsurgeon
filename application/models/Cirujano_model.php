@@ -18,6 +18,11 @@
 			return $query;	
 		}
 
+		public function get_procedimientos_por(){
+			$query = $this->db->query("SELECT * FROM procedimientos as p left outer join contenido_procedimiento as c on p.id_procedimiento = c.id_procedimiento where id_idioma = 2 GROUP BY p.id_procedimiento");
+			return $query;
+		}
+
 		public function get_contactos(){
 			$query = $this->db->query("select * from contacto order by fecha_contacto desc");
 			return $query;	
