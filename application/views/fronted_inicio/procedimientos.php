@@ -1,11 +1,3 @@
-<?php 
-#La variable procedimientos contiene un arreglo con todos los procedimientos
-
-echo "<pre>";
-print_r($procedimientos);
-echo "</pre>";
-?>
-
 <body class="stretched">
 
     <!-- Document Wrapper
@@ -43,14 +35,8 @@ echo "</pre>";
                     <div class="col_full nobottommargin clearfix"> 
 
                         <div class="masonry-thumbs col-6 one-page-menu" data-big="3" data-lightbox="gallery">
-                            <?php /* ?>
-                            <a href="#" data-href="#mamoplastia"><img class="image_fade" src="<?=$this->config->base_url();?>fronted_inicio/images/portfolio/4/1.jpg" alt="Gallery Thumb 1"></a>
-                            <a href="#" data-href="#rinoplastia"><img class="image_fade" src="<?=$this->config->base_url();?>fronted_inicio/images/portfolio/4/2.jpg" alt="Gallery Thumb 2"></a>
-                            <?php */ ?>
                             <?php foreach ($procedimientos as $proc) { ?>
-
-                            <a href="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$proc->img_principal_procedimiento;?>" data-lightbox="gallery-item"><img class="image_fade" src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$proc->img_principal_procedimiento;?>" alt="Gallery Thumb 3"></a>
-
+                            <a href="#" data-href="#<?=$proc->titulo;?>"><img class="image_fade" src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$proc->img_principal_procedimiento;?>" alt="Gallery Thumb 1"></a>
                             <?php } ?>
 
                         </div>
@@ -60,15 +46,21 @@ echo "</pre>";
                 </div>
                 
                 <div class="divider"><i class="icon-circle"></i></div>
-                
-                <section id="mamoplastia" class="page-section">
+                <?php
+                    $count = 0;
+                    foreach ($procedimientos as $proc) {
+                        $count++;
+
+                        if($count % 2 != 0){
+                ?>
+                <section id="<?=$proc->titulo;?>" class="page-section">
                     <div class="section nobg topmargin-lg nobottommargin">
 
                         <div class="container clearfix">
 
                             <div class="col_half nobottommargin center">
 
-                                <img src="<?=$this->config->base_url();?>fronted_inicio/images/portfolio/full/3.jpg" alt="Image" data-animate="fadeInLeft">
+                                <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$proc->img_principal_procedimiento;?>" alt="Image" data-animate="fadeInLeft">
 
                             </div>
 
@@ -76,12 +68,12 @@ echo "</pre>";
 
                                 <div class="heading-block" style="padding-top: 40px;">
 
-                                    <h2>Fresh from the Garden.</h2>
-                                    <span>Duis mollis, est non commodo luctus. Donec sed odio dui</span>
+                                    <h2><?=$proc->titulo;?></h2>
+                                    <span><?=$proc->sub_titulo;?></span>
 
                                 </div>
 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, repudiandae, maxime, earum, sapiente assumenda non odit laborum qui vero vel quos sint excepturi in laudantium.</p>
+                                <p><?=$proc->detalle;?></p>
 
                                 
 
@@ -91,7 +83,8 @@ echo "</pre>";
                     </div>
                 </section>        
                 
-                <section id="rinoplastia" class="page-section">
+                <?php }else{ ?>
+                <section id="<?=$proc->titulo;?>" class="page-section">
                     <div class="section nobg notopmargin noborder bottommargin-sm">
                         <div class="container clearfix">
 
@@ -99,12 +92,12 @@ echo "</pre>";
 
                                 <div class="heading-block" style="padding-top: 40px;">
 
-                                    <h2>You'll be Lovin' It.</h2>
-                                    <span>Duis mollis, est non commodo luctus. Donec sed odio dui</span>
+                                    <h2><?=$proc->titulo;?></h2>
+                                    <span><?=$proc->sub_titulo;?></span>
 
                                 </div>
 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, repudiandae, maxime, earum, sapiente assumenda non odit laborum qui vero vel quos sint excepturi in laudantium.</p>
+                                <p><?=$proc->detalle;?></p>
 
                                 
 
@@ -112,7 +105,7 @@ echo "</pre>";
 
                             <div class="col_half bottommargin-sm center col_last">
 
-                                <img src="<?=$this->config->base_url();?>fronted_inicio/images/portfolio/full/3.jpg" alt="Image" data-animate="fadeInRight">
+                                <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$proc->img_principal_procedimiento;?>" alt="Image" data-animate="fadeInRight">
 
                             </div>
 
@@ -123,7 +116,7 @@ echo "</pre>";
             </div>
 
         </section><!-- #content end -->
-
+        <?php }} ?>
         <!-- Footer
         ============================================= -->
         
