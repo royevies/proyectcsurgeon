@@ -599,7 +599,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								============================================= -->
 								<div class="postcontent nobottommargin">
 
-									<h3>Envíame un Email</h3>
+									<h3>Contactame</h3>
 
 									<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
@@ -632,11 +632,11 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										<div class="col_one_third col_last">
 											<label for="template-contactform-service">Servicio</label>
 											<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
-												<option value="">-- Select One --</option>
-												<option value="Wordpress">Mamoplastia</option>
-												<option value="PHP / MySQL">Rinoplastia</option>
-												<option value="HTML5 / CSS3">Rejuvenecimiento facial</option>
-												<option value="Graphic Design">Botox</option>
+												<option value="">-- Seleccione --</option>
+												
+												<?php foreach ($procedimientos->result() as $proc_cont) { ?>
+												<option value="<?=$proc_cont->titulo;?>"><?=$proc_cont->titulo;?></option>
+												<?php } ?>
 											</select>
 										</div>
 

@@ -326,6 +326,7 @@
 						<div class="col-xs-8">
 							<div style="font-size:1.3em;border-bottom:1px dotted #555;padding:5px;margin-bottom:12px;">Nueva</div>
 							<input type="hidden" id="id_curriculum" name="id_curriculum" value="<?=$id_curriculum?>">
+							<input type="hidden" id="img_curriculum_sola" name="img_curriculum_sola" value="<?=$img_curriculum_vitae?>">							
 							<input type="file" name="img_curriculum" class="form-control" style="height:auto;">							
 						</div>
 					</div> 

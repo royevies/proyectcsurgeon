@@ -214,7 +214,7 @@
 				$id_curriculum = $this->input->post("id_curriculum");
 				$curriculum_completo = trim( $this->input->post("text_curriculum") );
 				$curriculum_completo_portugues =trim(  $this->input->post("text_curriculum2") );
-				$img_curriculum_nueva = ( isset($_FILES["img_curriculum"]["name"]) && $_FILES["img_curriculum"]["name"] != null ? $_FILES["img_curriculum"]["name"] : $this->input->post("imgsola") );
+				$img_curriculum_nueva = ( isset($_FILES["img_curriculum"]["name"]) && $_FILES["img_curriculum"]["name"] != null ? $_FILES["img_curriculum"]["name"] : $this->input->post("img_curriculum_sola") );
 
 				$this->Cirujano_model->actualizar_curriculum($id_curriculum,$curriculum_completo,$curriculum_completo_portugues,$img_curriculum_nueva);
 
