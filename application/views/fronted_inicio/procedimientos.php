@@ -1,5 +1,9 @@
 <?php 
 #La variable procedimientos contiene un arreglo con todos los procedimientos
+
+echo "<pre>";
+print_r($procedimientos);
+echo "</pre>";
 ?>
 
 <body class="stretched">

@@ -1,4 +1,9 @@
+<?php 
+echo "<pre>";
+print_r($testimonios);
+echo "</pre>";
 
+?>
 
 <body class="stretched">
 
@@ -35,9 +40,9 @@
 				<div class="container clearfix">
 
 					
-                                        <div class="heading-block center">
-                                                <h2><span>Esto es lo que dicen mis clientes.</span></h2>
-                                        </div>
+					<div class="heading-block center">
+						<h2><span>Esto es lo que dicen mis clientes.</span></h2>
+					</div>
 					
 
 					<div class="line"></div>
@@ -69,63 +74,63 @@
 								</div>
 								<div class="testi-content">
 									<p>Después de mucho tiempo decidí consultar con el Dr. Reyes la posibilidad de realizarme una rinoplastia y les cuento que desde que 
-									entre en su consultorio me generó mucha confianza, la confianza que necesitaba para dar ese paso definitivo a una nueva apariencia.</p>
-									<div class="testi-meta">
-										Angelina Jolie
-										<span>...</span>
+										entre en su consultorio me generó mucha confianza, la confianza que necesitaba para dar ese paso definitivo a una nueva apariencia.</p>
+										<div class="testi-meta">
+											Angelina Jolie
+											<span>...</span>
+										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="testimonial">
-								<div class="testi-image">
-									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/4.jpg" alt="Customer Testimonails"></a>
-								</div>
-								<div class="testi-content">
-									<p>El Dr. Reyes y todo su equipo de trabajo me trataron muy bien, el resultado fue excelente pienso que después de haber investigado mucho y estudiar todas mis posibilidades escogí el mejor cirujano, quede tal y como yo esperaba. Muchas Gracias Doctor.</p>
-									<div class="testi-meta">
-										Jennifer Lopez
-										<span>...</span>
+							</li>
+							<li>
+								<div class="testimonial">
+									<div class="testi-image">
+										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/4.jpg" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p>El Dr. Reyes y todo su equipo de trabajo me trataron muy bien, el resultado fue excelente pienso que después de haber investigado mucho y estudiar todas mis posibilidades escogí el mejor cirujano, quede tal y como yo esperaba. Muchas Gracias Doctor.</p>
+										<div class="testi-meta">
+											Jennifer Lopez
+											<span>...</span>
+										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="testimonial">
-								<div class="testi-image">
-									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/3.jpg" alt="Customer Testimonails"></a>
-								</div>
-								<div class="testi-content">
-									<p>Me siento feliz, cuando me miro en el espejo y veo mi nuevo aspecto solo puedo sonreír, la verdad es que quede muy satisfecha,me siento muy bonita y segura de mi misma.</p>
-									<div class="testi-meta">
-										Mary Jane
-										<span>...</span>
+							</li>
+							<li>
+								<div class="testimonial">
+									<div class="testi-image">
+										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/3.jpg" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p>Me siento feliz, cuando me miro en el espejo y veo mi nuevo aspecto solo puedo sonreír, la verdad es que quede muy satisfecha,me siento muy bonita y segura de mi misma.</p>
+										<div class="testi-meta">
+											Mary Jane
+											<span>...</span>
+										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-						
-					</ul>
+							</li>
+							
+						</ul>
 
-				</div>
+					</div>
 
-				<div class="section center footer-stick">
+					<div class="section center footer-stick">
 
-					<div class="fslider testimonial testimonial-full twitter-scroll twitter-feed" data-username="envato" data-count="2" data-animation="slide" data-arrows="false">
-						<i class="i-plain i-large color icon-twitter divcenter bottommargin-sm"></i>
-						<div class="flexslider">
-							<div class="slider-wrap">
-								<div class="slide"></div>
+						<div class="fslider testimonial testimonial-full twitter-scroll twitter-feed" data-username="envato" data-count="2" data-animation="slide" data-arrows="false">
+							<i class="i-plain i-large color icon-twitter divcenter bottommargin-sm"></i>
+							<div class="flexslider">
+								<div class="slider-wrap">
+									<div class="slide"></div>
+								</div>
 							</div>
 						</div>
+
 					</div>
 
 				</div>
 
-			</div>
-
-		</section><!-- #content end -->
+			</section><!-- #content end -->
 
 		<!-- Footer
 		============================================== -->

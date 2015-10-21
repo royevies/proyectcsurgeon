@@ -247,7 +247,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								<div class="clear"></div>
 
 								<!--<div class="fright"><a href="#"><i class="i-plain i-xlarge divcenter nobottommargin icon-plus"></i></a></div>-->
-								<div class="fright"><a href="#"><i class="i-plain icon-plus"></i></a></div>
+								<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/procedimientos"><i class="i-plain icon-plus"></i> Leer mas</a></div>
 
 							</div>
 
@@ -365,7 +365,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 							<div class="clear"></div>
 
-							<div class="fright"><a href="#"><i class="i-plain icon-plus"></i></a></div>	
+							<div class="fright" style="padding-right:1em;"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i> Leer mas</a></div>	
 
 						</div><!-- #portfolio end -->
 
@@ -535,7 +535,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 							</ul>
 
-							<div class="fright"><a href="#"><i class="i-plain icon-plus"></i></a></div>
+							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/testimonios"><i class="i-plain icon-plus"></i> Leer mas</a></div>
 
 							<div class="clear"></div>
 
