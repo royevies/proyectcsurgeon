@@ -583,7 +583,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 						$('#google-map').gMap({
 
-							address: 'La paz, Bolivia',
+							address: 'Caracas, Venezuela',
 							maptype: 'ROADMAP',
 							zoom: 14,
 							markers: [
