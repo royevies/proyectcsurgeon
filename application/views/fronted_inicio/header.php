@@ -40,6 +40,14 @@
 								<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
 							</form>
 							<?php */ ?>
+							<div id="idiomas">
+							<?php /* ?>
+								<img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" alt="">
+								<img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" alt="">
+								<?php */ ?>
+								<a href="<?=$ruta_esp;?>"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" style="width:150px !important;height:auto;"></a>
+								<a href="<?=$ruta_por;?>"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" style="width:150px !important;height:auto;"></a>
+							</div>
 						</div><!-- #top-search end -->
 
 					</nav><!-- #primary-menu end -->
