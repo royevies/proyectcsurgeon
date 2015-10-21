@@ -201,11 +201,11 @@
 
 								<tr>
 									<td>
-										<input id="img_antes" name="img_antes"  type="file" style="height:auto" class="form-control">
+										<input id="img_antes" name="img_antes"  type="file" style="height:auto" class="form-control" required="required">
 									</td>
 									
 									<td>
-										<input  id="img_despues" name="img_despues" type="file" style="height:auto" class="form-control">										
+										<input  id="img_despues" name="img_despues" type="file" style="height:auto" class="form-control" required="required">										
 									</td>
 								</tr>
 							</table>

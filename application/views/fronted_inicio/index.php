@@ -365,7 +365,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 							<div class="clear"></div>
 
-							<div class="fright" style="padding-right:1em;"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i> Leer mas</a></div>	
+							<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i> Leer mas</a></div>	
 
 						</div><!-- #portfolio end -->
 
