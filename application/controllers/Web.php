@@ -14,7 +14,20 @@ class Web extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('fronted_inicio/head_inicio');
-		$this->load->view('fronted_inicio/index',["procedimientos" => $this->Cirujano_model->get_procedimientos()]);
+		$this->load->view('fronted_inicio/index',[
+			"procedimientos" => $this->Cirujano_model->get_procedimientos(),
+			"curriculum"     => $this->Cirujano_model->get_curriculum()->result(),
+			"img_curriculum"     => $this->Cirujano_model->get_curriculum_img()->result()
+			]);
+	}
+
+	public function por(){
+		$this->load->view('fronted_inicio/head_inicio');
+		$this->load->view('fronted_inicio/index_por',[
+			"procedimientos" => $this->Cirujano_model->get_procedimientos_por(),
+			"curriculum"     => $this->Cirujano_model->get_curriculum_por()->result(),
+			"img_curriculum"     => $this->Cirujano_model->get_curriculum_img()->result()
+			]);
 	}
 
 	public function procedimientos(){

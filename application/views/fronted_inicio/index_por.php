@@ -77,7 +77,7 @@
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
 								<h2 data-caption-animate="fadeInUp">Dr. Julio Reyes</h2>
-								<p data-caption-animate="fadeInUp" data-caption-delay="200">Cirujano Plástico.</p>
+								<p data-caption-animate="fadeInUp" data-caption-delay="200">Cirurgião Plástico.</p>
 							</div>
 						</div>
 					</div>
@@ -188,10 +188,10 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<ul>
 							<li><a href="#" data-href="#header"><div>Início</div></a></li>
 							<li><a href="#" data-href="#section-about"><div>Procedimientos</div></a></li>
-							<li><a href="#" data-href="#section-work"><div>Galería</div></a></li>
-							<li><a href="#" data-href="#section-team"><div>Acerca de mi</div></a></li>
-							<li><a href="#" data-href="#section-testimonials" class="no-offset"><div>Testimonios</div></a></li>
-							<li><a href="#" data-href="#section-contact"><div>Contactame</div></a></li>
+							<li><a href="#" data-href="#section-work"><div>Galeria</div></a></li>
+							<li><a href="#" data-href="#section-team"><div>Sobre meu</div></a></li>
+							<li><a href="#" data-href="#section-testimonials" class="no-offset"><div>Depoimentos</div></a></li>
+							<li><a href="#" data-href="#section-contact"><div>Contato</div></a></li>
 						</ul>
 					</nav>
 
@@ -299,8 +299,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<section id="section-work" class="page-section topmargin-lg">
 
 							<div class="heading-block center">
-								<h2><span>Galería</span></h2>
-								<span>Algunos de los trabajos que he realizado.</span>
+								<h2><span>Galeria</span></h2>
+								<span>Alguns dos trabalhos que eu fiz.</span>
 							</div>
 
 							<div class="container clearfix center">
@@ -387,8 +387,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 				<section id="section-team" class="page-section topmargin-lg">
 
 					<div class="heading-block center">
-						<h2><span>Acerca de mi</span></h2>
-						<span>Conoce mi formación y experiencia.</span>
+						<h2><span>SOBRE MIM</span></h2>
+						<span>Conheça a minha formação e experiência.</span>
 					</div>
 
 					<div class="row common-height clearfix">
@@ -407,7 +407,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<div class="col-sm-7 col-padding">
 							<div>
 								<div class="heading-block">
-									<span class="before-heading color">Cirujano Plastico</span>
+									<span class="before-heading color">Cirurgião Plástico</span>
 									<h3>Dr. Julio Reyes</h3>
 								</div>
 
@@ -422,7 +422,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 											?>
 										</p>
 
-
+										
 										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
 											<i class="icon-facebook"></i>
 											<i class="icon-facebook"></i>
@@ -439,73 +439,90 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 
 									<!--<span class="before-heading color">Especialidades</span>-->
+
 										<?php /* ?>
-										<div class="col-md-6">
-											<ul class="skills">
-												<li data-percent="100">
-													<span>Mamoplastia</span>
-													<div class="progress">
-														<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="100" data-refresh-interval="30" data-speed="1100"></span>%</div></div>
-													</div>
-												</li>
-												<li data-percent="100">
-													<span>Rinoplastia</span>
-													<div class="progress">
-														<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="100" data-refresh-interval="30" data-speed="1100"></span>%</div></div>
-													</div>
-												</li>
-												<li data-percent="100">
-													<span>Rejuvenecimiento facial</span>
-													<div class="progress">
-														<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="100" data-refresh-interval="30" data-speed="1100"></span>%</div></div>
-													</div>
-												</li>
-												<li data-percent="100">
-													<span>Botox</span>
-													<div class="progress">
-														<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="100" data-refresh-interval="30" data-speed="1100"></span>%</div></div>
-													</div>
-												</li>
-											</ul>
-										</div>
-										<?php */ ?>
+									<div class="col-md-6">
+										<ul class="skills">
+											<li data-percent="100">
+												<span>Mamoplastia</span>
+												<div class="progress">
+													<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="100" data-refresh-interval="30" data-speed="1100"></span>%</div></div>
+												</div>
+											</li>
+											<li data-percent="100">
+												<span>Rinoplastia</span>
+												<div class="progress">
+													<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="100" data-refresh-interval="30" data-speed="1100"></span>%</div></div>
+												</div>
+											</li>
+											<li data-percent="100">
+												<span>Rejuvenecimiento facial</span>
+												<div class="progress">
+													<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="100" data-refresh-interval="30" data-speed="1100"></span>%</div></div>
+												</div>
+											</li>
+											<li data-percent="100">
+												<span>Botox</span>
+												<div class="progress">
+													<div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="100" data-refresh-interval="30" data-speed="1100"></span>%</div></div>
+												</div>
+											</li>
+										</ul>
 
 									</div>
+									<?php */ ?>
 
 								</div>
-							</div>
 
-						</div>
-
-						<div class="section parallax" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/images/parallax/3.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
-							<div class="heading-block center nobottomborder nobottommargin">
-								<h2>"Belleza dura cinco minutos. Tal vez más tiempo si tiene un buen cirujano plástico."</h2>
 							</div>
 						</div>
 
-					</section>
+					</div>
 
-
-
-
-
-					<section id="section-testimonials" class="page-section topmargin-lg">
-
-						<div class="heading-block center">
-							<h2><span>Testimonios</span></h2>
-							<span>Esto es lo que dicen mis clientes.</span>
+					<div class="section parallax" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/images/parallax/3.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
+						<div class="heading-block center nobottomborder nobottommargin">
+							<h2>"Belleza dura cinco minutos. Tal vez más tiempo si tiene un buen cirujano plástico."</h2>
 						</div>
+					</div>
 
-						<ul class="testimonials-grid clearfix">
-							<li>
-								<div class="testimonial">
-									<div class="testi-image">
-										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/1.jpg" alt="Customer Testimonails"></a>
+				</section>
+
+
+
+
+
+				<section id="section-testimonials" class="page-section topmargin-lg">
+
+					<div class="heading-block center">
+						<h2><span>DEPOIMENTOS</span></h2>
+						<span>Isto é o que meus clientes dizem.</span>
+					</div>
+
+					<ul class="testimonials-grid clearfix">
+						<li>
+							<div class="testimonial">
+								<div class="testi-image">
+									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/1.jpg" alt="Customer Testimonails"></a>
+								</div>
+								<div class="testi-content">
+									<p>El Dr. Julio Reyes cambió mi vida, ahora soy una mujer mas hermosa y mucho mas feliz!</p>
+									<div class="testi-meta">
+										Julia Roberts
+										<span>...</span>
 									</div>
-									<div class="testi-content">
-										<p>El Dr. Julio Reyes cambió mi vida, ahora soy una mujer mas hermosa y mucho mas feliz!</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="testimonial">
+								<div class="testi-image">
+									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/2.jpg" alt="Customer Testimonails"></a>
+								</div>
+								<div class="testi-content">
+									<p>Después de mucho tiempo decidí consultar con el Dr. Reyes la posibilidad de realizarme una rinoplastia y les cuento que desde que 
+										entre en su consultorio me generó mucha confianza, la confianza que necesitaba para dar ese paso definitivo a una nueva apariencia.</p>
 										<div class="testi-meta">
-											Julia Roberts
+											Angelina Jolie
 											<span>...</span>
 										</div>
 									</div>
@@ -514,61 +531,46 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<li>
 								<div class="testimonial">
 									<div class="testi-image">
-										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/2.jpg" alt="Customer Testimonails"></a>
+										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/4.jpg" alt="Customer Testimonails"></a>
 									</div>
 									<div class="testi-content">
-										<p>Después de mucho tiempo decidí consultar con el Dr. Reyes la posibilidad de realizarme una rinoplastia y les cuento que desde que 
-											entre en su consultorio me generó mucha confianza, la confianza que necesitaba para dar ese paso definitivo a una nueva apariencia.</p>
-											<div class="testi-meta">
-												Angelina Jolie
-												<span>...</span>
-											</div>
+										<p>El Dr. Reyes y todo su equipo de trabajo me trataron muy bien, el resultado fue excelente pienso que después de haber investigado mucho y estudiar todas mis posibilidades escogí el mejor cirujano, quede tal y como yo esperaba. Muchas Gracias Doctor.</p>
+										<div class="testi-meta">
+											Jennifer Lopez
+											<span>...</span>
 										</div>
 									</div>
-								</li>
-								<li>
-									<div class="testimonial">
-										<div class="testi-image">
-											<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/4.jpg" alt="Customer Testimonails"></a>
-										</div>
-										<div class="testi-content">
-											<p>El Dr. Reyes y todo su equipo de trabajo me trataron muy bien, el resultado fue excelente pienso que después de haber investigado mucho y estudiar todas mis posibilidades escogí el mejor cirujano, quede tal y como yo esperaba. Muchas Gracias Doctor.</p>
-											<div class="testi-meta">
-												Jennifer Lopez
-												<span>...</span>
-											</div>
+								</div>
+							</li>
+							<li>
+								<div class="testimonial">
+									<div class="testi-image">
+										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/3.jpg" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p>Me siento feliz, cuando me miro en el espejo y veo mi nuevo aspecto solo puedo sonreír, la verdad es que quede muy satisfecha,me siento muy bonita y segura de mi misma.</p>
+										<div class="testi-meta">
+											Mary Jane
+											<span>...</span>
 										</div>
 									</div>
-								</li>
-								<li>
-									<div class="testimonial">
-										<div class="testi-image">
-											<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/3.jpg" alt="Customer Testimonails"></a>
-										</div>
-										<div class="testi-content">
-											<p>Me siento feliz, cuando me miro en el espejo y veo mi nuevo aspecto solo puedo sonreír, la verdad es que quede muy satisfecha,me siento muy bonita y segura de mi misma.</p>
-											<div class="testi-meta">
-												Mary Jane
-												<span>...</span>
-											</div>
-										</div>
-									</div>
-								</li>
+								</div>
+							</li>
 
-							</ul>
+						</ul>
 
-							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/testimonios"><i class="i-plain icon-plus"></i> Leer mas</a></div>
+						<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/testimonios"><i class="i-plain icon-plus"></i> Leer mas</a></div>
 
-							<div class="clear"></div>
+						<div class="clear"></div>
 
-						</section>
+					</section>
 
-						<section id="section-contact" class="page-section">
+					<section id="section-contact" class="page-section">
 
-							<div class="heading-block title-center">
-								<h2><span>Contactame</span></h2>
-								<span>¿Aún tienes dudas? Aquí me puedes encontrar.</span>
-							</div>
+						<div class="heading-block title-center">
+							<h2><span>Contato</span></h2>
+							<span>Ainda tem dúvidas? Aqui você pode encontrarme.</span>
+						</div>
 
 					<!-- Google Map
 					============================================= -->
@@ -581,7 +583,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 						$('#google-map').gMap({
 
-							address: 'Caracas, Venezuela',
+							address: 'La paz, Bolivia',
 							maptype: 'ROADMAP',
 							zoom: 14,
 							markers: [
@@ -621,7 +623,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								============================================= -->
 								<div class="postcontent nobottommargin">
 
-									<h3>Contactame</h3>
+									<h3>CONTATO</h3>
 
 									<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
@@ -630,31 +632,31 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										<div class="form-process"></div>
 
 										<div class="col_one_third">
-											<label for="template-contactform-name">Nombre <small>*</small></label>
+											<label for="template-contactform-name">Nomes <small>*</small></label>
 											<input type="text" id="template-contactform-name" name="template-contactform-name" class="sm-form-control required" />
 										</div>
 
 										<div class="col_one_third">
-											<label for="template-contactform-email">Correo Electrónico <small>*</small></label>
+											<label for="template-contactform-email">Correio eletrônico <small>*</small></label>
 											<input type="email" id="template-contactform-email" name="template-contactform-email" class="required email sm-form-control" />
 										</div>
 
 										<div class="col_one_third col_last">
-											<label for="template-contactform-phone">Teléfono</label>
+											<label for="template-contactform-phone">Telefone</label>
 											<input type="text" id="template-contactform-phone" name="template-contactform-phone" class="sm-form-control" />
 										</div>
 
 										<div class="clear"></div>
 
 										<div class="col_two_third">
-											<label for="template-contactform-subject">Asunto <small>*</small></label>
+											<label for="template-contactform-subject">Assunto <small>*</small></label>
 											<input type="text" id="template-contactform-subject" name="template-contactform-subject" class="required sm-form-control" />
 										</div>
 
 										<div class="col_one_third col_last">
-											<label for="template-contactform-service">Servicio</label>
+											<label for="template-contactform-service">Serviço</label>
 											<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
-												<option value="">-- Seleccione --</option>
+												<option value="">-- Seleção --</option>
 												
 												<?php foreach ($procedimientos->result() as $proc_cont) { ?>
 												<option value="<?=$proc_cont->titulo;?>"><?=$proc_cont->titulo;?></option>
@@ -665,7 +667,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										<div class="clear"></div>
 
 										<div class="col_full">
-											<label for="template-contactform-message">Mensaje <small>*</small></label>
+											<label for="template-contactform-message">Mensagem <small>*</small></label>
 											<textarea class="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
 										</div>
 
@@ -674,7 +676,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										</div>
 
 										<div class="col_full">
-											<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Enviar Mensaje</button>
+											<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">ENVIAR MENSAGEM </button>
 										</div>
 
 									</form>
@@ -712,7 +714,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 									<abbr title="Phone Number"><strong>Phone:</strong></abbr> (91) 8547 632521<br>
 									<abbr title="Fax"><strong>Fax:</strong></abbr> (91) 11 4752 1433<br>
 									<abbr title="Email Address"><strong>Email:</strong></abbr> info@canvas.com
-									<?php /* ?>
+
+										<?php /* ?>
 									<div class="widget noborder notoppadding">
 
 										<div class="fslider customjs testimonial twitter-scroll twitter-feed" data-username="envato" data-count="3" data-animation="slide" data-arrows="false">
@@ -726,6 +729,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 									</div>
 									<?php */ ?>
+
 									<div class="widget noborder notoppadding">
 
 										<a href="#" class="social-icon si-small si-dark si-facebook">
