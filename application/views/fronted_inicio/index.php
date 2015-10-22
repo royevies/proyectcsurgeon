@@ -57,7 +57,7 @@
 								<img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" alt="">
 								<?php */ ?>
 								<a href="<?=$this->config->base_url();?>"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" style="width:150px !important;height:auto;"></a>
-								<a href="<?=$this->config->base_url();?>index.php/web/por"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" style="width:150px !important;height:auto;"></a>
+								<a href="<?=$this->config->base_url();?>index.php/por"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" style="width:150px !important;height:auto;"></a>
 							</div>
 						</div><!-- #top-search end -->
 
