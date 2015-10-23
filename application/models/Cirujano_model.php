@@ -140,5 +140,13 @@
 		   public function eliminar_parejas($id_pareja){
 		   	$this->db->query("delete from img_procedimientos where id_img_procedimiento = $id_pareja");
 		   }
+
+		   public function ver_datos_contacto(){
+		   	return  $this->db->query("select * from datos_contacto ");
+		   }
+
+		   public function cambiar_datos($direccion,$email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss){
+		   	$this->db->query("update datos_contacto set direccion = '$direccion', email = '$email' , telefono ='$telefono' ,fax ='$fax' ,facebook ='$facebook' ,twitter ='$twiiter' ,instagram ='$instagram' ,googlepluss ='$googlepluss'  where id_datos_contacto = 1 ");
+		   }
 		   /*******************************Llave clase********************************************/
 		}

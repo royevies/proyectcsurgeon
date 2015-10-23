@@ -63,14 +63,14 @@
 				
 				$this->load->view("layout/head.php",[ "titulo" => "Panel administrativo"]);
 				$this->load->view("admin/menu", [ "novistos" => $this->Cirujano_model->no_vistos()->num_rows() ] );
-				$this->load->view("admin/modals");
+				$this->load->view("admin/modals", [	"datos_contacto" => $this->Cirujano_model->ver_datos_contacto()]);
 
 				$this->load->view("admin/cuerpo",[ 
 					"usuario" => $this->session->userdata('usuario') , 
 					"procedimientos" => $this->Cirujano_model->get_procedimientos(),
 					"contactos" => $this->Cirujano_model->get_contactos(),
 					"curriculum" => $this->Cirujano_model->get_curriculum(),
-					"curriculum_por" =>$this->Cirujano_model->get_curriculum_por(),
+					"curriculum_por" => $this->Cirujano_model->get_curriculum_por(),
 					"curriculum_img" => $this->Cirujano_model->get_curriculum_img(),
 					"testimonios" => $this->Cirujano_model->get_testimonios()
 					]);
@@ -82,6 +82,26 @@
 		}
 
 		
+		public function datos_contacto(){
+			if( $this->input->post() ){
+
+				$direccion  = $this->input->post("direccion");
+				$email = $this->input->post("email");
+				$telefono = $this->input->post("telefono");
+				$fax = $this->input->post("fax");
+				$facebook = $this->input->post("facebook");
+				$twiiter = $this->input->post("twiiter");
+				$instagram = $this->input->post("instagram");
+				$googlepluss = $this->input->post("googlepluss");
+
+				$this->Cirujano_model->cambiar_datos($direccion,$email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss);
+
+				redirect("Admin");
+			}else{
+				redirect("Admin");
+			}
+
+		}
 
 		public function procesar_testimonio(){
 			if( $this->input->post() ){

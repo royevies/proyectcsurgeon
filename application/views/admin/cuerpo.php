@@ -548,7 +548,7 @@ $(document).on("ready",function(){
 
 		<?php  } */?>
 		$("#cambio_datos").on("click",function(){
-			$("#datos_contacto_doctor").dialog({width:"850px",title:"Mis datos de contacto",modal:true,Height:"500px","resizable":false,position: "top"});	
+			$("#datos_contacto_doctor").dialog({width:"600px",title:"Mis datos de contacto",modal:true,Height:"500px","resizable":false,position: "top"});	
 		});
 
 
