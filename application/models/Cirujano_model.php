@@ -123,8 +123,11 @@
 		   }
 
 		   public function get_testimonios(){
-		   	$query = $this->db->query("select * from testimonios");
-		   	return $query;	
+		   	return $this->db->query("select * from testimonios");
+		   }
+
+		   public function get_testimonios_aprobados(){
+		   	return $this->db->query("select * from testimonios where aprobado = 1");
 		   }
 
 		   public function procesar_testimonio($id_testimonio,$aprobado){

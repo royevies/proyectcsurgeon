@@ -90,9 +90,9 @@
 				$telefono = $this->input->post("telefono");
 				$fax = $this->input->post("fax");
 				$facebook = $this->input->post("facebook");
-				$twiiter = $this->input->post("twiiter");
+				$twiiter = $this->input->post("twitter");
 				$instagram = $this->input->post("instagram");
-				$googlepluss = $this->input->post("googlepluss");
+				$googlepluss = $this->input->post("gloogleplus");
 
 				$this->Cirujano_model->cambiar_datos($direccion,$email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss);
 
@@ -105,26 +105,30 @@
 
 
 		public function guardar_testimonio(){
-			echo "<pre>";
-			print_r($_POST);
-			echo "</pre>";
-			echo "<pre>";
-			print_r($_FILES);
-			echo "</pre>";
+			if( $this->input->post() ) {		
+				$nombres_del_descriptor = $this->input->post("template-testimonialform-name");
+				$email_del_descriptor = $this->input->post("template-testimonialform-email");
+				$titulo_testimonio = $this->input->post("template-contactform-subject");
+				$detalle_testimonio = $this->input->post("template-contactform-message");
+				$img_principal_testimonio = ( $_FILES["template-testimonialform-file"]["name"] == null ? "user.png" : $_FILES["template-testimonialform-file"]["name"] );
 
-			$nombres_del_descriptor = $this->input->post("template-testimonialform-name");
-			$email_del_descriptor = $this->input->post("template-testimonialform-email");
-			$titulo_testimonio = $this->input->post("template-contactform-subject");
-			$detalle_testimonio = $this->input->post("template-contactform-message");
-			//$img_principal_testimonio = ( $_FILES["img_principal"]["name"] == null ? $this->config->base_url()."fronted/img/iconos2/user.png" : $_FILES["img_principal"]["name"] );
-			$img_principal_testimonio = "user.png";
-			$this->Cirujano_model->crear_testimonios(
-				$nombres_del_descriptor,
-				$email_del_descriptor,
-				$titulo_testimonio,
-				$detalle_testimonio,
-				$img_principal_testimonio
-				);
+				$uploads_testimonios ='./fronted_inicio/testimonios/';
+				opendir($uploads_testimonios);
+				move_uploaded_file($_FILES["template-testimonialform-file"]["tmp_name"],$uploads_testimonios.$img_principal_testimonio);
+
+
+				$this->Cirujano_model->crear_testimonios(
+					$nombres_del_descriptor,
+					$email_del_descriptor,
+					$titulo_testimonio,
+					$detalle_testimonio,
+					$img_principal_testimonio
+					);
+
+				redirect("web?msg");
+			}else{
+				redirect("web");
+			}
 		}
 
 		public function procesar_testimonio(){
@@ -380,6 +384,8 @@
 					$asunto_contacto,
 					$descripcion_contacto
 					);
+
+				mail("jhonnyvanckruz@gmail.com", $asunto_contacto ,$descripcion_contacto);
 
 				echo "Mensaje Enviado Exitosamente";
 

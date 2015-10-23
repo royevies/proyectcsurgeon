@@ -76,7 +76,7 @@
 
 								<div id="testimonial-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
-								<form class="nobottommargin" id="template-testimonialform" name="template-testimonialform" action="<?=$this->config->base_url();?>index.php/Admin/guardar_testimonio" method="post">
+								<form class="nobottommargin" id="template-testimonialform" name="template-testimonialform" action="<?=$this->config->base_url();?>index.php/Admin/guardar_testimonio" method="post" enctype="multipart/form-data">
 
 									<div class="form-process"></div>
 
@@ -86,15 +86,20 @@
 									</div>
 
 									<div class="col_one_third">
-										<label for="template-testimonialform-email">Correio eletrônico <small>*</small></label>
+										<label for="template-testimonialform-email">Correo Electrónico <small>*</small></label>
 										<input type="email" id="template-testimonialform-email" name="template-testimonialform-email" class="required email sm-form-control" />
 									</div>
 
 									<div class="clear"></div>
 
 									<div class="col_two_third">
-										<label for="template-testimonialform-subject">Titulo <small>*</small></label>
+										<label for="template-testimonialform-subject">Titulo  <small>*</small></label>
 										<input type="text" id="template-contactform-subject" name="template-testimonialform-subject" class="required sm-form-control" />
+									</div>
+
+									<div class="col_two_third">
+										<label for="template-testimonialform-email">Sua foto <small>(Opcional)</small></label>
+										<input type="file" id="template-testimonialform-file" name="template-testimonialform-file" class="sm-form-control" />
 									</div>
 
 									<div class="clear"></div>
@@ -119,7 +124,7 @@
 									$("#template-testimonialform").validate({
 										submitHandler: function(form) {
 											$('.form-process').fadeIn();
-											$(form).ajaxSubmit({
+											/*$(form).ajaxSubmit({
 												target: '#testimonial-form-result',
 												success: function() {
 													$('.form-process').fadeOut();
@@ -127,14 +132,16 @@
 													$('#testimonial-form-result').attr('data-notify-msg', $('#testimonial-form-result').html()).html('');
 													SEMICOLON.widget.notifications($('#testimonial-form-result'));
 												}
-											});
-										}
-									});
+											});*/
+								}
+							});
 
-								</script>
-							</div>
-						</div>
-					</div>
+								});
+
+</script>
+</div>
+</div>
+</div>
 
 <!--						<div class="fslider testimonial testimonial-full twitter-scroll twitter-feed" data-username="envato" data-count="2" data-animation="slide" data-arrows="false">
 							<i class="i-plain i-large color icon-envelope-alt divcenter bottommargin-sm"></i>
