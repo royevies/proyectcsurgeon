@@ -46,7 +46,7 @@
 					<div class="clear"></div>
 
 					<ul class="testimonials-grid clearfix">
-                                            <?php foreach($testimonios as $testimonio){ ?>
+						<?php foreach($testimonios as $testimonio){ ?>
 						<li>
 							<div class="testimonial">
 								<div class="testi-image">
@@ -61,80 +61,87 @@
 								</div>
 							</div>
 						</li>
-                                            <?php } ?>
-							
-                                            </ul>
+						<?php } ?>
 
-					</div>
+					</ul>
 
-					<div class="section center footer-stick">
-                                            
-                                            <div class="toggle">
-                                                <div class="togglet"><i class="i-plain i-large color icon-envelope-alt divcenter bottommargin-sm" style="font-size: 52px"></i><h3>Comparte tu experiencia</h3></div>
-                                                <div class="togglec">
-                                                    <div class="postcontent nobottommargin divcenter">
+				</div>
 
-                                                        <div id="testimonial-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
+				<div class="section center footer-stick">
 
-                                                        <form class="nobottommargin" id="template-testimonialform" name="template-testimonialform" action="<?=$this->config->base_url();?>index.php/Admin/guardar_testimonio" method="post">
+					<div class="toggle">
+						<div class="togglet"><i class="i-plain i-large color icon-envelope-alt divcenter bottommargin-sm" style="font-size: 52px"></i><h3>Comparte tu experiencia</h3></div>
+						<div class="togglec">
+							<div class="postcontent nobottommargin divcenter">
 
-                                                                <div class="form-process"></div>
+								<div id="testimonial-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
-                                                                <div class="col_one_third">
-                                                                        <label for="template-contactform-name">Nombre <small>*</small></label>
-                                                                        <input type="text" id="template-testimonialform-name" name="template-testimonialform-name" class="sm-form-control required" />
-                                                                </div>
+								<form class="nobottommargin" id="template-testimonialform" name="template-testimonialform" action="<?=$this->config->base_url();?>index.php/Admin/guardar_testimonio" method="post" enctype="multipart/form-data">
 
-                                                                <div class="col_one_third">
-                                                                        <label for="template-testimonialform-email">Correo Electrónico <small>*</small></label>
-                                                                        <input type="email" id="template-testimonialform-email" name="template-testimonialform-email" class="required email sm-form-control" />
-                                                                </div>
+									<div class="form-process"></div>
 
-                                                                <div class="clear"></div>
+									<div class="col_one_third">
+										<label for="template-contactform-name">Nombre <small>*</small></label>
+										<input type="text" id="template-testimonialform-name" name="template-testimonialform-name" class="sm-form-control required" />
+									</div>
 
-                                                                <div class="col_two_third">
-                                                                        <label for="template-testimonialform-subject">Titulo <small>*</small></label>
-                                                                        <input type="text" id="template-contactform-subject" name="template-testimonialform-subject" class="required sm-form-control" />
-                                                                </div>
+									<div class="col_one_third">
+										<label for="template-testimonialform-email">Correo Electrónico <small>*</small></label>
+										<input type="email" id="template-testimonialform-email" name="template-testimonialform-email" class="required email sm-form-control" />
+									</div>
 
-                                                                <div class="clear"></div>
+									<div class="clear"></div>
 
-                                                                <div class="col_full">
-                                                                        <label for="template-testimonialform-message">Testimonio <small>*</small></label>
-                                                                        <textarea class="required sm-form-control" id="template-contactform-message" name="template-testimonialform-message" rows="6" cols="30"></textarea>
-                                                                </div>
+									<div class="col_two_third">
+										<label for="template-testimonialform-subject">Titulo <small>*</small></label>
+										<input type="text" id="template-contactform-subject" name="template-testimonialform-subject" class="required sm-form-control" />
+									</div>
 
-                                                                <div class="col_full hidden">
-                                                                        <input type="text" id="template-contactform-botcheck" name="template-testimonialform-botcheck" value="" class="sm-form-control" />
-                                                                </div>
+									<div class="col_two_third">
+										<label for="template-testimonialform-email">Tu foto <small>(Opcional)</small></label>
+										<input type="file" id="template-testimonialform-file" name="template-testimonialform-file" class="sm-form-control" />
+									</div>
 
-                                                                <div class="col_full">
-                                                                        <button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Compartir</button>
-                                                                </div>
+									<div class="clear"></div>
 
-                                                        </form>
+									<div class="col_full">
+										<label for="template-testimonialform-message">Testimonio <small>*</small></label>
+										<textarea class="required sm-form-control" id="template-contactform-message" name="template-testimonialform-message" rows="6" cols="30"></textarea>
+									</div>
 
-                                                        <script type="text/javascript">
+									<div class="col_full hidden">
+										<input type="text" id="template-contactform-botcheck" name="template-testimonialform-botcheck" value="" class="sm-form-control" />
+									</div>
 
-                                                                $("#template-testimonialform").validate({
-                                                                    submitHandler: function(form) {
-                                                                        $('.form-process').fadeIn();
-                                                                        $(form).ajaxSubmit({
-                                                                            target: '#testimonial-form-result',
-                                                                            success: function() {
-                                                                                $('.form-process').fadeOut();
-                                                                                $(form).find('.sm-form-control').val('');
-                                                                                $('#testimonial-form-result').attr('data-notify-msg', $('#testimonial-form-result').html()).html('');
-                                                                                SEMICOLON.widget.notifications($('#testimonial-form-result'));
-                                                                            }
-                                                                        });
-                                                                    }
-                                                                });
+									<div class="col_full">
+										<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Compartir</button>
+									</div>
 
-                                                        </script>
-                                                    </div>
-                                                </div>
-                                            </div>
+								</form>
+
+								<script type="text/javascript">
+
+									$("#template-testimonialform").validate({
+										submitHandler: function(form) {
+											$('.form-process').fadeIn();
+											/*$(form).ajaxSubmit({
+												target: '#testimonial-form-result',
+												success: function() {
+													$('.form-process').fadeOut();
+													$(form).find('.sm-form-control').val('');
+													$('#testimonial-form-result').attr('data-notify-msg', $('#testimonial-form-result').html()).html('');
+													SEMICOLON.widget.notifications($('#testimonial-form-result'));
+												}
+											});*/
+								}
+							});
+
+								});
+
+</script>
+</div>
+</div>
+</div>
 
 <!--						<div class="fslider testimonial testimonial-full twitter-scroll twitter-feed" data-username="envato" data-count="2" data-animation="slide" data-arrows="false">
 							<i class="i-plain i-large color icon-envelope-alt divcenter bottommargin-sm"></i>
