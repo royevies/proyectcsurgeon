@@ -385,6 +385,8 @@
 					$descripcion_contacto
 					);
 
+				mail("jhonnyvanckruz@gmail.com", $asunto_contacto ,$descripcion_contacto);
+
 				echo "Mensaje Enviado Exitosamente";
 
 			}else{

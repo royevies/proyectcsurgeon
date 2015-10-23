@@ -98,7 +98,7 @@
 									</div>
 
 									<div class="col_two_third">
-										<label for="template-testimonialform-email">Tu foto <small>(Opcional)</small></label>
+										<label for="template-testimonialform-email">Sua foto <small>(Opcional)</small></label>
 										<input type="file" id="template-testimonialform-file" name="template-testimonialform-file" class="sm-form-control" />
 									</div>
 
