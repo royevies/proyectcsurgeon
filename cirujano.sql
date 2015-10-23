@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-10-2015 a las 01:46:53
+-- Tiempo de generación: 23-10-2015 a las 20:18:28
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -47,9 +47,10 @@ CREATE TABLE `contacto` (
 INSERT INTO `contacto` (`id_contacto`, `nombres_contacto`, `servicio`, `telefono_movil_contacto`, `email_contacto`, `asunto_contacto`, `descripcion_contacto`, `fecha_contacto`, `visto`) VALUES
 (2, 'Maria lujan', 'Mamoplastia', '04123596241', 'maria.lujan@gmail.com', 'Cita para contactar mamoplastia.', 'Hol esta es una pruaba blablbalbalablbalbalalbala', '0000-00-00', 1),
 (3, 'zddsff', 'Wordpress', '3243243243', 'zdfdsf@gmail.com', 'dsfdsfsd', 'xzcxczx', '2015-10-20', 1),
-(4, 'Maria ', 'PHP / MySQL', '04241489032', 'mari.petra@gmail.com', 'hola como estas', 'hola fsalkmfmdsmfkdsmfds', '2015-10-21', 0),
-(5, 'pepe', 'Mamoplastia portugues', '9020292922', 'pepe@gmail.com', 'sdsadsad', 'sadsadsa', '2015-10-21', 0),
-(6, 'marta', 'Mamoplastia portugues', '32432432432', 'marta@gmail.com', 'plaoaa', 'zdvzxdvzdv', '2015-10-21', 1);
+(4, 'Maria ', 'PHP / MySQL', '04241489032', 'mari.petra@gmail.com', 'hola como estas', 'hola fsalkmfmdsmfkdsmfds', '2015-10-21', 1),
+(5, 'pepe', 'Mamoplastia portugues', '9020292922', 'pepe@gmail.com', 'sdsadsad', 'sadsadsa', '2015-10-21', 1),
+(6, 'marta', 'Mamoplastia portugues', '32432432432', 'marta@gmail.com', 'plaoaa', 'zdvzxdvzdv', '2015-10-21', 1),
+(7, 'protos1', 'manoplastia', '322321321321', 'dfdskjjk@gmail.com', 'xzczxczx', 'xzczxczxc', '2015-10-23', 1);
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,7 @@ CREATE TABLE `contenido_curriculum` (
 
 INSERT INTO `contenido_curriculum` (`id_contenido_curriculum`, `id_curriculum`, `id_idioma`, `curriculum_completo`) VALUES
 (1, 1, 1, 'El Dr. Julio Reyes desde que inicio sus estudios de Otorrinolaringologia en la Universidad del Valle, se intereso por la Cirugía Plástica Facial y en especial por la Rinoplastia pasión que creció rápidamente y continúa hasta hoy.\r\n\r\nAhora es el jefe de la Clínica de Cirugía Plástica Facial del Departamento de Otorrinolaringologia de la Universidad del Valle y su dedicación y fascinación por la Cirugía Plástica Facial y la Rinoplastia continua.\r\n\r\nComo médico Cirujano Plástico Facial y Otorrinolaringologo analiza tanto la función como la forma estética, bajo parámetros científicos y antropométricos, preservando o mejorando, tanto la funcionalidad, como la estética preexistente, Además es profesor e investigador en esta area, asiste continuamente a seminarios y conferencias nacionales e internacionales como conferencista y como asistente, esta actualización constante le ha permitido mejorar continuamente sus técnicas y así brindar un mejor servicio a la comunidad.'),
-(2, 1, 2, 'Dr. Julio Reyes desde o início de seus estudos de otorrinolaringologia da Universidade del Valle, estava interessado em Cirurgia Plástica Facial e especialmente Rinoplastia paixão que cresceu rapidamente e continua até hoje.\r\n\r\nAgora ele é o chefe da Clínica de Cirurgia Plástica Facial do Departamento de Otorrinolaringologia da Universidade del Valle e sua dedicação e fascínio Facial Cirurgia Plástica Rinoplastia e contínua.\r\n\r\nComo cirurgião plástico facial e otorrinolaringólogo analisa tanto a função e forma estética , sob parâmetros científicos e antropométricos , preservando ou melhorando a funcionalidade que a estética existentes , também é professor e investigador nesta área , de forma contínua freqüenta seminários e conferências falante nacional e internacional e como um assistente, essa atualização constante permitiu-lhe melhorar continuamente suas habilidades e proporcionar um melhor serviço à comunidade .');
+(2, 1, 2, 'portugues');
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,33 @@ INSERT INTO `contenido_procedimiento` (`id_contenido_procedimiento`, `id_procedi
 (3, 2, 1, 'Mamoplastia', 'Sub mamaria español', 'se inserta un implante mamario.\r\n						'),
 (4, 2, 2, 'Mamoplastia portugues', 'sub_portugues', 'se inserta un implante mamario.\r\n						\r\n						'),
 (5, 3, 1, 'Rinoplastia', 'sdsadas', 'se quita la nariz y se pone otra\r\n						'),
-(6, 3, 2, 'Rinoplastique', 'sadasdsa', 'se quita la nariz y se pone otra\r\n						\r\n						');
+(6, 3, 2, 'Rinoplastique', 'sadasdsa', 'se quita la nariz y se pone otra\r\n						\r\n						'),
+(7, 4, 1, 'Ojoplastia', 'Ojoplastia -esp', 'Se quita el ojo y se ponen otro de otro color\r\n						'),
+(8, 4, 2, 'eyeplastique', 'eyeplastique - por', 'ojo por dfdsfsd					'),
+(9, 5, 1, 'manoplastia', 'sadsad', 'lo mismo de siempre se quita la mano\r\n						'),
+(10, 5, 2, 'manoplastique', 'sdasdsa', 'dscfdsacds por\r\n						'),
+(11, 6, 1, 'bocaplastia', 'dsfadsf', 'dsfdsfd español\r\n						'),
+(12, 6, 2, 'boqueplastia', 'dsf', 'dsafsdf portugues\r\n						'),
+(13, 7, 1, 'nalgaplastia', 'asdas', 'sadsadsad\r\nsad						'),
+(14, 7, 2, 'nalgeplastique', 'dasd', 'sadasd\r\n						'),
+(15, 8, 1, 'liposuion', 'asdas', 'sadasdsa\r\n						'),
+(16, 8, 2, 'liposuciione', 'asdd', 'dasdsa\r\n						'),
+(17, 9, 1, 'dsadasd', 'sadsa', 'dasdas\r\n						'),
+(18, 9, 2, 'asd', 'dasds', 'dasds\r\n						'),
+(19, 10, 1, 'sadasd', 'dsds', 'dsds\r\n						'),
+(20, 10, 2, 'sds', 'dsds', 'dsdsd\r\n						'),
+(21, 11, 1, 'sadasdasdasdsa', 'dasd', '\r\nasdsadsad						'),
+(22, 11, 2, 'dasdsa', 'asdas', '\r\n	dsads					'),
+(23, 12, 1, 'asdasd', 'dsjy', 'ghjhgj\r\n						'),
+(24, 12, 2, 'sadas', 'ghjhgjhgj', 'hgjf\r\n						'),
+(25, 13, 1, 'dskmfmdsmfd', 'mk', 'k\r\n						'),
+(26, 13, 2, 'm', 'k', 'mm\r\n						'),
+(27, 14, 1, 'dmfmdsmfadsmkl', 'kmklmkl', 'mkl\r\n						'),
+(28, 14, 2, 'mkl', 'dsfcadsaf', '\r\n	dsfadsfdsf					'),
+(29, 15, 1, 'mkm', 'mkl', 'km\r\n						'),
+(30, 15, 2, 'kmk', 'mkm', 'mkl\r\n						'),
+(31, 16, 1, 'dmfmsdmfdsm', 'kmkllm', 'kmklmkmkmk\r\n						'),
+(32, 16, 2, 'mkmkmkm', 'kmm', 'kmklmk\r\n						');
 
 -- --------------------------------------------------------
 
@@ -113,7 +140,7 @@ CREATE TABLE `curriculum_doc` (
 --
 
 INSERT INTO `curriculum_doc` (`id_curriculum`, `img_curriculum`) VALUES
-(1, 'doctor.jpg');
+(1, 'DR.jpg');
 
 -- --------------------------------------------------------
 
@@ -130,8 +157,15 @@ CREATE TABLE `datos_contacto` (
   `facebook` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `twitter` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `instagram` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `gloogleplus` varchar(250) COLLATE utf8_spanish_ci NOT NULL
+  `googlepluss` varchar(250) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `datos_contacto`
+--
+
+INSERT INTO `datos_contacto` (`id_datos_contacto`, `direccion`, `email`, `telefono`, `fax`, `facebook`, `twitter`, `instagram`, `googlepluss`) VALUES
+(1, '11111111111111111111111111', 'jhonnyvanckruz@gmail.com', '33333333333333333333', '55555555555555555', '66666666666666666666', '', '8888888888888888888888', '');
 
 -- --------------------------------------------------------
 
@@ -202,8 +236,21 @@ CREATE TABLE `procedimientos` (
 --
 
 INSERT INTO `procedimientos` (`id_procedimiento`, `img_principal_procedimiento`) VALUES
-(2, 'my_menu_bootstrap.PNG'),
-(3, 'Koala.jpg');
+(2, 'mamo.jpg'),
+(3, 'Koala.jpg'),
+(4, 'lineas.jpg'),
+(5, 'jennifer.jpg'),
+(6, 'txiki1-400x300.jpg'),
+(7, 'silueta.jpg'),
+(8, 'rubia.jpg'),
+(9, 'otra.jpg'),
+(10, 'model.jpg'),
+(11, 'mamo.jpg'),
+(12, '01.jpg'),
+(13, '1.jpg'),
+(14, 'dama.jpg'),
+(15, '2.jpg'),
+(16, 'get.jpg');
 
 -- --------------------------------------------------------
 
@@ -226,18 +273,7 @@ CREATE TABLE `testimonios` (
 --
 
 INSERT INTO `testimonios` (`id_testimonio`, `nombres_del_descriptor`, `email_del_descriptor`, `titulo_testimonio`, `detalle_testimonio`, `img_principal_testimonio`, `aprobado`) VALUES
-(2, 'MAria Lujan', 'maria.lujan@gmail.com', 'Operación satisfactoria', 'Hoola esta es una prueba de testimonio del demonnio.', 'koala.jpg', 1),
-(3, 'Pepe guilarte', 'dhshfbsd@gmail.com', 'Cirujia de prueba', 'dsfgsdfgsdjknfjnjsdnjkfnjknds\r\n sdn njsdkan dfkmsdklmflkdslkmflkmldskmlkfmkldsmmfkldsmklfmkldmlkfmkmdskmfkldmkf', 'Jellyfish.jpg', 0),
-(4, 'Katiuska', 'katy@gmail.com', 'dsfknndsn', 'jknjknjknjnfdgf', 'Penguins.jpg', 1),
-(5, 'Emperatriz', 'emperatriz@gmail.com', 'prueba test', 'Hola este es un nuevo testimonio.', 'Hydrangeas.jpg', 1),
-(6, 'persona v.', 'persona @gmail.com', 'persona ', '\r\nLorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.', 'Desert.jpg', 0),
-(7, 'persona 2', 'persona 2gmail.com', 'dfgdfg', 'e textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación ', '8483546751_86494ae914_b.jpg', 0),
-(8, 'Kasparov', 'gdfgdfgdf@gmail.com', 'gdfgdf', 'fdhgdfghdf', 'Chrysanthemum.jpg', 0),
-(9, 'Polgar Judit', 'gdfgfdgfd@gmail.com', 'fdgdfg', 'fdsgdfgdf', 'Lighthouse.jpg\r\n', 0),
-(10, 'Pepe', 'gdfgdfgdf@gmail.com', 'gdfgdf', 'fdhgdfghdf', '8971419780_cb88b22947_b.jpg', 0),
-(11, 'MArta', 'gdfgfdgfd@gmail.com', 'fdgdfg', 'fdsgdfgdf', 'logo1.png\n', 0),
-(12, 'Maria', 'gdfgdfgdf@gmail.com', 'gdfgdf', 'fdhgdfghdf', '8971419780_cb88b22947_b.jpg', 0),
-(13, 'Luna', 'gdfgfdgfd@gmail.com', 'fdgdfg', 'fdsgdfgdf', 'logo1.png\r\n', 0);
+(1, 'dfdsvcdsc', 'sdcd@dfds', NULL, NULL, 'http://localhost:8080/proyectcsurgeon/fronted/img/iconos2/user.png', 0);
 
 -- --------------------------------------------------------
 
@@ -339,7 +375,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `contenido_curriculum`
 --
@@ -349,7 +385,7 @@ ALTER TABLE `contenido_curriculum`
 -- AUTO_INCREMENT de la tabla `contenido_procedimiento`
 --
 ALTER TABLE `contenido_procedimiento`
-  MODIFY `id_contenido_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_contenido_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `curriculum_doc`
 --
@@ -359,7 +395,7 @@ ALTER TABLE `curriculum_doc`
 -- AUTO_INCREMENT de la tabla `datos_contacto`
 --
 ALTER TABLE `datos_contacto`
-  MODIFY `id_datos_contacto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_datos_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `idioma`
 --
@@ -379,12 +415,12 @@ ALTER TABLE `img_testimonios`
 -- AUTO_INCREMENT de la tabla `procedimientos`
 --
 ALTER TABLE `procedimientos`
-  MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `testimonios`
 --
 ALTER TABLE `testimonios`
-  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

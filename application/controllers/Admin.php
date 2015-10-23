@@ -103,6 +103,30 @@
 
 		}
 
+
+		public function guardar_testimonio(){
+			echo "<pre>";
+			print_r($_POST);
+			echo "</pre>";
+			echo "<pre>";
+			print_r($_FILES);
+			echo "</pre>";
+
+			$nombres_del_descriptor = $this->input->post("template-testimonialform-name");
+			$email_del_descriptor = $this->input->post("template-testimonialform-email");
+			$titulo_testimonio = $this->input->post("template-contactform-subject");
+			$detalle_testimonio = $this->input->post("template-contactform-message");
+			//$img_principal_testimonio = ( $_FILES["img_principal"]["name"] == null ? $this->config->base_url()."fronted/img/iconos2/user.png" : $_FILES["img_principal"]["name"] );
+			$img_principal_testimonio = "user.png";
+			$this->Cirujano_model->crear_testimonios(
+				$nombres_del_descriptor,
+				$email_del_descriptor,
+				$titulo_testimonio,
+				$detalle_testimonio,
+				$img_principal_testimonio
+				);
+		}
+
 		public function procesar_testimonio(){
 			if( $this->input->post() ){
 				$id_testimonio = $this->input->post("id_testimonio_aprobado");

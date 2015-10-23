@@ -105,6 +105,23 @@
 		   	$this->db->insert("contenido_procedimiento", [ "id_procedimiento" => $id_procedimiento , "titulo" => $titulo_portugues , "sub_titulo" => $sub_titulo_portugues , "detalle" => $detalle_portugues ,"id_idioma" => 2 ] );
 		   }
 
+		   public function crear_testimonios(
+		   	$nombres_del_descriptor,
+		   	$email_del_descriptor,
+		   	$titulo_testimonio,
+		   	$detalle_testimonio,
+		   	$img_principal_testimonio
+		   	){
+
+		   	$this->db->insert("testimonios",[
+		   		"nombres_del_descriptor" => $nombres_del_descriptor,
+		   		"email_del_descriptor" =>  $email_del_descriptor,
+		   		"titulo_testimonio"  => $titulo_testimonio,
+		   		"detalle_testimonio" => $detalle_testimonio,
+		   		"img_principal_testimonio" => $img_principal_testimonio
+		   		]);
+		   }
+
 		   public function get_testimonios(){
 		   	$query = $this->db->query("select * from testimonios");
 		   	return $query;	
