@@ -491,7 +491,9 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 					<section id="section-testimonials" class="page-section topmargin-lg">
 
-						<div class="heading-block center">
+                                            <div class="container clearfix">
+                                                
+                                                <div class="heading-block center">
 							<h2><span>Testimonios</span></h2>
 							<span>Esto es lo que dicen mis clientes.</span>
 						</div>
@@ -560,6 +562,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/testimonios"><i class="i-plain icon-plus"></i> Leer mas</a></div>
 
 							<div class="clear"></div>
+                                                        
+                                                        </div>
 
 						</section>
 
