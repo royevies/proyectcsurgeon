@@ -17,7 +17,8 @@ class Web extends CI_Controller {
 		$this->load->view('fronted_inicio/index',[
 			"procedimientos" => $this->Cirujano_model->get_procedimientos(),
 			"curriculum"     => $this->Cirujano_model->get_curriculum()->result(),
-			"img_curriculum"     => $this->Cirujano_model->get_curriculum_img()->result()
+			"img_curriculum" => $this->Cirujano_model->get_curriculum_img()->result(),
+			"datos_personales" => $this->Cirujano_model->ver_datos_contacto()->result()
 			]);
 	}
 
@@ -41,8 +42,7 @@ class Web extends CI_Controller {
 		$this->load->view('fronted_inicio/footer');
 	}
         
-        
-                   
+          
         public function galeria(){
             $procedimientos = $this->Cirujano_model->get_procedimientos()->result();
             
@@ -50,15 +50,14 @@ class Web extends CI_Controller {
 				$this->load->view('fronted_inicio/header',[
 					"ruta_esp" => $this->config->base_url()."index.php/web/galeria",
 					"ruta_por" => $this->config->base_url()."index.php/por/galeria"
+
 			]);
 		$this->load->view('fronted_inicio/galeria', ["galeria" => $procedimientos] );
 		$this->load->view('fronted_inicio/footer');
-;
         }
         
         public function fotos($id){
             $images = $this->Cirujano_model->ver_img_procedimientos($id)->result();
             $this->load->view('fronted_inicio/fotos', ["imagenes" => $images] );
-;
         }
 }

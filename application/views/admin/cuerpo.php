@@ -180,8 +180,8 @@
 
 						</div>
 
-						<div id="desplegar_guardado" style="background:#f9f9f9;width:20%;float:left;padding:10px;cursor:pointer;">
-							<button class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar Nuevo</button>
+						<div style="background:#f9f9f9;width:20%;float:left;padding:10px;cursor:pointer;">
+							<button id="desplegar_guardado" class="btn btn-primary" ><span class="glyphicon glyphicon-floppy-disk"></span> Guardar Nuevo</button>
 						</div>
 
 						<div style="clear:both;"></div>
@@ -563,7 +563,7 @@ $("#titulo_antes_despues").html( $(this).data("nombrepro") );
 $("#id_procedimiento").val( $(this).data("idimagen") );
 
 $("#desplegar_guardado").on("click",function(){
-	$("#nuevo_galeria_especifica").slideToggle();
+	$("#nuevo_galeria_especifica").slideDown();
 });
 
 
@@ -592,11 +592,11 @@ $("#contenido_galeria_especifica").html("<p style='color:red;'>Ha ocurrido un er
 		var html = '<div style="width:100%;overflow:hidden;margin-bottom:16px;">';
 		html +='<div style="width:50%;float:left;">';
 		html +='<div style="width:100%;padding:12px;text-align:center;font-size:1.3em;">Antes</div>';
-		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/Procedimientos/'+img_antes+'" class="img img-responsive">';
+		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/procedimientos/'+img_antes+'" class="img img-responsive">';
 		html +='</div>';
 		html +='<div style="width:50%;float:left;">';
 		html +='<div style="width:100%;padding:12px;text-align:center;font-size:1.3em;">Despues</div>';
-		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/Procedimientos/'+img_despues+'" class="img img-responsive">';
+		html +='<img src="<?=$this->config->base_url()?>fronted_inicio/procedimientos/'+img_despues+'" class="img img-responsive">';
 		html +='</div>';
 		html +='</div>';
 		html +='<hr>';
@@ -798,6 +798,7 @@ $(".sobre_img_procedimientos_disparador").on("click",function(){
 
 $("#cerrar_galeria_especifica").on("click",function(){
 	$("#galeria_especifica").slideUp("fast");
+	$("#nuevo_galeria_especifica").slideUp("fast");
 	$("#menu_galerias").slideDown("fast");
 });
 
