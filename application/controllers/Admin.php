@@ -387,22 +387,22 @@
 
 						//cargamos la libreria email de ci
 				$this->load->library("email");
-				
+
 		//configuracion para gmail
 				$configGmail = array(
 					'protocol' => 'smtp',
 					'smtp_host' => 'ssl://smtp.gmail.com',
 					'smtp_port' => 465,
 					'smtp_user' => 'jhonnyvanckruz@gmail.com',
-					'smtp_pass' => 'nokeador21',
+					'smtp_pass' => 'sdfd',
 					'mailtype' => 'html',
 					'charset' => 'utf-8',
 					'newline' => "\r\n"
 					);    
-				
+
 		//cargamos la configuración para enviar con gmail
 				$this->email->initialize($configGmail);
-				
+
 				$this->email->from('nombre o correo que envia');
 				$this->email->to("para quien es");
 				$this->email->subject('Bienvenido/a a uno-de-piera.com');

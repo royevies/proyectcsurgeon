@@ -48,7 +48,7 @@
 				</div>
 
 				<div class="col-xs-10 col-xs-offset-1 titulo">
-					<h1>Dr. Julio Reyes <small style="color:#CCC;font-size:0.5em;"> Administrador de Contendos</small></h1>
+					<h1>Dr. Julio Reyes <small style="color:#CCC;font-size:0.5em;"> Administrador de Contenidos</small></h1>
 				</div>
 			</div>
 		</div>
