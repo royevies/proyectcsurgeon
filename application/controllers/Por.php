@@ -14,9 +14,10 @@ class Por extends CI_Controller {
 	public function index(){
 		$this->load->view('fronted_inicio/head_inicio');
 		$this->load->view('fronted_inicio/index_por',[
-			"procedimientos" => $this->Cirujano_model->get_procedimientos_por(),
-			"curriculum"     => $this->Cirujano_model->get_curriculum_por()->result(),
-			"img_curriculum"     => $this->Cirujano_model->get_curriculum_img()->result()
+			"procedimientos"   => $this->Cirujano_model->get_procedimientos_por(),
+			"curriculum"       => $this->Cirujano_model->get_curriculum_por()->result(),
+			"img_curriculum"   => $this->Cirujano_model->get_curriculum_img()->result(),
+			"datos_personales" => $this->Cirujano_model->ver_datos_contacto()->result()
 			]);
 	}
 

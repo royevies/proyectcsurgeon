@@ -493,38 +493,23 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 				<section id="section-testimonials" class="page-section topmargin-lg">
 
-                                    <div class="container clearfix">
-                                    
-                                        <div class="heading-block center">
-						<h2><span>DEPOIMENTOS</span></h2>
-						<span>Isto é o que meus clientes dizem.</span>
-					</div>
+					<div class="container clearfix">
 
-					<ul class="testimonials-grid clearfix">
-						<li>
-							<div class="testimonial">
-								<div class="testi-image">
-									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/1.jpg" alt="Customer Testimonails"></a>
-								</div>
-								<div class="testi-content">
-									<p>El Dr. Julio Reyes cambió mi vida, ahora soy una mujer mas hermosa y mucho mas feliz!</p>
-									<div class="testi-meta">
-										Julia Roberts
-										<span>...</span>
+						<div class="heading-block center">
+							<h2><span>DEPOIMENTOS</span></h2>
+							<span>Isto é o que meus clientes dizem.</span>
+						</div>
+
+						<ul class="testimonials-grid clearfix">
+							<li>
+								<div class="testimonial">
+									<div class="testi-image">
+										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/1.jpg" alt="Customer Testimonails"></a>
 									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="testimonial">
-								<div class="testi-image">
-									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/2.jpg" alt="Customer Testimonails"></a>
-								</div>
-								<div class="testi-content">
-									<p>Después de mucho tiempo decidí consultar con el Dr. Reyes la posibilidad de realizarme una rinoplastia y les cuento que desde que 
-										entre en su consultorio me generó mucha confianza, la confianza que necesitaba para dar ese paso definitivo a una nueva apariencia.</p>
+									<div class="testi-content">
+										<p>El Dr. Julio Reyes cambió mi vida, ahora soy una mujer mas hermosa y mucho mas feliz!</p>
 										<div class="testi-meta">
-											Angelina Jolie
+											Julia Roberts
 											<span>...</span>
 										</div>
 									</div>
@@ -533,39 +518,54 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<li>
 								<div class="testimonial">
 									<div class="testi-image">
-										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/4.jpg" alt="Customer Testimonails"></a>
+										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/2.jpg" alt="Customer Testimonails"></a>
 									</div>
 									<div class="testi-content">
-										<p>El Dr. Reyes y todo su equipo de trabajo me trataron muy bien, el resultado fue excelente pienso que después de haber investigado mucho y estudiar todas mis posibilidades escogí el mejor cirujano, quede tal y como yo esperaba. Muchas Gracias Doctor.</p>
-										<div class="testi-meta">
-											Jennifer Lopez
-											<span>...</span>
+										<p>Después de mucho tiempo decidí consultar con el Dr. Reyes la posibilidad de realizarme una rinoplastia y les cuento que desde que 
+											entre en su consultorio me generó mucha confianza, la confianza que necesitaba para dar ese paso definitivo a una nueva apariencia.</p>
+											<div class="testi-meta">
+												Angelina Jolie
+												<span>...</span>
+											</div>
 										</div>
 									</div>
-								</div>
-							</li>
-							<li>
-								<div class="testimonial">
-									<div class="testi-image">
-										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/3.jpg" alt="Customer Testimonails"></a>
-									</div>
-									<div class="testi-content">
-										<p>Me siento feliz, cuando me miro en el espejo y veo mi nuevo aspecto solo puedo sonreír, la verdad es que quede muy satisfecha,me siento muy bonita y segura de mi misma.</p>
-										<div class="testi-meta">
-											Mary Jane
-											<span>...</span>
+								</li>
+								<li>
+									<div class="testimonial">
+										<div class="testi-image">
+											<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/4.jpg" alt="Customer Testimonails"></a>
+										</div>
+										<div class="testi-content">
+											<p>El Dr. Reyes y todo su equipo de trabajo me trataron muy bien, el resultado fue excelente pienso que después de haber investigado mucho y estudiar todas mis posibilidades escogí el mejor cirujano, quede tal y como yo esperaba. Muchas Gracias Doctor.</p>
+											<div class="testi-meta">
+												Jennifer Lopez
+												<span>...</span>
+											</div>
 										</div>
 									</div>
-								</div>
-							</li>
+								</li>
+								<li>
+									<div class="testimonial">
+										<div class="testi-image">
+											<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/3.jpg" alt="Customer Testimonails"></a>
+										</div>
+										<div class="testi-content">
+											<p>Me siento feliz, cuando me miro en el espejo y veo mi nuevo aspecto solo puedo sonreír, la verdad es que quede muy satisfecha,me siento muy bonita y segura de mi misma.</p>
+											<div class="testi-meta">
+												Mary Jane
+												<span>...</span>
+											</div>
+										</div>
+									</div>
+								</li>
 
-						</ul>
+							</ul>
 
-						<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/testimonios"><i class="i-plain icon-plus"></i> Leer mas</a></div>
+							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/testimonios"><i class="i-plain icon-plus"></i> Leer mas</a></div>
 
-						<div class="clear"></div>
-                                                
-                                                </div>
+							<div class="clear"></div>
+
+						</div>
 
 					</section>
 
@@ -574,8 +574,21 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<div class="heading-block title-center">
 							<h2><span>Contato</span></h2>
 							<span>Ainda tem dúvidas? Aqui você pode encontrarme.</span>
-						</div>
+							<?php 
 
+							foreach ($datos_personales as $dato) {
+								$direccion = $dato->direccion;
+								$email = $dato->email;
+								$telefono = $dato->telefono;
+								$fax = $dato->fax;
+								$facebook = $dato->facebook;
+								$twitter = $dato->twitter;
+								$instagram = $dato->instagram;
+								$googlepluss = $dato->googlepluss;
+							}
+
+							?>
+						</div>
 					<!-- Google Map
 					============================================= -->
 					<section id="google-map" class="gmap slider-parallax"></section>
@@ -711,13 +724,14 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								<div class="sidebar col_last nobottommargin">
 
 									<address>
-										<strong>Headquarters:</strong><br>
-										795 Folsom Ave, Suite 600<br>
-										San Francisco, CA 94107<br>
+										<strong>Endereço:</strong><br>
+										<p>
+											<?php echo $direccion; ?>
+										</p>
 									</address>
-									<abbr title="Phone Number"><strong>Phone:</strong></abbr> (91) 8547 632521<br>
-									<abbr title="Fax"><strong>Fax:</strong></abbr> (91) 11 4752 1433<br>
-									<abbr title="Email Address"><strong>Email:</strong></abbr> info@canvas.com
+									<abbr title="Phone Number"><strong>Telefone:</strong></abbr><?php echo $telefono; ?><br>
+									<abbr title="Fax"><strong>Fax:</strong></abbr> <?php echo $fax; ?><br>
+									<abbr title="Email Address"><strong>Email:</strong></abbr><?php echo $email; ?>
 
 										<?php /* ?>
 									<div class="widget noborder notoppadding">
@@ -811,7 +825,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 				<div class="container clearfix">
 
 					<div class="col_half">
-						Copyrights &copy; 2014 All Rights Reserved by Protos Lab.<br>
+						Copyrights &copy; 2015 All Rights Reserved by Protos Tecnology.<br>
 						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
 					</div>
 
@@ -860,7 +874,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 						<div class="clear"></div>
 
-						<i class="icon-envelope2"></i> info@canvas.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-11-6541-6369 <span class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
+						<i class="icon-envelope2"></i> <?php echo $email; ?> <span class="middot">&middot;</span> <i class="icon-headphones"></i> <?php echo $telefono; ?> <span class="middot">&middot;</span> 
 					</div>
 
 				</div>
