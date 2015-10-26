@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-10-2015 a las 20:18:28
+-- Tiempo de generación: 26-10-2015 a las 20:58:17
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -71,7 +71,7 @@ CREATE TABLE `contenido_curriculum` (
 
 INSERT INTO `contenido_curriculum` (`id_contenido_curriculum`, `id_curriculum`, `id_idioma`, `curriculum_completo`) VALUES
 (1, 1, 1, 'El Dr. Julio Reyes desde que inicio sus estudios de Otorrinolaringologia en la Universidad del Valle, se intereso por la Cirugía Plástica Facial y en especial por la Rinoplastia pasión que creció rápidamente y continúa hasta hoy.\r\n\r\nAhora es el jefe de la Clínica de Cirugía Plástica Facial del Departamento de Otorrinolaringologia de la Universidad del Valle y su dedicación y fascinación por la Cirugía Plástica Facial y la Rinoplastia continua.\r\n\r\nComo médico Cirujano Plástico Facial y Otorrinolaringologo analiza tanto la función como la forma estética, bajo parámetros científicos y antropométricos, preservando o mejorando, tanto la funcionalidad, como la estética preexistente, Además es profesor e investigador en esta area, asiste continuamente a seminarios y conferencias nacionales e internacionales como conferencista y como asistente, esta actualización constante le ha permitido mejorar continuamente sus técnicas y así brindar un mejor servicio a la comunidad.'),
-(2, 1, 2, 'portugues');
+(2, 1, 2, 'Dr. Julio Reyes desde o início de seus estudos de otorrinolaringologia da Universidade del Valle, estava interessado em Cirurgia Plástica Facial e especialmente Rinoplastia paixão que cresceu rapidamente e continua até hoje. Agora ele é o chefe da Clínica de Cirurgia Plástica Facial do Departamento de Otorrinolaringologia da Universidade del Valle e sua dedicação e fascínio Facial Cirurgia Plástica Rinoplastia e contínua. Como cirurgião plástico facial e otorrinolaringólogo analisa tanto a função e forma estética, sob parâmetros científicos e antropométricos, preservando ou melhorando a funcionalidade que a estética existentes, também é professor e investigador nesta área, de forma contínua freqüenta seminários e conferências falante nacional e internacional e como um assistente, essa atualização constante permitiu-lhe melhorar continuamente suas habilidades e proporcionar um melhor serviço à comunidade.');
 
 -- --------------------------------------------------------
 
@@ -165,7 +165,7 @@ CREATE TABLE `datos_contacto` (
 --
 
 INSERT INTO `datos_contacto` (`id_datos_contacto`, `direccion`, `email`, `telefono`, `fax`, `facebook`, `twitter`, `instagram`, `googlepluss`) VALUES
-(1, '11111111111111111111111111', 'jhonnyvanckruz@gmail.com', '33333333333333333333', '55555555555555555', '66666666666666666666', '', '8888888888888888888888', '');
+(1, '11111111111111111111111111', 'jhonnyvanckruz@gmail.com', '33333333333333333333', '55555555555555555', '66666666666666666666', 'dfvdx', '8888888888888888888888', 'vcxvxvx');
 
 -- --------------------------------------------------------
 
@@ -206,7 +206,9 @@ CREATE TABLE `img_procedimientos` (
 INSERT INTO `img_procedimientos` (`id_img_procedimiento`, `id_procedimiento`, `img_antes`, `img_despues`) VALUES
 (1, 2, 'Desert.jpg', 'Penguins.jpg'),
 (2, 3, 'Koala.jpg', 'Jellyfish.jpg'),
-(3, 3, 'jennifer.jpg', 'rinoplastia_20131008_1267281930.png');
+(3, 3, 'jennifer.jpg', 'rinoplastia_20131008_1267281930.png'),
+(4, 10, 'Jellyfish.jpg', 'Tulips.jpg'),
+(5, 12, 'Jellyfish.jpg', 'Penguins.jpg');
 
 -- --------------------------------------------------------
 
@@ -265,15 +267,24 @@ CREATE TABLE `testimonios` (
   `titulo_testimonio` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `detalle_testimonio` text COLLATE utf8_spanish_ci,
   `img_principal_testimonio` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `aprobado` int(11) NOT NULL
+  `aprobado` int(11) NOT NULL,
+  `orden_inicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `testimonios`
 --
 
-INSERT INTO `testimonios` (`id_testimonio`, `nombres_del_descriptor`, `email_del_descriptor`, `titulo_testimonio`, `detalle_testimonio`, `img_principal_testimonio`, `aprobado`) VALUES
-(1, 'dfdsvcdsc', 'sdcd@dfds', NULL, NULL, 'http://localhost:8080/proyectcsurgeon/fronted/img/iconos2/user.png', 0);
+INSERT INTO `testimonios` (`id_testimonio`, `nombres_del_descriptor`, `email_del_descriptor`, `titulo_testimonio`, `detalle_testimonio`, `img_principal_testimonio`, `aprobado`, `orden_inicio`) VALUES
+(4, 'Maria', 'asdsa@sdsadas', 'dfdsfd', 'dsfdsfdsfsdfsd', 'dama.jpg', 1, 1),
+(5, 'Karla', 'zxc@dsfssdac', 'dsfdsf', 'dsfdsfdsfd', 'koala.jpg', 1, 1),
+(6, 'Katiuska', 'csdc@ssssx', 'dsfdsf', 'eeeeeeeeeeeeeeeee', 'user.png', 1, 1),
+(7, 'Marta', 'dfd@gmail.com', 'dfdsfds', 'ppppppppppppppppo', 'user.png', 1, 1),
+(9, 'dfsaf', 'fdsf@dsfs', NULL, NULL, 'overflow_input_file_firefox.PNG', 0, 0),
+(10, 'dfsaf', 'fdsf@dsfs', NULL, NULL, 'menulat.PNG', 0, 0),
+(11, 'dfsaf', 'fdsf@dsfs', NULL, NULL, 'user.png', 0, 0),
+(12, 'dcdscd', 'dcds@gmail.com', NULL, NULL, '13.jpg', 0, 0),
+(13, 'cxvdjsxvjd', 'jknsjnd@gmail.com', NULL, NULL, 'dama.jpg', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -405,7 +416,7 @@ ALTER TABLE `idioma`
 -- AUTO_INCREMENT de la tabla `img_procedimientos`
 --
 ALTER TABLE `img_procedimientos`
-  MODIFY `id_img_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_img_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `img_testimonios`
 --
@@ -420,7 +431,7 @@ ALTER TABLE `procedimientos`
 -- AUTO_INCREMENT de la tabla `testimonios`
 --
 ALTER TABLE `testimonios`
-  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
