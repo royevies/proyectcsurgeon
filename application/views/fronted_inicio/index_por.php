@@ -501,6 +501,28 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						</div>
 
 						<ul class="testimonials-grid clearfix">
+
+							<?php foreach ($testimonios_inicio as $testimonio) { ?>
+
+							<li>
+								<div class="testimonial">
+									<div class="testi-image">
+										<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/testimonios/<?=$testimonio->img_principal_testimonio;?>" alt="Customer Testimonails"></a>
+									</div>
+									<div class="testi-content">
+										<p><?php echo $testimonio->detalle_testimonio; ?></p>
+										<div class="testi-meta">
+											<?php echo $testimonio->nombres_del_descriptor; ?>	
+											<span><?php echo  $testimonio->titulo_testimonio;?></span>
+										</div>
+									</div>
+								</div>
+							</li>
+
+							<?php } ?>
+
+							
+						<?php /* ?>
 							<li>
 								<div class="testimonial">
 									<div class="testi-image">
@@ -558,10 +580,10 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										</div>
 									</div>
 								</li>
-
+								<?php */ ?>
 							</ul>
 
-							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/testimonios"><i class="i-plain icon-plus"></i> Ver mais</a></div>
+							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/testimonios"><i class="i-plain icon-plus"></i> Ver mais</a></div>
 
 							<div class="clear"></div>
 

@@ -18,7 +18,8 @@ class Web extends CI_Controller {
 			"procedimientos" => $this->Cirujano_model->get_procedimientos(),
 			"curriculum"     => $this->Cirujano_model->get_curriculum()->result(),
 			"img_curriculum" => $this->Cirujano_model->get_curriculum_img()->result(),
-			"datos_personales" => $this->Cirujano_model->ver_datos_contacto()->result()
+			"datos_personales" => $this->Cirujano_model->ver_datos_contacto()->result(),
+			"testimonios_inicio" => $this->Cirujano_model->get_testimonios_aprobados_inicio()->result()
 			]);
 	}
 
@@ -41,12 +42,12 @@ class Web extends CI_Controller {
 		$this->load->view('fronted_inicio/testimonios', ["testimonios" => $this->Cirujano_model->get_testimonios_aprobados()->result()] );
 		$this->load->view('fronted_inicio/footer');
 	}
-	
-	
-	
+
+
+
 	public function galeria(){
 		$procedimientos = $this->Cirujano_model->get_procedimientos()->result();
-		
+
 		foreach($procedimientos as $proc){
 			$info = array($proc->detalle, $proc->titulo);
 			$i = $this->Cirujano_model->ver_img_procedimientos($proc->id_procedimiento)->result();

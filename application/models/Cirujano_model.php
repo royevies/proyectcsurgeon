@@ -130,6 +130,10 @@
 		   	return $this->db->query("select * from testimonios where aprobado = 1");
 		   }
 
+		   public function get_testimonios_aprobados_inicio(){
+		   	return $this->db->query("select * from testimonios where aprobado = 1 and orden_inicio = 1");
+		   }
+
 		   public function procesar_testimonio($id_testimonio,$aprobado){
 		   	$this->db->query("update testimonios set aprobado= $aprobado where id_testimonio = $id_testimonio ");
 		   }
