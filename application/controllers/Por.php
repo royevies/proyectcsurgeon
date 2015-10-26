@@ -38,8 +38,8 @@ class Por extends CI_Controller {
 	public function testimonios(){
 		$this->load->view('fronted_inicio/head_inicio');
 		$this->load->view('fronted_inicio/header',[
-			"ruta_esp" => $this->config->base_url()."index.php/web/testimmonios",
-			"ruta_por" => $this->config->base_url()."index.php/por/testimmonios"
+			"ruta_esp" => $this->config->base_url()."index.php/web/testimonios",
+			"ruta_por" => $this->config->base_url()."index.php/por/testimonios"
 			]);
 		$this->load->view('fronted_inicio/testimonios_por', ["testimonios" => $this->Cirujano_model->get_testimonios_aprobados()->result()] );
 		$this->load->view('fronted_inicio/footer');
