@@ -152,14 +152,57 @@
 
 			if( $this->input->post() ){
 
-				$size = sizeof($this->input->post("mostrar_inicio"));
+				$size = sizeof($this->input->post("id_testimonio"));
+				$mensaje = "";
 
-				for ($i=0; $i < $size ; $i++) { 
+				switch (  $this->input->post("opcion_testimonio") ) {
+					case 'orden_inicio':
 
-					$this->Cirujano_model->procesar_testimonio_inicio($this->input->post("mostrar_inicio")[$i],1);
+					for ($i=0; $i < $size ; $i++) { 
+						foreach ($this->Cirujano_model->ver_testimonios_especifico($this->input->post("id_testimonio")[$i])->result()  as $testid_orden) {
+							
+							if ( $testid_orden->orden_inicio == 0){								
+								$this->Cirujano_model->procesar_testimonio_inicio($this->input->post("id_testimonio")[$i],1);
+							}else{
+								$this->Cirujano_model->procesar_testimonio_inicio($this->input->post("id_testimonio")[$i],0);
+							}
+						}
+					}
+					$mensaje = "Admin?msg=";
+					break;
+					
+					case 'aprobado':
 
-				}
-				#redirect("Admin");
+					for ($i=0; $i < $size ; $i++) { 
+						
+						foreach ($this->Cirujano_model->ver_testimonios_especifico($this->input->post("id_testimonio")[$i])->result()  as $testid) {
+
+							if ( $testid->aprobado == 0){
+								$this->Cirujano_model->procesar_testimonio($this->input->post("id_testimonio")[$i],1);
+							}else{
+								$this->Cirujano_model->procesar_testimonio($this->input->post("id_testimonio")[$i],0);							 	
+							}
+
+						}						
+					}
+
+					break;
+
+					case 'eliminar':
+
+					for ($i=0; $i < $size ; $i++) { 
+						$this->Cirujano_model->eliminar_testimonio($this->input->post("id_testimonio")[$i]);
+					}
+
+					break;
+
+					default:
+						# code...
+					break;
+				}#switch
+
+				redirect($mensaje);
+
 			}else{
 				redirect("Admin");
 			}

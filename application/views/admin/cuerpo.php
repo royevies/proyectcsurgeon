@@ -444,15 +444,35 @@
 				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">  Testimonios </p>			
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 
-				<form action="<?=$this->config->base_url()?>index.php/admin/mostrar_testimonio_inicio" method="post">
+				<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
+					
+					<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
+						<input id="sel_all_testimonio" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
+					</div>
+
+					<div style="width:100px;display:inline;margin-right:16px;">
+						<button id="inicio_testimonio" class="btn btn-success">Procesar en el inicio</button>
+					</div>
+
+					<div style="width:100px;display:inline;margin-right:16px;">
+						<button id="aprobar_testimonio" class="btn btn-success">Aprobar | Desaprobar</button>
+					</div>
+
+					<div style="width:100px;display:inline;">
+						<button id="eliminar_testimonio" class="btn btn-danger">Eliminar</button>
+					</div>
+				</div> 
+
+				<form id="form_testimonios" action="<?=$this->config->base_url()?>index.php/admin/mostrar_testimonio_inicio" method="post">
+					<input type="hidden" id="opcion_testimonio" name="opcion_testimonio">
 					<table class="table table-hover" id="tabla_testimonios">
 						<thead>					
 							<tr>
-								<th>Mostrar Inicio</th>
+								<th>Seleccionar</th>
 								<th>Nombres</th>
+								<th>Inicio</th>
 								<th>Estado</th>
 								<th>Ver</th>
-								<th>Eliminar</th>
 							</tr>
 						</thead>
 
@@ -461,11 +481,14 @@
 						<?php foreach ($testimonios->result() as $test) : ?>
 
 							<tr class="testimonio_tr">
-								<td style="background:lightgray;text-align:center;"><input type="checkbox" style="border:none;background:none;width:21px;height:21px;" <?php echo ($test->orden_inicio == 1 ? "checked='checked'" : "") ?> name="mostrar_inicio[]" value="<?=$test->id_testimonio;?>"> </td>
-								<td><img src="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>						
+								<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_testimoniales" style="border:none;background:none;width:21px;height:21px;" <?php /* echo ($test->orden_inicio == 1 ? "checked='checked'" : "") */ ?> name="id_testimonio[]" value="<?=$test->id_testimonio;?>"> </td>
+								<td><img src="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>						
+								<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($test->orden_inicio == 0 ? "<span class='glyphicon glyphicon-ban-circle' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
 								<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
-								<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+								<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+								<?php /* ?>
 								<td><button class="btn btn-danger del_test" data-id="<?=$test->id_testimonio;?>" ><span class="glyphicon glyphicon-remove"></span></button></td>
+								<?php */ ?>
 							</tr>
 
 						<?php endforeach; ?>
@@ -474,17 +497,15 @@
 
 						<tfoot style="display:none;">
 							<tr>
-								<th>Mostrar Inicio</th>
-								<td>Nombre</td>
+								<th>Seleccionar</th>
+								<th>Nombres</th>
+								<th>Inicio</th>
 								<th>Estado</th>
-								<td>Ver</td>
-								<td>Eliminar</td>
+								<th>Ver</th>
 							</tr>
 						</tfoot>
 					</table>
 					<hr>
-					<p style="font-size:1.3em;">Procesar seleccionados</p>
-					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 				</form>
 			</div>
 
@@ -492,7 +513,13 @@
 		</div>
 	</div>
 
+	<!---------------------------________Modales informativas________-------------------------------------->
 
+	<div id="mensajes" style="width:100%;height:100%;background:rgba(0,0,0,0.7);position:fixed;top:0;left:0;z-index:10;display:none;">
+
+	</div>
+
+	<!---------------------------________Modales informativas________-------------------------------------->
 
 </body>
 
@@ -522,6 +549,33 @@ $(document).on("ready",function(){
 		$("#cambio_datos").on("click",function(){
 			$("#datos_contacto_doctor").dialog({width:"600px",title:"Mis datos de contacto",modal:true,Height:"500px","resizable":false,position: "top"});	
 		});
+
+
+		$("#sel_all_testimonio").on("click",function(e){
+			e.preventDefault();
+			$(".opciones_testimoniales").each(function(index, elemento) {
+				$(this).prop('checked', function(i, v) { return !v; });
+			});
+		});
+
+		$("#inicio_testimonio").on("click",function(e){
+			e.preventDefault();
+			$("#opcion_testimonio").val("orden_inicio");
+			$("#form_testimonios").submit();
+		});
+
+		$("#aprobar_testimonio").on("click",function(e){
+			e.preventDefault();
+			$("#opcion_testimonio").val("aprobado");
+			$("#form_testimonios").submit();
+		});
+
+		$("#eliminar_testimonio").on("click",function(e){
+			e.preventDefault();
+			$("#opcion_testimonio").val("eliminar");
+			$("#form_testimonios").submit();
+		});
+
 
 
 		$("#desplegar_cambio_img_curriculum").on("click",function(){

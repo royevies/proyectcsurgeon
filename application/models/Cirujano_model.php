@@ -134,6 +134,10 @@
 		   	return $this->db->query("select * from testimonios where aprobado = 1 and orden_inicio = 1");
 		   }
 
+		   public function ver_testimonios_especifico($id_testimonio){
+		   	return $this->db->query("select * from testimonios where id_testimonio = $id_testimonio ");
+		   }
+
 		   public function procesar_testimonio($id_testimonio,$aprobado){
 		   	$this->db->query("update testimonios set aprobado= $aprobado where id_testimonio = $id_testimonio ");
 		   }
@@ -151,6 +155,10 @@
 		   	$this->db->insert("contacto", [ "nombres_contacto" => $nombres_contacto , "servicio" => $servicio , "telefono_movil_contacto" => $telefono_movil_contacto , "email_contacto" => $email_contacto, "asunto_contacto" => $asunto_contacto, "descripcion_contacto" => $descripcion_contacto ,"fecha_contacto" => date("Y-m-d") ] );
 		   }
 
+		   public function ver_contacto_especifico(){
+
+		   }
+		   
 		   public function ver_img_procedimientos($id_procedimiento){
 		   	return  $this->db->query("select * from img_procedimientos where id_procedimiento = $id_procedimiento ");
 		   }

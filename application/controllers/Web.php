@@ -49,7 +49,7 @@ class Web extends CI_Controller {
 		$this->load->view('fronted_inicio/head_inicio');
 		$this->load->view('fronted_inicio/header',[
 			"ruta_esp" => $this->config->base_url()."index.php/web/galeria",
-			"ruta_por" => $this->config->base_url()."index.php/por/galeria"
+			"ruta_por" => $this->config->base_url()."index.php/web/galeria"
 			]);
 		$this->load->view('fronted_inicio/galeria', ["galeria" => $procedimientos] );
 		$this->load->view('fronted_inicio/footer');
