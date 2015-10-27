@@ -275,54 +275,6 @@
 
 <?php /********************************************************************************/ ?>
 <div id="datos_contacto_doctor" style="display:none;">
-	<?php 
-	if ( $datos_contacto->result() ) {
-		foreach ($datos_contacto->result() as $dato) {
-
-			$direccion = $dato->direccion;
-			$email = $dato->email;
-			$clave_email = $dato->clave_email;
-			$telefono = $dato->telefono;
-			$fax = $dato->fax;
-			$facebook = $dato->facebook;
-			$twitter = $dato->twitter;
-			$instagram = $dato->instagram;
-			$gloogleplus = $dato->googlepluss;
-
-		}
-	}
-
-	?>
-	<form id="" action="<?=$this->config->base_url()?>index.php/admin/datos_contacto" method="post">
-		<p>Dirección:</p>
-		<input type="text" class="form-control" id="direccion" name="direccion" maxlength="200" value="<?=($direccion);?>">
-		
-		<p>Email:</p>
-		<input type="text" class="form-control" id="email" name="email" maxlength="200" value="<?=($email);?>">
-
-		<p>Clave Email :</p>
-		<input type="text" class="form-control" id="clave_email " name="clave_email" maxlength="200" value="<?=($clave_email );?>">
-
-		<p>Telefono:</p>
-		<input type="text" class="form-control" id="telefono" name="telefono" maxlength="200" value="<?=($telefono);?>">
-
-		<p>Fax:</p>
-		<input type="text" class="form-control" id="fax" name="fax" maxlength="200" value="<?=($fax);?>">
-
-		<p>Facebook:</p>
-		<input type="text" class="form-control" id="facebook" name="facebook" maxlength="200" value="<?=($facebook);?>">
-
-		<p>Twiiter:</p>
-		<input type="text" class="form-control" id="twitter" name="twitter" maxlength="200" value="<?=($twitter);?>">
-
-		<p>Instagram:</p>
-		<input type="text" class="form-control" id="instagram" name="instagram" maxlength="200" value="<?=($instagram);?>">
-
-		<p>Gloogle Pluss:</p>
-		<input type="text" class="form-control" id="gloogleplus" name="gloogleplus" maxlength="200" value="<?=($gloogleplus);?>">
-
-		<hr>
-		<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
-	</form>
+	
 </div>
 <?php /********************************************************************************/ ?>

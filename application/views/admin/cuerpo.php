@@ -119,7 +119,6 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li id="cambio_datos" style="cursor:pointer;"><a><span class="glyphicon glyphicon-wrench"></span> Cambiar Datos</a></li>
 							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave</a></li>
 						</ul>
 					</div>
@@ -308,41 +307,50 @@
 				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Contacto </p>
 				<!--<a href="https://www.google.co.ve/maps/place/1035+5th+Avenue+Corporation/@40.7804296,-73.9618858,17z/data=!4m2!3m1!1s0x89c25897eca2da3d:0xc35556cc09cc117">Ir a nueva york</a>-->
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
-				<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
-					
-					<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
-						<input id="sel_all_contacto" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
-					</div>
-					<div style="width:100px;display:inline;">
-						<button id="eliminar_contacto" class="btn btn-danger">Eliminar</button>
-					</div>
-				</div> 
-				<form id="form_contacto_general" action="<?=$this->config->base_url()?>index.php/Admin/eliminar_contacto" method="post">
-					<table class="table table-hover" id="tabla_contacto">
-						<thead>					
-							<tr>
-								<th>Seleccionar</th>
-								<th>Leido</th>
-								<th>Nombres</th>
-								<th>Email</th>
-								<th>Celular</th>
-								<th>Asunto</th>
-								<th>Ver</th>
-							</tr>
-						</thead>
 
-						<?php if( $contactos->result() != null ) { ?>
+				<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+					<li class="active"><a href="#contacto_bandeja" data-toggle="tab">Bandeja de entrada</a></li>
+					<li ><a href="#contacto_datos" data-toggle="tab">Datos de Contacto</a></li>
+				</ul>
 
-						<?php foreach ($contactos->result() as $contacto) : ?>
+				<div id="my-tab-content" class="tab-content">
+					<div class="tab-pane active" id="contacto_bandeja">
 
-							<tr class="contacto_tr">
-								<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_contacto" style="border:none;background:none;width:21px;height:21px;" name="id_contacto[]" value="<?=$contacto->id_contacto;?>"> </td>
-								<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($contacto->visto == 0 ? "<span class='glyphicon glyphicon-envelope' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
-								<td><?php echo $contacto->nombres_contacto; ?></td>
-								<td><?php echo $contacto->email_contacto; ?></td>
-								<td><?php echo $contacto->telefono_movil_contacto; ?></td>
-								<td><?php echo $contacto->asunto_contacto; ?></td>
-								<td><button class="btn btn-success ver_contacto" data-id="<?=$contacto->id_contacto;?>" data-nombres="<?=$contacto->nombres_contacto;?>" data-apellidos="<?=$contacto->servicio;?>" data-email="<?=$contacto->email_contacto;?>"  data-telefono="<?=$contacto->telefono_movil_contacto;?>" data-asunto="<?=$contacto->asunto_contacto;?>" data-detalle="<?=$contacto->descripcion_contacto;?>" ><span class="glyphicon glyphicon-new-window"></span></button></td>
+						<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
+
+							<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
+								<input id="sel_all_contacto" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
+							</div>
+							<div style="width:100px;display:inline;">
+								<button id="eliminar_contacto" class="btn btn-danger">Eliminar</button>
+							</div>
+						</div> 
+						<form id="form_contacto_general" action="<?=$this->config->base_url()?>index.php/Admin/eliminar_contacto" method="post">
+							<table class="table table-hover" id="tabla_contacto">
+								<thead>					
+									<tr>
+										<th>Seleccionar</th>
+										<th>Leido</th>
+										<th>Nombres</th>
+										<th>Email</th>
+										<th>Celular</th>
+										<th>Asunto</th>
+										<th>Ver</th>
+									</tr>
+								</thead>
+
+								<?php if( $contactos->result() != null ) { ?>
+
+								<?php foreach ($contactos->result() as $contacto) : ?>
+
+									<tr class="contacto_tr">
+										<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_contacto" style="border:none;background:none;width:21px;height:21px;" name="id_contacto[]" value="<?=$contacto->id_contacto;?>"> </td>
+										<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($contacto->visto == 0 ? "<span class='glyphicon glyphicon-envelope' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
+										<td><?php echo $contacto->nombres_contacto; ?></td>
+										<td><?php echo $contacto->email_contacto; ?></td>
+										<td><?php echo $contacto->telefono_movil_contacto; ?></td>
+										<td><?php echo $contacto->asunto_contacto; ?></td>
+										<td><button class="btn btn-success ver_contacto" data-id="<?=$contacto->id_contacto;?>" data-nombres="<?=$contacto->nombres_contacto;?>" data-apellidos="<?=$contacto->servicio;?>" data-email="<?=$contacto->email_contacto;?>"  data-telefono="<?=$contacto->telefono_movil_contacto;?>" data-asunto="<?=$contacto->asunto_contacto;?>" data-detalle="<?=$contacto->descripcion_contacto;?>" ><span class="glyphicon glyphicon-new-window"></span></button></td>
 							<?php /* ?>
 							<td><button class="btn btn-danger del_contacto" data-id="<?=$contacto->id_contacto;?>"><span class="glyphicon glyphicon-remove"></span></button></td>
 							<?php */ ?>
@@ -365,77 +373,154 @@
 			</form>
 		</div>
 
-		<div id="panel_procedimientos" class="contenido_panel" style="display:none;">
-			<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Procedimientos <button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo</span>	</button></p>
+		<div class="tab-pane" id="contacto_datos">
+			<?php 
+			if ( $datos_contacto->result() ) {
+				foreach ($datos_contacto->result() as $dato) {
 
-			<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
+					$direccion = $dato->direccion;
+					$email = $dato->email;
+					$clave_email = $dato->clave_email;
+					$telefono = $dato->telefono;
+					$fax = $dato->fax;
+					$facebook = $dato->facebook;
+					$twitter = $dato->twitter;
+					$instagram = $dato->instagram;
+					$gloogleplus = $dato->googlepluss;
 
-			<div id="new_procedimiento" style="display:none;">
-				<form action="<?=$this->config->base_url()?>index.php/admin/crear_procedimiento" method="post" enctype="multipart/form-data">
-					<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
+				}
+			}
 
-						<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;border-right:1px dotted gray;">
-							Español
-						</div>
+			?>
+			<form id="" action="<?=$this->config->base_url()?>index.php/admin/datos_contacto" method="post">
+				<p>Dirección:</p>
+				<input type="text" class="form-control" id="direccion" name="direccion" maxlength="200" value="<?=($direccion);?>">
+				
+				<p>Email:</p>
+				<input type="text" class="form-control" id="email" name="email" maxlength="200" value="<?=($email);?>">
 
-						<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;">
-							Portugues
-						</div>	
+				<p>Clave Email :</p>
+				<input type="text" class="form-control" id="clave_email " name="clave_email" maxlength="200" value="<?=($clave_email );?>">
 
-					</div>
+				<p>Telefono:</p>
+				<input type="text" class="form-control" id="telefono" name="telefono" maxlength="200" value="<?=($telefono);?>">
 
-					<div style="width:50%;float:left;padding:12px;border-right:1px dotted gray;">
-						<p>Nombre procedimiento:</p>
-						<input type="text" id="nombre_procedure" name="nombre_procedure" class="form-control" maxlength="140" required="required">
-						<p>Subtitulo procedimiento:</p>
-						<input type="text" id="subtitulo_procedure" name="subtitulo_procedure" class="form-control" maxlength="140" >
-						<p>Detalle procedimiento:</p>
-						<textarea id="detalle_procedure" name="detalle_procedure" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
+				<p>Fax:</p>
+				<input type="text" class="form-control" id="fax" name="fax" maxlength="200" value="<?=($fax);?>">
 
-						</textarea>
-					</div>
+				<p>Facebook:</p>
+				<input type="text" class="form-control" id="facebook" name="facebook" maxlength="200" value="<?=($facebook);?>">
 
-					<div style="width:50%;float:left;padding:12px;">
-						<p>Nome procedimiento:</p>
-						<input type="text" id="nombre_procedure_por" name="nombre_procedure_por" class="form-control" maxlength="140" required="required">
-						<p>Subtitulo procedimiento:</p>
-						<input type="text" id="subtitulo_procedure_por" name="subtitulo_procedure_por" class="form-control" maxlength="140" >
-						<p>Detalhe procedimiento:</p>
-						<textarea id="detalle_procedure_por" name="detalle_procedure_por" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
+				<p>Twiiter:</p>
+				<input type="text" class="form-control" id="twitter" name="twitter" maxlength="200" value="<?=($twitter);?>">
 
-						</textarea>
-					</div>
+				<p>Instagram:</p>
+				<input type="text" class="form-control" id="instagram" name="instagram" maxlength="200" value="<?=($instagram);?>">
 
-					<p>Imagen procedimiento:</p>
-					<input type="file" class="form-control" style="height:auto;" name="img_procedimiento">
+				<p>Gloogle Pluss:</p>
+				<input type="text" class="form-control" id="gloogleplus" name="gloogleplus" maxlength="200" value="<?=($gloogleplus);?>">
 
-					<hr>
-					<button type="submit" class="btn btn-success" style="float:right;">
-						<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
-					</button>
-				</form>
+				<hr>
+				<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="panel_procedimientos" class="contenido_panel" style="display:none;">
+	<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Procedimientos <button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo</span>	</button></p>
+
+	<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
+
+	<div id="new_procedimiento" style="display:none;">
+		<form action="<?=$this->config->base_url()?>index.php/admin/crear_procedimiento" method="post" enctype="multipart/form-data">
+			<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
+
+				<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;border-right:1px dotted gray;">
+					Español
+				</div>
+
+				<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;">
+					Portugues
+				</div>	
+
 			</div>
 
+			<div style="width:50%;float:left;padding:12px;border-right:1px dotted gray;">
+				<p>Nombre procedimiento:</p>
+				<input type="text" id="nombre_procedure" name="nombre_procedure" class="form-control" maxlength="140" required="required">
+				<p>Subtitulo procedimiento:</p>
+				<input type="text" id="subtitulo_procedure" name="subtitulo_procedure" class="form-control" maxlength="140" >
+				<p>Detalle procedimiento:</p>
+				<textarea id="detalle_procedure" name="detalle_procedure" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
+
+				</textarea>
+			</div>
+
+			<div style="width:50%;float:left;padding:12px;">
+				<p>Nome procedimiento:</p>
+				<input type="text" id="nombre_procedure_por" name="nombre_procedure_por" class="form-control" maxlength="140" required="required">
+				<p>Subtitulo procedimiento:</p>
+				<input type="text" id="subtitulo_procedure_por" name="subtitulo_procedure_por" class="form-control" maxlength="140" >
+				<p>Detalhe procedimiento:</p>
+				<textarea id="detalle_procedure_por" name="detalle_procedure_por" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
+
+				</textarea>
+			</div>
+
+			<p>Imagen procedimiento:</p>
+			<input type="file" class="form-control" style="height:auto;" name="img_procedimiento">
+
 			<hr>
-			<table class="table table-hover" id="tabla_procedimientos">
-				<thead>					
-					<tr>
-						<th>Nombre</th>
-						<th>Detalle</th>
-						<th>Editar</th>
-						<th>Eliminar</th>
-					</tr>
-				</thead>
+			<button type="submit" class="btn btn-success" style="float:right;">
+				<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+			</button>
+		</form>
+	</div>
 
-				<?php if( $procedimientos->result() != null ){ ?>
+	<hr>
+	<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
 
-				<?php foreach ($procedimientos->result() as $proc) : ?>
+		<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
+			<input id="sel_all_procedimientos" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
+		</div>
 
-					<tr class="procedimiento_tr">
-						<td><?php echo $proc->titulo; ?></td>
-						<td><?php echo $proc->detalle; ?></td>
-						<td><button class="btn btn-success edit-proc" data-id="<?=$proc->id_procedimiento;?>" data-titulo="<?=$proc->titulo;?>" data-subtitulo="<?=$proc->sub_titulo;?>" data-detalle="<?=$proc->detalle;?>" data-imgsola="<?=( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento ) ?>" data-imgprincipal="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+		<div style="width:100px;display:inline;">
+			<button id="eliminar_procedimiento" class="btn btn-danger">Eliminar</button>
+		</div>
+
+		<div style="width:100px;display:inline;margin-right:16px;">
+			<button id="inicio_procedimiento" class="btn btn-success">Procesar en el inicio</button>
+		</div>
+
+	</div> 
+	<form id="form_procedimientos" action="<?=$this->config->base_url()?>index.php/admin/administrar_testimonios" method="post">
+		<input type="hidden" name="opcion_procedimiento"> 
+		<table class="table table-hover" id="tabla_procedimientos">
+			<thead>					
+				<tr>
+					<th>Seleccionar</th>
+					<th>Inicio</th>
+					<th>Nombre</th>
+					<th>Detalle</th>
+					<th>Editar</th>
+				</tr>
+			</thead>
+
+			<?php if( $procedimientos->result() != null ){ ?>
+
+			<?php foreach ($procedimientos->result() as $proc) : ?>
+
+				<tr class="procedimiento_tr">
+
+					<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_procedimiento" style="border:none;background:none;width:21px;height:21px;" name="id_procedimiento[]" value="<?=$proc->id_procedimiento;?>"> </td>
+					<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($proc->orden_inicio == 0 ? "<span class='glyphicon glyphicon-ban-circle' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
+					<td><?php echo $proc->titulo; ?></td>
+					<td><?php echo $proc->detalle; ?></td>
+					<td><button class="btn btn-success edit-proc" data-id="<?=$proc->id_procedimiento;?>" data-titulo="<?=$proc->titulo;?>" data-subtitulo="<?=$proc->sub_titulo;?>" data-detalle="<?=$proc->detalle;?>" data-imgsola="<?=( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento ) ?>" data-imgprincipal="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+						<?php /* 
 						<td><button class="btn btn-danger del-proc" data-id="<?=$proc->id_procedimiento; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+						*/?>
 					</tr>
 
 				<?php endforeach; ?>
@@ -444,62 +529,64 @@
 
 				<tfoot style="display:none;">
 					<tr>
+						<td>Seleccionar</td>
+						<td>Inicio</td>
 						<td>Nombre</td>
 						<td>Detalle</td>
 						<td>Editar</td>
-						<td>Eliminar</td>
 					</tr>
 				</tfoot>
 			</table>
+		</form>
 
-		</div>
+	</div>
 
-		<div id="panel_testimonios" class="contenido_panel" style="display:none;">
-			<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">  Testimonios </p>			
-			<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
+	<div id="panel_testimonios" class="contenido_panel" style="display:none;">
+		<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">  Testimonios </p>			
+		<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 
-			<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
+		<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
 
-				<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
-					<input id="sel_all_testimonio" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
-				</div>
+			<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
+				<input id="sel_all_testimonio" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
+			</div>
 
-				<div style="width:100px;display:inline;margin-right:16px;">
-					<button id="inicio_testimonio" class="btn btn-success">Procesar en el inicio</button>
-				</div>
+			<div style="width:100px;display:inline;margin-right:16px;">
+				<button id="inicio_testimonio" class="btn btn-success">Procesar en el inicio</button>
+			</div>
 
-				<div style="width:100px;display:inline;margin-right:16px;">
-					<button id="aprobar_testimonio" class="btn btn-success">Aprobar | Desaprobar</button>
-				</div>
+			<div style="width:100px;display:inline;margin-right:16px;">
+				<button id="aprobar_testimonio" class="btn btn-success">Aprobar | Desaprobar</button>
+			</div>
 
-				<div style="width:100px;display:inline;">
-					<button id="eliminar_testimonio" class="btn btn-danger">Eliminar</button>
-				</div>
-			</div> 
+			<div style="width:100px;display:inline;">
+				<button id="eliminar_testimonio" class="btn btn-danger">Eliminar</button>
+			</div>
+		</div> 
 
-			<form id="form_testimonios" action="<?=$this->config->base_url()?>index.php/admin/mostrar_testimonio_inicio" method="post">
-				<input type="hidden" id="opcion_testimonio" name="opcion_testimonio">
-				<table class="table table-hover" id="tabla_testimonios">
-					<thead>					
-						<tr>
-							<th>Seleccionar</th>
-							<th>Nombres</th>
-							<th>Inicio</th>
-							<th>Estado</th>
-							<th>Ver</th>
-						</tr>
-					</thead>
+		<form id="form_testimonios" action="<?=$this->config->base_url()?>index.php/admin/mostrar_testimonio_inicio" method="post">
+			<input type="hidden" id="opcion_testimonio" name="opcion_testimonio">
+			<table class="table table-hover" id="tabla_testimonios">
+				<thead>					
+					<tr>
+						<th>Seleccionar</th>
+						<th>Nombres</th>
+						<th>Inicio</th>
+						<th>Estado</th>
+						<th>Ver</th>
+					</tr>
+				</thead>
 
-					<?php if( $testimonios->result() != null ){ ?>
+				<?php if( $testimonios->result() != null ){ ?>
 
-					<?php foreach ($testimonios->result() as $test) : ?>
+				<?php foreach ($testimonios->result() as $test) : ?>
 
-						<tr class="testimonio_tr">
-							<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_testimoniales" style="border:none;background:none;width:21px;height:21px;" <?php /* echo ($test->orden_inicio == 1 ? "checked='checked'" : "") */ ?> name="id_testimonio[]" value="<?=$test->id_testimonio;?>"> </td>
-							<td><img src="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>						
-							<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($test->orden_inicio == 0 ? "<span class='glyphicon glyphicon-ban-circle' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
-							<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
-							<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+					<tr class="testimonio_tr">
+						<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_testimoniales" style="border:none;background:none;width:21px;height:21px;" <?php /* echo ($test->orden_inicio == 1 ? "checked='checked'" : "") */ ?> name="id_testimonio[]" value="<?=$test->id_testimonio;?>"> </td>
+						<td><img src="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>						
+						<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($test->orden_inicio == 0 ? "<span class='glyphicon glyphicon-ban-circle' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
+						<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
+						<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
 								<?php /* ?>
 								<td><button class="btn btn-danger del_test" data-id="<?=$test->id_testimonio;?>" ><span class="glyphicon glyphicon-remove"></span></button></td>
 								<?php */ ?>
@@ -573,6 +660,18 @@ $(document).on("ready",function(){
 		});
 
 		$("#eliminar_contacto").on("click",function(e){
+			e.preventDefault();
+			$("#form_contacto_general").submit();
+		});
+
+		
+		$("#sel_all_procedimientos").on("click",function(){
+			$(".opciones_procedimiento").each(function(index, elemento) {
+				$(this).prop('checked', function(i, v) { return !v; });
+			});
+		});
+
+		$("#eliminar_procedimiento").on("click",function(e){
 			e.preventDefault();
 			$("#form_contacto_general").submit();
 		});

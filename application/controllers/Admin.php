@@ -63,7 +63,7 @@
 				
 				$this->load->view("layout/head.php",[ "titulo" => "Panel administrativo"]);
 				$this->load->view("admin/menu", [ "novistos" => $this->Cirujano_model->no_vistos()->num_rows() ] );
-				$this->load->view("admin/modals", [	"datos_contacto" => $this->Cirujano_model->ver_datos_contacto()]);
+				$this->load->view("admin/modals");
 
 				$this->load->view("admin/cuerpo",[ 
 					"usuario" => $this->session->userdata('usuario') , 
@@ -72,7 +72,8 @@
 					"curriculum" => $this->Cirujano_model->get_curriculum(),
 					"curriculum_por" => $this->Cirujano_model->get_curriculum_por(),
 					"curriculum_img" => $this->Cirujano_model->get_curriculum_img(),
-					"testimonios" => $this->Cirujano_model->get_testimonios()
+					"testimonios" => $this->Cirujano_model->get_testimonios(),
+					"datos_contacto" => $this->Cirujano_model->ver_datos_contacto()
 					]);
 
 			}else{
@@ -156,9 +157,7 @@
 				$size = sizeof($this->input->post("id_testimonio"));
 				$mensaje = "";
 
-				switch (  $this->input->post("opcion_testimonio") ) {
-					case 'orden_inicio':
-
+				if( $this->input->post("opcion_testimonio") == 'orden_inicio'){
 					for ($i=0; $i < $size ; $i++) { 
 						foreach ($this->Cirujano_model->ver_testimonios_especifico($this->input->post("id_testimonio")[$i])->result()  as $testid_orden) {
 							
@@ -169,11 +168,9 @@
 							}
 						}
 					}
-					$mensaje = "Admin?msg=";
-					break;
+					$mensaje = "Nuevo orden en el inicio guardado";
+				}elseif( $this->input->post("opcion_testimonio") == 'aprobado') {
 					
-					case 'aprobado':
-
 					for ($i=0; $i < $size ; $i++) { 
 						
 						foreach ($this->Cirujano_model->ver_testimonios_especifico($this->input->post("id_testimonio")[$i])->result()  as $testid) {
@@ -186,23 +183,15 @@
 
 						}						
 					}
-
-					break;
-
-					case 'eliminar':
-
+					$mensaje = "Testimonio(s) Aprobado(s)";
+				}elseif( $this->input->post("opcion_testimonio") == 'eliminar' ) {
 					for ($i=0; $i < $size ; $i++) { 
 						$this->Cirujano_model->eliminar_testimonio($this->input->post("id_testimonio")[$i]);
 					}
+					$mensaje = "Testimonio(s) Eliminado(s)";
+				}
 
-					break;
-
-					default:
-						# code...
-					break;
-				}#switch
-
-				redirect($mensaje);
+				redirect("Admin?".$mensaje);
 
 			}else{
 				redirect("Admin");
@@ -231,11 +220,13 @@
 
 		}
 
-		public function eliminar_procedimiento(){
+		public function administrar_testimonios(){
 			if( $this->input->post() ){
+
 				$id_proc = $this->input->post("id_eliminar_procedimiento");
 				$this->Cirujano_model->del_procedimiento($id_proc);
-				redirect('Admin');
+				
+				#redirect('Admin');
 			}else{
 				redirect('Admin');
 			}

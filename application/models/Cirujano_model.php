@@ -97,7 +97,7 @@
 		   }
 
 		   public function crear_procedimiento($titulo,$titulo_portugues,$sub_titulo,$sub_titulo_portugues,$detalle,$detalle_portugues,$img_procedimiento){
-		   	$this->db->insert("procedimientos", [ "img_principal_procedimiento" => $img_procedimiento ] );
+		   	$this->db->insert("procedimientos", [ "img_principal_procedimiento" => $img_procedimiento ,"orden_inicio" => 0] );
 
 		   	$id_procedimiento = $this->db->insert_id();
 
