@@ -395,7 +395,7 @@
 			<form id="" action="<?=$this->config->base_url()?>index.php/admin/datos_contacto" method="post">
 				<p>Dirección:</p>
 				<input type="text" class="form-control" id="direccion" name="direccion" maxlength="200" value="<?=($direccion);?>">
-				
+
 				<p>Email:</p>
 				<input type="text" class="form-control" id="email" name="email" maxlength="200" value="<?=($email);?>">
 
@@ -494,8 +494,8 @@
 		</div>
 
 	</div> 
-	<form id="form_procedimientos" action="<?=$this->config->base_url()?>index.php/admin/administrar_testimonios" method="post">
-		<input type="hidden" name="opcion_procedimiento"> 
+	<form id="form_procedimientos" action="<?=$this->config->base_url()?>index.php/admin/administrar_procedimiento" method="post">
+		<input type="hidden" name="opcion_procedimiento" id="opcion_procedimiento"> 
 		<table class="table table-hover" id="tabla_procedimientos">
 			<thead>					
 				<tr>
@@ -673,7 +673,14 @@ $(document).on("ready",function(){
 
 		$("#eliminar_procedimiento").on("click",function(e){
 			e.preventDefault();
-			$("#form_contacto_general").submit();
+			$("#opcion_procedimiento").val("eliminar");
+			$("#form_procedimientos").submit();
+		});
+
+		$("#inicio_procedimiento").on("click",function(e){
+			e.preventDefault();
+			$("#opcion_procedimiento").val("orden_inicio");
+			$("#form_procedimientos").submit();
 		});
 
 
@@ -891,7 +898,8 @@ $("#new_procedimiento").dialog({width:"900px",title:"Guardar nuevo Procedimiento
 
 
 
-$("#tabla_procedimientos").on("click",".procedimiento_tr .edit-proc",function(){
+$("#tabla_procedimientos").on("click",".procedimiento_tr .edit-proc",function(e){
+	e.preventDefault();
 	var id_procedimiento_up = $(this).data("id");
 
 	$("#imgsola").val( $(this).data("imgsola") );

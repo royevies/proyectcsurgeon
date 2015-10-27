@@ -105,6 +105,14 @@
 		   	$this->db->insert("contenido_procedimiento", [ "id_procedimiento" => $id_procedimiento , "titulo" => $titulo_portugues , "sub_titulo" => $sub_titulo_portugues , "detalle" => $detalle_portugues ,"id_idioma" => 2 ] );
 		   }
 
+		   public function procesar_procedimiento_inicio($id_procedimiento,$orden_inicio){
+		   	$this->db->query("update procedimientos set orden_inicio= $orden_inicio where id_procedimiento = $id_procedimiento ");
+		   }
+
+		   public function ver_procedimiento_especifico($id_procedimiento){
+		   	return $this->db->query("select * from procedimientos where id_procedimiento = $id_procedimiento ");
+		   }
+
 		   public function crear_testimonios(
 		   	$nombres_del_descriptor,
 		   	$email_del_descriptor,

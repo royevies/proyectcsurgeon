@@ -206,7 +206,6 @@
 				$id_contacto = $this->input->post("id_contacto");
 				$size_contact = sizeof($this->input->post("id_contacto"));
 
-
 				for ($i=0; $i < $size_contact ; $i++) { 
 
 					$this->Cirujano_model->del_contacto($id_contacto[$i]);
@@ -220,13 +219,46 @@
 
 		}
 
-		public function administrar_testimonios(){
+		public function administrar_procedimiento(){
 			if( $this->input->post() ){
+				/*echo "<pre>";
+				print_r($_POST);
+				echo "</pre>";
+				*/
+				$id_procedimiento = $this->input->post("id_procedimiento");
+				$size_procedimiento = sizeof($this->input->post("id_procedimiento"));
 
-				$id_proc = $this->input->post("id_eliminar_procedimiento");
-				$this->Cirujano_model->del_procedimiento($id_proc);
-				
-				#redirect('Admin');
+				if( $this->input->post("opcion_procedimiento") == "orden_inicio" ){
+
+					for ($i=0; $i < $size_procedimiento ; $i++) { 
+						foreach ($this->Cirujano_model->ver_procedimiento_especifico($id_procedimiento[$i])->result() as $proc_inic) {
+
+							if( $proc_inic->orden_inicio == 0 ){
+								$this->Cirujano_model->procesar_procedimiento_inicio($id_procedimiento[$i],1);
+							}else{
+								$this->Cirujano_model->procesar_procedimiento_inicio($id_procedimiento[$i],0);
+							}
+
+						}
+
+					}
+
+				}elseif( $this->input->post("opcion_procedimiento") == "eliminar"){
+
+					for ($i=0; $i < $size_procedimiento ; $i++) { 
+
+						$this->Cirujano_model->del_procedimiento($id_procedimiento[$i]);
+
+					}
+
+				}
+
+
+
+				#$id_proc = $this->input->post("id_eliminar_procedimiento");
+				#$this->Cirujano_model->del_procedimiento($id_proc);
+
+				redirect('Admin');
 			}else{
 				redirect('Admin');
 			}
@@ -262,7 +294,7 @@
 		}
 
 		public function procedimiento_edit_idioma(){
-			
+
 			if( $this->input->post() ){ 
 				$id_procedimiento  =  $this->input->post("id_procedimiento");		
 
@@ -295,7 +327,7 @@
 			}else{
 				redirect('Admin');
 			}
-			
+
 		}
 
 		public function editar_curriculum(){

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-10-2015 a las 20:58:17
+-- Tiempo de generación: 27-10-2015 a las 23:56:46
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -45,12 +45,7 @@ CREATE TABLE `contacto` (
 --
 
 INSERT INTO `contacto` (`id_contacto`, `nombres_contacto`, `servicio`, `telefono_movil_contacto`, `email_contacto`, `asunto_contacto`, `descripcion_contacto`, `fecha_contacto`, `visto`) VALUES
-(2, 'Maria lujan', 'Mamoplastia', '04123596241', 'maria.lujan@gmail.com', 'Cita para contactar mamoplastia.', 'Hol esta es una pruaba blablbalbalablbalbalalbala', '0000-00-00', 1),
-(3, 'zddsff', 'Wordpress', '3243243243', 'zdfdsf@gmail.com', 'dsfdsfsd', 'xzcxczx', '2015-10-20', 1),
-(4, 'Maria ', 'PHP / MySQL', '04241489032', 'mari.petra@gmail.com', 'hola como estas', 'hola fsalkmfmdsmfkdsmfds', '2015-10-21', 1),
-(5, 'pepe', 'Mamoplastia portugues', '9020292922', 'pepe@gmail.com', 'sdsadsad', 'sadsadsa', '2015-10-21', 1),
-(6, 'marta', 'Mamoplastia portugues', '32432432432', 'marta@gmail.com', 'plaoaa', 'zdvzxdvzdv', '2015-10-21', 1),
-(7, 'protos1', 'manoplastia', '322321321321', 'dfdskjjk@gmail.com', 'xzczxczx', 'xzczxczxc', '2015-10-23', 1);
+(8, 'Jhonny', 'manoplastia', '8787878', 'jhonnyvanckruz@gmail.com', 'Hola contacto de prueba', 'fedsfdsfsd', '2015-10-27', 0);
 
 -- --------------------------------------------------------
 
@@ -105,24 +100,8 @@ INSERT INTO `contenido_procedimiento` (`id_contenido_procedimiento`, `id_procedi
 (12, 6, 2, 'boqueplastia', 'dsf', 'dsafsdf portugues\r\n						'),
 (13, 7, 1, 'nalgaplastia', 'asdas', 'sadsadsad\r\nsad						'),
 (14, 7, 2, 'nalgeplastique', 'dasd', 'sadasd\r\n						'),
-(15, 8, 1, 'liposuion', 'asdas', 'sadasdsa\r\n						'),
-(16, 8, 2, 'liposuciione', 'asdd', 'dasdsa\r\n						'),
-(17, 9, 1, 'dsadasd', 'sadsa', 'dasdas\r\n						'),
-(18, 9, 2, 'asd', 'dasds', 'dasds\r\n						'),
-(19, 10, 1, 'sadasd', 'dsds', 'dsds\r\n						'),
-(20, 10, 2, 'sds', 'dsds', 'dsdsd\r\n						'),
-(21, 11, 1, 'sadasdasdasdsa', 'dasd', '\r\nasdsadsad						'),
-(22, 11, 2, 'dasdsa', 'asdas', '\r\n	dsads					'),
-(23, 12, 1, 'asdasd', 'dsjy', 'ghjhgj\r\n						'),
-(24, 12, 2, 'sadas', 'ghjhgjhgj', 'hgjf\r\n						'),
-(25, 13, 1, 'dskmfmdsmfd', 'mk', 'k\r\n						'),
-(26, 13, 2, 'm', 'k', 'mm\r\n						'),
-(27, 14, 1, 'dmfmdsmfadsmkl', 'kmklmkl', 'mkl\r\n						'),
-(28, 14, 2, 'mkl', 'dsfcadsaf', '\r\n	dsfadsfdsf					'),
-(29, 15, 1, 'mkm', 'mkl', 'km\r\n						'),
-(30, 15, 2, 'kmk', 'mkm', 'mkl\r\n						'),
-(31, 16, 1, 'dmfmsdmfdsm', 'kmkllm', 'kmklmkmkmk\r\n						'),
-(32, 16, 2, 'mkmkmkm', 'kmm', 'kmklmk\r\n						');
+(15, 8, 1, 'Liposupcion', 'asdas', 'sadasdsa\r\n						'),
+(16, 8, 2, 'liposuciione', 'asdd', 'dasdsa\r\n						');
 
 -- --------------------------------------------------------
 
@@ -152,6 +131,7 @@ CREATE TABLE `datos_contacto` (
   `id_datos_contacto` int(11) NOT NULL,
   `direccion` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `clave_email` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `fax` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
   `facebook` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
@@ -164,8 +144,8 @@ CREATE TABLE `datos_contacto` (
 -- Volcado de datos para la tabla `datos_contacto`
 --
 
-INSERT INTO `datos_contacto` (`id_datos_contacto`, `direccion`, `email`, `telefono`, `fax`, `facebook`, `twitter`, `instagram`, `googlepluss`) VALUES
-(1, '11111111111111111111111111', 'jhonnyvanckruz@gmail.com', '33333333333333333333', '55555555555555555', '66666666666666666666', 'dfvdx', '8888888888888888888888', 'vcxvxvx');
+INSERT INTO `datos_contacto` (`id_datos_contacto`, `direccion`, `email`, `clave_email`, `telefono`, `fax`, `facebook`, `twitter`, `instagram`, `googlepluss`) VALUES
+(1, 'nueva dir', 'jhonnyvanckruz@gmail.com', '123', '1111111111111', '55555555555555555', '66666666666666666666', 'dfvdx', '8888888888888888888888', 'vcxvxvx');
 
 -- --------------------------------------------------------
 
@@ -206,9 +186,7 @@ CREATE TABLE `img_procedimientos` (
 INSERT INTO `img_procedimientos` (`id_img_procedimiento`, `id_procedimiento`, `img_antes`, `img_despues`) VALUES
 (1, 2, 'Desert.jpg', 'Penguins.jpg'),
 (2, 3, 'Koala.jpg', 'Jellyfish.jpg'),
-(3, 3, 'jennifer.jpg', 'rinoplastia_20131008_1267281930.png'),
-(4, 10, 'Jellyfish.jpg', 'Tulips.jpg'),
-(5, 12, 'Jellyfish.jpg', 'Penguins.jpg');
+(3, 3, 'jennifer.jpg', 'rinoplastia_20131008_1267281930.png');
 
 -- --------------------------------------------------------
 
@@ -230,29 +208,22 @@ CREATE TABLE `img_testimonios` (
 
 CREATE TABLE `procedimientos` (
   `id_procedimiento` int(11) NOT NULL,
-  `img_principal_procedimiento` varchar(150) COLLATE utf8_spanish_ci NOT NULL
+  `img_principal_procedimiento` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `orden_inicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `procedimientos`
 --
 
-INSERT INTO `procedimientos` (`id_procedimiento`, `img_principal_procedimiento`) VALUES
-(2, 'mamo.jpg'),
-(3, 'Koala.jpg'),
-(4, 'lineas.jpg'),
-(5, 'jennifer.jpg'),
-(6, 'txiki1-400x300.jpg'),
-(7, 'silueta.jpg'),
-(8, 'rubia.jpg'),
-(9, 'otra.jpg'),
-(10, 'model.jpg'),
-(11, 'mamo.jpg'),
-(12, '01.jpg'),
-(13, '1.jpg'),
-(14, 'dama.jpg'),
-(15, '2.jpg'),
-(16, 'get.jpg');
+INSERT INTO `procedimientos` (`id_procedimiento`, `img_principal_procedimiento`, `orden_inicio`) VALUES
+(2, 'mamo.jpg', 0),
+(3, 'Koala.jpg', 0),
+(4, 'lineas.jpg', 0),
+(5, 'jennifer.jpg', 0),
+(6, 'txiki1-400x300.jpg', 0),
+(7, 'silueta.jpg', 0),
+(8, 'rubia.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -276,15 +247,11 @@ CREATE TABLE `testimonios` (
 --
 
 INSERT INTO `testimonios` (`id_testimonio`, `nombres_del_descriptor`, `email_del_descriptor`, `titulo_testimonio`, `detalle_testimonio`, `img_principal_testimonio`, `aprobado`, `orden_inicio`) VALUES
-(4, 'Maria', 'asdsa@sdsadas', 'dfdsfd', 'dsfdsfdsfsdfsd', 'dama.jpg', 1, 1),
+(4, 'Maria', 'asdsa@sdsadas', 'dfdsfd', 'dsfdsfdsfsdfsd', 'dama.jpg', 1, 0),
 (5, 'Karla', 'zxc@dsfssdac', 'dsfdsf', 'dsfdsfdsfd', 'koala.jpg', 1, 1),
-(6, 'Katiuska', 'csdc@ssssx', 'dsfdsf', 'eeeeeeeeeeeeeeeee', 'user.png', 1, 1),
-(7, 'Marta', 'dfd@gmail.com', 'dfdsfds', 'ppppppppppppppppo', 'user.png', 1, 1),
-(9, 'dfsaf', 'fdsf@dsfs', NULL, NULL, 'overflow_input_file_firefox.PNG', 0, 0),
-(10, 'dfsaf', 'fdsf@dsfs', NULL, NULL, 'menulat.PNG', 0, 0),
-(11, 'dfsaf', 'fdsf@dsfs', NULL, NULL, 'user.png', 0, 0),
+(6, 'Katiuska', 'csdc@ssssx', 'dsfdsf', 'eeeeeeeeeeeeeeeee', 'user.png', 0, 1),
 (12, 'dcdscd', 'dcds@gmail.com', NULL, NULL, '13.jpg', 0, 0),
-(13, 'cxvdjsxvjd', 'jknsjnd@gmail.com', NULL, NULL, 'dama.jpg', 1, 0);
+(14, 'sacsac', 'ascasc@gmail.com', NULL, NULL, 'testimonios.PNG', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -386,7 +353,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `contenido_curriculum`
 --
@@ -431,7 +398,7 @@ ALTER TABLE `procedimientos`
 -- AUTO_INCREMENT de la tabla `testimonios`
 --
 ALTER TABLE `testimonios`
-  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
