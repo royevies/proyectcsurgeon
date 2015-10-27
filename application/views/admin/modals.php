@@ -281,6 +281,7 @@
 
 			$direccion = $dato->direccion;
 			$email = $dato->email;
+			$clave_email = $dato->clave_email;
 			$telefono = $dato->telefono;
 			$fax = $dato->fax;
 			$facebook = $dato->facebook;
@@ -298,6 +299,9 @@
 		
 		<p>Email:</p>
 		<input type="text" class="form-control" id="email" name="email" maxlength="200" value="<?=($email);?>">
+
+		<p>Clave Email :</p>
+		<input type="text" class="form-control" id="clave_email " name="clave_email" maxlength="200" value="<?=($clave_email );?>">
 
 		<p>Telefono:</p>
 		<input type="text" class="form-control" id="telefono" name="telefono" maxlength="200" value="<?=($telefono);?>">

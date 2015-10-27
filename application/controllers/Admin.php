@@ -84,9 +84,10 @@
 		
 		public function datos_contacto(){
 			if( $this->input->post() ){
-
+				print_r($_POST);
 				$direccion  = $this->input->post("direccion");
 				$email = $this->input->post("email");
+				$clave_email = $this->input->post("clave_email");
 				$telefono = $this->input->post("telefono");
 				$fax = $this->input->post("fax");
 				$facebook = $this->input->post("facebook");
@@ -94,9 +95,9 @@
 				$instagram = $this->input->post("instagram");
 				$googlepluss = $this->input->post("gloogleplus");
 
-				$this->Cirujano_model->cambiar_datos($direccion,$email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss);
+				$this->Cirujano_model->cambiar_datos($direccion,$email,$clave_email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss);
 
-				redirect("Admin");
+				#redirect("Admin");
 			}else{
 				redirect("Admin");
 			}
@@ -146,10 +147,10 @@
 		}
 
 		public function mostrar_testimonio_inicio(){
-			echo "<pre>";
+			/*echo "<pre>";
 			print_r($_POST);
 			echo "</pre>";
-
+			*/
 			if( $this->input->post() ){
 
 				$size = sizeof($this->input->post("id_testimonio"));
@@ -213,8 +214,8 @@
 		public function eliminar_contacto(){
 			if( $this->input->post() ){
 
-				$id_contacto = $this->input->post("id_eliminar_contacto");
-				$size_contact = sizeof($this->input->post("id_testimonio"));
+				$id_contacto = $this->input->post("id_contacto");
+				$size_contact = sizeof($this->input->post("id_contacto"));
 
 
 				for ($i=0; $i < $size_contact ; $i++) { 

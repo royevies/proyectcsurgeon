@@ -177,8 +177,8 @@
 		   	return  $this->db->query("select * from datos_contacto ");
 		   }
 
-		   public function cambiar_datos($direccion,$email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss){
-		   	$this->db->query("update datos_contacto set direccion = '$direccion', email = '$email' , telefono ='$telefono' ,fax ='$fax' ,facebook ='$facebook' ,twitter ='$twiiter' ,instagram ='$instagram' ,googlepluss ='$googlepluss'  where id_datos_contacto = 1 ");
+		   public function cambiar_datos($direccion,$email,$clave_email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss){
+		   	$this->db->query("update datos_contacto set direccion = '$direccion', email = '$email' , clave_email = '$clave_email' , telefono ='$telefono' ,fax ='$fax' ,facebook ='$facebook' ,twitter ='$twiiter' ,instagram ='$instagram' ,googlepluss ='$googlepluss'  where id_datos_contacto = 1 ");
 		   }
 		   /*******************************Llave clase********************************************/
 		}
