@@ -218,6 +218,31 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						</div>
 
 						<div class="col_one_third nobottommargin">
+
+							<?php 
+							if ($procs_inicio != null) {
+								foreach ($procs_inicio as $pro) { ?>
+
+								<div class="feature-box media-box">
+									<div class="fbox-media">
+										<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$pro->img_principal_procedimiento; ?>" alt="Why choose Us?">
+									</div>
+									<div class="fbox-desc">
+										<h3><?=$pro->titulo;?><span class="subtitle"><?=$pro->sub_titulo;?></span></h3>
+										<p>
+											<?=$pro->detalle;?>
+										</p>
+									</div>
+								</div>
+
+
+
+								<?php		
+							}
+						}
+						?>
+					</div>
+						<?php /* ?>
 							<div class="feature-box media-box">
 								<div class="fbox-media">
 									<img src="<?=$this->config->base_url();?>fronted_inicio/foto/mamo.jpg" alt="Why choose Us?">
@@ -254,6 +279,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										</div>
 									</div>
 								</div>
+								<?php */ ?>
 
 								<div class="clear"></div>
 

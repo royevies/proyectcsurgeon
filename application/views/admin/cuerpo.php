@@ -309,8 +309,8 @@
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 
 				<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-					<li class="active"><a href="#contacto_bandeja" data-toggle="tab">Bandeja de entrada</a></li>
-					<li ><a href="#contacto_datos" data-toggle="tab">Datos de Contacto</a></li>
+					<li class="active"><a href="#contacto_bandeja" data-toggle="tab" style="font-size:1.3em;">Bandeja de entrada</a></li>
+					<li ><a href="#contacto_datos" data-toggle="tab" style="font-size:1.3em;"> Datos de Contacto</a></li>
 				</ul>
 
 				<div id="my-tab-content" class="tab-content">
@@ -373,7 +373,7 @@
 			</form>
 		</div>
 
-		<div class="tab-pane" id="contacto_datos">
+		<div class="tab-pane" id="contacto_datos" style="padding:25px;">
 			<?php 
 			if ( $datos_contacto->result() ) {
 				foreach ($datos_contacto->result() as $dato) {
@@ -393,13 +393,17 @@
 
 			?>
 			<form id="" action="<?=$this->config->base_url()?>index.php/admin/datos_contacto" method="post">
+				
+				<p>Usuario de inicio de sesión:</p>
+				<input type="text" class="form-control" id="usuario_sesion" name="usuario_sesion" maxlength="200" value="<?=($usuario);?>">
+
 				<p>Dirección:</p>
 				<input type="text" class="form-control" id="direccion" name="direccion" maxlength="200" value="<?=($direccion);?>">
 
 				<p>Email:</p>
 				<input type="text" class="form-control" id="email" name="email" maxlength="200" value="<?=($email);?>">
 
-				<p>Clave Email :</p>
+				<p>Clave Email (Para el envio de los correos) :</p>
 				<input type="text" class="form-control" id="clave_email " name="clave_email" maxlength="200" value="<?=($clave_email );?>">
 
 				<p>Telefono:</p>
@@ -816,10 +820,14 @@ $("#ventana_cambio_clave").dialog({width:"400px",title:"Cambiar Clave",modal:tru
 $("#boton_cambiar_clave").on("click",function(e){
 	e.preventDefault();
 
-	if( $("#clave").val() == $("#clave1").val() ){
-		$("#form_cambiaclave").submit();
+	if( $("#clave").val() != ""){
+		if( $("#clave").val() == $("#clave1").val() ){
+			$("#form_cambiaclave").submit();
+		}else{
+			$("#mensaje_cambia_clave").html("Las contraseñas no son iguales");
+		}
 	}else{
-		$("#mensaje_cambia_clave").html("Las contraseñas no son iguales");
+		$("#clave").css("border","1px solid red");
 	}
 
 });

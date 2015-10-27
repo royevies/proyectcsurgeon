@@ -113,6 +113,14 @@
 		   	return $this->db->query("select * from procedimientos where id_procedimiento = $id_procedimiento ");
 		   }
 
+		   public function ver_procedimientos_inicio(){
+		   	return $this->db->query("SELECT * FROM procedimientos as p left outer join contenido_procedimiento as c on p.id_procedimiento = c.id_procedimiento where orden_inicio = 1 GROUP BY p.id_procedimiento");
+		   }
+		   
+		   public function ver_procedimientos_inicio_por(){
+		   	return $this->db->query("SELECT * FROM procedimientos as p left outer join contenido_procedimiento as c on p.id_procedimiento = c.id_procedimiento where id_idioma = 2 and orden_inicio = 1 GROUP BY p.id_procedimiento");
+		   }
+
 		   public function crear_testimonios(
 		   	$nombres_del_descriptor,
 		   	$email_del_descriptor,
