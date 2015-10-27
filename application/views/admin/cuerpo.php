@@ -102,11 +102,11 @@
 					</div>
 				</div>
 
-				<div class="col-xs-7 col-xs-offset-1 titulo">
-					<h1 style="color:#555 !important;font-size:0.8em;" class="doctortitle">Dr. Julio Reyes <small style="color:#555;font-size:0.5em;"> Administrador de Contendios</small></h1>
+				<div class="col-xs-7  titulo">
+					<h1 style="color:#555 !important;font-size:0.8em;padding-left:1.3em;" class="doctortitle">Dr. Julio Reyes <small style="color:#555;font-size:0.5em;"> Administrador de Contendios</small></h1>
 				</div>
 
-				<div class="col-xs-3">
+				<div class="col-xs-4">
 					<div style="padding:7px;float:left;">			
 						<p style="color:#555;margin-top:16px;font-size:1.3em;display:inline-block;">
 							<?php echo strtoupper($usuario)." "; ?>
@@ -395,7 +395,7 @@
 			<form id="" action="<?=$this->config->base_url()?>index.php/admin/datos_contacto" method="post">
 				
 				<p>Usuario de inicio de sesión:</p>
-				<input type="text" class="form-control" id="usuario_sesion" name="usuario_sesion" maxlength="200" value="<?=($usuario);?>">
+				<input type="text" class="form-control" id="usuario_sesion" name="usuario_sesion" maxlength="11" value="<?=($usuario);?>">
 
 				<p>Dirección:</p>
 				<input type="text" class="form-control" id="direccion" name="direccion" maxlength="200" value="<?=($direccion);?>">

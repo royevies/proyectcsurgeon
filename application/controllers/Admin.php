@@ -85,7 +85,8 @@
 		
 		public function datos_contacto(){
 			if( $this->input->post() ){
-				print_r($_POST);
+				#print_r($_POST);
+				$usuario = $this->input->post("usuario_sesion");
 				$direccion  = $this->input->post("direccion");
 				$email = $this->input->post("email");
 				$clave_email = $this->input->post("clave_email");
@@ -97,8 +98,8 @@
 				$googlepluss = $this->input->post("gloogleplus");
 
 				$this->Cirujano_model->cambiar_datos($direccion,$email,$clave_email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss);
-
-				#redirect("Admin");
+				$this->Cirujano_model->cambiar_usuario($usuario);
+				redirect("Admin");
 			}else{
 				redirect("Admin");
 			}
@@ -439,7 +440,7 @@
 				$usuario = $this->session->userdata('usuario');
 				$clave = sha1( $this->input->post("clave") );
 
-				$this->Cirujano_model->actualizar_clave($usuario,$clave);
+				$this->Cirujano_model->actualizar_clave($clave);
 				redirect("Admin");
 			}else{
 				redirect("Admin");

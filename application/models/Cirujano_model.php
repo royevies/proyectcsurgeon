@@ -175,10 +175,12 @@
 		   	return  $this->db->query("select * from img_procedimientos where id_procedimiento = $id_procedimiento ");
 		   }
 
+		   public function cambiar_usuario($usuario){
+		   	$this->db->query("update usuario set usuario = '$usuario' where id_usuario = 1 ");
+		   }
 
-		   public function actualizar_clave($usuario,$clave){
-		   	$update="update usuario set clave = '$clave' where usuario = '$usuario' ";
-		   	$this->db->query($update);
+		   public function actualizar_clave($clave){
+		   	$this->db->query("update usuario set clave = '$clave' where id_usuario = 1 ");
 		   }
 
 		   public function crear_parejas($id_procedimiento,$img_antes,$img_despues){
