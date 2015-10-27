@@ -222,176 +222,14 @@
 						
 					</div>
 
-					<?php 
-				/*
-				if($galeria->result() != null){
-
-					foreach ($galeria->result() as $foto) {
-						?>
-						<a class="boxer" href="<?=$this->config->base_url()?>fronted/img/cirujano/galeria/<?=$foto->nombre_img;?>" class="boxer" title="Galeria" >
-							<img  src="<?=$this->config->base_url()?>fronted/img/cirujano/galeria/<?=$foto->nombre_img;?>" style="width:125px;cursor:pointer;">
-						</a>
-						<?php	
-					}
-
-				}
-				*/
-				?>
-
-				<?php /* ?>
-				<div id="mas_imagenes_galeria" style="display:none;">
-					<div class="botones_archivos" style="overflow:hidden;margin-bottom:25px;">
-						<p style="font-size:1.2em;">Añadir mas archivos a la galeria
-							<button id="menos_file" class="btn btn-danger"  style="float:right;"><span class="glyphicon glyphicon-minus" style="font-size:0.8em;"></span></button>
-							<button id="mas_file" class="btn btn-success"  style="float:right;"><span class="glyphicon glyphicon-plus" style="font-size:0.8em;"></span></button>
-						</p>
-					</div>
-
-					<form action="<?=$this->config->base_url()?>index.php/Admin/insert_galeria" method="post" enctype="multipart/form-data">
-						<div id="inpuflivos" style="height:auto;">
-							<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;">
-						</div>
-						<hr>
-						<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span>Guardar</button>
-					</form>
 				</div>
-				<?php */ ?>
 			</div>
-		</div>
 
 
-		<div id="panel_curriculum" class="contenido_panel" style="display:none;background:rgba(255,255,255,0.5);">
-			<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Curriculum </p>
-			<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
-			<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post" enctype="multipart/form-data">
-				<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
-
-					<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;border-right:1px dotted gray;">
-						Español
-					</div>
-
-					<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;">
-						Portugues
-					</div>	
-
-				</div>
-
-				<textarea id="text_curriculum" name="text_curriculum" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;text-align:justify;">
-
-					<?php
-
-					if( $curriculum->result() != null ){
-						foreach ( $curriculum->result() as $perfil ) {
-							$curriculum_spanish = $perfil->curriculum_completo;
-							echo trim( $perfil->curriculum_completo );
-						}
-
-					}
-					?>
-				</textarea>
-
-				<textarea id="text_curriculum2" name="text_curriculum2" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;text-align:justify;">
-
-					<?php
-					if( $curriculum_por->result() != null ){
-						foreach ( $curriculum_por->result() as $perfil ) {
-							$curriculum_portugues = $perfil->curriculum_completo;
-							echo trim( $perfil->curriculum_completo );	
-						}
-
-					}
-					?>
-				</textarea>
-				<div style="clear:both;"></div>
-
-				<div style="overflow:hidden;background:#f1f1f1;width:100%;margin-bottom:16px;color:#555;font-size:1.4em;padding:7px;cursor:pointer;">
-					<div id="desplegar_cambio_img_curriculum" class="alert alert-info"><span class="caret" style="font-size:1.4em;"></span> Imagen del curriculum 	</div>	
-					<div style="padding:16px;margin-bottom:10px;display:none;" id="input_cambio_curriculum">
-						<div class="col-xs-4">
-							<div style="font-size:1.3em;border-bottom:1px dotted #555;padding:5px;margin-bottom:12px;">Actual</div>
-
-							<?php 
-								//$img_curriculum_vitae = "";
-							if( $curriculum_img->result() != null ){
-								foreach ( $curriculum_img->result() as $img ) {
-									$img_curriculum_vitae = $img->img_curriculum;	
-									$id_curriculum = $img->id_curriculum;	
-								}
-							}
-							?>
-
-							<img class="img img-responsive" style="width:200px;height:200px;" src="<?=$this->config->base_url().'fronted_inicio/curriculum/'.($img_curriculum_vitae == null ? 'foto.jpg' : $img_curriculum_vitae );?>"> 	
-						</div>
-
-						<div class="col-xs-8">
-							<div style="font-size:1.3em;border-bottom:1px dotted #555;padding:5px;margin-bottom:12px;">Nueva</div>
-							<input type="hidden" id="id_curriculum" name="id_curriculum" value="<?=$id_curriculum?>">
-							<input type="hidden" id="img_curriculum_sola" name="img_curriculum_sola" value="<?=$img_curriculum_vitae?>">							
-							<input type="file" name="img_curriculum" class="form-control" style="height:auto;">							
-						</div>
-					</div> 
-				</div>
-
-
-				<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
-				<div style="clear:both;"></div>
-			</form>
-		</div>
-
-		<div id="panel_contacto" class="contenido_panel" style="display:none;">
-			<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Contacto </p>
-			<!--<a href="https://www.google.co.ve/maps/place/1035+5th+Avenue+Corporation/@40.7804296,-73.9618858,17z/data=!4m2!3m1!1s0x89c25897eca2da3d:0xc35556cc09cc117">Ir a nueva york</a>-->
-			<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
-			<table class="table table-hover" id="tabla_contacto">
-				<thead>					
-					<tr>
-						<th>Leido</th>
-						<th>Nombres</th>
-						<th>Email</th>
-						<th>Celular</th>
-						<th>Asunto</th>
-						<th>Ver</th>
-						<th>Eliminar</th>
-					</tr>
-				</thead>
-
-				<?php if( $contactos->result() != null ) { ?>
-
-				<?php foreach ($contactos->result() as $contacto) : ?>
-
-					<tr class="contacto_tr">
-						<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($contacto->visto == 0 ? "<span class='glyphicon glyphicon-envelope' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
-						<td><?php echo $contacto->nombres_contacto; ?></td>
-						<td><?php echo $contacto->email_contacto; ?></td>
-						<td><?php echo $contacto->telefono_movil_contacto; ?></td>
-						<td><?php echo $contacto->asunto_contacto; ?></td>
-						<td><button class="btn btn-success ver_contacto" data-id="<?=$contacto->id_contacto;?>" data-nombres="<?=$contacto->nombres_contacto;?>" data-apellidos="<?=$contacto->servicio;?>" data-email="<?=$contacto->email_contacto;?>"  data-telefono="<?=$contacto->telefono_movil_contacto;?>" data-asunto="<?=$contacto->asunto_contacto;?>" data-detalle="<?=$contacto->descripcion_contacto;?>" ><span class="glyphicon glyphicon-new-window"></span></button></td>
-						<td><button class="btn btn-danger del_contacto" data-id="<?=$contacto->id_contacto;?>"><span class="glyphicon glyphicon-remove"></span></button></td>
-					</tr>
-
-				<?php endforeach; } ?>
-
-				<tfoot style="display:none;">
-					<tr>
-						<th>Leido</th>
-						<th>Nombres</th>
-						<th>Email</th>
-						<th>Celular</th>
-						<th>Asunto</th>
-						<th>Ver</th>
-						<th>Eliminar</th>
-					</tr>
-				</tfoot>
-			</table>
-		</div>
-
-		<div id="panel_procedimientos" class="contenido_panel" style="display:none;">
-			<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Procedimientos <button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo</span>	</button></p>
-
-			<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
-
-			<div id="new_procedimiento" style="display:none;">
-				<form action="<?=$this->config->base_url()?>index.php/admin/crear_procedimiento" method="post" enctype="multipart/form-data">
+			<div id="panel_curriculum" class="contenido_panel" style="display:none;background:rgba(255,255,255,0.5);">
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Curriculum </p>
+				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
+				<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post" enctype="multipart/form-data">
 					<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
 
 						<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;border-right:1px dotted gray;">
@@ -404,121 +242,255 @@
 
 					</div>
 
-					<div style="width:50%;float:left;padding:12px;border-right:1px dotted gray;">
-						<p>Nombre procedimiento:</p>
-						<input type="text" id="nombre_procedure" name="nombre_procedure" class="form-control" maxlength="140" required="required">
-						<p>Subtitulo procedimiento:</p>
-						<input type="text" id="subtitulo_procedure" name="subtitulo_procedure" class="form-control" maxlength="140" >
-						<p>Detalle procedimiento:</p>
-						<textarea id="detalle_procedure" name="detalle_procedure" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
+					<textarea id="text_curriculum" name="text_curriculum" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;text-align:justify;">
 
-						</textarea>
+						<?php
+
+						if( $curriculum->result() != null ){
+							foreach ( $curriculum->result() as $perfil ) {
+								$curriculum_spanish = $perfil->curriculum_completo;
+								echo trim( $perfil->curriculum_completo );
+							}
+
+						}
+						?>
+					</textarea>
+
+					<textarea id="text_curriculum2" name="text_curriculum2" class="" rows="13" style=" bottom: 0;left:0;width:50%;float:left;margin:auto;background:rgba(255,255,255,0.5);resize:none;text-indent:0px;text-align:justify;">
+
+						<?php
+						if( $curriculum_por->result() != null ){
+							foreach ( $curriculum_por->result() as $perfil ) {
+								$curriculum_portugues = $perfil->curriculum_completo;
+								echo trim( $perfil->curriculum_completo );	
+							}
+
+						}
+						?>
+					</textarea>
+					<div style="clear:both;"></div>
+
+					<div style="overflow:hidden;background:#f1f1f1;width:100%;margin-bottom:16px;color:#555;font-size:1.4em;padding:7px;cursor:pointer;">
+						<div id="desplegar_cambio_img_curriculum" class="alert alert-info"><span class="caret" style="font-size:1.4em;"></span> Imagen del curriculum 	</div>	
+						<div style="padding:16px;margin-bottom:10px;display:none;" id="input_cambio_curriculum">
+							<div class="col-xs-4">
+								<div style="font-size:1.3em;border-bottom:1px dotted #555;padding:5px;margin-bottom:12px;">Actual</div>
+
+								<?php 
+								//$img_curriculum_vitae = "";
+								if( $curriculum_img->result() != null ){
+									foreach ( $curriculum_img->result() as $img ) {
+										$img_curriculum_vitae = $img->img_curriculum;	
+										$id_curriculum = $img->id_curriculum;	
+									}
+								}
+								?>
+
+								<img class="img img-responsive" style="width:200px;height:200px;" src="<?=$this->config->base_url().'fronted_inicio/curriculum/'.($img_curriculum_vitae == null ? 'foto.jpg' : $img_curriculum_vitae );?>"> 	
+							</div>
+
+							<div class="col-xs-8">
+								<div style="font-size:1.3em;border-bottom:1px dotted #555;padding:5px;margin-bottom:12px;">Nueva</div>
+								<input type="hidden" id="id_curriculum" name="id_curriculum" value="<?=$id_curriculum?>">
+								<input type="hidden" id="img_curriculum_sola" name="img_curriculum_sola" value="<?=$img_curriculum_vitae?>">							
+								<input type="file" name="img_curriculum" class="form-control" style="height:auto;">							
+							</div>
+						</div> 
 					</div>
 
-					<div style="width:50%;float:left;padding:12px;">
-						<p>Nome procedimiento:</p>
-						<input type="text" id="nombre_procedure_por" name="nombre_procedure_por" class="form-control" maxlength="140" required="required">
-						<p>Subtitulo procedimiento:</p>
-						<input type="text" id="subtitulo_procedure_por" name="subtitulo_procedure_por" class="form-control" maxlength="140" >
-						<p>Detalhe procedimiento:</p>
-						<textarea id="detalle_procedure_por" name="detalle_procedure_por" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
 
-						</textarea>
-					</div>
-
-					<p>Imagen procedimiento:</p>
-					<input type="file" class="form-control" style="height:auto;" name="img_procedimiento">
-
-					<hr>
-					<button type="submit" class="btn btn-success" style="float:right;">
-						<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
-					</button>
+					<button type="submit" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+					<div style="clear:both;"></div>
 				</form>
 			</div>
 
-			<hr>
-			<table class="table table-hover" id="tabla_procedimientos">
-				<thead>					
-					<tr>
-						<th>Nombre</th>
-						<th>Detalle</th>
-						<th>Editar</th>
-						<th>Eliminar</th>
-					</tr>
-				</thead>
+			<div id="panel_contacto" class="contenido_panel" style="display:none;">
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Contacto </p>
+				<!--<a href="https://www.google.co.ve/maps/place/1035+5th+Avenue+Corporation/@40.7804296,-73.9618858,17z/data=!4m2!3m1!1s0x89c25897eca2da3d:0xc35556cc09cc117">Ir a nueva york</a>-->
+				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
+				<table class="table table-hover" id="tabla_contacto">
+					<thead>					
+						<tr>
+							<th>Leido</th>
+							<th>Nombres</th>
+							<th>Email</th>
+							<th>Celular</th>
+							<th>Asunto</th>
+							<th>Ver</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
 
-				<?php if( $procedimientos->result() != null ){ ?>
+					<?php if( $contactos->result() != null ) { ?>
 
-				<?php foreach ($procedimientos->result() as $proc) : ?>
+					<?php foreach ($contactos->result() as $contacto) : ?>
 
-					<tr class="procedimiento_tr">
-						<td><?php echo $proc->titulo; ?></td>
-						<td><?php echo $proc->detalle; ?></td>
-						<td><button class="btn btn-success edit-proc" data-id="<?=$proc->id_procedimiento;?>" data-titulo="<?=$proc->titulo;?>" data-subtitulo="<?=$proc->sub_titulo;?>" data-detalle="<?=$proc->detalle;?>" data-imgsola="<?=( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento ) ?>" data-imgprincipal="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-						<td><button class="btn btn-danger del-proc" data-id="<?=$proc->id_procedimiento; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
-					</tr>
+						<tr class="contacto_tr">
+							<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($contacto->visto == 0 ? "<span class='glyphicon glyphicon-envelope' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
+							<td><?php echo $contacto->nombres_contacto; ?></td>
+							<td><?php echo $contacto->email_contacto; ?></td>
+							<td><?php echo $contacto->telefono_movil_contacto; ?></td>
+							<td><?php echo $contacto->asunto_contacto; ?></td>
+							<td><button class="btn btn-success ver_contacto" data-id="<?=$contacto->id_contacto;?>" data-nombres="<?=$contacto->nombres_contacto;?>" data-apellidos="<?=$contacto->servicio;?>" data-email="<?=$contacto->email_contacto;?>"  data-telefono="<?=$contacto->telefono_movil_contacto;?>" data-asunto="<?=$contacto->asunto_contacto;?>" data-detalle="<?=$contacto->descripcion_contacto;?>" ><span class="glyphicon glyphicon-new-window"></span></button></td>
+							<td><button class="btn btn-danger del_contacto" data-id="<?=$contacto->id_contacto;?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+						</tr>
 
-				<?php endforeach; ?>
+					<?php endforeach; } ?>
 
-				<?php } ?>
+					<tfoot style="display:none;">
+						<tr>
+							<th>Leido</th>
+							<th>Nombres</th>
+							<th>Email</th>
+							<th>Celular</th>
+							<th>Asunto</th>
+							<th>Ver</th>
+							<th>Eliminar</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
 
-				<tfoot style="display:none;">
-					<tr>
-						<td>Nombre</td>
-						<td>Detalle</td>
-						<td>Editar</td>
-						<td>Eliminar</td>
-					</tr>
-				</tfoot>
-			</table>
+			<div id="panel_procedimientos" class="contenido_panel" style="display:none;">
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Procedimientos <button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo</span>	</button></p>
 
+				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
+
+				<div id="new_procedimiento" style="display:none;">
+					<form action="<?=$this->config->base_url()?>index.php/admin/crear_procedimiento" method="post" enctype="multipart/form-data">
+						<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
+
+							<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;border-right:1px dotted gray;">
+								Español
+							</div>
+
+							<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;">
+								Portugues
+							</div>	
+
+						</div>
+
+						<div style="width:50%;float:left;padding:12px;border-right:1px dotted gray;">
+							<p>Nombre procedimiento:</p>
+							<input type="text" id="nombre_procedure" name="nombre_procedure" class="form-control" maxlength="140" required="required">
+							<p>Subtitulo procedimiento:</p>
+							<input type="text" id="subtitulo_procedure" name="subtitulo_procedure" class="form-control" maxlength="140" >
+							<p>Detalle procedimiento:</p>
+							<textarea id="detalle_procedure" name="detalle_procedure" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
+
+							</textarea>
+						</div>
+
+						<div style="width:50%;float:left;padding:12px;">
+							<p>Nome procedimiento:</p>
+							<input type="text" id="nombre_procedure_por" name="nombre_procedure_por" class="form-control" maxlength="140" required="required">
+							<p>Subtitulo procedimiento:</p>
+							<input type="text" id="subtitulo_procedure_por" name="subtitulo_procedure_por" class="form-control" maxlength="140" >
+							<p>Detalhe procedimiento:</p>
+							<textarea id="detalle_procedure_por" name="detalle_procedure_por" class="form-control" maxlength="1000" required="required" style="resize:none;height:400px;">
+
+							</textarea>
+						</div>
+
+						<p>Imagen procedimiento:</p>
+						<input type="file" class="form-control" style="height:auto;" name="img_procedimiento">
+
+						<hr>
+						<button type="submit" class="btn btn-success" style="float:right;">
+							<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+						</button>
+					</form>
+				</div>
+
+				<hr>
+				<table class="table table-hover" id="tabla_procedimientos">
+					<thead>					
+						<tr>
+							<th>Nombre</th>
+							<th>Detalle</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+
+					<?php if( $procedimientos->result() != null ){ ?>
+
+					<?php foreach ($procedimientos->result() as $proc) : ?>
+
+						<tr class="procedimiento_tr">
+							<td><?php echo $proc->titulo; ?></td>
+							<td><?php echo $proc->detalle; ?></td>
+							<td><button class="btn btn-success edit-proc" data-id="<?=$proc->id_procedimiento;?>" data-titulo="<?=$proc->titulo;?>" data-subtitulo="<?=$proc->sub_titulo;?>" data-detalle="<?=$proc->detalle;?>" data-imgsola="<?=( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento ) ?>" data-imgprincipal="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $proc->img_principal_procedimiento == 'null' ? 'logo1.png' : $proc->img_principal_procedimiento );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+							<td><button class="btn btn-danger del-proc" data-id="<?=$proc->id_procedimiento; ?>"><span class="glyphicon glyphicon-remove"></span></button></td>
+						</tr>
+
+					<?php endforeach; ?>
+
+					<?php } ?>
+
+					<tfoot style="display:none;">
+						<tr>
+							<td>Nombre</td>
+							<td>Detalle</td>
+							<td>Editar</td>
+							<td>Eliminar</td>
+						</tr>
+					</tfoot>
+				</table>
+
+			</div>
+
+			<div id="panel_testimonios" class="contenido_panel" style="display:none;">
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">  Testimonios </p>			
+				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
+
+				<form action="<?=$this->config->base_url()?>index.php/admin/mostrar_testimonio_inicio" method="post">
+					<table class="table table-hover" id="tabla_testimonios">
+						<thead>					
+							<tr>
+								<th>Mostrar Inicio</th>
+								<th>Nombres</th>
+								<th>Estado</th>
+								<th>Ver</th>
+								<th>Eliminar</th>
+							</tr>
+						</thead>
+
+						<?php if( $testimonios->result() != null ){ ?>
+
+						<?php foreach ($testimonios->result() as $test) : ?>
+
+							<tr class="testimonio_tr">
+								<td style="background:lightgray;text-align:center;"><input type="checkbox" style="border:none;background:none;width:21px;height:21px;" <?php echo ($test->orden_inicio == 1 ? "checked='checked'" : "") ?> name="mostrar_inicio[]" value="<?=$test->id_testimonio;?>"> </td>
+								<td><img src="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>						
+								<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
+								<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+								<td><button class="btn btn-danger del_test" data-id="<?=$test->id_testimonio;?>" ><span class="glyphicon glyphicon-remove"></span></button></td>
+							</tr>
+
+						<?php endforeach; ?>
+
+						<?php } ?>
+
+						<tfoot style="display:none;">
+							<tr>
+								<th>Mostrar Inicio</th>
+								<td>Nombre</td>
+								<th>Estado</th>
+								<td>Ver</td>
+								<td>Eliminar</td>
+							</tr>
+						</tfoot>
+					</table>
+					<hr>
+					<p style="font-size:1.3em;">Procesar seleccionados</p>
+					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+				</form>
+			</div>
+
+			<?php /*****Panels********************/ ?>
 		</div>
-
-		<div id="panel_testimonios" class="contenido_panel" style="display:none;">
-			<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">  Testimonios </p>			
-			<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
-
-			<table class="table table-hover" id="tabla_testimonios">
-				<thead>					
-					<tr>
-						<th>Nombres</th>
-						<th>Email</th>
-						<th>Estado</th>
-						<th>Ver</th>
-						<th>Eliminar</th>
-					</tr>
-				</thead>
-				<?php if( $testimonios->result() != null ){ ?>
-
-				<?php foreach ($testimonios->result() as $test) : ?>
-
-					<tr class="testimonio_tr">
-						<td><img src="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>
-						<td><?php echo $test->email_del_descriptor; ?></td>
-						<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
-						<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/procedimientos/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-						<td><button class="btn btn-danger del_test" data-id="<?=$test->id_testimonio;?>" ><span class="glyphicon glyphicon-remove"></span></button></td>
-					</tr>
-
-				<?php endforeach; ?>
-
-				<?php } ?>
-
-				<tfoot style="display:none;">
-					<tr>
-						<td>Nombre</td>
-						<td>Detalle</td>
-						<th>Estado</th>
-						<td>Ver</td>
-						<td>Eliminar</td>
-					</tr>
-				</tfoot>
-			</table>
-		</div>
-
-		<?php /*****Panels********************/ ?>
 	</div>
-</div>
 
 
 
@@ -698,7 +670,8 @@ error:  function(xhr,err){
 });
 
 
-$("#tabla_testimonios").on("click"," .testimonio_tr .edit_test", function(){
+$("#tabla_testimonios").on("click"," .testimonio_tr .edit_test", function(e){
+	e.preventDefault();
 	$("#ventana_testimonio").dialog({minWidth:"800px",width:"800px",title:"Detalle Testimonio",modal:true,minHeight:"300px","resizable":false,position: "top"});
 	$("#img_testimonio_view").attr("src", $(this).data("imgtestview") );
 	$("#mostrar_nombre_testimonio").html( $(this).data("nombres") );
@@ -708,7 +681,8 @@ $("#tabla_testimonios").on("click"," .testimonio_tr .edit_test", function(){
 	$("#id_testimonio_aprobado").val( $(this).data("id") );
 });
 
-$("#tabla_testimonios").on("click"," .testimonio_tr .del_test",function(){
+$("#tabla_testimonios").on("click"," .testimonio_tr .del_test",function(e){
+	e.preventDefault();
 	$("#id_eliminar_testimonio").val( $(this).data("id") );
 
 $("#ventana_eliminar_testimonio").dialog({minWidth:"600px",width:"600px",title:"¿Esta seguro de eliminar este testimonio?",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});

@@ -138,6 +138,10 @@
 		   	$this->db->query("update testimonios set aprobado= $aprobado where id_testimonio = $id_testimonio ");
 		   }
 
+		   public function procesar_testimonio_inicio($id_testimonio,$orden_inicio){
+		   	$this->db->query("update testimonios set orden_inicio= $orden_inicio where id_testimonio = $id_testimonio ");
+		   }
+
 		   public function eliminar_testimonio($id_testimonio){
 		   	$this->db->query("delete from testimonios where id_testimonio = $id_testimonio");
 		   }

@@ -145,6 +145,27 @@
 
 		}
 
+		public function mostrar_testimonio_inicio(){
+			echo "<pre>";
+			print_r($_POST);
+			echo "</pre>";
+
+			if( $this->input->post() ){
+
+				$size = sizeof($this->input->post("mostrar_inicio"));
+
+				for ($i=0; $i < $size ; $i++) { 
+
+					$this->Cirujano_model->procesar_testimonio_inicio($this->input->post("mostrar_inicio")[$i],1);
+
+				}
+				#redirect("Admin");
+			}else{
+				redirect("Admin");
+			}
+
+		}
+
 		public function eliminar_testimonio(){
 			if( $this->input->post() ){
 
