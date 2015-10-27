@@ -832,7 +832,8 @@ $("#boton_cambiar_clave").on("click",function(e){
 
 });
 
-$("#tabla_contacto ").on("click",".contacto_tr .ver_contacto",function(){
+$("#tabla_contacto ").on("click",".contacto_tr .ver_contacto",function(e){
+	e.preventDefault();
 	var id_contacto = $(this).data("id");
 	$("#mostrar_nombre_contacto").html( $(this).data("nombres") );
 	$("#mostrar_apellido_contacto").html( $(this).data("apellidos") );
