@@ -209,26 +209,20 @@
 
 		}
 
-		public function eliminar_testimonio(){
-			if( $this->input->post() ){
-
-				$id_testimonio = $this->input->post("id_eliminar_testimonio");
-
-				$this->Cirujano_model->eliminar_testimonio($id_testimonio);
-
-				redirect('Admin');
-			}else{
-				redirect('Admin');
-			}
-
-		}
-
-
 
 		public function eliminar_contacto(){
 			if( $this->input->post() ){
+
 				$id_contacto = $this->input->post("id_eliminar_contacto");
-				$this->Cirujano_model->del_contacto($id_contacto);
+				$size_contact = sizeof($this->input->post("id_testimonio"));
+
+
+				for ($i=0; $i < $size_contact ; $i++) { 
+
+					$this->Cirujano_model->del_contacto($id_contacto[$i]);
+
+				}
+
 				redirect('Admin');
 			}else{
 				redirect('Admin');
