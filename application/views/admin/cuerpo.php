@@ -404,13 +404,13 @@
 				<input type="text" class="form-control" id="email" name="email" maxlength="200" value="<?=($email);?>">
 
 				<p>Clave Email (Para el envio de los correos) :</p>
-				<input type="text" class="form-control" id="clave_email " name="clave_email" maxlength="200" value="<?=($clave_email );?>">
+				<input type="text" class="form-control" id="clave_email " name="clave_email" maxlength="100" value="<?=($clave_email );?>">
 
 				<p>Telefono:</p>
-				<input type="text" class="form-control" id="telefono" name="telefono" maxlength="200" value="<?=($telefono);?>">
+				<input type="text" class="form-control" id="telefono" name="telefono" maxlength="12" value="<?=($telefono);?>">
 
 				<p>Fax:</p>
-				<input type="text" class="form-control" id="fax" name="fax" maxlength="200" value="<?=($fax);?>">
+				<input type="text" class="form-control" id="fax" name="fax" maxlength="12" value="<?=($fax);?>">
 
 				<p>Facebook:</p>
 				<input type="text" class="form-control" id="facebook" name="facebook" maxlength="200" value="<?=($facebook);?>">
