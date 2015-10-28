@@ -516,7 +516,7 @@
 					}
 
 				}else{
-					echo "<div style='padding:25px;font-size:1.4em;'>Este procedimiento no tiene imagenes relacionadas.</div>";
+					echo "<div style='padding:25px;font-size:1.4em;'>'Este procedimiento no tiene imágenes relacionadas, por favor presione el boton 'Agregar imagen' para agregar una imagen a la galeria'.</div>";
 				}
 
 			}
