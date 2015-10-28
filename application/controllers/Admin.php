@@ -172,7 +172,9 @@
 							}
 						}
 					}
-					$mensaje = "Nuevo orden en el inicio guardado";
+
+					$mensaje = "Nuevo orden de muestra para los testimonios en el inicio actualizado";
+
 				}elseif( $this->input->post("opcion_testimonio") == 'aprobado') {
 					
 					for ($i=0; $i < $size ; $i++) { 
@@ -187,12 +189,16 @@
 
 						}						
 					}
+
 					$mensaje = "Testimonio(s) Aprobado(s)";
+
 				}elseif( $this->input->post("opcion_testimonio") == 'eliminar' ) {
 					for ($i=0; $i < $size ; $i++) { 
 						$this->Cirujano_model->eliminar_testimonio($this->input->post("id_testimonio")[$i]);
 					}
+
 					$mensaje = "Testimonio(s) Eliminado(s)";
+
 				}
 
 				redirect("Admin/panel?msg=".$mensaje);
@@ -248,7 +254,7 @@
 
 					}
 
-					$alerta = "Orden de muestra en el inicio actualizado correctamente";
+					$alerta = "Orden de muestra para los procedimientos en el inicio actualizado";
 
 				}elseif( $this->input->post("opcion_procedimiento") == "eliminar"){
 
@@ -257,7 +263,9 @@
 						$this->Cirujano_model->del_procedimiento($id_procedimiento[$i]);
 
 					}
-					$alerta = "Procedimiento(s) Eliminado(s) correctamente";
+
+					$alerta = "Procedimiento(s) Eliminado(s)";
+
 				}
 
 
@@ -293,7 +301,7 @@
 
 				$this->Cirujano_model->actualizar_procedimiento($id_procedimiento,$titulo,$titulo_portugues,$subtitulo,$subtitulo_portugues,$detalle,$detalle_portugues,$img_procedimiento_nueva);
 
-				redirect('Admin/panel?msg=Procedimiento editado correctamente');
+				redirect('Admin/panel?msg=Procedimiento actualizado');
 			}else{
 				redirect('Admin');
 			}
@@ -359,7 +367,7 @@
 				opendir($uploads_curriculum_update);
 				move_uploaded_file($_FILES["img_curriculum"]["tmp_name"],$uploads_curriculum_update.$img_curriculum_nueva);
 
-				redirect('Admin/panel?msg=La información del perfil profesional actualizada correctamente.');
+				redirect('Admin/panel?msg=La información del perfil profesional ha sido actualizada');
 			}else{
 				redirect('Admin');
 			}

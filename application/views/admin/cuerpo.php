@@ -560,7 +560,7 @@
 			</div>
 
 			<div style="width:100px;display:inline;margin-right:16px;">
-				<button id="aprobar_testimonio" class="btn btn-success">Aprobar | Desaprobar</button>
+				<button id="aprobar_testimonio" class="btn btn-success">Aprobar | Ocultar</button>
 			</div>
 
 			<div style="width:100px;display:inline;">
@@ -620,8 +620,21 @@
 
 	<!---------------------------________Modales informativas________-------------------------------------->
 
-	<div id="mensajes" style="width:100%;height:100%;background:rgba(0,0,0,0.7);position:fixed;top:0;left:0;z-index:10;display:none;">
+	<div id="mensajes_informativos" style="width:100%;height:100%;background:rgba(0,0,0,0.7);position:fixed;top:0;left:0;z-index:10;display:none;">
+		<div style="width:600px;margin:auto;margin-top:180px;;height:300px;background:rgba(255,255,255,0.7);">
+			<div style="width:100%;padding:12px;background:#8CCEBB;text-align:center;font-size:1.6em;margin-bottom:70px;">Mensaje</div>
+			<p style="font-size:1.3em;text-align:center;">
+				<?php if ( isset($_GET["msg"]) ) { echo $_GET["msg"]; }?>		
+			</p>
 
+			<hr>
+
+			<a href="<?=$this->config->base_url()?>index.php/admin/panel">	
+				<div style="margin:auto;width:100px;">
+					<button id="cerrar_mensajes_informativos" class="btn btn-success btn-lg">Aceptar</button>					
+				</div>
+			</a>
+		</div>
 	</div>
 
 	<!---------------------------________Modales informativas________-------------------------------------->
@@ -1012,6 +1025,10 @@ $(".item_panel_control").on("click",function(){
 });
 
 /**********************************************************************************************/
+<?php if ( isset($_GET["msg"]) ) { ?>
+	$("#mensajes_informativos").show("fast");
+	<?php } ?>
+	/**********************************************************************************************/
 /*
 $("#mas_file").on("click",function(e){
 e.preventDefault();
