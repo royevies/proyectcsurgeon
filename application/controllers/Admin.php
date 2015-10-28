@@ -99,7 +99,7 @@
 
 				$this->Cirujano_model->cambiar_datos($direccion,$email,$clave_email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss);
 				$this->Cirujano_model->cambiar_usuario($usuario);
-				redirect("Admin");
+				redirect("Admin/panel?msg=Los datos han sido actualizados");
 			}else{
 				redirect("Admin");
 			}
@@ -128,12 +128,13 @@
 					$img_principal_testimonio
 					);
 
-				redirect("web?msg");
+				redirect("web?msg=Su testimonio se envio correctamente y esta en espera de aprobación, gracias por su comentario.");
 			}else{
 				redirect("web");
 			}
 		}
 
+		/*
 		public function procesar_testimonio(){
 			if( $this->input->post() ){
 				$id_testimonio = $this->input->post("id_testimonio_aprobado");
@@ -141,12 +142,14 @@
 
 				$this->Cirujano_model->procesar_testimonio($id_testimonio,$aprobado);
 
-				redirect('Admin');
+				redirect('Admin/panel?msg=');
 			}else{
 				redirect('Admin');
 			}
 
 		}
+
+		*/
 
 		public function mostrar_testimonio_inicio(){
 			/*echo "<pre>";
@@ -192,7 +195,7 @@
 					$mensaje = "Testimonio(s) Eliminado(s)";
 				}
 
-				redirect("Admin/panel?".$mensaje);
+				redirect("Admin/panel?msg=".$mensaje);
 
 			}else{
 				redirect("Admin");
@@ -213,7 +216,7 @@
 
 				}
 
-				redirect('Admin');
+				redirect('Admin/panel?msg=Contacto(s) Eliminado(s) correctamente.');
 			}else{
 				redirect('Admin');
 			}
@@ -226,6 +229,7 @@
 				print_r($_POST);
 				echo "</pre>";
 				*/
+				$alerta = "";
 				$id_procedimiento = $this->input->post("id_procedimiento");
 				$size_procedimiento = sizeof($this->input->post("id_procedimiento"));
 
@@ -244,6 +248,8 @@
 
 					}
 
+					$alerta = "Orden de muestra en el inicio actualizado correctamente";
+
 				}elseif( $this->input->post("opcion_procedimiento") == "eliminar"){
 
 					for ($i=0; $i < $size_procedimiento ; $i++) { 
@@ -251,7 +257,7 @@
 						$this->Cirujano_model->del_procedimiento($id_procedimiento[$i]);
 
 					}
-
+					$alerta = "Procedimiento(s) Eliminado(s) correctamente";
 				}
 
 
@@ -259,7 +265,7 @@
 				#$id_proc = $this->input->post("id_eliminar_procedimiento");
 				#$this->Cirujano_model->del_procedimiento($id_proc);
 
-				redirect('Admin');
+				redirect('Admin/panel?msg='.$alerta);
 			}else{
 				redirect('Admin');
 			}
@@ -287,7 +293,7 @@
 
 				$this->Cirujano_model->actualizar_procedimiento($id_procedimiento,$titulo,$titulo_portugues,$subtitulo,$subtitulo_portugues,$detalle,$detalle_portugues,$img_procedimiento_nueva);
 
-				redirect('Admin');
+				redirect('Admin/panel?msg=Procedimiento editado correctamente');
 			}else{
 				redirect('Admin');
 			}
@@ -353,7 +359,7 @@
 				opendir($uploads_curriculum_update);
 				move_uploaded_file($_FILES["img_curriculum"]["tmp_name"],$uploads_curriculum_update.$img_curriculum_nueva);
 
-				redirect('Admin');
+				redirect('Admin/panel?msg=La información del perfil profesional actualizada correctamente.');
 			}else{
 				redirect('Admin');
 			}
@@ -427,7 +433,7 @@
 
 				$this->Cirujano_model->crear_procedimiento($titulo,$titulo_portugues,$sub_titulo,$sub_titulo_portugues,$detalle,$detalle_portugues,$img_procedimiento);
 
-				redirect("Admin");
+				redirect("Admin/panel?msg=Procedimiento creado correctamente");
 			}else{
 				redirect("Admin");
 			}
@@ -441,7 +447,7 @@
 				$clave = sha1( $this->input->post("clave") );
 
 				$this->Cirujano_model->actualizar_clave($clave);
-				redirect("Admin");
+				redirect("Admin/panel?msg=Clave de acceso al administrador de contenido actualizada");
 			}else{
 				redirect("Admin");
 			}
@@ -488,7 +494,7 @@
 
 				$this->email->from('nombre o correo que envia');
 				$this->email->to("para quien es");
-				$this->email->subject('Bienvenido/a a uno-de-piera.com');
+				$this->email->subject('Nuevo contacto');
 				$this->email->message('<h2>Email enviado con codeigniter haciendo uso del smtp de gmail</h2><hr><br> Bienvenido al blog');
 				$this->email->send();
 
@@ -540,7 +546,7 @@
 				
 				$this->Cirujano_model->crear_parejas($id_procedimiento,$img_pareja,$img_pareja2);
 
-				redirect("Admin");
+				redirect("Admin/panel?msg=Imagenes Guardadas con exito.");
 			}else{
 				redirect("Admin");
 			}
@@ -551,7 +557,7 @@
 				
 				$id_pareja =	$this->input->post("eliminar_pareja");
 				$this->Cirujano_model->eliminar_parejas($id_pareja);
-				redirect("Admin");
+				redirect("Admin/panel?msg=Imagenes eliminadas");
 
 			}else{
 				redirect("Admin");
