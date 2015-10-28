@@ -180,7 +180,7 @@
 						</div>
 
 						<div style="background:#f9f9f9;width:20%;float:left;padding:10px;cursor:pointer;">
-							<button id="desplegar_guardado" class="btn btn-primary" ><span class="glyphicon glyphicon-floppy-disk"></span> Guardar Nuevo</button>
+							<button id="desplegar_guardado" class="btn btn-primary" ><span class="glyphicon glyphicon-floppy-disk"></span> Agregar imagen</button>
 						</div>
 
 						<div style="clear:both;"></div>
@@ -764,7 +764,7 @@ $("#contenido_galeria_especifica").html("<p style='color:red;'>Ha ocurrido un er
 		html +='</div>';
 		html +='<hr>';
 		html +='<div class="alert alert-danger" style="text-align:center;border-radius:0px;">';
-		html +='<p style="text-align:center;">¿Desea Eliminar Esta pareja?</p>'
+		html +='<p style="text-align:center;">¿Desea eliminar esta imagen?</p>'
 		html +='<hr>';
 		html +='<form id="form_eliminar_pareja" action="<?=$this->config->base_url()?>index.php/admin/eliminar_img_parejas" method="post">';
 		html +='<input id="checkbox_pareja" type="checkbox" name="eliminar_pareja" value="'+id_pareja+'" > Si <input id="submit_pareja" type="submit" class="btn btn-danger" value="Eliminar" ></form>';

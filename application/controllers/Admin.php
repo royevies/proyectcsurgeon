@@ -509,7 +509,7 @@
 
 					foreach ($this->Cirujano_model->ver_img_procedimientos($id_img_procedimiento)->result() as $imagenes) {
 						echo "<div class='sobre_img_antes_despues' style='position:relative;border:1px solid black;float:left'>";
-						echo '<div class="sobre_img_antes_despues_disparador" style="width:100%;height:100%;background:rgba(0,0,0,0.8);position:absolute;top:0;left:0;display:none;font-size:1.3em;color:white;padding-top:40px;text-align:center;" data-id="'.$imagenes->id_img_procedimiento.'" data-imgantes="'.$imagenes->img_antes.'" data-imgdespues="'.$imagenes->img_despues.'" ><span class="glyphicon glyphicon-fullscreen"></span> Ver pareja<hr></div>';
+						echo '<div class="sobre_img_antes_despues_disparador" style="width:100%;height:100%;background:rgba(0,0,0,0.8);position:absolute;top:0;left:0;display:none;font-size:1.3em;color:white;padding-top:40px;text-align:center;" data-id="'.$imagenes->id_img_procedimiento.'" data-imgantes="'.$imagenes->img_antes.'" data-imgdespues="'.$imagenes->img_despues.'" ><span class="glyphicon glyphicon-fullscreen"></span> Ver Imagen<hr></div>';
 						echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_antes."' style='width:140px;height:140px;cursor:pointer;'>";
 						echo "<img src='".$this->config->base_url()."fronted_inicio/procedimientos/".$imagenes->img_despues."' style='width:140px;height:140px;cursor:pointer;'>";
 						echo "</div>";
