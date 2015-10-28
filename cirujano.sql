@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-10-2015 a las 23:56:46
+-- Tiempo de generación: 28-10-2015 a las 01:19:14
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -45,7 +45,7 @@ CREATE TABLE `contacto` (
 --
 
 INSERT INTO `contacto` (`id_contacto`, `nombres_contacto`, `servicio`, `telefono_movil_contacto`, `email_contacto`, `asunto_contacto`, `descripcion_contacto`, `fecha_contacto`, `visto`) VALUES
-(8, 'Jhonny', 'manoplastia', '8787878', 'jhonnyvanckruz@gmail.com', 'Hola contacto de prueba', 'fedsfdsfsd', '2015-10-27', 0);
+(8, 'Jhonny', 'manoplastia', '8787878', 'jhonnyvanckruz@gmail.com', 'Hola contacto de prueba', 'fedsfdsfsd', '2015-10-27', 1);
 
 -- --------------------------------------------------------
 
@@ -217,13 +217,32 @@ CREATE TABLE `procedimientos` (
 --
 
 INSERT INTO `procedimientos` (`id_procedimiento`, `img_principal_procedimiento`, `orden_inicio`) VALUES
-(2, 'mamo.jpg', 0),
-(3, 'Koala.jpg', 0),
-(4, 'lineas.jpg', 0),
+(2, 'mamo.jpg', 1),
+(3, 'Koala.jpg', 1),
+(4, 'lineas.jpg', 1),
 (5, 'jennifer.jpg', 0),
 (6, 'txiki1-400x300.jpg', 0),
 (7, 'silueta.jpg', 0),
 (8, 'rubia.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `slider`
+--
+
+CREATE TABLE `slider` (
+  `id_slider` int(11) NOT NULL,
+  `slider` varchar(250) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `slider`
+--
+
+INSERT INTO `slider` (`id_slider`, `slider`) VALUES
+(1, 'foto1.jpg'),
+(2, 'foto2.jpg');
 
 -- --------------------------------------------------------
 
@@ -273,7 +292,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `nombres`, `apellidos`, `rol`) VALUES
-(1, 'doctor', '8cb2237d0679ca88db6464eac60da96345513964', 'Jhonny', 'Vasquez', 1);
+(1, 'doctorjulio', '8cb2237d0679ca88db6464eac60da96345513964', 'Jhonny', 'Vasquez', 1);
 
 --
 -- Índices para tablas volcadas
@@ -332,6 +351,12 @@ ALTER TABLE `img_testimonios`
 --
 ALTER TABLE `procedimientos`
   ADD PRIMARY KEY (`id_procedimiento`);
+
+--
+-- Indices de la tabla `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`id_slider`);
 
 --
 -- Indices de la tabla `testimonios`
@@ -394,6 +419,11 @@ ALTER TABLE `img_testimonios`
 --
 ALTER TABLE `procedimientos`
   MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT de la tabla `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `testimonios`
 --
