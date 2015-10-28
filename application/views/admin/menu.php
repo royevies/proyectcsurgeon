@@ -58,46 +58,47 @@
 </style>
 
 <div class="content-menu">
+    <a id="procedimientos" class="item_panel_control" data-panel="panel_procedimientos" data-original-title="Gestión de procedimientos" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+     <div class="item-menu">       
+        <img src="<?=$this->config->base_url();?>fronted/img/iconos2/relax8.png" class="img_menu" />        
+        <p>Procedimientos</p>
+    </div>
+</a>  
 
-    <a id="curriculum" class="item_panel_control" data-panel="panel_curriculum" data-original-title="Gestión de curriculum personal" data-content="" rel="popover" data-placement="right"  data-trigger="hover">
-        <div class="item-menu">
-            <img src="<?=$this->config->base_url();?>fronted/img/iconos2/curriculum.png" class="img_menu" />        
-            <p>Curriculum</p>
+<a id="galeria" class="item_panel_control" data-panel="panel_galeria" data-original-title="Galeria " rel="popover" data-placement="right" data-trigger="hover">
+    <div class="item-menu">
+        <img src="<?=$this->config->base_url();?>fronted/img/iconos2/galeria.png" class="img_menu" />        
+        <p>Galeria</p>
+    </div>
+</a>
+
+
+<a id="curriculum" class="item_panel_control" data-panel="panel_curriculum" data-original-title="Gestión de curriculum personal" data-content="" rel="popover" data-placement="right"  data-trigger="hover">
+    <div class="item-menu">
+        <img src="<?=$this->config->base_url();?>fronted/img/iconos2/curriculum.png" class="img_menu" />        
+        <p>Formación Profesional</p>
+    </div>
+</a>
+
+<a id="testimonios" class="item_panel_control" data-panel="panel_testimonios" data-original-title="Gestión de testimonios de pascientes" data-content="" rel="popover" data-placement="right" data-trigger="hover">
+    <div class="item-menu">
+        <img src="<?=$this->config->base_url();?>fronted/img/iconos2/usuarios.png" class="img_menu" />        
+        <p>testimonios</p>
+    </div>
+</a>
+
+<a id="contacto" class="item_panel_control" data-panel="panel_contacto" data-original-title="Contacto "  data-content="" rel="popover" data-placement="right" data-trigger="hover">
+    <div class="item-menu">
+        <img src="<?=$this->config->base_url();?>fronted/img/iconos2/correo3.png" class="img_menu" />        
+        <p>Contacto 
+            <?php if( $novistos > 0){ ?>
+
+            <span class="badge"><?php echo $novistos; ?></span></p>
+
+            <?php } ?>
         </div>
     </a>
 
-    <a id="contacto" class="item_panel_control" data-panel="panel_contacto" data-original-title="Contacto "  data-content="" rel="popover" data-placement="right" data-trigger="hover">
-        <div class="item-menu">
-            <img src="<?=$this->config->base_url();?>fronted/img/iconos2/correo3.png" class="img_menu" />        
-            <p>Contacto 
-                <?php if( $novistos > 0){ ?>
-
-                <span class="badge"><?php echo $novistos; ?></span></p>
-
-                <?php } ?>
-            </div>
-        </a>
-
-        <a id="galeria" class="item_panel_control" data-panel="panel_galeria" data-original-title="Galeria " rel="popover" data-placement="right" data-trigger="hover">
-            <div class="item-menu">
-                <img src="<?=$this->config->base_url();?>fronted/img/iconos2/galeria.png" class="img_menu" />        
-                <p>Galeria</p>
-            </div>
-        </a>
-
-        <a id="procedimientos" class="item_panel_control" data-panel="panel_procedimientos" data-original-title="Gestión de procedimientos" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
-         <div class="item-menu">       
-            <img src="<?=$this->config->base_url();?>fronted/img/iconos2/relax8.png" class="img_menu" />        
-            <p>Procedimientos</p>
-        </div>
-    </a>  
-
-    <a id="testimonios" class="item_panel_control" data-panel="panel_testimonios" data-original-title="Gestión de testimonios de pascientes" data-content="" rel="popover" data-placement="right" data-trigger="hover">
-        <div class="item-menu">
-            <img src="<?=$this->config->base_url();?>fronted/img/iconos2/usuarios.png" class="img_menu" />        
-            <p>testimonios</p>
-        </div>
-    </a>
 
     <a href="salir" id="cerrar" data-content="Cerrar sesión" rel="popover" data-placement="right" data-trigger="hover">
         <div class="item-menu">         

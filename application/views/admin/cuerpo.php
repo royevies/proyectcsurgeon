@@ -167,8 +167,8 @@
 
 				<div id="galeria_especifica" style="display:none;">
 
-					<div id="cerrar_galeria_especifica" style="float:right;width:50px;height:50px;background:#1ABC9C;text-align:center;border-radius:50%;border:1px solid #f1f1f1;box-shadow: 10px 10px 5px #888888;padding:7px;cursor:pointer;" title="Volver a Todas las Galerias">
-						<span class="glyphicon glyphicon-remove" style="margin-top:11px"></span>
+					<div id="cerrar_galeria_especifica" style="float:right;width:100px;height:50px;background:#1ABC9C;text-align:center;border:1px solid #f1f1f1;box-shadow: 10px 10px 5px #888888;padding:7px;cursor:pointer;" title="Volver a Todas las Galerias">
+						<p style="margin-top:11px;font-size:1.3em;">Volver</p>
 					</div>
 					<div style="clear:both;"></div>
 					<hr>
@@ -226,7 +226,7 @@
 
 
 			<div id="panel_curriculum" class="contenido_panel" style="display:none;background:rgba(255,255,255,0.5);">
-				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Curriculum </p>
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Formación profesional </p>
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 				<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post" enctype="multipart/form-data">
 					<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
@@ -432,7 +432,7 @@
 </div>
 
 <div id="panel_procedimientos" class="contenido_panel" style="display:none;">
-	<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Procedimientos <button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo</span>	</button></p>
+	<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Procedimientos <button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo procedimiento</span>	</button></p>
 
 	<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 
