@@ -141,7 +141,7 @@
 			</div>
 
 			<div id="panel_galeria" class="contenido_panel" style="display:none;width:100%;height:600px;">
-				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Galeria <?php /*<button class="btn btn-success" style="float:right;" id="nueva_galeria"><span class="glyphicon glyphicon-plus"> Nuevo</span>	</button> */?></p>
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Galeria  <button class="btn btn-success" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-plus"> Slider</span>	</button> </p>
 
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 				
@@ -804,6 +804,12 @@ $("#contenido_galeria_especifica").html("<p style='color:red;'>Ha ocurrido un er
 });
 
 
+});
+//Fin galeria 
+
+
+$("#slider_cog").on("click",function(){
+	$("#gestion_slider").dialog({width:"800px",title:"Gestión del slider",modal:true,minHeight:"300px","resizable":false,position: "top"});	
 });
 
 $("#tabla_procedimientos,#tabla_contacto,#tabla_testimonios").dataTable();

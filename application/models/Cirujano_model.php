@@ -13,6 +13,10 @@
 			return $query;
 		}
 
+		public function get_slider(){
+			return $this->db->query("SELECT * FROM slider");
+		}
+
 		public function get_procedimientos(){
 			$query = $this->db->query("SELECT * FROM procedimientos as p left outer join contenido_procedimiento as c on p.id_procedimiento = c.id_procedimiento GROUP BY p.id_procedimiento");
 			return $query;	
