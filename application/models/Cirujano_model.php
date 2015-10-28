@@ -13,6 +13,10 @@
 			return $query;
 		}
 
+		public function get_slider(){
+			return $this->db->query("SELECT * FROM slider");
+		}
+
 		public function get_procedimientos(){
 			$query = $this->db->query("SELECT * FROM procedimientos as p left outer join contenido_procedimiento as c on p.id_procedimiento = c.id_procedimiento GROUP BY p.id_procedimiento");
 			return $query;	
@@ -97,12 +101,28 @@
 		   }
 
 		   public function crear_procedimiento($titulo,$titulo_portugues,$sub_titulo,$sub_titulo_portugues,$detalle,$detalle_portugues,$img_procedimiento){
-		   	$this->db->insert("procedimientos", [ "img_principal_procedimiento" => $img_procedimiento ] );
+		   	$this->db->insert("procedimientos", [ "img_principal_procedimiento" => $img_procedimiento ,"orden_inicio" => 0] );
 
 		   	$id_procedimiento = $this->db->insert_id();
 
 		   	$this->db->insert("contenido_procedimiento", [ "id_procedimiento" => $id_procedimiento , "titulo" => $titulo , "sub_titulo" => $sub_titulo , "detalle" => $detalle  ,"id_idioma" => 1] );
 		   	$this->db->insert("contenido_procedimiento", [ "id_procedimiento" => $id_procedimiento , "titulo" => $titulo_portugues , "sub_titulo" => $sub_titulo_portugues , "detalle" => $detalle_portugues ,"id_idioma" => 2 ] );
+		   }
+
+		   public function procesar_procedimiento_inicio($id_procedimiento,$orden_inicio){
+		   	$this->db->query("update procedimientos set orden_inicio= $orden_inicio where id_procedimiento = $id_procedimiento ");
+		   }
+
+		   public function ver_procedimiento_especifico($id_procedimiento){
+		   	return $this->db->query("select * from procedimientos where id_procedimiento = $id_procedimiento ");
+		   }
+
+		   public function ver_procedimientos_inicio(){
+		   	return $this->db->query("SELECT * FROM procedimientos as p left outer join contenido_procedimiento as c on p.id_procedimiento = c.id_procedimiento where orden_inicio = 1 GROUP BY p.id_procedimiento");
+		   }
+		   
+		   public function ver_procedimientos_inicio_por(){
+		   	return $this->db->query("SELECT * FROM procedimientos as p left outer join contenido_procedimiento as c on p.id_procedimiento = c.id_procedimiento where id_idioma = 2 and orden_inicio = 1 GROUP BY p.id_procedimiento");
 		   }
 
 		   public function crear_testimonios(
@@ -134,6 +154,10 @@
 		   	return $this->db->query("select * from testimonios where aprobado = 1 and orden_inicio = 1");
 		   }
 
+		   public function ver_testimonios_especifico($id_testimonio){
+		   	return $this->db->query("select * from testimonios where id_testimonio = $id_testimonio ");
+		   }
+
 		   public function procesar_testimonio($id_testimonio,$aprobado){
 		   	$this->db->query("update testimonios set aprobado= $aprobado where id_testimonio = $id_testimonio ");
 		   }
@@ -155,10 +179,12 @@
 		   	return  $this->db->query("select * from img_procedimientos where id_procedimiento = $id_procedimiento ");
 		   }
 
+		   public function cambiar_usuario($usuario){
+		   	$this->db->query("update usuario set usuario = '$usuario' where id_usuario = 1 ");
+		   }
 
-		   public function actualizar_clave($usuario,$clave){
-		   	$update="update usuario set clave = '$clave' where usuario = '$usuario' ";
-		   	$this->db->query($update);
+		   public function actualizar_clave($clave){
+		   	$this->db->query("update usuario set clave = '$clave' where id_usuario = 1 ");
 		   }
 
 		   public function crear_parejas($id_procedimiento,$img_antes,$img_despues){
@@ -173,8 +199,8 @@
 		   	return  $this->db->query("select * from datos_contacto ");
 		   }
 
-		   public function cambiar_datos($direccion,$email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss){
-		   	$this->db->query("update datos_contacto set direccion = '$direccion', email = '$email' , telefono ='$telefono' ,fax ='$fax' ,facebook ='$facebook' ,twitter ='$twiiter' ,instagram ='$instagram' ,googlepluss ='$googlepluss'  where id_datos_contacto = 1 ");
+		   public function cambiar_datos($direccion,$email,$clave_email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss){
+		   	$this->db->query("update datos_contacto set direccion = '$direccion', email = '$email' , clave_email = '$clave_email' , telefono ='$telefono' ,fax ='$fax' ,facebook ='$facebook' ,twitter ='$twiiter' ,instagram ='$instagram' ,googlepluss ='$googlepluss'  where id_datos_contacto = 1 ");
 		   }
 		   /*******************************Llave clase********************************************/
 		}
