@@ -192,7 +192,7 @@
 					$mensaje = "Testimonio(s) Eliminado(s)";
 				}
 
-				redirect("Admin?".$mensaje);
+				redirect("Admin/panel?".$mensaje);
 
 			}else{
 				redirect("Admin");
