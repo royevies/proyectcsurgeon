@@ -10,7 +10,7 @@
 					============================================= -->
 					<div id="logo">
 						<a href="<?=$this->config->base_url();?>" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/logo1.png" alt="Canvas Logo"></a>
-						<a href="<?=$this->config->base_url();?>" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"></a>
+						<a href="<?=$this->config->base_url();?>" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/logo1.png" alt="Canvas Logo"></a>
 					</div><!-- #logo end -->
 
 					<!-- Primary Navigation
@@ -18,14 +18,14 @@
 					<nav id="primary-menu">
 
 						<ul>
-							<li class="current"><a href="index.html"><div>Home</div></a>
-								<ul>
-									<li><a href="#"><div>Sub Menu 1</div></a></li>
-									<li><a href="#"><div>Sub Menu 2</div></a></li>
-									<li><a href="#"><div>Sub Menu 3</div></a></li>
-									<li><a href="#"><div>Sub Menu 4</div></a></li>
-									<li><a href="#"><div>Sub Menu 5</div></a></li>
-								</ul>
+							<li class="current"><a href="<?=$this->config->base_url();?>"><div>Início</div></a>
+<!--								<ul>
+                                                                        <li><a href="#" data-href="#section-about"><div>Procedimientos</div></a></li>
+                                                                        <li><a href="#" data-href="#section-work"><div>Galería</div></a></li>
+                                                                        <li><a href="#" data-href="#section-team"><div>Formación profesional</div></a></li>
+                                                                        <li><a href="#" data-href="#section-testimonials" class="no-offset"><div>Testimonios</div></a></li>
+                                                                        <li><a href="#" data-href="#section-contact"><div>Contacto</div></a></li>
+								</ul>-->
 							</li>
 						</ul>
 
@@ -45,7 +45,7 @@
 								<img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" alt="">
 								<img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" alt="">
 								<?php */ ?>
-								<a href="<?=$ruta_esp;?>"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" style="width:150px !important;height:auto;"></a>
+								<!--<a href="<?=$ruta_esp;?>"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" style="width:150px !important;height:auto;"></a>-->
 								<a href="<?=$ruta_por;?>"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" style="width:150px !important;height:auto;"></a>
 							</div>
 						</div><!-- #top-search end -->

@@ -14,6 +14,9 @@ class Web extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('fronted_inicio/head_inicio');
+                $this->load->view('fronted_inicio/header',[
+			"ruta_por" => $this->config->base_url()."index.php/por/index"
+			]);
 		$this->load->view('fronted_inicio/index',[
 			"procedimientos" => $this->Cirujano_model->get_procedimientos(),
 			"curriculum"     => $this->Cirujano_model->get_curriculum()->result(),

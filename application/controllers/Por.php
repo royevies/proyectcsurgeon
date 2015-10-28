@@ -13,6 +13,9 @@ class Por extends CI_Controller {
 
 	public function index(){
 		$this->load->view('fronted_inicio/head_inicio');
+		$this->load->view('fronted_inicio/header_por',[
+			"ruta_esp" => $this->config->base_url()."index.php/web/index"
+			]);
 		$this->load->view('fronted_inicio/index_por',[
 			"procedimientos"   => $this->Cirujano_model->get_procedimientos_por(),
 			"curriculum"       => $this->Cirujano_model->get_curriculum_por()->result(),
@@ -24,7 +27,7 @@ class Por extends CI_Controller {
 
 	public function procedimientos(){
 		$this->load->view('fronted_inicio/head_inicio');
-		$this->load->view('fronted_inicio/header',[
+		$this->load->view('fronted_inicio/header_por',[
 			"ruta_esp" => $this->config->base_url()."index.php/web/procedimientos",
 			"ruta_por" => $this->config->base_url()."index.php/por/procedimientos"
 			]);
@@ -37,7 +40,7 @@ class Por extends CI_Controller {
 
 	public function testimonios(){
 		$this->load->view('fronted_inicio/head_inicio');
-		$this->load->view('fronted_inicio/header',[
+		$this->load->view('fronted_inicio/header_por',[
 			"ruta_esp" => $this->config->base_url()."index.php/web/testimonios",
 			"ruta_por" => $this->config->base_url()."index.php/por/testimonios"
 			]);

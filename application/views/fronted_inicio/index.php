@@ -8,66 +8,7 @@
 
 		<!-- Header
 		============================================= -->
-		<header id="header" class="page-section full-header">
-
-			<div id="header-wrap">
-
-				<div class="container clearfix">
-
-					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-					<!-- Logo
-					============================================= -->
-					<div id="logo">
-						<a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/logo1.png" alt="Canvas Logo"></a>
-						<a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="<?=$this->config->base_url();?>fronted_inicio/images/logo@2x.png" alt="Canvas Logo"></a>
-					</div><!-- #logo end -->
-
-					<!-- Primary Navigation
-					============================================= -->
-					<nav id="primary-menu">
-
-						<ul>
-							<li class="current"><a href="index.html"><div>Home</div></a>
-								<ul>
-									<li><a href="#"><div>Sub Menu 1</div></a></li>
-									<li><a href="#"><div>Sub Menu 2</div></a></li>
-									<li><a href="#"><div>Sub Menu 3</div></a></li>
-									<li><a href="#"><div>Sub Menu 4</div></a></li>
-									<li><a href="#"><div>Sub Menu 5</div></a></li>
-								</ul>
-							</li>
-						</ul>
-
-						
-
-						<!-- Top Search
-						============================================= -->
-						<div id="top-search">
-						<?php /* ?>
-							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-							<form action="search.html" method="get">
-								<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
-							</form>
-							<?php */ ?>
-
-							<div id="idiomas">
-							<?php /* ?>
-								<img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" alt="">
-								<img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" alt="">
-								<?php */ ?>
-								<a href="<?=$this->config->base_url();?>"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" style="width:150px !important;height:auto;"></a>
-								<a href="<?=$this->config->base_url();?>index.php/por"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" style="width:150px !important;height:auto;"></a>
-							</div>
-						</div><!-- #top-search end -->
-
-					</nav><!-- #primary-menu end -->
-
-				</div>
-
-			</div>
-
-		</header><!-- #header end -->
+		<!-- #header end -->
 
 		<section id="slider" class="slider-parallax full-screen force-full-screen with-header swiper_wrapper page-section clearfix">
 
@@ -189,9 +130,9 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<li><a href="#" data-href="#header"><div>Início</div></a></li>
 							<li><a href="#" data-href="#section-about"><div>Procedimientos</div></a></li>
 							<li><a href="#" data-href="#section-work"><div>Galería</div></a></li>
-							<li><a href="#" data-href="#section-team"><div>Acerca de mi</div></a></li>
+							<li><a href="#" data-href="#section-team"><div>Formación profesional</div></a></li>
 							<li><a href="#" data-href="#section-testimonials" class="no-offset"><div>Testimonios</div></a></li>
-							<li><a href="#" data-href="#section-contact"><div>Contactame</div></a></li>
+							<li><a href="#" data-href="#section-contact"><div>Contacto</div></a></li>
 						</ul>
 					</nav>
 
@@ -220,10 +161,10 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<div class="col_one_third nobottommargin">
 							<div class="feature-box media-box">
 								<div class="fbox-media">
-									<img src="<?=$this->config->base_url();?>fronted_inicio/foto/mamo.jpg" alt="Why choose Us?">
+									<a href="<?=$this->config->base_url();?>index.php/web/procedimientos#Mamoplastia"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/mamo.jpg" alt="Why choose Us?"></a>
 								</div>
 								<div class="fbox-desc">
-									<h3>Mamoplastia<span class="subtitle">Aumenta .</span></h3>
+                                                                    <h3><a href="<?=$this->config->base_url();?>index.php/web/procedimientos#Mamoplastia">Mamoplastia</a><span class="subtitle">Aumenta .</span></h3>
 									<p>El aumento mamario (mamoplastia de aumento) es una de las intervenciones quirúrgicas más frecuentes en cirugía plástica.  
 										Se basa en la colocación de un implante detrás del seno que mejorar el volumen de la mama logrando excelentes resultados y gran  satisfacción de las pacientes.</p>
 									</div>
@@ -233,10 +174,10 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<div class="col_one_third nobottommargin">
 								<div class="feature-box media-box">
 									<div class="fbox-media">
-										<img src="<?=$this->config->base_url();?>fronted_inicio/foto/rino.png" alt="Why choose Us?">
+										<a href="<?=$this->config->base_url();?>index.php/web/procedimientos#Rinoplastia"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/rino.png" alt="Why choose Us?"></a>
 									</div>
 									<div class="fbox-desc">
-										<h3>Rinoplastia<span class="subtitle">Mejora el aspecto de t nariz.</span></h3>
+										<h3><a href="<?=$this->config->base_url();?>index.php/web/procedimientos#Rinoplastia">Rinoplastia</a><span class="subtitle">Mejora el aspecto de t nariz.</span></h3>
 										<p>La rinoplastia estética (RE) es uno de los procedimientos más complejos de la cirugía plástica y su realización requiere de un optimo nivel de preparación por parte del medico especialista. 
 											Es, sin embargo, una de las más interesantes y hermosas intervenciones quirúrgicas existentes.</p>
 										</div>
@@ -246,10 +187,10 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								<div class="col_one_third nobottommargin col_last">
 									<div class="feature-box media-box">
 										<div class="fbox-media">
-											<img src="<?=$this->config->base_url();?>fronted_inicio/foto/marcas.jpg" alt="Why choose Us?">
+											<a href="<?=$this->config->base_url();?>index.php/web/procedimientos#Rejuvenecimiento"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/marcas.jpg" alt="Why choose Us?"></a>
 										</div>
 										<div class="fbox-desc">
-											<h3>Rejuvenecimiento facial<span class="subtitle">Make our Customers Happy.</span></h3>
+											<h3><a href="<?=$this->config->base_url();?>index.php/web/procedimientos#Rejuvenecimiento">Rejuvenecimiento facial</a><span class="subtitle">Make our Customers Happy.</span></h3>
 											<p>El lifting o rejuvenecimiento facial es una cirugía que permite disminuir considerablemente estos signos y mejorar el aspecto facial. </p>
 										</div>
 									</div>
@@ -387,7 +328,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 				<section id="section-team" class="page-section topmargin-lg">
 
 					<div class="heading-block center">
-						<h2><span>Acerca de mi</span></h2>
+						<h2><span>Formación profesional</span></h2>
 						<span>Conoce mi formación y experiencia.</span>
 					</div>
 
@@ -423,18 +364,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										</p>
 
 
-										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-											<i class="icon-facebook"></i>
-											<i class="icon-facebook"></i>
-										</a>
-										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-											<i class="icon-twitter"></i>
-											<i class="icon-twitter"></i>
-										</a>
-										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-											<i class="icon-gplus"></i>
-											<i class="icon-gplus"></i>
-										</a>
+										
 									</div>
 
 
@@ -593,7 +523,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<section id="section-contact" class="page-section">
 
 							<div class="heading-block title-center">
-								<h2><span>Contactame</span></h2>
+								<h2><span>Contacto</span></h2>
 								<span>¿Aún tienes dudas? Aquí me puedes encontrar.</span>
 							</div>
 							<?php 
@@ -661,7 +591,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								============================================= -->
 								<div class="postcontent nobottommargin">
 
-									<h3>Contactame</h3>
+									<h3>Contacto</h3>
 
 									<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
