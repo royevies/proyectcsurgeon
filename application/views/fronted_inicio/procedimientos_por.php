@@ -32,7 +32,7 @@
 
                 <div class="container clearfix">
 
-                    <div class="col_full nobottommargin clearfix"> 
+<!--                    <div class="col_full nobottommargin clearfix"> 
 
                         <div class="masonry-thumbs col-6 one-page-menu" data-big="3" data-lightbox="gallery">
                             <?php foreach ($procedimientos as $proc) { ?>
@@ -41,7 +41,29 @@
 
                         </div>
 
-                    </div>
+                    </div>-->
+
+                    <!-- Portfolio Items
+                    ============================================= -->
+                    <div id="portfolio" class="portfolio-4 portfolio-nomargin clearfix">
+
+                        <?php foreach ($procedimientos as $proc) { ?>
+                        <article class="portfolio-item">
+                            <div class="portfolio-image">
+                                <a href="#" data-href="#<?=$proc->titulo;?>">
+                                    <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$proc->img_principal_procedimiento?>" alt="Open Imagination">
+                                </a>
+                                <div class="portfolio-overlay" data-lightbox="gallery">
+                                    <div class="portfolio-desc one-page-menu">
+                                        <a href="#" data-href="#<?=$proc->titulo;?>"><h3><?=$proc->titulo;?></h3></a>
+                                        <span><?=$proc->sub_titulo;?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <?php } ?>
+
+                    </div><!-- #portfolio end -->
                     
                 </div>
                 

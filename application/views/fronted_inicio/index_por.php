@@ -8,66 +8,7 @@
 
 		<!-- Header
 		============================================= -->
-		<header id="header" class="page-section full-header">
-
-			<div id="header-wrap">
-
-				<div class="container clearfix">
-
-					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-					<!-- Logo
-					============================================= -->
-					<div id="logo">
-						<a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/logo1.png" alt="Canvas Logo"></a>
-						<a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="<?=$this->config->base_url();?>fronted_inicio/images/logo@2x.png" alt="Canvas Logo"></a>
-					</div><!-- #logo end -->
-
-					<!-- Primary Navigation
-					============================================= -->
-					<nav id="primary-menu">
-
-						<ul>
-							<li class="current"><a href="index.html"><div>Home</div></a>
-								<ul>
-									<li><a href="#"><div>Sub Menu 1</div></a></li>
-									<li><a href="#"><div>Sub Menu 2</div></a></li>
-									<li><a href="#"><div>Sub Menu 3</div></a></li>
-									<li><a href="#"><div>Sub Menu 4</div></a></li>
-									<li><a href="#"><div>Sub Menu 5</div></a></li>
-								</ul>
-							</li>
-						</ul>
-
-						
-
-						<!-- Top Search
-						============================================= -->
-						<div id="top-search">
-						<?php /* ?>
-							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-							<form action="search.html" method="get">
-								<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
-							</form>
-							<?php */ ?>
-
-							<div id="idiomas">
-							<?php /* ?>
-								<img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" alt="">
-								<img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" alt="">
-								<?php */ ?>
-								<a href="<?=$this->config->base_url();?>"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Spain.png" style="width:150px !important;height:auto;"></a>
-								<a href="<?=$this->config->base_url();?>index.php/por"><img src="<?=$this->config->base_url();?>fronted_inicio/images/flag/Portugal.png" style="width:150px !important;height:auto;"></a>
-							</div>
-						</div><!-- #top-search end -->
-
-					</nav><!-- #primary-menu end -->
-
-				</div>
-
-			</div>
-
-		</header><!-- #header end -->
+		<!-- #header end -->
 
 		<section id="slider" class="slider-parallax full-screen force-full-screen with-header swiper_wrapper page-section clearfix">
 
@@ -186,10 +127,10 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 					<nav class="one-page-menu">
 						<ul>
-							<li><a href="#" data-href="#header"><div>Início</div></a></li>
+							<li><a href="#" data-href="#header"><div>Iniciação</div></a></li>
 							<li><a href="#" data-href="#section-about"><div>Procedimientos</div></a></li>
 							<li><a href="#" data-href="#section-work"><div>Galeria</div></a></li>
-							<li><a href="#" data-href="#section-team"><div>Sobre meu</div></a></li>
+							<li><a href="#" data-href="#section-team"><div>Formação profissional</div></a></li>
 							<li><a href="#" data-href="#section-testimonials" class="no-offset"><div>Depoimentos</div></a></li>
 							<li><a href="#" data-href="#section-contact"><div>Contato</div></a></li>
 						</ul>
@@ -216,94 +157,80 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<div class="heading-block center">
 							<h2><span>Procedimientos</span></h2>
 						</div>
+                                            
+                                                <?php 
+                                                if ($procs_inicio != null) {
+                                                    $count = 0;
+                                                    foreach ($procs_inicio as $pro) {
+                                                        $count++;
+                                                        if($count != 3){
+                                                            echo '<div class="col_one_third nobottommargin">';
+                                                        }else{
+                                                            echo '<div class="col_one_third nobottommargin col_last">';
+                                                        }
+                                                ?>
 
-						<div class="col_one_third nobottommargin">
-							<div class="feature-box media-box">
-								<div class="fbox-media">
-									<img src="<?=$this->config->base_url();?>fronted_inicio/foto/mamo.jpg" alt="Why choose Us?">
-								</div>
-								<div class="fbox-desc">
-									<h3>Mamoplastia<span class="subtitle">Aumenta .</span></h3>
-									<p>El aumento mamario (mamoplastia de aumento) es una de las intervenciones quirúrgicas más frecuentes en cirugía plástica.  
-										Se basa en la colocación de un implante detrás del seno que mejorar el volumen de la mama logrando excelentes resultados y gran  satisfacción de las pacientes.</p>
-									</div>
-								</div>
-							</div>
+                                                    <div class="feature-box media-box">
+                                                            <div class="fbox-media">
+                                                                <a href="<?=$this->config->base_url();?>index.php/por/procedimientos#<?=$pro->titulo?>"><img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$pro->img_principal_procedimiento; ?>" alt="Why choose Us?"></a>
+                                                            </div>
+                                                            <div class="fbox-desc">
+                                                                <h3><a href="<?=$this->config->base_url();?>index.php/por/procedimientos#<?=$pro->titulo?>"><?=$pro->titulo;?></a><span class="subtitle"><?=$pro->sub_titulo;?></span></h3>
+                                                                    <p>
+                                                                            <?=$pro->detalle;?>
+                                                                    </p>
+                                                            </div>
+                                                    </div>
 
-							<div class="col_one_third nobottommargin">
-								<div class="feature-box media-box">
-									<div class="fbox-media">
-										<img src="<?=$this->config->base_url();?>fronted_inicio/foto/rino.png" alt="Why choose Us?">
-									</div>
-									<div class="fbox-desc">
-										<h3>Rinoplastia<span class="subtitle">Mejora el aspecto de t nariz.</span></h3>
-										<p>La rinoplastia estética (RE) es uno de los procedimientos más complejos de la cirugía plástica y su realización requiere de un optimo nivel de preparación por parte del medico especialista. 
-											Es, sin embargo, una de las más interesantes y hermosas intervenciones quirúrgicas existentes.</p>
-										</div>
-									</div>
-								</div>
+                                                <?php
+                                                    echo "</div>";
+                                                    }}
+                                                ?>
 
-								<div class="col_one_third nobottommargin col_last">
-									<div class="feature-box media-box">
-										<div class="fbox-media">
-											<img src="<?=$this->config->base_url();?>fronted_inicio/foto/marcas.jpg" alt="Why choose Us?">
-										</div>
-										<div class="fbox-desc">
-											<h3>Rejuvenecimiento facial<span class="subtitle">Make our Customers Happy.</span></h3>
-											<p>El lifting o rejuvenecimiento facial es una cirugía que permite disminuir considerablemente estos signos y mejorar el aspecto facial. </p>
-										</div>
-									</div>
-								</div>
+					</div>
 
-								<div class="clear"></div>
+                                        <div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/quirofano-azul-op.jpg');" data-stellar-background-ratio="0.3">
 
-								<!--<div class="fright"><a href="#"><i class="i-plain i-xlarge divcenter nobottommargin icon-plus"></i></a></div>-->
-								<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/procedimientos"><i class="i-plain icon-plus"></i> Ver mais</a></div>
+                                                <div class="container clearfix">
 
-							</div>
+                                                        <div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
+                                                                <i class="i-plain i-xlarge divcenter nobottommargin icon-magic"></i>
+                                                                <div class="counter counter-lined"><span data-from="100" data-to="846" data-refresh-interval="50" data-speed="2000"></span>+</div>
+                                                                <h5>Cirugias Realizadas</h5>
+                                                        </div>
 
-							<div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/quirofano-azul-op.jpg');" data-stellar-background-ratio="0.3">
+                                                        <div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="200">
+                                                                <i class="i-plain i-xlarge divcenter nobottommargin icon-time"></i>
+                                                                <div class="counter counter-lined"><span data-from="3000" data-to="15360" data-refresh-interval="100" data-speed="2500"></span>+</div>
+                                                                <h5>Horas de Estudio</h5>
+                                                        </div>
 
-								<div class="container clearfix">
+                                                        <div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="400">
+                                                                <i class="i-plain i-xlarge divcenter nobottommargin icon-code"></i>
+                                                                <div class="counter counter-lined"><span data-from="1" data-to="386" data-refresh-interval="25" data-speed="3500"></span>*</div>
+                                                                <h5>Años de Experiencia</h5>
+                                                        </div>
 
-									<div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
-										<i class="i-plain i-xlarge divcenter nobottommargin icon-magic"></i>
-										<div class="counter counter-lined"><span data-from="100" data-to="846" data-refresh-interval="50" data-speed="2000"></span>+</div>
-										<h5>Cirugias Realizadas</h5>
-									</div>
+                                                        <div class="col_one_fourth nobottommargin center col_last" data-animate="bounceIn" data-delay="600">
+                                                                <i class="i-plain i-xlarge divcenter nobottommargin icon-file-text"></i>
+                                                                <div class="counter counter-lined"><span data-from="60" data-to="1200" data-refresh-interval="30" data-speed="2700"></span>+</div>
+                                                                <h5>Nº Certificaciones</h5>
+                                                        </div>
 
-									<div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="200">
-										<i class="i-plain i-xlarge divcenter nobottommargin icon-time"></i>
-										<div class="counter counter-lined"><span data-from="3000" data-to="15360" data-refresh-interval="100" data-speed="2500"></span>+</div>
-										<h5>Horas de Estudio</h5>
-									</div>
+                                                </div>
 
-									<div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="400">
-										<i class="i-plain i-xlarge divcenter nobottommargin icon-code"></i>
-										<div class="counter counter-lined"><span data-from="1" data-to="386" data-refresh-interval="25" data-speed="3500"></span>*</div>
-										<h5>Años de Experiencia</h5>
-									</div>
+                                        </div>
 
-									<div class="col_one_fourth nobottommargin center col_last" data-animate="bounceIn" data-delay="600">
-										<i class="i-plain i-xlarge divcenter nobottommargin icon-file-text"></i>
-										<div class="counter counter-lined"><span data-from="60" data-to="1200" data-refresh-interval="30" data-speed="2700"></span>+</div>
-										<h5>Nº Certificaciones</h5>
-									</div>
+                                </section>
 
-								</div>
+                                <section id="section-work" class="page-section topmargin-lg">
 
-							</div>
+                                        <div class="heading-block center">
+                                                <h2><span>Galeria</span></h2>
+                                                <span>Alguns dos trabalhos que eu fiz.</span>
+                                        </div>
 
-						</section>
-
-						<section id="section-work" class="page-section topmargin-lg">
-
-							<div class="heading-block center">
-								<h2><span>Galeria</span></h2>
-								<span>Alguns dos trabalhos que eu fiz.</span>
-							</div>
-
-							<div class="container clearfix center">
+                                        <div class="container clearfix center">
 
 						<!-- Portfolio Items
 						============================================= -->
@@ -387,7 +314,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 				<section id="section-team" class="page-section topmargin-lg">
 
 					<div class="heading-block center">
-						<h2><span>SOBRE MIM</span></h2>
+						<h2><span>Formação profissional</span></h2>
 						<span>Conheça a minha formação e experiência.</span>
 					</div>
 
@@ -423,18 +350,6 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										</p>
 
 										
-										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-											<i class="icon-facebook"></i>
-											<i class="icon-facebook"></i>
-										</a>
-										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-											<i class="icon-twitter"></i>
-											<i class="icon-twitter"></i>
-										</a>
-										<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-											<i class="icon-gplus"></i>
-											<i class="icon-gplus"></i>
-										</a>
 									</div>
 
 
