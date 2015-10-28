@@ -404,7 +404,7 @@
 				<input type="text" class="form-control" id="email" name="email" maxlength="200" value="<?=($email);?>">
 
 				<p>Clave Email (Para el envio de los correos) :</p>
-				<input type="text" class="form-control" id="clave_email " name="clave_email" maxlength="100" value="<?=($clave_email );?>">
+				<input type="password" class="form-control" id="clave_email " name="clave_email" maxlength="100" value="<?=($clave_email );?>">
 
 				<p>Telefono:</p>
 				<input type="text" class="form-control" id="telefono" name="telefono" maxlength="12" value="<?=($telefono);?>">
@@ -832,7 +832,7 @@ $("#tabla_procedimientos,#tabla_contacto,#tabla_testimonios").dataTable();
 
 $("#cambio_clave").on("click",function(){
 
-$("#ventana_cambio_clave").dialog({width:"400px",title:"Cambiar Clave",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});	
+$("#ventana_cambio_clave").dialog({width:"600px",title:"Cambio de clave de acceso al administrador de contenido",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});	
 });
 
 
@@ -1026,7 +1026,7 @@ $(".item_panel_control").on("click",function(){
 
 /**********************************************************************************************/
 <?php if ( isset($_GET["msg"]) ) { ?>
-	$("#mensajes_informativos").show("fast");
+	$("#mensajes_informativos").show();
 	<?php } ?>
 	/**********************************************************************************************/
 /*
