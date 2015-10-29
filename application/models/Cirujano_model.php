@@ -221,5 +221,9 @@
 		   public function get_bonos_cirujano(){
 		   	return  $this->db->query("select * from bonos_cirujano");
 		   }
+
+		   public function cambiar_bonus_cirujanos($cirujias,$horas_estudio,$experiencia ,$certificaciones,$eslogan){
+		   	$this->db->query("update bonus_cirujanos set cirujias_realizadas = $cirujias, horas_estudio = $horas_estudio , anios_experiencia = $experiencia , certificaciones =$certificaciones,eslogan = '$eslogan'  where id_bonus_cirujano = 1 ");
+		   }
 		   /*******************************Llave clase********************************************/
 		}

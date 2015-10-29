@@ -59,15 +59,15 @@
 
 <div class="content-menu">
 
-    <a id="sliders" class="item_panel_control" data-panel="panel_slider" data-original-title="Gestión del slider y mensajes publicitarios" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
-       <div class="item-menu">       
-           <img src="<?=$this->config->base_url();?>fronted/img/iconos2/home.png" class="img_menu" />        
-           <p>Inicio</p>
-       </div>
-   </a> 
+ <a id="sliders" class="item_panel_control" data-panel="panel_slider" data-original-title="Gestión del slider y mensajes publicitarios" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+     <div class="item-menu">       
+         <img src="<?=$this->config->base_url();?>fronted/img/iconos2/home.png" class="img_menu" />        
+         <p>Inicio</p>
+     </div>
+ </a> 
 
-   <a id="procedimientos" class="item_panel_control" data-panel="panel_procedimientos" data-original-title="Gestión de procedimientos" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
-       <div class="item-menu">       
+ <a id="procedimientos" class="item_panel_control" data-panel="panel_procedimientos" data-original-title="Gestión de procedimientos" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+     <div class="item-menu">       
         <img src="<?=$this->config->base_url();?>fronted/img/iconos2/relax8.png" class="img_menu" />        
         <p>Procedimientos</p>
     </div>
@@ -120,6 +120,6 @@
 
 <script>
     $(document).on("ready",function(){
-     $('#sliders,#curriculum, #contacto, #galeria, #procedimientos ,#testimonios ,#cerrar').popover({ trigger: "hover" });
- });
+       $('#sliders,#curriculum, #contacto, #galeria, #procedimientos ,#testimonios ,#cerrar').popover({ trigger: "hover" });
+   });
 </script>

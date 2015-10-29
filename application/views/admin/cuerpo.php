@@ -143,6 +143,9 @@
 			<div id="panel_slider" class="contenido_panel" style="display:none;width:100%;height:600px;">
 				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">
 					Gestión del slider y mensajes del inicio
+					<a  class="btn btn-primary item_panel_control" style="float:right;" data-panel="panel_por_defecto" data-original-title="Volver a la pantalla principal" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+						<span class="glyphicon glyphicon-home"></span> Volver a la pantalla principal
+					</a>
 				</p>
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 
@@ -224,8 +227,83 @@
 					</div>
 
 					<div class="tab-pane" id="mensajes_inicio">
-						900000
-					</div>
+						<?php 
+						foreach ($bonus_cirujano as $bonus) {
+							$cirujias = $bonus->cirujias_realizadas;
+							$estudio = $bonus->horas_estudio;
+							$experiens = $bonus->anios_experiencia;
+							$certificaciones = $bonus->cerfificaciones;
+							$eslogan = $bonus->eslogan;
+						}
+						?>
+						<form id="form_bonus" action="<?=$this->config->base_url()?>index.php/admin/bonus_cirujano" method="post" >
+							<div class="col-xs-6">
+
+								<div class="thumbnail">
+									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/cirujias.png" style="margin-top:16px;">
+									<div class="caption">
+										<hr>
+										<h5 style="text-align:center;">CIRUGIAS REALIZADAS</h5>
+										<input type="text" class="form-control trigger_bonus" name="cirujias" value="<?=$cirujias;?>">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-6">
+
+								<div class="thumbnail">
+									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/reloj.png" style="margin-top:16px;">
+									<div class="caption">
+										<hr>
+										<h5 style="text-align:center;">HORAS DE ESTUDIO</h5>
+										<input type="text" class="form-control trigger_bonus" name="horas_estudio" value="<?=$estudio;?>">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-6">
+
+								<div class="thumbnail">
+									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/experiencia.png" style="margin-top:16px;">
+									<div class="caption">
+										<hr>
+										<h5 style="text-align:center;">AÑOS DE EXPERIENCIA</h5>
+										<input type="text" class="form-control trigger_bonus" name="experiencia" value="<?=$experiens;?>">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-6">
+
+								<div class="thumbnail">
+									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/title.png" style="margin-top:16px;">
+									<div class="caption">
+										<hr>
+										<h5 style="text-align:center;">Nº CERTIFICACIONES</h5>
+										<input type="text" class="form-control trigger_bonus" name="certificaciones" value="<?=$certificaciones;?>">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-12">
+
+								<div class="thumbnail">
+									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/eslogan.png" style="margin-top:16px;">
+									<div class="caption">
+										<hr>
+										<h5 style="text-align:center;">ESLOGAN</h5>
+										<input type="text" class="form-control trigger_bonus" name="eslogan" value="<?=$eslogan;?>">
+									</div>
+								</div>
+							</div>
+
+							<hr>
+
+							<button id="boton_bonus" style="float:right;" class="btn btn-success btn-lg" disabled="disabled" ><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+
+						</div>
+					</form>
+
 				</div>
 
 
@@ -233,7 +311,12 @@
 			</div>
 			<?php /*******************************************FIn panel slider*******************************************************************/ ?>
 			<div id="panel_galeria" class="contenido_panel" style="display:none;width:100%;height:600px;">
-				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Galeria  <button class="btn btn-success" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-plus"> Slider</span>	</button> </p>
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">
+					Galeria
+					<a  class="btn btn-primary item_panel_control" style="float:right;" data-panel="panel_por_defecto" data-original-title="Volver a la pantalla principal" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+						<span class="glyphicon glyphicon-home"></span> Volver a la pantalla principal
+					</a>
+				</p>
 
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 				
@@ -318,7 +401,12 @@
 
 
 			<div id="panel_curriculum" class="contenido_panel" style="display:none;background:rgba(255,255,255,0.5);">
-				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Formación profesional </p>
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">
+					Formación profesional
+					<a  class="btn btn-primary item_panel_control" style="float:right;" data-panel="panel_por_defecto" data-original-title="Volver a la pantalla principal" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+						<span class="glyphicon glyphicon-home"></span> Volver a la pantalla principal
+					</a>
+				</p>
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 				<form id="form_curriculum" action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post" enctype="multipart/form-data">
 					<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
@@ -396,7 +484,12 @@
 			</div>
 
 			<div id="panel_contacto" class="contenido_panel" style="display:none;">
-				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Contacto </p>
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">
+					Contacto 
+					<a  class="btn btn-primary item_panel_control" style="float:right;" data-panel="panel_por_defecto" data-original-title="Volver a la pantalla principal" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+						<span class="glyphicon glyphicon-home"></span> Volver a la pantalla principal
+					</a>
+				</p>
 				<!--<a href="https://www.google.co.ve/maps/place/1035+5th+Avenue+Corporation/@40.7804296,-73.9618858,17z/data=!4m2!3m1!1s0x89c25897eca2da3d:0xc35556cc09cc117">Ir a nueva york</a>-->
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 
@@ -524,7 +617,12 @@
 </div>
 
 <div id="panel_procedimientos" class="contenido_panel" style="display:none;">
-	<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Procedimientos <button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo procedimiento</span>	</button></p>
+	<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">
+		Procedimientos 
+		<a  class="btn btn-primary item_panel_control" style="float:right;" data-panel="panel_por_defecto" data-original-title="Volver a la pantalla principal" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+			<span class="glyphicon glyphicon-home"></span> Volver a la pantalla principal
+		</a>
+	</p>
 
 	<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 
@@ -575,7 +673,7 @@
 	</div>
 
 	<hr>
-	<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
+	<div style="width:100%;height:80px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
 
 		<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
 			<input id="sel_all_procedimientos" class="contador_opciones_procedimiento" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
@@ -588,6 +686,8 @@
 		<div style="width:100px;display:inline;margin-right:16px;">
 			<button id="inicio_procedimiento" disabled="disabled" class="btn btn-success">Procesar en el inicio</button>
 		</div>
+
+		<button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo procedimiento</span>	</button>
 
 	</div> 
 	<form id="form_procedimientos" action="<?=$this->config->base_url()?>index.php/admin/administrar_procedimiento" method="post">
@@ -638,7 +738,12 @@
 	</div>
 
 	<div id="panel_testimonios" class="contenido_panel" style="display:none;">
-		<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">  Testimonios </p>			
+		<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">
+			Testimonios 
+			<a  class="btn btn-primary item_panel_control" style="float:right;" data-panel="panel_por_defecto" data-original-title="Volver a la pantalla principal" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+				<span class="glyphicon glyphicon-home"></span> Volver a la pantalla principal
+			</a>
+		</p>			
 		<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 
 		<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
@@ -748,6 +853,10 @@ $('body').fadeIn("fast");
 */
 
 $(document).on("ready",function(){
+	$(".trigger_bonus").on("keyup",function(){
+		$("#boton_bonus").removeAttr("disabled");
+	});
+
 
 	$(".curriculum_trigger").on("keyup",function(){
 		$("#enviar_curriculum").removeAttr("disabled");

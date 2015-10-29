@@ -74,7 +74,8 @@
 					"curriculum_img" => $this->Cirujano_model->get_curriculum_img(),
 					"testimonios"    => $this->Cirujano_model->get_testimonios(),
 					"datos_contacto" => $this->Cirujano_model->ver_datos_contacto(),
-					"slider_master"  => $this->Cirujano_model->get_slider()->result()
+					"slider_master"  => $this->Cirujano_model->get_slider()->result(),
+					"bonus_cirujano" => $this->Cirujano_model->get_bonos_cirujano()->result()
 					]);
 
 			}else{
@@ -593,6 +594,12 @@
 				redirect("Admin");
 			}
 
+		}
+
+		public function bonus_cirujano(){
+			echo "<pre>";
+			print_r($_POST);
+			echo "</pre>";
 		}
 
 		///*************************************************************///
