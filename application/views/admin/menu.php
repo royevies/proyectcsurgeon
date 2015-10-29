@@ -59,18 +59,18 @@
 
 <div class="content-menu">
 
-    <a id="sliders" class="item_panel_control" data-panel="panel_slider" data-original-title="Gestión del slider" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+    <a id="sliders" class="item_panel_control" data-panel="panel_slider" data-original-title="Gestión del slider y mensajes publicitarios" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
        <div class="item-menu">       
-        <img src="<?=$this->config->base_url();?>fronted/img/iconos2/galeria.png" class="img_menu" />        
-        <p>Sliders</p>
-    </div>
-</a> 
+           <img src="<?=$this->config->base_url();?>fronted/img/iconos2/home.png" class="img_menu" />        
+           <p>Inicio</p>
+       </div>
+   </a> 
 
-<a id="procedimientos" class="item_panel_control" data-panel="panel_procedimientos" data-original-title="Gestión de procedimientos" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
-   <div class="item-menu">       
-    <img src="<?=$this->config->base_url();?>fronted/img/iconos2/relax8.png" class="img_menu" />        
-    <p>Procedimientos</p>
-</div>
+   <a id="procedimientos" class="item_panel_control" data-panel="panel_procedimientos" data-original-title="Gestión de procedimientos" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+       <div class="item-menu">       
+        <img src="<?=$this->config->base_url();?>fronted/img/iconos2/relax8.png" class="img_menu" />        
+        <p>Procedimientos</p>
+    </div>
 </a>  
 
 <a id="galeria" class="item_panel_control" data-panel="panel_galeria" data-original-title="Galeria " rel="popover" data-placement="right" data-trigger="hover">

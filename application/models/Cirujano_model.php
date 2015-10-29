@@ -217,5 +217,9 @@
 		   public function cambiar_datos($direccion,$email,$clave_email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss){
 		   	$this->db->query("update datos_contacto set direccion = '$direccion', email = '$email' , clave_email = '$clave_email' , telefono ='$telefono' ,fax ='$fax' ,facebook ='$facebook' ,twitter ='$twiiter' ,instagram ='$instagram' ,googlepluss ='$googlepluss'  where id_datos_contacto = 1 ");
 		   }
+
+		   public function get_bonos_cirujano(){
+		   	return  $this->db->query("select * from bonus_cirujano ");
+		   }
 		   /*******************************Llave clase********************************************/
 		}

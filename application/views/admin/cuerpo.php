@@ -142,78 +142,96 @@
 
 			<div id="panel_slider" class="contenido_panel" style="display:none;width:100%;height:600px;">
 				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">
-					Carrucel de imagenes
-					<button id="boton_nuevo_slider" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-plus"></span> Nuevo slider</button>
+					Gestión del slider y mensajes del inicio
 				</p>
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
 
-				<div id="agregar_nuevo_slider" style="padding:25px;display:none;margin-bottom:25px;">
-					
-					<button id="menos_file" class="btn btn-danger" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-minus"></span>	</button> 
-					<button id="mas_file" class="btn btn-success" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-plus"></span>	</button> 
-					<hr>
-					<form id="form_sliders" action="<?=$this->config->base_url()?>index.php/admin/gestion_slider" method="post" enctype="multipart/form-data">
-						<input type="hidden" name="opcion_slider" value="opcion_slider">
-						<div id="inpuflivos">
-							<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;">
+
+				<ul id="pestanas" class="nav nav-tabs" data-tabs="tabs">
+					<li class="active"><a href="#editor_slider" data-toggle="tab" style="font-size:1.3em;">Slider</a></li>
+					<li ><a href="#mensajes_inicio" data-toggle="tab" style="font-size:1.3em;"> Mensajes del inicio</a></li>
+				</ul>
+
+				<div id="contenedor_pestanas" class="tab-content">
+					<div class="tab-pane active" id="editor_slider" style="background:rgba(0,0,0,0.2);">
+
+						<button id="boton_nuevo_slider" class="btn btn-success" style="float:right;margin:25px;"><span class="glyphicon glyphicon-plus"></span> Agregar imagenes al slider</button>
+						<div style="clear:both"></div>
+						<div id="agregar_nuevo_slider" style="padding:25px;display:none;margin-bottom:25px;">
+
+							<button id="menos_file" class="btn btn-danger" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-minus"></span>	</button> 
+							<button id="mas_file" class="btn btn-success" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-plus"></span>	</button> 
+							<hr>
+							<form id="form_sliders" action="<?=$this->config->base_url()?>index.php/admin/gestion_slider" method="post" enctype="multipart/form-data">
+								<input type="hidden" name="opcion_slider" value="opcion_slider">
+								<div id="inpuflivos" style="padding:50px;background:rgba(255,255,255,0.7);">
+									<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;">
+								</div>
+								<hr>
+								<button type="submit" id="guardar_sliders" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar imagenes</button>
+							</form>
 						</div>
-						<hr>
-						<button type="submit" id="guardar_sliders" class="btn btn-success" style="float:right;">Guardar</button>
-					</form>
+
+						<div id="view_slider">
+
+							<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
+
+								<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
+									<input id="sel_all_slider" class="contador_opciones_slider" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
+								</div>
+								<div style="width:100px;display:inline;">
+									<button id="ordenar_slider" disabled="disabled" class="btn btn-success">Cambiar Orden</button>
+								</div>
+
+								<div style="width:100px;display:inline;">
+									<button id="eliminar_slider" disabled="disabled" class="btn btn-danger">Eliminar</button>
+								</div>
+							</div> 
+
+							<form id="form_sliders2" action="<?=$this->config->base_url()?>index.php/admin/procesar_slider" method="post" enctype="multipart/form-data">
+								<input type="hidden" id="opcion_flag_slider" name="opcion_flag_slider">
+								<table class="table table-hover" id="tabla_slider">
+									<thead>
+										<tr class="info">
+											<th style="text-align:center;font-size:1.3em;">Seleccionar</th>
+											<th style="text-align:center;font-size:1.3em;">Slider</th>
+											<th style="text-align:center;font-size:1.3em;">Prioridad</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<?php foreach ($slider_master as $img_s) {  ?>
+										<tr>
+											<td style="text-align:center;"><input type="checkbox" class="opciones_slider contador_opciones_slider" name="opciones_slider[]" value="<?=$img_s->id_slider;?>" style="width:25px;height:25px;"></td>
+											<td style="text-align:center;"><img src="<?=$this->config->base_url()?>fronted_inicio/slider/<?=$img_s->slider;?>" class="img" style="width:100px;height:100px;"></td>
+											<td style="text-align:center;"><input type="text" value="<?=$img_s->orden ?>" name="orden[]" style="text-align:center;font-size:1.7em;width:100px;height:100px;" maxlength="2"></td>
+										</tr>
+
+
+										<?php	} ?>
+									</tbody>
+
+									<tfoot style="display:none;">
+										<tr>
+											<th>Seleccionar</th>
+											<th>Slider</th>
+											<th>Prioridad</th>
+										</tr>
+									</tfoot>
+								</table>
+							</form>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="mensajes_inicio">
+						900000
+					</div>
 				</div>
 
-				<div id="view_slider">
 
-					<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
-
-						<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
-							<input id="sel_all_slider" class="contador_opciones_slider" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
-						</div>
-						<div style="width:100px;display:inline;">
-							<button id="ordenar_slider" disabled="disabled" class="btn btn-success">Cambiar Orden</button>
-						</div>
-
-						<div style="width:100px;display:inline;">
-							<button id="eliminar_slider" disabled="disabled" class="btn btn-danger">Eliminar</button>
-						</div>
-					</div> 
-
-					<form id="form_sliders2" action="<?=$this->config->base_url()?>index.php/admin/procesar_slider" method="post" enctype="multipart/form-data">
-						<input type="hidden" id="opcion_flag_slider" name="opcion_flag_slider">
-						<table class="table" id="tabla_slider">
-							<thead>
-								<tr>
-									<th style="text-align:center;">Seleccionar</th>
-									<th style="text-align:center;">Slider</th>
-									<th style="text-align:center;">Orden</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								<?php foreach ($slider_master as $img_s) {  ?>
-								<tr>
-									<td style="text-align:center;"><input type="checkbox" class="opciones_slider contador_opciones_slider" name="opciones_slider[]" value="<?=$img_s->id_slider;?>" style="width:25px;height:25px;"></td>
-									<td style="text-align:center;"><img src="<?=$this->config->base_url()?>fronted_inicio/slider/<?=$img_s->slider;?>" class="img" style="width:100px;height:100px;"></td>
-									<td style="text-align:center;"><input type="text" value="<?=$img_s->orden ?>" name="orden[]" style="text-align:center;font-size:1.7em;width:100px;height:100px;" maxlength="2"></td>
-								</tr>
-
-
-								<?php	} ?>
-							</tbody>
-
-							<tfoot style="display:none;">
-								<tr>
-									<th>Seleccionar</th>
-									<th>Slider</th>
-									<th>Orden</th>
-								</tr>
-							</tfoot>
-						</table>
-					</form>
-				</div>
 
 			</div>
-
+			<?php /*******************************************FIn panel slider*******************************************************************/ ?>
 			<div id="panel_galeria" class="contenido_panel" style="display:none;width:100%;height:600px;">
 				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Galeria  <button class="btn btn-success" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-plus"> Slider</span>	</button> </p>
 
@@ -1242,7 +1260,7 @@ $(".item_panel_control").on("click",function(){
 	$("#menos_file").on("click",function(e){
 		e.preventDefault();
 		if($(".archivosgaleria").length > 1){ 
-			$(".archivosgaleria:last").css("background","red").remove(); 
+			$(".archivosgaleria:last").css("background","red").delay(2).remove(); 
 		}
 	});
 
@@ -1251,7 +1269,7 @@ $(".item_panel_control").on("click",function(){
 });
 
 function agregar(){
-	var file='<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;">';
+	var file='<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;margin-top:16px;;">';
 	var nuevo_file = $(file);
 	$("#inpuflivos").append(nuevo_file);
 }

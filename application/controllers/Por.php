@@ -17,13 +17,14 @@ class Por extends CI_Controller {
 			"ruta_esp" => $this->config->base_url()."index.php/web/index"
 			]);
 		$this->load->view('fronted_inicio/index_por',[
-			"procedimientos"   => $this->Cirujano_model->get_procedimientos_por(),
-			"procs_inicio"     => $this->Cirujano_model->ver_procedimientos_inicio_por()->result(),
-			"curriculum"       => $this->Cirujano_model->get_curriculum_por()->result(),
-			"img_curriculum"   => $this->Cirujano_model->get_curriculum_img()->result(),
-			"datos_personales" => $this->Cirujano_model->ver_datos_contacto()->result(),
+			"procedimientos"     => $this->Cirujano_model->get_procedimientos_por(),
+			"procs_inicio"       => $this->Cirujano_model->ver_procedimientos_inicio_por()->result(),
+			"curriculum"         => $this->Cirujano_model->get_curriculum_por()->result(),
+			"img_curriculum"     => $this->Cirujano_model->get_curriculum_img()->result(),
+			"datos_personales"   => $this->Cirujano_model->ver_datos_contacto()->result(),
 			"testimonios_inicio" => $this->Cirujano_model->get_testimonios_aprobados_inicio()->result(),
-			"slider_master"      => $this->Cirujano_model->get_slider()->result()
+			"slider_master"      => $this->Cirujano_model->get_slider()->result(),
+			"bonus_cirujano"     => $this->Cirujano_model->get_bonos_cirujano()->result()
 			]);
 	}
 
