@@ -30,6 +30,7 @@
 	============================================= -->
 	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/jquery.js"></script>
 	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/plugins.js"></script>
+	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/jquery.clearform.js"></script>
 
 	<!-- Document Title
 	============================================= -->

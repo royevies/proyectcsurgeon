@@ -110,27 +110,57 @@
 
 
 		public function guardar_testimonio(){
-			if( $this->input->post() ) {		
+			if( $this->input->post() ) {	
+                                $errors = array();
+                                $msj = array();
 				$nombres_del_descriptor = $this->input->post("template-testimonialform-name");
+                                if($nombres_del_descriptor == ''){
+                                    array_push($errors, 'El campo Nombre no puede estar vacio');
+                                }
 				$email_del_descriptor = $this->input->post("template-testimonialform-email");
-				$titulo_testimonio = $this->input->post("template-contactform-subject");
-				$detalle_testimonio = $this->input->post("template-contactform-message");
-				$img_principal_testimonio = ( $_FILES["template-testimonialform-file"]["name"] == null ? "user.png" : $_FILES["template-testimonialform-file"]["name"] );
+                                if($email_del_descriptor == ''){
+                                    array_push($errors, 'El campo E-mail no puede estar vacio');
+                                }
+				$titulo_testimonio = $this->input->post("template-testimonialform-subject");
+                                if($titulo_testimonio == ''){
+                                    array_push($errors, 'El campo Titulo no puede estar vacio');
+                                }
+				$detalle_testimonio = $this->input->post("template-testimonialform-message");
+                                if($detalle_testimonio == ''){
+                                    array_push($errors, 'El campo Testimonio no puede estar vacio');
+                                }
 
-				$uploads_testimonios ='./fronted_inicio/testimonios/';
-				opendir($uploads_testimonios);
-				move_uploaded_file($_FILES["template-testimonialform-file"]["tmp_name"],$uploads_testimonios.$img_principal_testimonio);
+				
+                                if(count($errors) >= 1){
+//                                    echo "<pre>";
+//                                    print_r($errors);
+//                                    echo "</pre>";
+                                    $errors['status'] = 'error';
+                                    header('Content-type: application/json');
+                                    echo json_encode($errors);
 
+//                                    redirect("web/testimonios", $errors);
+                                }else{
+                                    
+                                    $img_principal_testimonio = ( $_FILES["template-testimonialform-file"]["name"] == null ? "user.png" : $_FILES["template-testimonialform-file"]["name"] );
+                                        $uploads_testimonios ='./fronted_inicio/testimonios/';
+                                        opendir($uploads_testimonios);
+                                        move_uploaded_file($_FILES["template-testimonialform-file"]["tmp_name"],$uploads_testimonios.$img_principal_testimonio);
 
-				$this->Cirujano_model->crear_testimonios(
+                                    $this->Cirujano_model->crear_testimonios(
 					$nombres_del_descriptor,
 					$email_del_descriptor,
 					$titulo_testimonio,
 					$detalle_testimonio,
 					$img_principal_testimonio
-					);
-
-				redirect("web?msg=Su testimonio se envio correctamente y esta en espera de aprobación, gracias por su comentario.");
+                                    );
+                                    
+                                    $msj['msj'] = "Su testimonio se envio correctamente y esta en espera de aprobación, gracias por su comentario.";
+                                    $msj['status'] = 'success';
+                                    header('Content-type: application/json');
+                                    echo json_encode($msj);
+//                                    redirect("web/testimonios?msg=Su testimonio se envio correctamente y esta en espera de aprobación, gracias por su comentario.");
+                                }
 			}else{
 				redirect("web");
 			}
@@ -488,48 +518,71 @@
 		public function crear_contacto(){
 
 			if( $this->input->post() ){
-
+                                $errors = array();
+                                $msj = array();
 				$nombres_contacto	= $this->input->post("template-contactform-name");
+                                if($nombres_contacto == ''){
+                                    array_push($errors, 'El campo Nombre no puede estar vacio');
+                                }
 				$servicio	= $this->input->post("template-contactform-service");
 				$telefono_movil_contacto	= $this->input->post("template-contactform-phone");
 				$email_contacto	= $this->input->post("template-contactform-email");
+                                if($email_contacto == ''){
+                                    array_push($errors, 'El campo Correo Electronico no puede estar vacio');
+                                }
 				$asunto_contacto	= $this->input->post("template-contactform-subject");
+                                if($asunto_contacto == ''){
+                                    array_push($errors, 'El campo Asunto no puede estar vacio');
+                                }
 				$descripcion_contacto	= $this->input->post("template-contactform-message");
-
-				$this->Cirujano_model->crear_contacto(
+                                if($descripcion_contacto == ''){
+                                    array_push($errors, 'El campo Mensaje no puede estar vacio');
+                                }
+                                
+                                if(count($errors) >= 1){
+                                    $errors['status'] = 'error';
+                                    header('Content-type: application/json');
+                                    echo json_encode($errors);
+                                }else{
+                                    
+                                    $this->Cirujano_model->crear_contacto(
 					$nombres_contacto,
 					$servicio,
 					$telefono_movil_contacto,
 					$email_contacto,
 					$asunto_contacto,
 					$descripcion_contacto
-					);
+                                    );
 
 						//cargamos la libreria email de ci
-				$this->load->library("email");
+                                    $this->load->library("email");
 
-		//configuracion para gmail
-				$configGmail = array(
-					'protocol' => 'smtp',
-					'smtp_host' => 'ssl://smtp.gmail.com',
-					'smtp_port' => 465,
-					'smtp_user' => 'jhonnyvanckruz@gmail.com',
-					'smtp_pass' => 'sdfd',
-					'mailtype' => 'html',
-					'charset' => 'utf-8',
-					'newline' => "\r\n"
-					);    
+                                    //configuracion para gmail
+                                    $configGmail = array(
+                                            'protocol' => 'smtp',
+                                            'smtp_host' => 'ssl://smtp.gmail.com',
+                                            'smtp_port' => 465,
+                                            'smtp_user' => 'jhonnyvanckruz@gmail.com',
+                                            'smtp_pass' => 'sdfd',
+                                            'mailtype' => 'html',
+                                            'charset' => 'utf-8',
+                                            'newline' => "\r\n"
+                                            );    
 
-		//cargamos la configuración para enviar con gmail
-				$this->email->initialize($configGmail);
+                                    //cargamos la configuración para enviar con gmail
+                                    $this->email->initialize($configGmail);
 
-				$this->email->from('nombre o correo que envia');
-				$this->email->to("para quien es");
-				$this->email->subject('Nuevo contacto');
-				$this->email->message('<h2>Email enviado con codeigniter haciendo uso del smtp de gmail</h2><hr><br> Bienvenido al blog');
-				$this->email->send();
-
-				echo "Mensaje Enviado Exitosamente";
+                                    $this->email->from('nombre o correo que envia');
+                                    $this->email->to("para quien es");
+                                    $this->email->subject('Nuevo contacto');
+                                    $this->email->message('<h2>Email enviado con codeigniter haciendo uso del smtp de gmail</h2><hr><br> Bienvenido al blog');
+                                    $this->email->send();
+                                    
+                                    $msj['msj'] = "Mensaje Enviado Exitosamente";
+                                    $msj['status'] = 'success';
+                                    header('Content-type: application/json');
+                                    echo json_encode($msj);
+                                }
 
 			}else{
 				redirect( $this->config->base_url()."index.php/web" );
