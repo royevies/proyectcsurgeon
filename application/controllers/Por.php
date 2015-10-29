@@ -22,7 +22,8 @@ class Por extends CI_Controller {
 			"curriculum"       => $this->Cirujano_model->get_curriculum_por()->result(),
 			"img_curriculum"   => $this->Cirujano_model->get_curriculum_img()->result(),
 			"datos_personales" => $this->Cirujano_model->ver_datos_contacto()->result(),
-			"testimonios_inicio" => $this->Cirujano_model->get_testimonios_aprobados_inicio()->result()
+			"testimonios_inicio" => $this->Cirujano_model->get_testimonios_aprobados_inicio()->result(),
+			"slider_master"      => $this->Cirujano_model->get_slider()->result()
 			]);
 	}
 

@@ -14,7 +14,7 @@
 		}
 
 		public function get_slider(){
-			return $this->db->query("SELECT * FROM slider");
+			return $this->db->query("SELECT * FROM slider order by orden asc");
 		}
 
 		public function get_procedimientos(){
@@ -69,6 +69,14 @@
 			$this->db->query("update contacto set visto = 1 where id_contacto = $id_contacto");
 		}
 
+		public function actualizar_orden_slider($id_slider,$orden){
+			$this->db->query("update slider SET orden = $orden where id_slider = $id_slider");
+		}
+
+		public function eliminar_slider($id_slider){
+			$this->db->query("delete from slider  where id_slider = $id_slider");
+		}
+
 		public function actualizar_curriculum($id_curriculum,$curriculum_completo,$curriculum_completo_portugues,$img_curriculum){
 			$this->db->query("update contenido_curriculum set curriculum_completo= '$curriculum_completo' where id_curriculum = $id_curriculum and id_idioma = 1");
 			$this->db->query("update contenido_curriculum set curriculum_completo= '$curriculum_completo_portugues' where id_curriculum = $id_curriculum and id_idioma = 2");
@@ -92,9 +100,16 @@
 
 		public function insert_galeria($nombreArchivos,$num_archivos){
 
+			$mayor = $this->db->query("SELECT * FROM slider ORDER BY orden DESC LIMIT 1")->result();
+
+			foreach ($mayor as $m) {
+				$orden_mayor = $m->orden + 1;
+			}
+
 			for($i=0; $i < $num_archivos; $i++){ /*$insertar_file=*/
-				$this->db->insert('galeria',array(
-					"nombre_img"		=>$nombreArchivos[$i]
+				$this->db->insert('slider',array(
+					"slider" => $nombreArchivos[$i],
+					"orden"  => ($orden_mayor + $i )
 					)
 				);
 		   	}#llave for

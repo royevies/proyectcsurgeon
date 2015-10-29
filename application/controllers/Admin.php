@@ -66,14 +66,15 @@
 				$this->load->view("admin/modals");
 
 				$this->load->view("admin/cuerpo",[ 
-					"usuario" => $this->session->userdata('usuario') , 
+					"usuario"        => $this->session->userdata('usuario') , 
 					"procedimientos" => $this->Cirujano_model->get_procedimientos(),
-					"contactos" => $this->Cirujano_model->get_contactos(),
-					"curriculum" => $this->Cirujano_model->get_curriculum(),
+					"contactos"      => $this->Cirujano_model->get_contactos(),
+					"curriculum"     => $this->Cirujano_model->get_curriculum(),
 					"curriculum_por" => $this->Cirujano_model->get_curriculum_por(),
 					"curriculum_img" => $this->Cirujano_model->get_curriculum_img(),
-					"testimonios" => $this->Cirujano_model->get_testimonios(),
-					"datos_contacto" => $this->Cirujano_model->ver_datos_contacto()
+					"testimonios"    => $this->Cirujano_model->get_testimonios(),
+					"datos_contacto" => $this->Cirujano_model->ver_datos_contacto(),
+					"slider_master"  => $this->Cirujano_model->get_slider()->result()
 					]);
 
 			}else{
@@ -347,14 +348,6 @@
 
 		public function editar_curriculum(){
 			if( $this->input->post() ){
-/*
-				echo "<pre>";
-				print_r($_POST);
-				echo "</pre>";
-				echo "<pre>";
-				print_r($_FILES);
-				echo "</pre>";
-				*/
 
 				$id_curriculum = $this->input->post("id_curriculum");
 				$curriculum_completo = trim( $this->input->post("text_curriculum") );
@@ -373,15 +366,12 @@
 			}
 		}
 
-		public function insert_galeria(){
-			/*echo "<pre>";
-			print_r($_FILES);
-			echo "</pre>";*/
-			if( $this->input->post() ){
+		public function gestion_slider(){
+			if( $this->input->post("opcion_slider") ){
 
 				$nombre_archivos = array();
 
-				$uploads_dir ='./fronted/img/cirujano/galeria/';
+				$uploads_dir ='./fronted_inicio/slider/';
 				opendir($uploads_dir);
 
 				foreach ($_FILES["archivosgaleria"]["error"] as $key => $error){
@@ -400,12 +390,44 @@
 				$num_archivos = sizeof($nombre_archivos);
 
 				$this->Cirujano_model->insert_galeria($nombre_archivos,$num_archivos);
-				redirect('Admin');
+				redirect('Admin/panel?msg=Carrucel de imagenes actualizado');
 
 			}else{
 				redirect('Admin');
 			}			
 
+		}
+
+		public function procesar_slider(){
+			echo "<pre>";
+			print_r($_POST);
+			echo "</pre>";
+			$id_slider = $this->input->post("opciones_slider");
+			$orden = $this->input->post("orden");
+			$size_slider = sizeof($id_slider);
+
+			if( $this->input->post() ){
+				if( $this->input->post("opcion_flag_slider") == "ordenar" ){
+
+					for ($i=0; $i < $size_slider ; $i++) { 
+
+						$this->Cirujano_model->actualizar_orden_slider($id_slider[$i],$orden[$i]);
+					}
+
+					redirect('Admin/panel?msg=Carrucel de imagenes actualizado');
+
+				}else if( $this->input->post("opcion_flag_slider")  == "eliminar"){
+
+					for ($i=0; $i < $size_slider ; $i++) { 
+						$this->Cirujano_model->eliminar_slider($id_slider[$i]);
+					}
+
+					redirect('Admin/panel?msg=Imagenes eliminadas del carrucel correctamente');
+				}
+				
+			}else{
+				redirect('Admin');
+			}	
 		}
 
 

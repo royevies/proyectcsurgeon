@@ -140,6 +140,80 @@
 				</div>
 			</div>
 
+			<div id="panel_slider" class="contenido_panel" style="display:none;width:100%;height:600px;">
+				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;">
+					Carrucel de imagenes
+					<button id="boton_nuevo_slider" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-plus"></span> Nuevo slider</button>
+				</p>
+				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
+
+				<div id="agregar_nuevo_slider" style="padding:25px;display:none;margin-bottom:25px;">
+					
+					<button id="menos_file" class="btn btn-danger" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-minus"></span>	</button> 
+					<button id="mas_file" class="btn btn-success" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-plus"></span>	</button> 
+					<hr>
+					<form id="form_sliders" action="<?=$this->config->base_url()?>index.php/admin/gestion_slider" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="opcion_slider" value="opcion_slider">
+						<div id="inpuflivos">
+							<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;">
+						</div>
+						<hr>
+						<button type="submit" id="guardar_sliders" class="btn btn-success" style="float:right;">Guardar</button>
+					</form>
+				</div>
+
+				<div id="view_slider">
+
+					<div style="width:100%;height:70px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
+
+						<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
+							<input id="sel_all_slider" class="contador_opciones_slider" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
+						</div>
+						<div style="width:100px;display:inline;">
+							<button id="ordenar_slider" disabled="disabled" class="btn btn-success">Cambiar Orden</button>
+						</div>
+
+						<div style="width:100px;display:inline;">
+							<button id="eliminar_slider" disabled="disabled" class="btn btn-danger">Eliminar</button>
+						</div>
+					</div> 
+
+					<form id="form_sliders2" action="<?=$this->config->base_url()?>index.php/admin/procesar_slider" method="post" enctype="multipart/form-data">
+						<input type="hidden" id="opcion_flag_slider" name="opcion_flag_slider">
+						<table class="table" id="tabla_slider">
+							<thead>
+								<tr>
+									<th style="text-align:center;">Seleccionar</th>
+									<th style="text-align:center;">Slider</th>
+									<th style="text-align:center;">Orden</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<?php foreach ($slider_master as $img_s) {  ?>
+								<tr>
+									<td style="text-align:center;"><input type="checkbox" class="opciones_slider contador_opciones_slider" name="opciones_slider[]" value="<?=$img_s->id_slider;?>" style="width:25px;height:25px;"></td>
+									<td style="text-align:center;"><img src="<?=$this->config->base_url()?>fronted_inicio/slider/<?=$img_s->slider;?>" class="img" style="width:100px;height:100px;"></td>
+									<td style="text-align:center;"><input type="text" value="<?=$img_s->orden ?>" name="orden[]" style="text-align:center;font-size:1.7em;width:100px;height:100px;" maxlength="2"></td>
+								</tr>
+
+
+								<?php	} ?>
+							</tbody>
+
+							<tfoot style="display:none;">
+								<tr>
+									<th>Seleccionar</th>
+									<th>Slider</th>
+									<th>Orden</th>
+								</tr>
+							</tfoot>
+						</table>
+					</form>
+				</div>
+
+			</div>
+
 			<div id="panel_galeria" class="contenido_panel" style="display:none;width:100%;height:600px;">
 				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Galeria  <button class="btn btn-success" style="float:right;" id="slider_cog"><span class="glyphicon glyphicon-plus"> Slider</span>	</button> </p>
 
@@ -228,7 +302,7 @@
 			<div id="panel_curriculum" class="contenido_panel" style="display:none;background:rgba(255,255,255,0.5);">
 				<p style="font-size:1.8em;color:#555;text-shadow:5px 3px 12px gray;"> Formación profesional </p>
 				<div style="border-bottom:1px dashed #555;margin-bottom:16px;"></div>
-				<form action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post" enctype="multipart/form-data">
+				<form id="form_curriculum" action="<?=$this->config->base_url()?>index.php/Admin/editar_curriculum" method="post" enctype="multipart/form-data">
 					<div style="width:100%;margin:auto;background:#f1f1f1;overflow:hidden;">
 
 						<div style="width:50%;float:left;text-align:center;color:#555;font-size:1.5em;padding:10px;border-right:1px dotted gray;">
@@ -586,7 +660,7 @@
 				<?php foreach ($testimonios->result() as $test) : ?>
 
 					<tr class="testimonio_tr">
-						<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_testimoniales contador_opciones_testimonios" style="border:none;background:none;width:21px;height:21px;" <?php /* echo ($test->orden_inicio == 1 ? "checked='checked'" : "") */ ?> name="id_testimonio[]" value="<?=$test->id_testimonio;?>"> </td>
+						<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_testimoniales contador_opciones_testimonios" style="border:none;background:none;width:21px;height:21px;" name="id_testimonio[]" value="<?=$test->id_testimonio;?>"> </td>
 						<td><img src="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>						
 						<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($test->orden_inicio == 0 ? "<span class='glyphicon glyphicon-ban-circle' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
 						<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
@@ -665,19 +739,81 @@ $(document).on("ready",function(){
 		$("#enviar_curriculum").removeAttr("disabled");
 	});
 
+	$("#enviar_curriculum").on("click",function(e){
+		e.preventDefault();
+		
+		if( $("#text_curriculum").val() != "" || $("#text_curriculum2").val() != "" ){
+			$("#form_curriculum").submit();
+		}
+
+	});
+
 	$(".datos_trigger").on("keyup",function(){
 		$("#boton_cambia_datos").removeAttr("disabled");
 	});
 
+	/***************************************************************************************************************************/
+
+	$(".contador_opciones_slider").on("click",function(){
+		console.log( $(".contador_opciones_procedimiento:checked").length);
+
+		if( $(".contador_opciones_slider:checked").length > 0 ){			
+			$("#ordenar_slider,#eliminar_slider").removeAttr("disabled");
+		}else if($(".contador_opciones_slider:checked").length == 0){
+			$("#ordenar_slider,#eliminar_slider").attr("disabled","disabled");
+		}
+
+	});
+
+	$("#sel_all_slider").on("click",function(){
+		$(".opciones_slider").each(function(index, elemento) {
+			$(this).prop('checked', function(i, v) { return !v; });
+		});
+
+		if( !$("#sel_all_slider").is(":checked") && $(".contador_opciones_slider:checked").length == 0 ){
+			$("#ordenar_slider,#eliminar_slider").attr("disabled","disabled");
+		}
+	});
+
+	$("#eliminar_slider").on("click",function(e){
+		e.preventDefault();
+		$("#opcion_flag_slider").val("eliminar");
+		if( $(".opciones_slider:checked").length > 0 ){
+			$("#form_sliders2").submit();
+		}
+	});
+
+	$("#ordenar_slider").on("click",function(e){
+		e.preventDefault();
+		$("#opcion_flag_slider").val("ordenar");
+		if( $(".opciones_slider:checked").length > 0 ){
+			$("#form_sliders2").submit();
+		}
+	});
+
+	/***************************************************************************************************************************/
+
 	$(".contador_opciones_procedimiento").on("click",function(){
+		//console.log( $(".contador_opciones_procedimiento:checked").length);
 
 		if( $(".contador_opciones_procedimiento:checked").length > 0 ){			
 			$("#eliminar_procedimiento,#inicio_procedimiento").removeAttr("disabled");
-		}else{
+		}else if($(".contador_opciones_procedimiento:checked").length == 0){
 			$("#eliminar_procedimiento,#inicio_procedimiento").attr("disabled","disabled");
 		}
 
 	});
+
+	$("#sel_all_procedimientos").on("click",function(){
+		$(".opciones_procedimiento").each(function(index, elemento) {
+			$(this).prop('checked', function(i, v) { return !v; });
+		});
+
+		if( !$("#sel_all_procedimientos").is(":checked") && $(".contador_opciones_procedimiento:checked").length == 0 ){
+			$("#eliminar_procedimiento,#inicio_procedimiento").attr("disabled","disabled");
+		}
+	});
+	/***************************************************************************************************************************/
 
 	$(".contador_opciones_contacto").on("click",function(){
 
@@ -689,8 +825,20 @@ $(document).on("ready",function(){
 
 	});	
 
+	$("#sel_all_contacto").on("click",function(){
+		$(".opciones_contacto").each(function(index, elemento) {
+			$(this).prop('checked', function(i, v) { return !v; });
+		});
 
+		if( !$("#sel_all_contacto").is(":checked") && $(".contador_opciones_contacto:checked").length == 0 ){
+			$("#eliminar_contacto").attr("disabled","disabled");
+		}
+
+	});
+
+	/***************************************************************************************************************************/
 	$(".contador_opciones_testimonios").on("click",function(){
+		console.log( $(".contador_opciones_testimonios:checked").length );
 
 		if( $(".contador_opciones_testimonios:checked").length > 0 ){			
 			$("#inicio_testimonio,#aprobar_testimonio,#eliminar_testimonio").removeAttr("disabled");
@@ -700,34 +848,24 @@ $(document).on("ready",function(){
 
 	});	
 
-	/****************************************************************************************/
+	$("#sel_all_testimonios").on("click",function(){
 
-	$("#cambio_datos").on("click",function(){
-		$("#datos_contacto_doctor").dialog({width:"600px",title:"Mis datos de contacto",modal:true,Height:"500px","resizable":false,position: "top"});	
-	});
-
-
-
-	$("#sel_all_contacto").on("click",function(){
-		$(".opciones_contacto").each(function(index, elemento) {
+		$(".opciones_testimoniales").each(function(index, elemento) {
 			$(this).prop('checked', function(i, v) { return !v; });
 		});
-	});
 
+		if( !$("#sel_all_testimonios").is(":checked") && $(".contador_opciones_testimonios:checked").length == 0 ){
+			$("#inicio_testimonio,#aprobar_testimonio,#eliminar_testimonio").attr("disabled","disabled");
+		}
+
+	});
+	/***************************************************************************************************************************/
 	$("#eliminar_contacto").on("click",function(e){
 		e.preventDefault();
 
 		if( $(".opciones_contacto:checked").length > 0 ){
 			$("#form_contacto_general").submit();
 		}
-	});
-
-
-	$("#sel_all_procedimientos").on("click",function(){
-		$(".opciones_procedimiento").each(function(index, elemento) {
-			$(this).prop('checked', function(i, v) { return !v; });
-		});
-
 	});
 
 	$("#eliminar_procedimiento").on("click",function(e){
@@ -751,14 +889,6 @@ $(document).on("ready",function(){
 
 	});
 
-
-	$("#sel_all_testimonios").on("click",function(){
-
-		$(".opciones_testimoniales").each(function(index, elemento) {
-			$(this).prop('checked', function(i, v) { return !v; });
-		});
-	});
-
 	$("#inicio_testimonio").on("click",function(e){
 		e.preventDefault();
 
@@ -766,7 +896,7 @@ $(document).on("ready",function(){
 			$("#opcion_testimonio").val("orden_inicio");
 			$("#form_testimonios").submit();
 		}
-		
+
 	});
 
 	$("#aprobar_testimonio").on("click",function(e){
@@ -788,8 +918,16 @@ $(document).on("ready",function(){
 		}
 
 	});
+	/***************************************************************************************************************************/
+	
+	$("#boton_nuevo_slider").on("click",function(){
+		$("#agregar_nuevo_slider").slideDown();
+	});
 
 
+	$("#cambio_datos").on("click",function(){
+		$("#datos_contacto_doctor").dialog({width:"600px",title:"Mis datos de contacto",modal:true,Height:"500px","resizable":false,position: "top"});	
+	});
 
 	$("#desplegar_cambio_img_curriculum").on("click",function(){
 		$("#input_cambio_curriculum").slideToggle();	
@@ -1092,30 +1230,24 @@ $(".item_panel_control").on("click",function(){
 	$("#mensajes_informativos").show();
 	<?php } ?>
 	/**********************************************************************************************/
-/*
-$("#mas_file").on("click",function(e){
-e.preventDefault();
 
-if($(".archivosgaleria").length < 7 ){agregar();}   
-});
+	$("#mas_file").on("click",function(e){
+		e.preventDefault();
 
-
-
-$("#menos_file").on("click",function(e){
-e.preventDefault();
-if($(".archivosgaleria").length > 1){ 
-$(".archivosgaleria:last").css("background","red").remove(); 
-}
-});
-*/
+		if($(".archivosgaleria").length < 7 ){agregar();}   
+	});
 
 
 
-/******************************Ventanas de información******************************/	
+	$("#menos_file").on("click",function(e){
+		e.preventDefault();
+		if($(".archivosgaleria").length > 1){ 
+			$(".archivosgaleria:last").css("background","red").remove(); 
+		}
+	});
 
-/******************************Ventanas de información******************************/	
 
-/******************************Fin ready******************************/	
+	/******************************Fin ready******************************/	
 });
 
 function agregar(){
