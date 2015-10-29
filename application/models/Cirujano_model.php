@@ -219,7 +219,7 @@
 		   }
 
 		   public function get_bonos_cirujano(){
-		   	return  $this->db->query("select * from bonus_cirujano ");
+		   	return  $this->db->query("select * from bonos_cirujano");
 		   }
 		   /*******************************Llave clase********************************************/
 		}
