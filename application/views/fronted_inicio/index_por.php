@@ -157,80 +157,84 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<div class="heading-block center">
 							<h2><span>Procedimientos</span></h2>
 						</div>
-                                            
-                                                <?php 
-                                                if ($procs_inicio != null) {
-                                                    $count = 0;
-                                                    foreach ($procs_inicio as $pro) {
-                                                        $count++;
-                                                        if($count != 3){
-                                                            echo '<div class="col_one_third nobottommargin">';
-                                                        }else{
-                                                            echo '<div class="col_one_third nobottommargin col_last">';
-                                                        }
-                                                ?>
 
-                                                    <div class="feature-box media-box">
-                                                            <div class="fbox-media">
-                                                                <a href="<?=$this->config->base_url();?>index.php/por/procedimientos#<?=$pro->titulo?>"><img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$pro->img_principal_procedimiento; ?>" alt="Why choose Us?"></a>
-                                                            </div>
-                                                            <div class="fbox-desc">
-                                                                <h3><a href="<?=$this->config->base_url();?>index.php/por/procedimientos#<?=$pro->titulo?>"><?=$pro->titulo;?></a><span class="subtitle"><?=$pro->sub_titulo;?></span></h3>
-                                                                    <p>
-                                                                            <?=$pro->detalle;?>
-                                                                    </p>
-                                                            </div>
-                                                    </div>
+						<?php 
+						if ($procs_inicio != null) {
+							$count = 0;
+							foreach ($procs_inicio as $pro) {
+								$count++;
+								if($count != 3){
+									echo '<div class="col_one_third nobottommargin">';
+								}else{
+									echo '<div class="col_one_third nobottommargin col_last">';
+								}
+								?>
 
-                                                <?php
-                                                    echo "</div>";
-                                                    }}
-                                                ?>
+								<div class="feature-box media-box">
+									<div class="fbox-media">
+										<a href="<?=$this->config->base_url();?>index.php/por/procedimientos#<?=$pro->titulo?>"><img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$pro->img_principal_procedimiento; ?>" alt="Why choose Us?"></a>
+									</div>
+									<div class="fbox-desc">
+										<h3><a href="<?=$this->config->base_url();?>index.php/por/procedimientos#<?=$pro->titulo?>"><?=$pro->titulo;?></a><span class="subtitle"><?=$pro->sub_titulo;?></span></h3>
+										<p>
+											<?=$pro->detalle;?>
+										</p>
+									</div>
+								</div>
 
-					</div>
+								<?php
+								echo "</div>";
+							}}
+							?>
 
-                                        <div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/quirofano-azul-op.jpg');" data-stellar-background-ratio="0.3">
+						</div>
 
-                                                <div class="container clearfix">
+						<div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/quirofano-azul-op.jpg');" data-stellar-background-ratio="0.3">
 
-                                                        <div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
-                                                                <i class="i-plain i-xlarge divcenter nobottommargin icon-magic"></i>
-                                                                <div class="counter counter-lined"><span data-from="100" data-to="846" data-refresh-interval="50" data-speed="2000"></span>+</div>
-                                                                <h5>Cirugias Realizadas</h5>
-                                                        </div>
+							<div class="container clearfix">
+								<?php 
+								echo "<pre>";
+								print_r($bonus_cirujano);
+								echo "</pre>";
+								?>
+								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
+									<i class="i-plain i-xlarge divcenter nobottommargin icon-magic"></i>
+									<div class="counter counter-lined"><span data-from="100" data-to="846" data-refresh-interval="50" data-speed="2000"></span>+</div>
+									<h5>Cirugias Realizadas</h5>
+								</div>
 
-                                                        <div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="200">
-                                                                <i class="i-plain i-xlarge divcenter nobottommargin icon-time"></i>
-                                                                <div class="counter counter-lined"><span data-from="3000" data-to="15360" data-refresh-interval="100" data-speed="2500"></span>+</div>
-                                                                <h5>Horas de Estudio</h5>
-                                                        </div>
+								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="200">
+									<i class="i-plain i-xlarge divcenter nobottommargin icon-time"></i>
+									<div class="counter counter-lined"><span data-from="3000" data-to="15360" data-refresh-interval="100" data-speed="2500"></span>+</div>
+									<h5>Horas de Estudio</h5>
+								</div>
 
-                                                        <div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="400">
-                                                                <i class="i-plain i-xlarge divcenter nobottommargin icon-code"></i>
-                                                                <div class="counter counter-lined"><span data-from="1" data-to="386" data-refresh-interval="25" data-speed="3500"></span>*</div>
-                                                                <h5>Años de Experiencia</h5>
-                                                        </div>
+								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="400">
+									<i class="i-plain i-xlarge divcenter nobottommargin icon-code"></i>
+									<div class="counter counter-lined"><span data-from="1" data-to="386" data-refresh-interval="25" data-speed="3500"></span>*</div>
+									<h5>Años de Experiencia</h5>
+								</div>
 
-                                                        <div class="col_one_fourth nobottommargin center col_last" data-animate="bounceIn" data-delay="600">
-                                                                <i class="i-plain i-xlarge divcenter nobottommargin icon-file-text"></i>
-                                                                <div class="counter counter-lined"><span data-from="60" data-to="1200" data-refresh-interval="30" data-speed="2700"></span>+</div>
-                                                                <h5>Nº Certificaciones</h5>
-                                                        </div>
+								<div class="col_one_fourth nobottommargin center col_last" data-animate="bounceIn" data-delay="600">
+									<i class="i-plain i-xlarge divcenter nobottommargin icon-file-text"></i>
+									<div class="counter counter-lined"><span data-from="60" data-to="1200" data-refresh-interval="30" data-speed="2700"></span>+</div>
+									<h5>Nº Certificaciones</h5>
+								</div>
 
-                                                </div>
+							</div>
 
-                                        </div>
+						</div>
 
-                                </section>
+					</section>
 
-                                <section id="section-work" class="page-section topmargin-lg">
+					<section id="section-work" class="page-section topmargin-lg">
 
-                                        <div class="heading-block center">
-                                                <h2><span>Galeria</span></h2>
-                                                <span>Alguns dos trabalhos que eu fiz.</span>
-                                        </div>
+						<div class="heading-block center">
+							<h2><span>Galeria</span></h2>
+							<span>Alguns dos trabalhos que eu fiz.</span>
+						</div>
 
-                                        <div class="container clearfix center">
+						<div class="container clearfix center">
 
 						<!-- Portfolio Items
 						============================================= -->

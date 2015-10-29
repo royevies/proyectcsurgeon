@@ -278,3 +278,10 @@
 	
 </div>
 <?php /********************************************************************************/ ?>
+
+
+<?php /**********************************Mensajes de alerta***************************** ?>
+<div id="mensajes_informativos" style="display:none;position:absolute;top:50px;right:50px;width:200px;height:100px;">
+	<?php if ( isset($_GET["msg"]) ) { echo $_GET["msg"]; }?>
+</div>
+<?php /**********************************Mensajes de alerta*****************************/ ?>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2015 a las 01:19:14
+-- Tiempo de generación: 29-10-2015 a las 20:20:45
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `cirujano` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `cirujano`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `bonos_cirujano`
+--
+
+CREATE TABLE `bonos_cirujano` (
+  `id_bonus_cirujano` int(11) NOT NULL,
+  `cirujias_realizadas` int(11) NOT NULL,
+  `horas_estudio` int(11) NOT NULL,
+  `anios_experiencia` int(11) NOT NULL,
+  `cerfificaciones` int(11) NOT NULL,
+  `eslogan` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `bonos_cirujano`
+--
+
+INSERT INTO `bonos_cirujano` (`id_bonus_cirujano`, `cirujias_realizadas`, `horas_estudio`, `anios_experiencia`, `cerfificaciones`, `eslogan`) VALUES
+(1, 50, 1200, 15, 25, 'LA BELLEZA DURA CINCO MINUTOS. TAL VEZ MÁS TIEMPO SI TIENE UN BUEN CIRUJANO PLÁSTICO.');
 
 -- --------------------------------------------------------
 
@@ -45,7 +67,7 @@ CREATE TABLE `contacto` (
 --
 
 INSERT INTO `contacto` (`id_contacto`, `nombres_contacto`, `servicio`, `telefono_movil_contacto`, `email_contacto`, `asunto_contacto`, `descripcion_contacto`, `fecha_contacto`, `visto`) VALUES
-(8, 'Jhonny', 'manoplastia', '8787878', 'jhonnyvanckruz@gmail.com', 'Hola contacto de prueba', 'fedsfdsfsd', '2015-10-27', 1);
+(9, 'dsfvdsf', 'Rinoplastique', 'dfdsfdsdf', 'sdfdsz@gmail.com', 'dsfdsf', 'dfsdfsdf', '2015-10-29', 0);
 
 -- --------------------------------------------------------
 
@@ -65,7 +87,7 @@ CREATE TABLE `contenido_curriculum` (
 --
 
 INSERT INTO `contenido_curriculum` (`id_contenido_curriculum`, `id_curriculum`, `id_idioma`, `curriculum_completo`) VALUES
-(1, 1, 1, 'El Dr. Julio Reyes desde que inicio sus estudios de Otorrinolaringologia en la Universidad del Valle, se intereso por la Cirugía Plástica Facial y en especial por la Rinoplastia pasión que creció rápidamente y continúa hasta hoy.\r\n\r\nAhora es el jefe de la Clínica de Cirugía Plástica Facial del Departamento de Otorrinolaringologia de la Universidad del Valle y su dedicación y fascinación por la Cirugía Plástica Facial y la Rinoplastia continua.\r\n\r\nComo médico Cirujano Plástico Facial y Otorrinolaringologo analiza tanto la función como la forma estética, bajo parámetros científicos y antropométricos, preservando o mejorando, tanto la funcionalidad, como la estética preexistente, Además es profesor e investigador en esta area, asiste continuamente a seminarios y conferencias nacionales e internacionales como conferencista y como asistente, esta actualización constante le ha permitido mejorar continuamente sus técnicas y así brindar un mejor servicio a la comunidad.'),
+(1, 1, 1, 'Dr. Julio Reyes desde el inicio de sus estudios de otorrinolaringología en la Universidad del Valle, estaba interesado en la cirugía plástica facial y sobre todo pasión rinoplastia que ha crecido rápidamente y continúa hoy. Ahora él es el jefe de la Clínica de Cirugía Plástica Facial, Departamento de Otorrinolaringología de la Universidad del Valle y su dedicación y fascinación Facial Cirugía Plástica Rinoplastia y continua. Como un cirujano plástico facial y otorrinolaringólogo analiza la función y forma estética, bajo parámetros científicos y antropométricos, preservar o mejorar la funcionalidad que la estética existente, también es profesor e investigador en esta área, asiste continuamente seminarios y conferencias orador nacional e internacional y como asistente, esta actualización constante le permitió mejorar continuamente sus habilidades y ofrecer un mejor servicio a la comunidad.'),
 (2, 1, 2, 'Dr. Julio Reyes desde o início de seus estudos de otorrinolaringologia da Universidade del Valle, estava interessado em Cirurgia Plástica Facial e especialmente Rinoplastia paixão que cresceu rapidamente e continua até hoje. Agora ele é o chefe da Clínica de Cirurgia Plástica Facial do Departamento de Otorrinolaringologia da Universidade del Valle e sua dedicação e fascínio Facial Cirurgia Plástica Rinoplastia e contínua. Como cirurgião plástico facial e otorrinolaringólogo analisa tanto a função e forma estética, sob parâmetros científicos e antropométricos, preservando ou melhorando a funcionalidade que a estética existentes, também é professor e investigador nesta área, de forma contínua freqüenta seminários e conferências falante nacional e internacional e como um assistente, essa atualização constante permitiu-lhe melhorar continuamente suas habilidades e proporcionar um melhor serviço à comunidade.');
 
 -- --------------------------------------------------------
@@ -101,7 +123,7 @@ INSERT INTO `contenido_procedimiento` (`id_contenido_procedimiento`, `id_procedi
 (13, 7, 1, 'nalgaplastia', 'asdas', 'sadsadsad\r\nsad						'),
 (14, 7, 2, 'nalgeplastique', 'dasd', 'sadasd\r\n						'),
 (15, 8, 1, 'Liposupcion', 'asdas', 'sadasdsa\r\n						'),
-(16, 8, 2, 'liposuciione', 'asdd', 'dasdsa\r\n						');
+(16, 8, 2, 'liposucione port', 'asdd', 'plplpplplpl\r\n						');
 
 -- --------------------------------------------------------
 
@@ -145,7 +167,7 @@ CREATE TABLE `datos_contacto` (
 --
 
 INSERT INTO `datos_contacto` (`id_datos_contacto`, `direccion`, `email`, `clave_email`, `telefono`, `fax`, `facebook`, `twitter`, `instagram`, `googlepluss`) VALUES
-(1, 'nueva dir', 'jhonnyvanckruz@gmail.com', '123', '1111111111111', '55555555555555555', '66666666666666666666', 'dfvdx', '8888888888888888888888', 'vcxvxvx');
+(1, 'nueva dir', 'jhonnyvanckruz@gmail.com', '123', '1111111111111', 'dsfdsf', 'dsfsd', 'fdsfds', '8888888888888888888888', 'vcxvxvx');
 
 -- --------------------------------------------------------
 
@@ -217,7 +239,7 @@ CREATE TABLE `procedimientos` (
 --
 
 INSERT INTO `procedimientos` (`id_procedimiento`, `img_principal_procedimiento`, `orden_inicio`) VALUES
-(2, 'mamo.jpg', 1),
+(2, 'mamo.jpg', 0),
 (3, 'Koala.jpg', 1),
 (4, 'lineas.jpg', 1),
 (5, 'jennifer.jpg', 0),
@@ -233,16 +255,22 @@ INSERT INTO `procedimientos` (`id_procedimiento`, `img_principal_procedimiento`,
 
 CREATE TABLE `slider` (
   `id_slider` int(11) NOT NULL,
-  `slider` varchar(250) COLLATE utf8_spanish_ci NOT NULL
+  `slider` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `orden` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `slider`
 --
 
-INSERT INTO `slider` (`id_slider`, `slider`) VALUES
-(1, 'foto1.jpg'),
-(2, 'foto2.jpg');
+INSERT INTO `slider` (`id_slider`, `slider`, `orden`) VALUES
+(19, 'jennifer.jpg', 3),
+(20, 'mamo.jpg', 1),
+(21, 'marcas.jpg', 2),
+(22, '1513750491_72708cf54f_b.jpg', 4),
+(23, 'jennifer.jpg', 5),
+(24, 'dama.jpg', 6),
+(25, 'quirofano-azul-op.jpg', 7);
 
 -- --------------------------------------------------------
 
@@ -266,7 +294,7 @@ CREATE TABLE `testimonios` (
 --
 
 INSERT INTO `testimonios` (`id_testimonio`, `nombres_del_descriptor`, `email_del_descriptor`, `titulo_testimonio`, `detalle_testimonio`, `img_principal_testimonio`, `aprobado`, `orden_inicio`) VALUES
-(4, 'Maria', 'asdsa@sdsadas', 'dfdsfd', 'dsfdsfdsfsdfsd', 'dama.jpg', 1, 0),
+(4, 'Maria', 'asdsa@sdsadas', 'dfdsfd', 'dsfdsfdsfsdfsd', 'dama.jpg', 0, 0),
 (5, 'Karla', 'zxc@dsfssdac', 'dsfdsf', 'dsfdsfdsfd', 'koala.jpg', 1, 1),
 (6, 'Katiuska', 'csdc@ssssx', 'dsfdsf', 'eeeeeeeeeeeeeeeee', 'user.png', 0, 1),
 (12, 'dcdscd', 'dcds@gmail.com', NULL, NULL, '13.jpg', 0, 0),
@@ -292,11 +320,17 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `nombres`, `apellidos`, `rol`) VALUES
-(1, 'doctorjulio', '8cb2237d0679ca88db6464eac60da96345513964', 'Jhonny', 'Vasquez', 1);
+(1, 'doctorjulio', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Jhonny', 'Vasquez', 1);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `bonos_cirujano`
+--
+ALTER TABLE `bonos_cirujano`
+  ADD PRIMARY KEY (`id_bonus_cirujano`);
 
 --
 -- Indices de la tabla `contacto`
@@ -375,10 +409,15 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `bonos_cirujano`
+--
+ALTER TABLE `bonos_cirujano`
+  MODIFY `id_bonus_cirujano` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `contenido_curriculum`
 --
@@ -388,7 +427,7 @@ ALTER TABLE `contenido_curriculum`
 -- AUTO_INCREMENT de la tabla `contenido_procedimiento`
 --
 ALTER TABLE `contenido_procedimiento`
-  MODIFY `id_contenido_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_contenido_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `curriculum_doc`
 --
@@ -408,7 +447,7 @@ ALTER TABLE `idioma`
 -- AUTO_INCREMENT de la tabla `img_procedimientos`
 --
 ALTER TABLE `img_procedimientos`
-  MODIFY `id_img_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_img_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `img_testimonios`
 --
@@ -418,12 +457,12 @@ ALTER TABLE `img_testimonios`
 -- AUTO_INCREMENT de la tabla `procedimientos`
 --
 ALTER TABLE `procedimientos`
-  MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `testimonios`
 --
