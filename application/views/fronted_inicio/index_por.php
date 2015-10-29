@@ -583,9 +583,9 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 									<h3>CONTATO</h3>
 
-									<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
+									<div id="contact-form-result" data-notify-type="" data-notify-position="top-full-width" data-notify-msg=""></div>
 
-									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="<?=$this->config->base_url();?>index.php/Admin/crear_contacto" method="post">
+									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="" method="post">
 
 										<div class="form-process"></div>
 
@@ -634,27 +634,59 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										</div>
 
 										<div class="col_full">
-											<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">ENVIAR MENSAGEM </button>
+											<button id="send_form" class="button button-3d nomargin" type="button" id="template-contactform-submit" name="template-contactform-submit" value="submit">Enviar Mensagem</button>
 										</div>
 
 									</form>
 
 									<script type="text/javascript">
 
-										$("#template-contactform").validate({
-											submitHandler: function(form) {
-												$('.form-process').fadeIn();
-												$(form).ajaxSubmit({
-													target: '#contact-form-result',
-													success: function() {
-														$('.form-process').fadeOut();
-														$(form).find('.sm-form-control').val('');
-														$('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
-														SEMICOLON.widget.notifications($('#contact-form-result'));
-													}
-												});
-											}
-										});
+//										$("#template-contactform").validate({
+//											submitHandler: function(form) {
+//												$('.form-process').fadeIn();
+//												$(form).ajaxSubmit({
+//													target: '#contact-form-result',
+//													success: function() {
+//														$('.form-process').fadeOut();
+//														$(form).find('.sm-form-control').val('');
+//														$('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
+//														SEMICOLON.widget.notifications($('#contact-form-result'));
+//													}
+//												});
+//											}
+//										});
+
+                                                                                $("#send_form").click(function (ev) {
+                                                                                var error = "Por favor corrija los siguientes errores:";
+                                                                                var msj;
+                                                                                $.ajax({
+                                                                                    type: "POST",
+                                                                                    url: "<?=$this->config->base_url();?>index.php/Admin/crear_contacto",
+                                                                                    dataType: 'json',
+                                                                                    data: $("#template-contactform").serialize(),
+                                                                                    success: function(data) {
+                                                                                        if(data.status == 'success'){
+                                                                                            msj = data.msj;
+                                                                                            $('#contact-form-result').attr('data-notify-msg', '<i class=icon-ok-sign></i>'+msj+'');
+                                                                                            $('#contact-form-result').attr('data-notify-type', 'success');
+                                                                                            SEMICOLON.widget.notifications($('#contact-form-result'));
+                                                                                            $('#template-testimonialform').clearForm();
+                                                                                        }else if(data.status == 'error'){
+                                                                                            $.each(data, function(i, v) {
+                                                                                                // For each record in the returned array
+                                                                                                if(i != 'status'){
+                                                                                                    error = error + '<li>'+v+'</li>';
+                                                                                                }
+                                                                                            });
+                                                                                            $('#contact-form-result').attr('data-notify-msg', error);
+                                                                                            $('#contact-form-result').attr('data-notify-type', 'error');
+                                                                                            SEMICOLON.widget.notifications($('#contact-form-result'));
+                                                                                        }
+                                                                                    },
+                                                                                });
+
+                                                                    ev.preventDefault();
+                                                                });
 
 									</script>
 
