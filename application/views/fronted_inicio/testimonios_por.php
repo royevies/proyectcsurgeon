@@ -74,9 +74,9 @@
 						<div class="togglec">
 							<div class="postcontent nobottommargin divcenter">
 
-								<div id="testimonial-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
+								<div id="testimonial-form-result" data-notify-type="" data-notify-position="top-full-width" data-notify-msg=""></div>
 
-								<form class="nobottommargin" id="template-testimonialform" name="template-testimonialform" action="<?=$this->config->base_url();?>index.php/Admin/guardar_testimonio" method="post" enctype="multipart/form-data">
+								<form class="nobottommargin" id="template-testimonialform" name="template-testimonialform" method="post" enctype="multipart/form-data">
 
 									<div class="form-process"></div>
 
@@ -114,31 +114,64 @@
 									</div>
 
 									<div class="col_full">
-										<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Ação</button>
+										<button id="send_form" class="button button-3d nomargin" type="button" id="template-contactform-submit" name="template-contactform-submit" value="submit">Compartir</button>
 									</div>
 
 								</form>
 
 								<script type="text/javascript">
 
-									$("#template-testimonialform").validate({
-										submitHandler: function(form) {
-											$('.form-process').fadeIn();
-											/*$(form).ajaxSubmit({
-												target: '#testimonial-form-result',
-												success: function() {
-													$('.form-process').fadeOut();
-													$(form).find('.sm-form-control').val('');
-													$('#testimonial-form-result').attr('data-notify-msg', $('#testimonial-form-result').html()).html('');
-													SEMICOLON.widget.notifications($('#testimonial-form-result'));
-												}
-											});*/
-								}
-							});
+//									$("#template-testimonialform").validate({
+//										submitHandler: function(form) {
+//											$('.form-process').fadeIn();
+//											$(form).ajaxSubmit({
+//												target: '#testimonial-form-result',
+//												success: function() {
+//													$('.form-process').fadeOut();
+//													$(form).find('.sm-form-control').val('');
+//													$('#testimonial-form-result').attr('data-notify-msg', $('#testimonial-form-result').html()).html('');
+//													SEMICOLON.widget.notifications($('#testimonial-form-result'));
+//												}
+//											});
+//                                                                                }
+//                                                                        });
+                                                                $("#send_form").click(function (ev) {  
+                                                                    var form_data = new FormData($("#template-testimonialform")[0]);
+                                                                    var error = "Por favor corrija los siguientes errores:";
+                                                                    var msj;
+                                                                    $.ajax({
+                                                                        type: "POST",
+                                                                        url: "<?=$this->config->base_url();?>index.php/Admin/guardar_testimonio",
+                                                                        dataType: 'json',
+                                                                        cache: false,
+                                                                        contentType: false,
+                                                                        processData: false,
+                                                                        data: form_data,
+                                                                        success: function(data) {
+                                                                            if(data.status == 'success'){
+                                                                                msj = data.msj;
+                                                                                $('#testimonial-form-result').attr('data-notify-msg', '<i class=icon-ok-sign></i>'+msj+'');
+                                                                                $('#testimonial-form-result').attr('data-notify-type', 'success');
+                                                                                SEMICOLON.widget.notifications($('#testimonial-form-result'));
+                                                                                $('#template-testimonialform').clearForm();
+                                                                            }else if(data.status == 'error'){
+                                                                                $.each(data, function(i, v) {
+                                                                                    // For each record in the returned array
+                                                                                    if(i != 'status'){
+                                                                                        error = error + '<li>'+v+'</li>';
+                                                                                    }
+                                                                                });
+                                                                                $('#testimonial-form-result').attr('data-notify-msg', error);
+                                                                                $('#testimonial-form-result').attr('data-notify-type', 'error');
+                                                                                SEMICOLON.widget.notifications($('#testimonial-form-result'));
+                                                                            }
+                                                                        },
+                                                                    });
 
-								});
+                                                                    ev.preventDefault();
+                                                                });
 
-</script>
+                                                                </script>
 </div>
 </div>
 </div>
