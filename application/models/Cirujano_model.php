@@ -154,7 +154,8 @@
 		   		"titulo_testimonio"  => $titulo_testimonio,
 		   		"detalle_testimonio" => $detalle_testimonio,
 		   		"img_principal_testimonio" => $img_principal_testimonio,
-		   		"aprobado" => 0
+		   		"aprobado" => 0,
+		   		"orden_inicio" => 0
 		   		]);
 		   }
 
