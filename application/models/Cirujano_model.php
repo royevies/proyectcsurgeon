@@ -153,7 +153,8 @@
 		   		"email_del_descriptor" =>  $email_del_descriptor,
 		   		"titulo_testimonio"  => $titulo_testimonio,
 		   		"detalle_testimonio" => $detalle_testimonio,
-		   		"img_principal_testimonio" => $img_principal_testimonio
+		   		"img_principal_testimonio" => $img_principal_testimonio,
+		   		"aprobado" => 0
 		   		]);
 		   }
 
