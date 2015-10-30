@@ -307,7 +307,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 							<div class="clear"></div>
 
-							<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/galeria"><i class="i-plain icon-plus"></i>Ver mais</a></div>	
+							<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i>Ver mais</a></div>	
 
 						</div><!-- #portfolio end -->
 
@@ -656,41 +656,41 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 //											}
 //										});
 
-                                                                                $("#send_form").click(function (ev) {
-                                                                                var error = "Por favor corrija los siguientes errores:";
-                                                                                var msj;
-                                                                                $.ajax({
-                                                                                    type: "POST",
-                                                                                    url: "<?=$this->config->base_url();?>index.php/Admin/crear_contacto",
-                                                                                    dataType: 'json',
-                                                                                    data: $("#template-contactform").serialize(),
-                                                                                    success: function(data) {
-                                                                                        if(data.status == 'success'){
-                                                                                            msj = data.msj;
-                                                                                            $('#contact-form-result').attr('data-notify-msg', '<i class=icon-ok-sign></i>'+msj+'');
-                                                                                            $('#contact-form-result').attr('data-notify-type', 'success');
-                                                                                            SEMICOLON.widget.notifications($('#contact-form-result'));
-                                                                                            $('#template-testimonialform').clearForm();
-                                                                                        }else if(data.status == 'error'){
-                                                                                            $.each(data, function(i, v) {
+$("#send_form").click(function (ev) {
+	var error = "Por favor corrija los siguientes errores:";
+	var msj;
+	$.ajax({
+		type: "POST",
+		url: "<?=$this->config->base_url();?>index.php/Admin/crear_contacto",
+		dataType: 'json',
+		data: $("#template-contactform").serialize(),
+		success: function(data) {
+			if(data.status == 'success'){
+				msj = data.msj;
+				$('#contact-form-result').attr('data-notify-msg', '<i class=icon-ok-sign></i>'+msj+'');
+				$('#contact-form-result').attr('data-notify-type', 'success');
+				SEMICOLON.widget.notifications($('#contact-form-result'));
+				$('#template-testimonialform').clearForm();
+			}else if(data.status == 'error'){
+				$.each(data, function(i, v) {
                                                                                                 // For each record in the returned array
                                                                                                 if(i != 'status'){
-                                                                                                    error = error + '<li>'+v+'</li>';
+                                                                                                	error = error + '<li>'+v+'</li>';
                                                                                                 }
                                                                                             });
-                                                                                            $('#contact-form-result').attr('data-notify-msg', error);
-                                                                                            $('#contact-form-result').attr('data-notify-type', 'error');
-                                                                                            SEMICOLON.widget.notifications($('#contact-form-result'));
-                                                                                        }
-                                                                                    },
-                                                                                });
+				$('#contact-form-result').attr('data-notify-msg', error);
+				$('#contact-form-result').attr('data-notify-type', 'error');
+				SEMICOLON.widget.notifications($('#contact-form-result'));
+			}
+		},
+	});
 
-                                                                    ev.preventDefault();
-                                                                });
+ev.preventDefault();
+});
 
-									</script>
+</script>
 
-								</div><!-- .postcontent end -->
+</div><!-- .postcontent end -->
 
 								<!-- Sidebar
 								============================================= -->
