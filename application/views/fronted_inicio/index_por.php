@@ -14,33 +14,25 @@
 
 			<div class="swiper-container swiper-parent">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/silueta2.png');">
+                                        <?php foreach($slider_master as $slide){ ?>
+					<div class="swiper-slide" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/<?=$slide->slider?>');">
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
 								<h2 data-caption-animate="fadeInUp">Dr. Julio Reyes</h2>
-								<p data-caption-animate="fadeInUp" data-caption-delay="200">Cirurgião Plástico.</p>
+								<p data-caption-animate="fadeInUp" data-caption-delay="200">Cirujano Plástico.</p>
 							</div>
 						</div>
 					</div>
-					<div class="swiper-slide dark">
-						
-						<div class="video-wrap">
-							<video poster="<?=$this->config->base_url();?>fronted_inicio/images/videos/explore-poster.jpg" preload="auto" loop autoplay muted>
-								<source src='<?=$this->config->base_url();?>fronted_inicio/foto/explore3.mp4' type='video/mp4' />
-									<source src='<?=$this->config->base_url();?>fronted_inicio/images/videos/explore.webm' type='video/webm' />
-									</video>
-									<div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
-								</div>
-							</div>
+                                        <?php } ?>
 
-						</div>
-						<div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
-						<div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
-						<div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div>
-						<a href="#" data-scrollto="#section-about" class="one-page-arrow dark">
-							<i class="icon-angle-down infinite animated fadeInDown"></i>
-						</a>
-					</div>
+                                </div>
+                                <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+                                <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+                                <div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div>
+                                <a href="#" data-scrollto="#section-about" class="one-page-arrow dark">
+                                        <i class="icon-angle-down infinite animated fadeInDown"></i>
+                                </a>
+                        </div>
 
 					<script>
 						jQuery(document).ready(function($){
@@ -192,32 +184,27 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/quirofano-azul-op.jpg');" data-stellar-background-ratio="0.3">
 
 							<div class="container clearfix">
-								<?php 
-								echo "<pre>";
-								print_r($bonus_cirujano);
-								echo "</pre>";
-								?>
 								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-magic"></i>
-									<div class="counter counter-lined"><span data-from="100" data-to="846" data-refresh-interval="50" data-speed="2000"></span>+</div>
+                                                                        <div class="counter counter-lined"><span data-from="100" data-to="<?=$bonus_cirujano[0]->cirujias_realizadas?>" data-refresh-interval="50" data-speed="2000"></span>+</div>
 									<h5>Cirugias Realizadas</h5>
 								</div>
 
 								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="200">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-time"></i>
-									<div class="counter counter-lined"><span data-from="3000" data-to="15360" data-refresh-interval="100" data-speed="2500"></span>+</div>
+									<div class="counter counter-lined"><span data-from="3000" data-to="<?=$bonus_cirujano[0]->horas_estudio?>" data-refresh-interval="100" data-speed="2500"></span>+</div>
 									<h5>Horas de Estudio</h5>
 								</div>
 
 								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="400">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-code"></i>
-									<div class="counter counter-lined"><span data-from="1" data-to="386" data-refresh-interval="25" data-speed="3500"></span>*</div>
+									<div class="counter counter-lined"><span data-from="1" data-to="<?=$bonus_cirujano[0]->anios_experiencia?>" data-refresh-interval="25" data-speed="3500"></span>*</div>
 									<h5>Años de Experiencia</h5>
 								</div>
 
 								<div class="col_one_fourth nobottommargin center col_last" data-animate="bounceIn" data-delay="600">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-file-text"></i>
-									<div class="counter counter-lined"><span data-from="60" data-to="1200" data-refresh-interval="30" data-speed="2700"></span>+</div>
+									<div class="counter counter-lined"><span data-from="60" data-to="<?=$bonus_cirujano[0]->cerfificaciones?>" data-refresh-interval="30" data-speed="2700"></span>+</div>
 									<h5>Nº Certificaciones</h5>
 								</div>
 
@@ -532,7 +519,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						</div>
 					<!-- Google Map
 					============================================= -->
-					<section id="google-map" class="gmap slider-parallax"></section>
+					<section id="google-map" class="gmap"></section>
 
 					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 					<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/jquery.gmap.js"></script>
@@ -547,7 +534,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							markers: [
 							{
 								address: "Caracas, Venezuela",
-								html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Envato</span></h4><p class="nobottommargin">Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
+								html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hola <span>Bienvenido</span></h4><p class="nobottommargin">Justo en este punto usted puede <strong>encontrar</strong> mi clinica.</p></div>',
 								icon: {
 									image: "<?=$this->config->base_url();?>fronted_inicio/images/icons/map-icon-red.png",
 									iconsize: [32, 39],
@@ -723,32 +710,22 @@ ev.preventDefault();
 
 									<div class="widget noborder notoppadding">
 
-										<a href="#" class="social-icon si-small si-dark si-facebook">
+										<a href="<?php echo $telefono; ?>" class="social-icon si-small si-dark si-facebook">
 											<i class="icon-facebook"></i>
 											<i class="icon-facebook"></i>
 										</a>
 
-										<a href="#" class="social-icon si-small si-dark si-twitter">
+										<a href="<?php echo $twitter; ?>" class="social-icon si-small si-dark si-twitter">
 											<i class="icon-twitter"></i>
 											<i class="icon-twitter"></i>
 										</a>
 
-										<a href="#" class="social-icon si-small si-dark si-dribbble">
-											<i class="icon-dribbble"></i>
-											<i class="icon-dribbble"></i>
+										<a href="<?php echo $instagram; ?>" class="social-icon si-small si-dark si-instagram">
+											<i class="icon-instagram"></i>
+											<i class="icon-instagram"></i>
 										</a>
 
-										<a href="#" class="social-icon si-small si-dark si-forrst">
-											<i class="icon-forrst"></i>
-											<i class="icon-forrst"></i>
-										</a>
-
-										<a href="#" class="social-icon si-small si-dark si-pinterest">
-											<i class="icon-pinterest"></i>
-											<i class="icon-pinterest"></i>
-										</a>
-
-										<a href="#" class="social-icon si-small si-dark si-gplus">
+										<a href="<?php echo $googlepluss; ?>" class="social-icon si-small si-dark si-gplus">
 											<i class="icon-gplus"></i>
 											<i class="icon-gplus"></i>
 										</a>
@@ -814,34 +791,14 @@ ev.preventDefault();
 								<i class="icon-twitter"></i>
 							</a>
 
+							<a href="#" class="social-icon si-small si-borderless si-instagram">
+								<i class="icon-instagram"></i>
+								<i class="icon-instagram"></i>
+							</a>
+
 							<a href="#" class="social-icon si-small si-borderless si-gplus">
 								<i class="icon-gplus"></i>
 								<i class="icon-gplus"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-pinterest">
-								<i class="icon-pinterest"></i>
-								<i class="icon-pinterest"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-vimeo">
-								<i class="icon-vimeo"></i>
-								<i class="icon-vimeo"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-github">
-								<i class="icon-github"></i>
-								<i class="icon-github"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-yahoo">
-								<i class="icon-yahoo"></i>
-								<i class="icon-yahoo"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-linkedin">
-								<i class="icon-linkedin"></i>
-								<i class="icon-linkedin"></i>
 							</a>
 						</div>
 
