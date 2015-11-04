@@ -135,43 +135,43 @@
 //											});
 //                                                                                }
 //                                                                        });
-                                                                $("#send_form").click(function (ev) {  
-                                                                    var form_data = new FormData($("#template-testimonialform")[0]);
-                                                                    var error = "Por favor corrija los siguientes errores:";
-                                                                    var msj;
-                                                                    $.ajax({
-                                                                        type: "POST",
-                                                                        url: "<?=$this->config->base_url();?>index.php/Admin/guardar_testimonio",
-                                                                        dataType: 'json',
-                                                                        cache: false,
-                                                                        contentType: false,
-                                                                        processData: false,
-                                                                        data: form_data,
-                                                                        success: function(data) {
-                                                                            if(data.status == 'success'){
-                                                                                msj = data.msj;
-                                                                                $('#testimonial-form-result').attr('data-notify-msg', '<i class=icon-ok-sign></i>'+msj+'');
-                                                                                $('#testimonial-form-result').attr('data-notify-type', 'success');
-                                                                                SEMICOLON.widget.notifications($('#testimonial-form-result'));
-                                                                                $('#template-testimonialform').clearForm();
-                                                                            }else if(data.status == 'error'){
-                                                                                $.each(data, function(i, v) {
+$("#send_form").click(function (ev) {  
+	var form_data = new FormData($("#template-testimonialform")[0]);
+	var error = "Por favor corrija los siguientes errores:";
+	var msj;
+	$.ajax({
+		type: "POST",
+		url: "<?=$this->config->base_url();?>index.php/Admin/guardar_testimonio",
+		dataType: 'json',
+		cache: false,
+		contentType: false,
+		processData: false,
+		data: form_data,
+		success: function(data) {
+			if(data.status == 'success'){
+				msj = data.msj;
+				$('#testimonial-form-result').attr('data-notify-msg', '<i class=icon-ok-sign></i>'+msj+'');
+				$('#testimonial-form-result').attr('data-notify-type', 'success');
+				SEMICOLON.widget.notifications($('#testimonial-form-result'));
+				$('#template-testimonialform').clearForm();
+			}else if(data.status == 'error'){
+				$.each(data, function(i, v) {
                                                                                     // For each record in the returned array
                                                                                     if(i != 'status'){
-                                                                                        error = error + '<li>'+v+'</li>';
+                                                                                    	error = error + '<li>'+v+'</li>';
                                                                                     }
                                                                                 });
-                                                                                $('#testimonial-form-result').attr('data-notify-msg', error);
-                                                                                $('#testimonial-form-result').attr('data-notify-type', 'error');
-                                                                                SEMICOLON.widget.notifications($('#testimonial-form-result'));
-                                                                            }
-                                                                        },
-                                                                    });
+				$('#testimonial-form-result').attr('data-notify-msg', error);
+				$('#testimonial-form-result').attr('data-notify-type', 'error');
+				SEMICOLON.widget.notifications($('#testimonial-form-result'));
+			}
+		},
+	});
 
-                                                                    ev.preventDefault();
-                                                                });
+ev.preventDefault();
+});
 
-                                                                </script>
+</script>
 </div>
 </div>
 </div>
@@ -205,6 +205,55 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/functions.js"></script>
+	<script>
+		$(document).on("ready",function(){
 
+
+			$("#template-testimonialform-name").jqEasyCounter({	
+				'maxChars': 100,
+				'maxCharsWarning': 80,
+				'msgFontSize': '13px',
+				'msgfontcolor': '#000',
+				'msgfontfamily': 'verdana',
+				'msgtextalign': 'left',
+				'msgwarningcolor': '#f00',
+				'msgappendmethod': 'insertbefore'				
+			});
+
+			$("#template-testimonialform-email").jqEasyCounter({	
+				'maxChars': 150,
+				'maxCharsWarning':140,
+				'msgFontSize': '13px',
+				'msgfontcolor': '#000',
+				'msgfontfamily': 'verdana',
+				'msgtextalign': 'left',
+				'msgwarningcolor': '#f00',
+				'msgappendmethod': 'insertbefore'				
+			});
+
+			$("#template-contactform-subject").jqEasyCounter({	
+				'maxChars': 120,
+				'maxCharsWarning': 100,
+				'msgFontSize': '13px',
+				'msgfontcolor': '#000',
+				'msgfontfamily': 'verdana',
+				'msgtextalign': 'left',
+				'msgwarningcolor': '#f00',
+				'msgappendmethod': 'insertbefore'				
+			});
+
+			$("#template-contactform-message").jqEasyCounter({	
+				'maxChars': 256,
+				'maxCharsWarning': 225,
+				'msgFontSize': '13px',
+				'msgfontcolor': '#000',
+				'msgfontfamily': 'verdana',
+				'msgtextalign': 'left',
+				'msgwarningcolor': '#f00',
+				'msgappendmethod': 'insertbefore'				
+			});
+
+		});
+</script>
 </body>
 </html>

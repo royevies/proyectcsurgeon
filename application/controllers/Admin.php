@@ -442,6 +442,7 @@ class Admin  extends CI_Controller {
 
 					for ($i=0; $i < $size_slider ; $i++) { 
 						$this->Cirujano_model->eliminar_slider($id_slider[$i]);
+						//unlink();
 					}
 
 					redirect('Admin/panel?msg=Imagenes eliminadas del carrucel correctamente');
