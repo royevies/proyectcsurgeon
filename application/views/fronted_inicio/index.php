@@ -16,7 +16,7 @@
 
 			<div class="swiper-container swiper-parent">
 				<div class="swiper-wrapper">
-                                        <?php foreach($slider_master as $slide){ ?>
+					<?php foreach($slider_master as $slide){ ?>
 					<div class="swiper-slide" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/<?=$slide->slider?>');">
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
@@ -25,7 +25,7 @@
 							</div>
 						</div>
 					</div>
-                                        <?php } ?>
+					<?php } ?>
 <!--					<div class="swiper-slide dark">
 						
 						<div class="video-wrap">
@@ -35,72 +35,72 @@
                                                         </video>
                                                         <div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
                                                 </div>
-                                        </div>-->
+                                            </div>-->
 
-                                </div>
-                                <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
-                                <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
-                                <div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div>
-                                <a href="#" data-scrollto="#section-about" class="one-page-arrow dark">
-                                        <i class="icon-angle-down infinite animated fadeInDown"></i>
-                                </a>
-                        </div>
+                                        </div>
+                                        <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+                                        <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+                                        <div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div>
+                                        <a href="#" data-scrollto="#section-about" class="one-page-arrow dark">
+                                        	<i class="icon-angle-down infinite animated fadeInDown"></i>
+                                        </a>
+                                    </div>
 
-					<script>
-						jQuery(document).ready(function($){
-							var swiperSlider = new Swiper('.swiper-parent',{
-								paginationClickable: false,
-								slidesPerView: 1,
-								grabCursor: true,
-								onSwiperCreated: function(swiper){
-									$('[data-caption-animate]').each(function(){
-										var $toAnimateElement = $(this);
-										var toAnimateDelay = $(this).attr('data-caption-delay');
-										var toAnimateDelayTime = 0;
-										if( toAnimateDelay ) { toAnimateDelayTime = Number( toAnimateDelay ) + 750; } else { toAnimateDelayTime = 750; }
-										if( !$toAnimateElement.hasClass('animated') ) {
-											$toAnimateElement.addClass('not-animated');
-											var elementAnimation = $toAnimateElement.attr('data-caption-animate');
-											setTimeout(function() {
-												$toAnimateElement.removeClass('not-animated').addClass( elementAnimation + ' animated');
-											}, toAnimateDelayTime);
-										}
-									});
-								},
-								onSlideChangeStart: function(swiper){
-									$('#slide-number-current').html(swiper.activeIndex + 1);
-									$('[data-caption-animate]').each(function(){
-										var $toAnimateElement = $(this);
-										var elementAnimation = $toAnimateElement.attr('data-caption-animate');
-										$toAnimateElement.removeClass('animated').removeClass(elementAnimation).addClass('not-animated');
-									});
-								},
-								onSlideChangeEnd: function(swiper){
-									$('#slider .swiper-slide').each(function(){
-										if($(this).find('video').length > 0) { $(this).find('video').get(0).pause(); }
-									});
-									$('#slider .swiper-slide:not(".swiper-slide-active")').each(function(){
-										if($(this).find('video').length > 0) {
-											if($(this).find('video').get(0).currentTime != 0 ) $(this).find('video').get(0).currentTime = 0;
-										}
-									});
-									if( $('#slider .swiper-slide.swiper-slide-active').find('video').length > 0 ) { $('#slider .swiper-slide.swiper-slide-active').find('video').get(0).play(); }
+                                    <script>
+                                    	jQuery(document).ready(function($){
+                                    		var swiperSlider = new Swiper('.swiper-parent',{
+                                    			paginationClickable: false,
+                                    			slidesPerView: 1,
+                                    			grabCursor: true,
+                                    			onSwiperCreated: function(swiper){
+                                    				$('[data-caption-animate]').each(function(){
+                                    					var $toAnimateElement = $(this);
+                                    					var toAnimateDelay = $(this).attr('data-caption-delay');
+                                    					var toAnimateDelayTime = 0;
+                                    					if( toAnimateDelay ) { toAnimateDelayTime = Number( toAnimateDelay ) + 750; } else { toAnimateDelayTime = 750; }
+                                    					if( !$toAnimateElement.hasClass('animated') ) {
+                                    						$toAnimateElement.addClass('not-animated');
+                                    						var elementAnimation = $toAnimateElement.attr('data-caption-animate');
+                                    						setTimeout(function() {
+                                    							$toAnimateElement.removeClass('not-animated').addClass( elementAnimation + ' animated');
+                                    						}, toAnimateDelayTime);
+                                    					}
+                                    				});
+},
+onSlideChangeStart: function(swiper){
+	$('#slide-number-current').html(swiper.activeIndex + 1);
+	$('[data-caption-animate]').each(function(){
+		var $toAnimateElement = $(this);
+		var elementAnimation = $toAnimateElement.attr('data-caption-animate');
+		$toAnimateElement.removeClass('animated').removeClass(elementAnimation).addClass('not-animated');
+	});
+},
+onSlideChangeEnd: function(swiper){
+	$('#slider .swiper-slide').each(function(){
+		if($(this).find('video').length > 0) { $(this).find('video').get(0).pause(); }
+	});
+	$('#slider .swiper-slide:not(".swiper-slide-active")').each(function(){
+		if($(this).find('video').length > 0) {
+			if($(this).find('video').get(0).currentTime != 0 ) $(this).find('video').get(0).currentTime = 0;
+		}
+	});
+	if( $('#slider .swiper-slide.swiper-slide-active').find('video').length > 0 ) { $('#slider .swiper-slide.swiper-slide-active').find('video').get(0).play(); }
 
-									$('#slider .swiper-slide.swiper-slide-active [data-caption-animate]').each(function(){
-										var $toAnimateElement = $(this);
-										var toAnimateDelay = $(this).attr('data-caption-delay');
-										var toAnimateDelayTime = 0;
-										if( toAnimateDelay ) { toAnimateDelayTime = Number( toAnimateDelay ) + 300; } else { toAnimateDelayTime = 300; }
-										if( !$toAnimateElement.hasClass('animated') ) {
-											$toAnimateElement.addClass('not-animated');
-											var elementAnimation = $toAnimateElement.attr('data-caption-animate');
-											setTimeout(function() {
-												$toAnimateElement.removeClass('not-animated').addClass( elementAnimation + ' animated');
-											}, toAnimateDelayTime);
-										}
-									});
-								}
-							});
+	$('#slider .swiper-slide.swiper-slide-active [data-caption-animate]').each(function(){
+		var $toAnimateElement = $(this);
+		var toAnimateDelay = $(this).attr('data-caption-delay');
+		var toAnimateDelayTime = 0;
+		if( toAnimateDelay ) { toAnimateDelayTime = Number( toAnimateDelay ) + 300; } else { toAnimateDelayTime = 300; }
+		if( !$toAnimateElement.hasClass('animated') ) {
+			$toAnimateElement.addClass('not-animated');
+			var elementAnimation = $toAnimateElement.attr('data-caption-animate');
+			setTimeout(function() {
+				$toAnimateElement.removeClass('not-animated').addClass( elementAnimation + ' animated');
+			}, toAnimateDelayTime);
+		}
+	});
+}
+});
 
 $('#slider-arrow-left').on('click', function(e){
 	e.preventDefault();
@@ -204,7 +204,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<div class="container clearfix">
 								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-magic"></i>
-                                                                        <div class="counter counter-lined"><span data-from="100" data-to="<?=$bonus_cirujano[0]->cirujias_realizadas?>" data-refresh-interval="50" data-speed="2000"></span>+</div>
+									<div class="counter counter-lined"><span data-from="100" data-to="<?=$bonus_cirujano[0]->cirujias_realizadas?>" data-refresh-interval="50" data-speed="2000"></span>+</div>
 									<h5>Cirugias Realizadas</h5>
 								</div>
 
@@ -522,6 +522,14 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								<span>¿Aún tienes dudas? Aquí me puedes encontrar.</span>
 							</div>
 							<?php 
+							$direccion  = "";
+							$email  = "";
+							$telefono  = "";
+							$fax  = "";
+							$facebook  = "";
+							$twitter  = "";
+							$instagram  = "";
+							$googlepluss  = "";
 
 							foreach ($datos_personales as $dato) {
 								$direccion = $dato->direccion;
@@ -536,43 +544,43 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 							?>
 					<!-- Google Map
-		============================================= -->
-		<section id="google-map" class="gmap"></section>
+					============================================= -->
+					<section id="google-map" class="gmap"></section>
 
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-		<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/jquery.gmap.js"></script>
+					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+					<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/jquery.gmap.js"></script>
 
-		<script type="text/javascript">
+					<script type="text/javascript">
 
-			$('#google-map').gMap({
+						$('#google-map').gMap({
 
-				address: 'Caracas, Venezuela',
-				maptype: 'ROADMAP',
-				zoom: 14,
-				markers: [
-					{
-						address: "Caracas, Venezuela",
-						html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hola <span>Bienvenido</span></h4><p class="nobottommargin">Justo en este punto usted puede <strong>encontrar</strong> mi clinica.</p></div>',
-						icon: {
-							image: "<?=$this->config->base_url();?>fronted_inicio/images/icons/map-icon-red.png",
-							iconsize: [32, 39],
-							iconanchor: [13,39]
-						}
-					}
-				],
-				doubleclickzoom: false,
-				controls: {
-					panControl: true,
-					zoomControl: true,
-					mapTypeControl: true,
-					scaleControl: false,
-					streetViewControl: false,
-					overviewMapControl: false
-				}
+							address: '<?=( isset( $direccion ) ? $direccion : "La Santísima Trinidad, Bolivia"  );?> ',
+							maptype: 'ROADMAP',
+							zoom: 14,
+							markers: [
+							{
+								address: "Caracas, Venezuela",
+								html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hola <span>Bienvenido</span></h4><p class="nobottommargin">Justo en este punto usted puede <strong>encontrar</strong> mi clinica.</p></div>',
+								icon: {
+									image: "<?=$this->config->base_url();?>fronted_inicio/images/icons/map-icon-red.png",
+									iconsize: [32, 39],
+									iconanchor: [13,39]
+								}
+							}
+							],
+							doubleclickzoom: false,
+							controls: {
+								panControl: true,
+								zoomControl: true,
+								mapTypeControl: true,
+								scaleControl: false,
+								streetViewControl: false,
+								overviewMapControl: false
+							}
 
-			});
+						});
 
-		</script><!-- Google Map End -->
+					</script><!-- Google Map End -->
 
 					<!-- Content
 					============================================= -->
@@ -661,41 +669,41 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 //											}
 //										});
 
-                                                                                $("#send_form").click(function (ev) {
-                                                                                var error = "Por favor corrija los siguientes errores:";
-                                                                                var msj;
-                                                                                $.ajax({
-                                                                                    type: "POST",
-                                                                                    url: "<?=$this->config->base_url();?>index.php/Admin/crear_contacto",
-                                                                                    dataType: 'json',
-                                                                                    data: $("#template-contactform").serialize(),
-                                                                                    success: function(data) {
-                                                                                        if(data.status == 'success'){
-                                                                                            msj = data.msj;
-                                                                                            $('#contact-form-result').attr('data-notify-msg', '<i class=icon-ok-sign></i>'+msj+'');
-                                                                                            $('#contact-form-result').attr('data-notify-type', 'success');
-                                                                                            SEMICOLON.widget.notifications($('#contact-form-result'));
-                                                                                            $('#template-testimonialform').clearForm();
-                                                                                        }else if(data.status == 'error'){
-                                                                                            $.each(data, function(i, v) {
+$("#send_form").click(function (ev) {
+	var error = "Por favor corrija los siguientes errores:";
+	var msj;
+	$.ajax({
+		type: "POST",
+		url: "<?=$this->config->base_url();?>index.php/Admin/crear_contacto",
+		dataType: 'json',
+		data: $("#template-contactform").serialize(),
+		success: function(data) {
+			if(data.status == 'success'){
+				msj = data.msj;
+				$('#contact-form-result').attr('data-notify-msg', '<i class=icon-ok-sign></i>'+msj+'');
+				$('#contact-form-result').attr('data-notify-type', 'success');
+				SEMICOLON.widget.notifications($('#contact-form-result'));
+				$('#template-testimonialform').clearForm();
+			}else if(data.status == 'error'){
+				$.each(data, function(i, v) {
                                                                                                 // For each record in the returned array
                                                                                                 if(i != 'status'){
-                                                                                                    error = error + '<li>'+v+'</li>';
+                                                                                                	error = error + '<li>'+v+'</li>';
                                                                                                 }
                                                                                             });
-                                                                                            $('#contact-form-result').attr('data-notify-msg', error);
-                                                                                            $('#contact-form-result').attr('data-notify-type', 'error');
-                                                                                            SEMICOLON.widget.notifications($('#contact-form-result'));
-                                                                                        }
-                                                                                    },
-                                                                                });
+				$('#contact-form-result').attr('data-notify-msg', error);
+				$('#contact-form-result').attr('data-notify-type', 'error');
+				SEMICOLON.widget.notifications($('#contact-form-result'));
+			}
+		},
+	});
 
-                                                                    ev.preventDefault();
-                                                                });
+ev.preventDefault();
+});
 
-									</script>
+</script>
 
-								</div><!-- .postcontent end -->
+</div><!-- .postcontent end -->
 
 								<!-- Sidebar
 								============================================= -->
@@ -759,7 +767,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 			</div>
 
 		</section><!-- #content end -->
-                
+
 <!--                <a href="#" class="btn btn-success hidden" data-notify-type="success" data-notify-position="top-full-width" data-notify-msg="<i class=icon-ok-sign></i> Su testimonio se envio correctamente y esta en espera de aprobación, gracias por su comentario." onclick="SEMICOLON.widget.notifications(this); return false;">Show Success</a>
                 
                 <script type="text/javascript">
