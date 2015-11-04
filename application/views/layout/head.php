@@ -16,4 +16,5 @@
 	<script src="<?=$this->config->base_url();?>fronted/js/jquery-ui/js/jquery-ui.min.js"></script>
 	<script src="<?=$this->config->base_url();?>fronted/css/bootstrap-3/js/bootstrap.js"></script>	
 	<script src="<?=$this->config->base_url();?>fronted/js/DataTables-1.10.4/media/js/jquery.dataTables.js"></script>
+	<script src="<?=$this->config->base_url();?>fronted/js/jquery.jqEasyCharCounter.min.js"></script>
 </head>

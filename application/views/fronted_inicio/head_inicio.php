@@ -31,7 +31,7 @@
 	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/jquery.js"></script>
 	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/plugins.js"></script>
 	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/jquery.clearform.js"></script>
-
+	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted/js/jquery-count/jquery.jqEasyCharCounter.min.js"></script>
 	<!-- Document Title
 	============================================= -->
 	<title>Inicio Dr. Julio Reyes | Cirujano Plastico</title>
