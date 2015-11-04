@@ -178,8 +178,9 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								echo "</div>";
 							}}
 							?>
-
+							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/procedimientos"><i class="i-plain icon-plus"></i> VER MAIS</a></div>
 						</div>
+
 
 						<div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/quirofano-azul-op.jpg');" data-stellar-background-ratio="0.3">
 
@@ -511,7 +512,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							$twitter  = "";
 							$instagram  = "";
 							$googlepluss  = "";
-							
+
 							foreach ($datos_personales as $dato) {
 								$direccion = $dato->direccion;
 								$email = $dato->email;
