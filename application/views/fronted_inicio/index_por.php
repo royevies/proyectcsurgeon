@@ -386,9 +386,9 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 					</div>
 
-					<div class="section parallax" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/images/parallax/3.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
+					<div class="section parallax" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/inicio/<?=$bonus_cirujano[0]->imagen_fondo; ?>'); padding: 100px 0;" data-stellar-background-ratio="0.3">
 						<div class="heading-block center nobottomborder nobottommargin">
-							<h2>"Belleza dura cinco minutos. Tal vez más tiempo si tiene un buen cirujano plástico."</h2>
+							<h2>"<?=$bonus_cirujano[0]->eslogan_por?>"</h2>
 						</div>
 					</div>
 

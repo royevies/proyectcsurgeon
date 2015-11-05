@@ -924,22 +924,35 @@ $(document).on("ready",function(){
 			$("#eliminar_procedimiento,#inicio_procedimiento").removeAttr("disabled");
 		}else if($(".contador_opciones_procedimiento:checked").length == 0){
 			$("#eliminar_procedimiento,#inicio_procedimiento").attr("disabled","disabled");
-
-			//$("#sel_all_procedimientos").
-
+				/*
+			if ($("#sel_all_procedimientos").attr("checked") == "checked" ){
+				$("#sel_all_procedimientos").removeAttr("checked")
+			}
+			*/
 		}
 
 	});
 
 	$("#sel_all_procedimientos").on("click",function(){
-		$(".contador_opciones_procedimiento").each(function(index, elemento) {
+		
+		$(".opciones_procedimiento").each(function(index, elemento) {
 
 			//$(this).prop('checked', function(i, v) { return !v; });
 
-			if( $(elemento).attr("checked") != "checked" ){
-				$(elemento).attr("checked","checked");
+			/*if( $(this).is(":checked") ){
+				$(this).removeAttr("checked");
+				console.log( $(this).attr("checked") );
 			}else{
-				$(elemento).removeAttr("checked");
+				$(this).attr("checked","checked");
+				console.log( $(this).attr("checked") );
+			}*/
+
+			if( $(this).is(":checked") ){
+				$(this).removeAttr("checked");
+				console.log( $(elemento).attr("class") +" "+ $(elemento).attr("checked") );
+			}else if( $(this).attr("checked") == "undefined" ){
+				$(this).attr("checked","checked");
+				console.log( $(elemento).attr("class") +" "+ $(elemento).attr("checked") );
 			}
 
 		});
