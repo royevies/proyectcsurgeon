@@ -28,7 +28,7 @@
 		}
 
 		public function get_contactos(){
-			$query = $this->db->query("select * from contacto order by fecha_contacto desc");
+			$query = $this->db->query("select * from contacto order by id_contacto desc");
 			return $query;	
 		}
 

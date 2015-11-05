@@ -59,21 +59,21 @@
 
 <div class="content-menu">
 
- <a id="sliders" class="item_panel_control" data-panel="panel_slider" data-original-title="Gestión del slider y mensajes publicitarios" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+ <a id="sliders" class="item_panel_control" data-panel="panel_slider" data-content="Gestión del slider y mensajes publicitarios" rel="popover" data-placement="right" data-trigger="hover"> 
      <div class="item-menu">       
          <img src="<?=$this->config->base_url();?>fronted/img/iconos2/home.png" class="img_menu" />        
          <p>Inicio</p>
      </div>
  </a> 
 
- <a id="procedimientos" class="item_panel_control" data-panel="panel_procedimientos" data-original-title="Gestión de procedimientos" data-content="" rel="popover" data-placement="right" data-trigger="hover"> 
+ <a id="procedimientos" class="item_panel_control" data-panel="panel_procedimientos" data-content="Gestión de procedimientos" rel="popover" data-placement="right" data-trigger="hover"> 
      <div class="item-menu">       
         <img src="<?=$this->config->base_url();?>fronted/img/iconos2/relax8.png" class="img_menu" />        
         <p>Procedimientos</p>
     </div>
 </a>  
 
-<a id="galeria" class="item_panel_control" data-panel="panel_galeria" data-original-title="Galeria " rel="popover" data-placement="right" data-trigger="hover">
+<a id="galeria" class="item_panel_control" data-panel="panel_galeria" data-content="Galeria" rel="popover" data-placement="right" data-trigger="hover">
     <div class="item-menu">
         <img src="<?=$this->config->base_url();?>fronted/img/iconos2/galeria.png" class="img_menu" />        
         <p>Galeria</p>
@@ -81,21 +81,21 @@
 </a>
 
 
-<a id="curriculum" class="item_panel_control" data-panel="panel_curriculum" data-original-title="Gestión de curriculum personal" data-content="" rel="popover" data-placement="right"  data-trigger="hover">
+<a id="curriculum" class="item_panel_control" data-panel="panel_curriculum" data-content="Gestión de curriculum personal" rel="popover" data-placement="right"  data-trigger="hover">
     <div class="item-menu">
         <img src="<?=$this->config->base_url();?>fronted/img/iconos2/curriculum.png" class="img_menu" />        
         <p>Formación Profesional</p>
     </div>
 </a>
 
-<a id="testimonios" class="item_panel_control" data-panel="panel_testimonios" data-original-title="Gestión de testimonios de pascientes" data-content="" rel="popover" data-placement="right" data-trigger="hover">
+<a id="testimonios" class="item_panel_control" data-panel="panel_testimonios" data-content="Gestión de testimonios de pascientes" rel="popover" data-placement="right" data-trigger="hover">
     <div class="item-menu">
         <img src="<?=$this->config->base_url();?>fronted/img/iconos2/usuarios.png" class="img_menu" />        
         <p>testimonios</p>
     </div>
 </a>
 
-<a id="contacto" class="item_panel_control" data-panel="panel_contacto" data-original-title="Contacto "  data-content="" rel="popover" data-placement="right" data-trigger="hover">
+<a id="contacto" class="item_panel_control" data-panel="panel_contacto" data-content="Contacto" rel="popover" data-placement="right" data-trigger="hover">
     <div class="item-menu">
         <img src="<?=$this->config->base_url();?>fronted/img/iconos2/correo3.png" class="img_menu" />        
         <p>Contacto 
