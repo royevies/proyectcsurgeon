@@ -119,6 +119,7 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li id="cambio_usuario" style="cursor:pointer;"><a><span class="glyphicon glyphicon-user"></span> Cambiar Usuario</a></li>
 							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave</a></li>
 						</ul>
 					</div>
@@ -579,9 +580,6 @@
 			?>
 			<form id="" action="<?=$this->config->base_url()?>index.php/admin/datos_contacto" method="post">
 				
-				<p>Usuario de inicio de sesión:</p>
-				<input type="text" class="form-control datos_trigger" id="usuario_sesion" name="usuario_sesion" maxlength="11" value="<?=($usuario);?>">
-
 				<p>Dirección:</p>
 				<input type="text" class="form-control datos_trigger" id="direccion" name="direccion" maxlength="200" value="<?=($direccion);?>">
 
@@ -882,7 +880,6 @@ $(document).on("ready",function(){
 	/***************************************************************************************************************************/
 
 	$(".contador_opciones_slider").on("click",function(){
-		console.log( $(".contador_opciones_procedimiento:checked").length);
 
 		if( $(".contador_opciones_slider:checked").length > 0 ){			
 			$("#ordenar_slider,#eliminar_slider").removeAttr("disabled");
@@ -927,18 +924,30 @@ $(document).on("ready",function(){
 			$("#eliminar_procedimiento,#inicio_procedimiento").removeAttr("disabled");
 		}else if($(".contador_opciones_procedimiento:checked").length == 0){
 			$("#eliminar_procedimiento,#inicio_procedimiento").attr("disabled","disabled");
+
+			//$("#sel_all_procedimientos").
+
 		}
 
 	});
 
 	$("#sel_all_procedimientos").on("click",function(){
-		$(".opciones_procedimiento").each(function(index, elemento) {
-			$(this).prop('checked', function(i, v) { return !v; });
+		$(".contador_opciones_procedimiento").each(function(index, elemento) {
+
+			//$(this).prop('checked', function(i, v) { return !v; });
+
+			if( $(elemento).attr("checked") != "checked" ){
+				$(elemento).attr("checked","checked");
+			}else{
+				$(elemento).removeAttr("checked");
+			}
+
 		});
 
 		if( !$("#sel_all_procedimientos").is(":checked") && $(".contador_opciones_procedimiento:checked").length == 0 ){
 			$("#eliminar_procedimiento,#inicio_procedimiento").attr("disabled","disabled");
 		}
+
 	});
 	/***************************************************************************************************************************/
 
@@ -1163,6 +1172,10 @@ $("#cambio_clave").on("click",function(){
 $("#ventana_cambio_clave").dialog({width:"600px",title:"Cambio de clave de acceso al administrador de contenido",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});	
 });
 
+$("#cambio_usuario").on("click",function(){
+
+$("#ventana_cambio_usuario").dialog({width:"600px",title:"Cambio de usuario de acceso al administrador de contenido",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});	
+});
 
 $("#boton_cambiar_clave").on("click",function(e){
 	e.preventDefault();

@@ -87,7 +87,7 @@ class Admin  extends CI_Controller {
 	public function datos_contacto(){
 		if( $this->input->post() ){
 				#print_r($_POST);
-			$usuario = $this->input->post("usuario_sesion");
+
 			$direccion  = $this->input->post("direccion");
 			$email = $this->input->post("email");
 			$clave_email = $this->input->post("clave_email");
@@ -99,14 +99,13 @@ class Admin  extends CI_Controller {
 			$googlepluss = $this->input->post("gloogleplus");
 
 			$this->Cirujano_model->cambiar_datos($direccion,$email,$clave_email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss);
-			$this->Cirujano_model->cambiar_usuario($usuario);
+
 			redirect("Admin/panel?msg=Los datos han sido actualizados");
 		}else{
 			redirect("Admin");
 		}
 
 	}
-
 
 	public function guardar_testimonio(){
 		if( $this->input->post() ) {	
@@ -491,6 +490,20 @@ class Admin  extends CI_Controller {
 				redirect("Admin");
 			}
 
+		}
+
+		public function cambiar_usuario(){
+			if( $this->input->post() && $this->session->userdata('usuario') ){
+
+				$usuario = $this->input->post("usuario_sesion");
+
+				$this->Cirujano_model->cambiar_usuario($usuario);
+
+				redirect("Admin/panel?msg=Usuario de acceso al adminnistrador actualizado");
+
+			}else{
+				redirect("Admin");
+			}
 		}
 
 		public function cambiar_clave(){
