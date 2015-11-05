@@ -109,31 +109,18 @@ class Admin  extends CI_Controller {
 
 
 	public function guardar_testimonio(){
-		if( $this->input->post() ) {	
-			$errors = array();
-			$msj = array();
+		if( $this->input->post() ) {
 			$nombres_del_descriptor = $this->input->post("template-testimonialform-name");
-			if($nombres_del_descriptor == ''){
-				array_push($errors, 'El campo Nombre no puede estar vacio');
-			}
 			$email_del_descriptor = $this->input->post("template-testimonialform-email");
-			if($email_del_descriptor == ''){
-				array_push($errors, 'El campo E-mail no puede estar vacio');
-			}
 			$titulo_testimonio = $this->input->post("template-testimonialform-subject");
-			if($titulo_testimonio == ''){
-				array_push($errors, 'El campo Titulo no puede estar vacio');
-			}
 			$detalle_testimonio = $this->input->post("template-testimonialform-message");
-			if($detalle_testimonio == ''){
-				array_push($errors, 'El campo Testimonio no puede estar vacio');
-			}
+			$ln = $this->input->post("template-testimonialform-ln");
 
-			
-			if(count($errors) >= 1){
-				$errors['status'] = 'error';
+			$msj = $this->_validate_testimonio($this->input->post(), $ln);
+                        
+			if($msj['status'] == 'error'){
 				header('Content-type: application/json');
-				echo json_encode($errors);
+				echo json_encode($msj);
 			}else{
 
 				$img_principal_testimonio = ( $_FILES["template-testimonialform-file"]["name"] == null ? "user.png" : $_FILES["template-testimonialform-file"]["name"] );
@@ -149,8 +136,8 @@ class Admin  extends CI_Controller {
 					$img_principal_testimonio
 					);
 
-				$msj['msj'] = "Su testimonio se envio correctamente y esta en espera de aprobación, gracias por su comentario.";
-				$msj['status'] = 'success';
+//				$msj['msj'] = "Su testimonio se envio correctamente y esta en espera de aprobación, gracias por su comentario.";
+//				$msj['status'] = 'success';
 				header('Content-type: application/json');
 				echo json_encode($msj);
 //                                    redirect("web/testimonios?msg=Su testimonio se envio correctamente y esta en espera de aprobación, gracias por su comentario.");
@@ -510,31 +497,19 @@ class Admin  extends CI_Controller {
 		public function crear_contacto(){
 
 			if( $this->input->post() ){
-				$errors = array();
-				$msj = array();
-				$nombres_contacto	= $this->input->post("template-contactform-name");
-				if($nombres_contacto == ''){
-					array_push($errors, 'El campo Nombre no puede estar vacio');
-				}
+                                $nombres_contacto	= $this->input->post("template-contactform-name");
 				$servicio	= $this->input->post("template-contactform-service");
 				$telefono_movil_contacto	= $this->input->post("template-contactform-phone");
 				$email_contacto	= $this->input->post("template-contactform-email");
-				if($email_contacto == ''){
-					array_push($errors, 'El campo Correo Electronico no puede estar vacio');
-				}
 				$asunto_contacto	= $this->input->post("template-contactform-subject");
-				if($asunto_contacto == ''){
-					array_push($errors, 'El campo Asunto no puede estar vacio');
-				}
 				$descripcion_contacto	= $this->input->post("template-contactform-message");
-				if($descripcion_contacto == ''){
-					array_push($errors, 'El campo Mensaje no puede estar vacio');
-				}
+                                $ln = $this->input->post("template-contactform-ln");
+                                
+                                $msj = $this->_validate($this->input->post(), $ln);
 
-				if(count($errors) >= 1){
-					$errors['status'] = 'error';
+				if($msj['status'] == 'error'){
 					header('Content-type: application/json');
-					echo json_encode($errors);
+					echo json_encode($msj);
 				}else{
 
 					$this->Cirujano_model->crear_contacto(
@@ -565,9 +540,7 @@ class Admin  extends CI_Controller {
 					$this->email->subject('Nuevo contacto');
 					$this->email->message('<h2>Email enviado con codeigniter haciendo uso del smtp de gmail</h2><hr><br> Bienvenido al web');
 					$this->email->send();
-
-					$msj['msj'] = "Mensaje Enviado Exitosamente";
-					$msj['status'] = 'success';
+                                        
 					header('Content-type: application/json');
 					echo json_encode($msj);
 				}
@@ -651,5 +624,101 @@ class Admin  extends CI_Controller {
 			redirect("Admin");
 		}
 		///*************************************************************///
+                
+                public function _validate_contact($fields, $ln){
+                    $msj = array();
+                    if($ln == "es"){
+                        $campos['Nombre'] = $fields["template-contactform-name"];
+                        $campos['Telefono'] = $fields["template-contactform-phone"];
+                        $campos['Asunto'] = $fields["template-contactform-subject"];
+                        $campos['Email'] = $fields["template-contactform-email"];
+                        $campos['Mensaje'] = $fields["template-contactform-message"];
+                        foreach ($campos as $key => $campo) {
+                            if($campo == ""){
+                                array_push($msj, 'El campo '. $key.' no puede estar vacio');
+                            }elseif($key == "Email"){
+                                if (!filter_var($campo, FILTER_VALIDATE_EMAIL)){
+                                        array_push($msj, "Por favor introduzca una cuenta de correo electronico valida");
+                                }
+                            }
+                        }
+                        if(count($msj) >= 1){
+                            $msj['status'] = 'error';
+                        }else{
+                            $msj['msj'] = "Mensaje Enviado Exitosamente";
+                            $msj['status'] = 'success';
+                        }
+                    }else{
+                        $campos['Nomes'] = $fields["template-contactform-name"];
+                        $campos['Telefone'] = $fields["template-contactform-phone"];
+                        $campos['Assunto'] = $fields["template-contactform-subject"];
+                        $campos['Email'] = $fields["template-contactform-email"];
+                        $campos['Mensagem'] = $fields["template-contactform-message"];
+                        foreach ($campos as $key => $campo) {
+                            if($campo == ""){
+                                array_push($msj, 'O campo '. $key.' não pode ficar vazio');
+                            }elseif($key == "Email"){
+                                if (!filter_var($campo, FILTER_VALIDATE_EMAIL)){
+                                        array_push($msj, "Por favor, digite uma conta de e-mail válido");
+                                }
+                            }
+                        }
+                        if(count($msj) >= 1){
+                            $msj['status'] = 'error';
+                        }else{
+                            $msj['msj'] = "Mensagem enviada com sucesso";
+                            $msj['status'] = 'success';
+                        }
+                    }
+                    
+                    return $msj;
+		}
+                
+                public function _validate_testimonio($fields, $ln){
+                    $msj = array();
+                    if($ln == "es"){
+                        $campos['Nombre'] = $fields["template-testimonialform-name"];
+                        $campos['Titulo'] = $fields["template-testimonialform-subject"];
+                        $campos['Email'] = $fields["template-testimonialform-email"];
+                        $campos['Testimonio'] = $fields["template-testimonialform-message"];
+                        foreach ($campos as $key => $campo) {
+                            if($campo == ""){
+                                array_push($msj, 'El campo '. $key.' no puede estar vacio');
+                            }elseif($key == "Email"){
+                                if (!filter_var($campo, FILTER_VALIDATE_EMAIL)){
+                                        array_push($msj, "Por favor introduzca una cuenta de correo electronico valida");
+                                }
+                            }
+                        }
+                        if(count($msj) >= 1){
+                            $msj['status'] = 'error';
+                        }else{
+                            $msj['msj'] = "Su testimonio se envio correctamente y esta en espera de aprobación, gracias por su comentario.";
+                            $msj['status'] = 'success';
+                        }
+                    }else{
+                        $campos['Nomes'] = $fields["template-testimonialform-name"];
+                        $campos['Titulo'] = $fields["template-testimonialform-subject"];
+                        $campos['Email'] = $fields["template-testimonialform-email"];
+                        $campos['Depoimento'] = $fields["template-testimonialform-message"];
+                        foreach ($campos as $key => $campo) {
+                            if($campo == ""){
+                                array_push($msj, 'O campo '. $key.' não pode ficar vazio');
+                            }elseif($key == "Email"){
+                                if (!filter_var($campo, FILTER_VALIDATE_EMAIL)){
+                                        array_push($msj, "Por favor, digite uma conta de e-mail válido");
+                                }
+                            }
+                        }
+                        if(count($msj) >= 1){
+                            $msj['status'] = 'error';
+                        }else{
+                            $msj['msj'] = "Seu testemunho foi enviado corretamente e está aguardando aprovação, obrigado pelo seu comentário.";
+                            $msj['status'] = 'success';
+                        }
+                    }
+                    
+                    return $msj;
+		}
 	}
 

@@ -38,7 +38,7 @@ class Por extends CI_Controller {
 		$this->load->view('fronted_inicio/procedimientos_por', [
 			"procedimientos" => $this->Cirujano_model->get_procedimientos_por()->result()
 			]);
-		$this->load->view('fronted_inicio/footer');
+		$this->load->view('fronted_inicio/footer',["datos_personales"   => $this->Cirujano_model->ver_datos_contacto()->result()]);
 	}
 
 	public function testimonios(){
@@ -48,6 +48,28 @@ class Por extends CI_Controller {
 			"ruta_por" => $this->config->base_url()."index.php/por/testimonios"
 			]);
 		$this->load->view('fronted_inicio/testimonios_por', ["testimonios" => $this->Cirujano_model->get_testimonios_aprobados()->result()] );
-		$this->load->view('fronted_inicio/footer');
+		$this->load->view('fronted_inicio/footer',["datos_personales"   => $this->Cirujano_model->ver_datos_contacto()->result()]);
+	}
+        
+        public function galeria(){
+		$procedimientos = $this->Cirujano_model->get_procedimientos()->result();
+		
+		$this->load->view('fronted_inicio/head_inicio');
+		$this->load->view('fronted_inicio/header_por',[
+			"ruta_esp" => $this->config->base_url()."index.php/web/galeria",
+			"ruta_por" => $this->config->base_url()."index.php/por/galeria"
+			]);
+		$this->load->view('fronted_inicio/galeria', ["galeria" => $procedimientos] );
+		$this->load->view('fronted_inicio/footer',["datos_personales"   => $this->Cirujano_model->ver_datos_contacto()->result()]);
+	}
+	
+	public function fotos($id){
+		$images = $this->Cirujano_model->ver_img_procedimientos($id)->result();
+		$this->load->view('fronted_inicio/fotos', ["imagenes" => $images] );
+	}
+        
+        public function foto_inicio($id){
+		$images = $this->Cirujano_model->ver_img_procedimientos($id)->result();
+		$this->load->view('fronted_inicio/foto_inicio', ["imagenes" => $images] );
 	}
 }
