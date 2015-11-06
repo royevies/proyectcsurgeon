@@ -9,8 +9,8 @@
 					<!-- Logo
 					============================================= -->
 					<div id="logo">
-						<a href="<?=$this->config->base_url();?>index.php/por/index" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/logo1.png" alt="Canvas Logo"></a>
-						<a href="<?=$this->config->base_url();?>index.php/por/index" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"></a>
+						<a href="<?=$this->config->base_url();?>index.php/por/index" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="<?=$this->config->base_url();?>fronted_inicio/foto/logo1.png" alt="Julio Reyes logo"></a>
+						<a href="<?=$this->config->base_url();?>index.php/por/index" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Julio Reyes logo"></a>
 					</div><!-- #logo end -->
 
 					<!-- Primary Navigation
