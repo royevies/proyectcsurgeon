@@ -163,19 +163,19 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						</div>
 
 						<?php 
-                                                function custom_echo($x, $length)
-                                                {
-                                                    if(strlen($x)<=$length)
-                                                    {
-                                                        echo $x;
-                                                    }
-                                                    else
-                                                    {
-                                                        $y=substr($x,0,$length) . '...';
-                                                        echo $y;
-                                                    }
-                                                }
-                                                
+						function custom_echo($x, $length)
+						{
+							if(strlen($x)<=$length)
+							{
+								echo $x;
+							}
+							else
+							{
+								$y=substr($x,0,$length) . '...';
+								echo $y;
+							}
+						}
+
 						if ($procs_inicio != null) {
 							$count = 0;
 							foreach ($procs_inicio as $pro) {
@@ -257,31 +257,35 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                                 <!-- Portfolio Items
                                 ============================================= -->
                                 <div id="portfolio" class="clearfix portfolio-3">
-                                    
-                                        <?php 
-                                            $count = 0;
-                                            foreach($procs_inicio as $p){ 
-                                            $count++;
-                                            $images = $this->Cirujano_model->ver_img_procedimientos($p->id_procedimiento)->result();
-                                            if ($count == 4)
-                                                break;
-                                            ?>
-                                	<article class="portfolio-item pf-media pf-icons">
-                                		<div class="portfolio-image">
-                                			<a href="portfolio-single.html">
-                                                            <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$images[0]->img_antes?>" style="width: 185px; float: left;">
-                                                            <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$images[0]->img_despues?>" style="width: 185px">
-                                			</a>
-                                			<div class="portfolio-overlay">
-                                				<a href="<?=$this->config->base_url();?>index.php/web/foto_inicio/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
+
+                                	<?php 
+                                	$count = 0;
+                                	foreach($procs_inicio as $p){ 
+                                		$count++;
+                                		$images = $this->Cirujano_model->ver_img_procedimientos($p->id_procedimiento)->result();
+                                		if ($count == 4)
+                                			break;
+                                		?>
+                                		<article class="portfolio-item pf-media pf-icons">
+                                			<div class="portfolio-image">
+                                				<a href="portfolio-single.html">
+                                					<?php  foreach ($images as $img) { ?>
+                                					
+                                					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px; float: left;">
+                                					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px">
+                                					
+                                					<?php } ?>
+                                				</a>
+                                				<div class="portfolio-overlay">
+                                					<a href="<?=$this->config->base_url();?>index.php/web/foto_inicio/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
+                                				</div>
                                 			</div>
-                                		</div>
 <!--                                		<div class="portfolio-desc">
                                 			<h3><a href="portfolio-single.html">Título Imagen</a></h3>
                                 			<span><a href="#">Sub</a>, <a href="#">Titulo</a></span>
                                 		</div>-->
                                 	</article>
-                                        <?php } ?>
+                                	<?php } ?>
 
                                 	<div class="clear"></div>
 
@@ -661,7 +665,7 @@ $("#send_form").click(function (ev) {
 				$.each(data, function(i, v) {
                                     // For each record in the returned array
                                     if(i != 'status'){
-                                            error = error + '<li>'+v+'</li>';
+                                    	error = error + '<li>'+v+'</li>';
                                     }
                                 });
 				$('#contact-form-result').attr('data-notify-msg', error);
@@ -687,7 +691,7 @@ ev.preventDefault();
 										</p>
 									</address>
 									<span title="Phone Number"><strong>Telefono:</strong></span><?php echo $telefono; ?><br>
-                                                                        <span title="Fax"><strong>Fax:</strong></span> <?php echo $fax; ?><br>
+									<span title="Fax"><strong>Fax:</strong></span> <?php echo $fax; ?><br>
 									<span title="Email Address"><strong>Email:</strong></span><?php echo $email; ?>
 									<?php /* ?>
 									<div class="widget noborder notoppadding">

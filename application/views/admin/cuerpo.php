@@ -944,9 +944,15 @@ $(document).on("ready",function(){
 	});
 
 	$("#sel_all_slider").on("click",function(){
-		$(".opciones_slider").each(function(index, elemento) {
-			$(this).prop('checked', function(i, v) { return !v; });
+
+		$('.opciones_slider:checkbox').each( function() {			
+			if($("#sel_all_slider:checked").length == 1){
+				this.checked = true;
+			} else {
+				this.checked = false;
+			}
 		});
+
 
 		if( !$("#sel_all_slider").is(":checked") && $(".contador_opciones_slider:checked").length == 0 ){
 			$("#ordenar_slider,#eliminar_slider").attr("disabled","disabled");
@@ -987,21 +993,15 @@ $(document).on("ready",function(){
 
 	});
 
+
 	$("#sel_all_procedimientos").on("click",function(){
-		
-		$(".opciones_procedimiento").each(function(index, elemento) {
 
-			$(this).prop('checked', function(i, v) { return !v; });
-
-			/*
-			if( $(this).is(":checked") ){
-				$(this).removeAttr("checked");
-				console.log( $(elemento).attr("class") +" "+ $(elemento).attr("checked") );
-			}else if( $(this).attr("checked") == "undefined" ){
-				$(this).attr("checked","checked");
-				console.log( $(elemento).attr("class") +" "+ $(elemento).attr("checked") );
-			}*/
-
+		$('.opciones_procedimiento:checkbox').each( function() {			
+			if($("#sel_all_procedimientos:checked").length == 1){
+				this.checked = true;
+			} else {
+				this.checked = false;
+			}
 		});
 
 		if( !$("#sel_all_procedimientos").is(":checked") && $(".contador_opciones_procedimiento:checked").length == 0 ){
@@ -1022,8 +1022,13 @@ $(document).on("ready",function(){
 	});	
 
 	$("#sel_all_contacto").on("click",function(){
-		$(".opciones_contacto").each(function(index, elemento) {
-			$(this).prop('checked', function(i, v) { return !v; });
+
+		$('.opciones_contacto:checkbox').each( function() {			
+			if($("#sel_all_contacto:checked").length == 1){
+				this.checked = true;
+			} else {
+				this.checked = false;
+			}
 		});
 
 		if( !$("#sel_all_contacto").is(":checked") && $(".contador_opciones_contacto:checked").length == 0 ){
@@ -1046,8 +1051,12 @@ $(document).on("ready",function(){
 
 	$("#sel_all_testimonios").on("click",function(){
 
-		$(".opciones_testimoniales").each(function(index, elemento) {
-			$(this).prop('checked', function(i, v) { return !v; });
+		$('.opciones_testimoniales:checkbox').each( function() {			
+			if($("#sel_all_testimonios:checked").length == 1){
+				this.checked = true;
+			} else {
+				this.checked = false;
+			}
 		});
 
 		if( !$("#sel_all_testimonios").is(":checked") && $(".contador_opciones_testimonios:checked").length == 0 ){
