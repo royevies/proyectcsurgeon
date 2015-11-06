@@ -119,7 +119,7 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li id="cambio_usuario" style="cursor:pointer;"><a><span class="glyphicon glyphicon-user"></span> Cambiar Usuario</a></li>
+							<li id="cambio_usuario" style="cursor:pointer;"><a><span class="glyphicon glyphicon-user"></span> Cambiar Nombre Usuario</a></li>
 							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave</a></li>
 						</ul>
 					</div>
@@ -646,7 +646,7 @@
 				<p>Instagram:</p>
 				<input type="text" class="form-control datos_trigger" id="instagram" name="instagram" maxlength="200" value="<?=($instagram);?>">
 
-				<p>Gloogle Pluss:</p>
+				<p>Google Pluss:</p>
 				<input type="text" class="form-control datos_trigger" id="gloogleplus" name="gloogleplus" maxlength="200" value="<?=($gloogleplus);?>">
 
 				<hr>
@@ -727,7 +727,7 @@
 			<button id="inicio_procedimiento" disabled="disabled" class="btn btn-success">Procesar en el inicio</button>
 		</div>
 
-		<button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo procedimiento</span>	</button>
+		<button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo Procedimiento</span>	</button>
 
 	</div> 
 	<form id="form_procedimientos" action="<?=$this->config->base_url()?>index.php/admin/administrar_procedimiento" method="post">
