@@ -160,7 +160,7 @@
 		   }
 
 		   public function get_testimonios(){
-		   	return $this->db->query("select * from testimonios");
+		   	return $this->db->query("select * from testimonios order by id_testimonio desc");
 		   }
 
 		   public function get_testimonios_aprobados(){

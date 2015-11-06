@@ -401,20 +401,25 @@ class Admin  extends CI_Controller {
 				foreach ($_FILES["archivosgaleria"]["error"] as $key => $error){
 					if ($error == UPLOAD_ERR_OK){
 						if(  $_FILES["archivosgaleria"]["name"] != null){
-							$tmp_name 		= $_FILES["archivosgaleria"]["tmp_name"][$key];
-							$nombre_archivo = $_FILES["archivosgaleria"]["name"][$key];
-							$nombre_archivos[] = $_FILES["archivosgaleria"]["name"][$key];
-							move_uploaded_file($tmp_name,$uploads_dir.$nombre_archivo);
+
+							if( $_FILES["archivosgaleria"]["type"][$key] == "image/jpeg" || $_FILES["archivosgaleria"]["type"][$key] == "image/png" ){
+
+								$tmp_name 		= $_FILES["archivosgaleria"]["tmp_name"][$key];
+								$nombre_archivo = $_FILES["archivosgaleria"]["name"][$key];
+								$nombre_archivos[] = $_FILES["archivosgaleria"]["name"][$key];
+								move_uploaded_file($tmp_name,$uploads_dir.$nombre_archivo);
+							}/*else{
+								redirect("Admin/panel?msg=El formato de archivo no esta soportado por el slider");
+							}*/
 
 						}
-
 					}
 				}    
 
 				$num_archivos = sizeof($nombre_archivos);
 
 				$this->Cirujano_model->insert_galeria($nombre_archivos,$num_archivos);
-				redirect('Admin/panel?msg=Carrucel de imagenes actualizado');
+				redirect('Admin/panel?msg=Slider actualizado');
 
 			}else{
 				redirect('Admin');

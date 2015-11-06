@@ -160,7 +160,7 @@
 				<div id="contenedor_pestanas" class="tab-content">
 					<div class="tab-pane active" id="editor_slider" style="background:rgba(0,0,0,0.2);">
 
-						<button id="boton_nuevo_slider" class="btn btn-success" style="float:right;margin:25px;"><span class="glyphicon glyphicon-plus"></span> Agregar imagenes al slider</button>
+						<button id="boton_nuevo_slider" class="btn btn-success" style="float:right;margin:25px;"><span class="glyphicon glyphicon-plus"></span> Agregar items al slider</button>
 						<div style="clear:both"></div>
 						<div id="agregar_nuevo_slider" style="padding:25px;display:none;margin-bottom:25px;">
 
@@ -170,7 +170,7 @@
 							<form id="form_sliders" action="<?=$this->config->base_url()?>index.php/admin/gestion_slider" method="post" enctype="multipart/form-data">
 								<input type="hidden" name="opcion_slider" value="opcion_slider">
 								<div id="inpuflivos" style="padding:50px;background:rgba(255,255,255,0.7);">
-									<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;">
+									<input type="file" name="archivosgaleria[]" accept="image/JPEG,image/png" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;">
 								</div>
 								<hr>
 								<button type="submit" id="guardar_sliders" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar imagenes</button>
@@ -418,11 +418,11 @@
 
 								<tr>
 									<td>
-										<input id="img_antes" name="img_antes"  type="file" style="height:auto" class="form-control" required="required">
+										<input id="img_antes" name="img_antes"  type="file" accept="image/JPEG,image/png" style="height:auto" class="form-control" required="required">
 									</td>
 									
 									<td>
-										<input  id="img_despues" name="img_despues" type="file" style="height:auto" class="form-control" required="required">										
+										<input  id="img_despues" name="img_despues" type="file" accept="image/JPEG,image/png" style="height:auto" class="form-control" required="required">										
 									</td>
 								</tr>
 							</table>
@@ -797,7 +797,7 @@
 			</div>
 
 			<div style="width:100px;display:inline;margin-right:16px;">
-				<button id="aprobar_testimonio" disabled="disabled" class="btn btn-success">Aprobar | Ocultar</button>
+				<button id="aprobar_testimonio" disabled="disabled" class="btn btn-success">Visible | Oculto</button>
 			</div>
 
 			<div style="width:100px;display:inline;">
@@ -826,7 +826,7 @@
 						<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_testimoniales contador_opciones_testimonios" style="border:none;background:none;width:21px;height:21px;" name="id_testimonio[]" value="<?=$test->id_testimonio;?>"> </td>
 						<td><img src="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>						
 						<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($test->orden_inicio == 0 ? "<span class='glyphicon glyphicon-ban-circle' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
-						<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
+						<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Visible</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
 						<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
 								<?php /* ?>
 								<td><button class="btn btn-danger del_test" data-id="<?=$test->id_testimonio;?>" ><span class="glyphicon glyphicon-remove"></span></button></td>
@@ -991,23 +991,16 @@ $(document).on("ready",function(){
 		
 		$(".opciones_procedimiento").each(function(index, elemento) {
 
-			//$(this).prop('checked', function(i, v) { return !v; });
+			$(this).prop('checked', function(i, v) { return !v; });
 
-			/*if( $(this).is(":checked") ){
-				$(this).removeAttr("checked");
-				console.log( $(this).attr("checked") );
-			}else{
-				$(this).attr("checked","checked");
-				console.log( $(this).attr("checked") );
-			}*/
-
+			/*
 			if( $(this).is(":checked") ){
 				$(this).removeAttr("checked");
 				console.log( $(elemento).attr("class") +" "+ $(elemento).attr("checked") );
 			}else if( $(this).attr("checked") == "undefined" ){
 				$(this).attr("checked","checked");
 				console.log( $(elemento).attr("class") +" "+ $(elemento).attr("checked") );
-			}
+			}*/
 
 		});
 
@@ -1458,7 +1451,7 @@ $(".item_panel_control").on("click",function(){
 });
 
 function agregar(){
-	var file='<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;margin-top:16px;;">';
+	var file='<input type="file" name="archivosgaleria[]" accept="image/JPEG,image/png" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;margin-top:16px;">';
 	var nuevo_file = $(file);
 	$("#inpuflivos").append(nuevo_file);
 }
