@@ -151,19 +151,19 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						</div>
 
 						<?php
-                                                function custom_echo($x, $length)
-                                                {
-                                                    if(strlen($x)<=$length)
-                                                    {
-                                                        echo $x;
-                                                    }
-                                                    else
-                                                    {
-                                                        $y=substr($x,0,$length) . '...';
-                                                        echo $y;
-                                                    }
-                                                }
-                                                
+						function custom_echo($x, $length)
+						{
+							if(strlen($x)<=$length)
+							{
+								echo $x;
+							}
+							else
+							{
+								$y=substr($x,0,$length) . '...';
+								echo $y;
+							}
+						}
+						
 						if ($procs_inicio != null) {
 							$count = 0;
 							foreach ($procs_inicio as $pro) {
@@ -242,79 +242,83 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						<div id="portfolio" class="clearfix">
 
 							<?php 
-                                                            $count = 0;
-                                                            foreach($procs_inicio as $p){ 
-                                                            $count++;
-                                                            $images = $this->Cirujano_model->ver_img_procedimientos($p->id_procedimiento)->result();
-                                                            if ($count == 4)
-                                                                break;
-                                                            ?>
-                                                        <article class="portfolio-item pf-media pf-icons">
-                                                                <div class="portfolio-image">
-                                                                        <a href="portfolio-single.html">
-                                                                            <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$images[0]->img_antes?>" style="width: 185px; float: left;">
-                                                                            <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$images[0]->img_despues?>" style="width: 185px">
-                                                                        </a>
-                                                                        <div class="portfolio-overlay">
-                                                                                <a href="<?=$this->config->base_url();?>index.php/web/foto_inicio/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
-                                                                        </div>
-                                                                </div>
-                                                        </article>
-                                                        <?php } ?>
-
-							<div class="clear"></div>
-
-							<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i>Ver mais</a></div>	
-
-						</div><!-- #portfolio end -->
-
-					</div>
-
-				</section>
-
-				<section id="section-team" class="page-section topmargin-lg">
-
-					<div class="heading-block center">
-						<h2><span>Formação profissional</span></h2>
-						<span>Conheça a minha formação e experiência.</span>
-					</div>
-
-					<div class="row common-height clearfix">
-						<?php 
-						foreach ($curriculum as $cul) {
-							$curriculum_julio = $cul->curriculum_completo;
-						}
-
-
-						foreach ($img_curriculum as $img_cul) {
-							$img_curriculum_julio = $img_cul->img_curriculum;
-						}
-						?>
-						<div class="col-sm-5 col-padding" style="background: url('<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>') center center no-repeat; background-size: cover;"></div>
-
-						<div class="col-sm-7 col-padding">
-							<div>
-								<div class="heading-block">
-									<span class="before-heading color">Cirurgião Plástico</span>
-									<h3>Dr. Julio Reyes</h3>
-								</div>
-
-								<div class="row clearfix">
-
-									<div class="col-md-12">
-										<p style="text-align:justify;">										
-											<?php 
+							$count = 0;
+							foreach($procs_inicio as $p){ 
+								$count++;
+								$images = $this->Cirujano_model->ver_img_procedimientos($p->id_procedimiento)->result();
+								if ($count == 4)
+									break;
+								?>
+								<article class="portfolio-item pf-media pf-icons">
+									<div class="portfolio-image">
+										<a href="portfolio-single.html">
+											<?php  foreach ($images as $img) { ?>
 											
-											echo $curriculum_julio;
+											<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px; float: left;">
+											<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px">
+											
+											<?php } ?>
+										</a>
+										<div class="portfolio-overlay">
+											<a href="<?=$this->config->base_url();?>index.php/web/foto_inicio/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
+										</div>
+									</div>
+								</article>
+								<?php } ?>
 
-											?>
-										</p>
+								<div class="clear"></div>
 
-										
+								<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i>Ver mais</a></div>	
+
+							</div><!-- #portfolio end -->
+
+						</div>
+
+					</section>
+
+					<section id="section-team" class="page-section topmargin-lg">
+
+						<div class="heading-block center">
+							<h2><span>Formação profissional</span></h2>
+							<span>Conheça a minha formação e experiência.</span>
+						</div>
+
+						<div class="row common-height clearfix">
+							<?php 
+							foreach ($curriculum as $cul) {
+								$curriculum_julio = $cul->curriculum_completo;
+							}
+
+
+							foreach ($img_curriculum as $img_cul) {
+								$img_curriculum_julio = $img_cul->img_curriculum;
+							}
+							?>
+							<div class="col-sm-5 col-padding" style="background: url('<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>') center center no-repeat; background-size: cover;"></div>
+
+							<div class="col-sm-7 col-padding">
+								<div>
+									<div class="heading-block">
+										<span class="before-heading color">Cirurgião Plástico</span>
+										<h3>Dr. Julio Reyes</h3>
 									</div>
 
+									<div class="row clearfix">
 
-									<!--<span class="before-heading color">Especialidades</span>-->
+										<div class="col-md-12">
+											<p style="text-align:justify;">										
+												<?php 
+												
+												echo $curriculum_julio;
+
+												?>
+											</p>
+
+											
+										</div>
+
+
+										<!--<span class="before-heading color">Especialidades</span>-->
 
 										<?php /* ?>
 									<div class="col-md-6">
@@ -640,7 +644,7 @@ $("#send_form").click(function (ev) {
 				$.each(data, function(i, v) {
                                     // For each record in the returned array
                                     if(i != 'status'){
-                                            error = error + '<li>'+v+'</li>';
+                                    	error = error + '<li>'+v+'</li>';
                                     }
                                 });
 				$('#contact-form-result').attr('data-notify-msg', error);
@@ -668,7 +672,7 @@ ev.preventDefault();
 										</p>
 									</address>
 									<span title="Phone Number"><strong>Telefone:</strong></span><?php echo $telefono; ?><br>
-                                                                        <span title="Fax"><strong>Fax:</strong></span> <?php echo $fax; ?><br>
+									<span title="Fax"><strong>Fax:</strong></span> <?php echo $fax; ?><br>
 									<span title="Email Address"><strong>Email:</strong></span><?php echo $email; ?>
 
 										<?php /* ?>
@@ -727,7 +731,7 @@ ev.preventDefault();
 		<!-- Footer
 		============================================= -->
 		<footer id="footer" class="dark">
-                    
+			
 			<!-- Copyrights
 			============================================= -->
 			<div id="copyrights">
