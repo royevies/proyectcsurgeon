@@ -119,7 +119,7 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li id="cambio_usuario" style="cursor:pointer;"><a><span class="glyphicon glyphicon-user"></span> Cambiar Usuario</a></li>
+							<li id="cambio_usuario" style="cursor:pointer;"><a><span class="glyphicon glyphicon-user"></span> Cambiar Nombre Usuario</a></li>
 							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave</a></li>
 						</ul>
 					</div>
@@ -572,8 +572,8 @@
 								<?php foreach ($contactos->result() as $contacto) : ?>
 
 									<tr class="contacto_tr">
-										<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_contacto contador_opciones_contacto" style="border:none;background:none;width:21px;height:21px;" name="id_contacto[]" value="<?=$contacto->id_contacto;?>"> </td>
-										<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($contacto->visto == 0 ? "<span class='glyphicon glyphicon-envelope' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
+										<td style="background:lightgray;text-align:center;width:50px;"><input type="checkbox" class="opciones_contacto contador_opciones_contacto" style="border:none;background:none;width:21px;height:21px;" name="id_contacto[]" value="<?=$contacto->id_contacto;?>"> </td>
+										<td style="text-align:center;font-size:1.3em;background:lightgray;width:50px;"><?php echo ($contacto->visto == 0 ? "<span class='glyphicon glyphicon-envelope' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
 										<td><?php echo $contacto->nombres_contacto; ?></td>
 										<td><?php echo $contacto->email_contacto; ?></td>
 										<td><?php echo $contacto->telefono_movil_contacto; ?></td>
@@ -646,7 +646,7 @@
 				<p>Instagram:</p>
 				<input type="text" class="form-control datos_trigger" id="instagram" name="instagram" maxlength="200" value="<?=($instagram);?>">
 
-				<p>Gloogle Pluss:</p>
+				<p>Google Pluss:</p>
 				<input type="text" class="form-control datos_trigger" id="gloogleplus" name="gloogleplus" maxlength="200" value="<?=($gloogleplus);?>">
 
 				<hr>
@@ -727,7 +727,7 @@
 			<button id="inicio_procedimiento" disabled="disabled" class="btn btn-success">Procesar en el inicio</button>
 		</div>
 
-		<button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo procedimiento</span>	</button>
+		<button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo Procedimiento</span>	</button>
 
 	</div> 
 	<form id="form_procedimientos" action="<?=$this->config->base_url()?>index.php/admin/administrar_procedimiento" method="post">
@@ -823,9 +823,9 @@
 				<?php foreach ($testimonios->result() as $test) : ?>
 
 					<tr class="testimonio_tr">
-						<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_testimoniales contador_opciones_testimonios" style="border:none;background:none;width:21px;height:21px;" name="id_testimonio[]" value="<?=$test->id_testimonio;?>"> </td>
-						<td><img src="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>						
-						<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($test->orden_inicio == 0 ? "<span class='glyphicon glyphicon-ban-circle' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
+						<td style="background:lightgray;text-align:center;width:50px;"><input type="checkbox" class="opciones_testimoniales contador_opciones_testimonios" style="border:none;background:none;width:21px;height:21px;" name="id_testimonio[]" value="<?=$test->id_testimonio;?>"> </td>
+						<td><img src="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <p style="margin-left:12px;text-align:justify;display:inline;"> <?php echo $test->nombres_del_descriptor; ?> </p></td>						
+						<td style="text-align:center;font-size:1.3em;background:lightgray;width:70px;"><?php echo ($test->orden_inicio == 0 ? "<span class='glyphicon glyphicon-ban-circle' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
 						<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Visible</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
 						<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
 								<?php /* ?>
