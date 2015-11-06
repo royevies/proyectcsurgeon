@@ -86,7 +86,7 @@
 									</div>
 
 									<div class="col_one_third">
-										<label for="template-testimonialform-email">Correo Electrónico <small>*</small></label>
+										<label for="template-testimonialform-email">Email <small>*</small></label>
 										<input type="email" id="template-testimonialform-email" name="template-testimonialform-email" class="required email sm-form-control" />
 									</div>
 
@@ -110,7 +110,7 @@
 									</div>
 
 									<div class="col_full hidden">
-										<input type="text" id="template-contactform-botcheck" name="template-testimonialform-botcheck" value="" class="sm-form-control" />
+										<input type="text" id="template-testimonialform-ln" name="template-testimonialform-ln" value="es" class="sm-form-control" />
 									</div>
 
 									<div class="col_full">

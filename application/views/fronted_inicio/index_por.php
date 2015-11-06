@@ -150,7 +150,20 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<h2><span>Procedimientos</span></h2>
 						</div>
 
-						<?php 
+						<?php
+                                                function custom_echo($x, $length)
+                                                {
+                                                    if(strlen($x)<=$length)
+                                                    {
+                                                        echo $x;
+                                                    }
+                                                    else
+                                                    {
+                                                        $y=substr($x,0,$length) . '...';
+                                                        echo $y;
+                                                    }
+                                                }
+                                                
 						if ($procs_inicio != null) {
 							$count = 0;
 							foreach ($procs_inicio as $pro) {
@@ -169,7 +182,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 									<div class="fbox-desc">
 										<h3><a href="<?=$this->config->base_url();?>index.php/por/procedimientos#<?=$pro->titulo?>"><?=$pro->titulo;?></a><span class="subtitle"><?=$pro->sub_titulo;?></span></h3>
 										<p>
-											<?=$pro->detalle;?>
+											<?=custom_echo($pro->detalle, 150);?>
 										</p>
 									</div>
 								</div>
@@ -228,70 +241,26 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						============================================= -->
 						<div id="portfolio" class="clearfix">
 
-							<article class="portfolio-item pf-media pf-icons">
-								<div class="portfolio-image">
-									<a href="portfolio-single.html">
-										<img src="<?=$this->config->base_url();?>fronted_inicio/foto/beyonce.jpg" alt="Open Imagination">
-									</a>
-									<div class="portfolio-overlay">
-										<a href="<?=$this->config->base_url();?>fronted_inicio/images/parallax/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-										<a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-									</div>
-								</div>
-								<div class="portfolio-desc">
-									<h3><a href="portfolio-single.html">Título Imagen</a></h3>
-									<span><a href="#">Sub</a>, <a href="#">Titulo</a></span>
-								</div>
-							</article>
-
-							<article class="portfolio-item pf-illustrations">
-								<div class="portfolio-image">
-									<a href="portfolio-single.html">
-										<img src="<?=$this->config->base_url();?>fronted_inicio/foto/jennifer.jpg" alt="Locked Steel Gate">
-									</a>
-									<div class="portfolio-overlay">
-										<a href="<?=$this->config->base_url();?>fronted_inicio/images/portfolio/full/2.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-										<a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-									</div>
-								</div>
-								<div class="portfolio-desc">
-									<h3><a href="portfolio-single.html">Título Imagen</a></h3>
-									<span><a href="#">Sub</a>, <a href="#">Titulo</a></span>
-								</div>
-							</article>
-
-							<article class="portfolio-item pf-graphics pf-uielements">
-								<div class="portfolio-image">
-									<a href="#">
-										<img src="<?=$this->config->base_url();?>fronted_inicio/foto/get.jpg" alt="Mac Sunglasses">
-									</a>
-									<div class="portfolio-overlay">
-										<a href="http://vimeo.com/89396394" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
-										<a href="portfolio-single-video.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-									</div>
-								</div>
-								<div class="portfolio-desc">
-									<h3><a href="portfolio-single-video.html">Título Imagen</a></h3>
-									<span><a href="#">Sub</a>, <a href="#">Titulo</a></span>
-								</div>
-							</article>
-
-							<article class="portfolio-item pf-icons pf-illustrations">
-								<div class="portfolio-image">
-									<a href="#">
-										<img src="<?=$this->config->base_url();?>fronted_inicio/foto/otra.jpg" alt="Mac Sunglasses">
-									</a>
-									<div class="portfolio-overlay" data-lightbox="gallery">
-										<a href="<?=$this->config->base_url();?>fronted_inicio/images/portfolio/full/4.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-										<a href="<?=$this->config->base_url();?>fronted_inicio/images/portfolio/full/4-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-										<a href="portfolio-single-gallery.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-									</div>
-								</div>
-								<div class="portfolio-desc">
-									<h3><a href="portfolio-single-gallery.html">Título Imagen</a></h3>
-									<span><a href="#">Sub</a>, <a href="#">Titulo</a></span>
-								</div>
-							</article>
+							<?php 
+                                                            $count = 0;
+                                                            foreach($procs_inicio as $p){ 
+                                                            $count++;
+                                                            $images = $this->Cirujano_model->ver_img_procedimientos($p->id_procedimiento)->result();
+                                                            if ($count == 4)
+                                                                break;
+                                                            ?>
+                                                        <article class="portfolio-item pf-media pf-icons">
+                                                                <div class="portfolio-image">
+                                                                        <a href="portfolio-single.html">
+                                                                            <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$images[0]->img_antes?>" style="width: 185px; float: left;">
+                                                                            <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$images[0]->img_despues?>" style="width: 185px">
+                                                                        </a>
+                                                                        <div class="portfolio-overlay">
+                                                                                <a href="<?=$this->config->base_url();?>index.php/web/foto_inicio/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
+                                                                        </div>
+                                                                </div>
+                                                        </article>
+                                                        <?php } ?>
 
 							<div class="clear"></div>
 
@@ -591,7 +560,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										</div>
 
 										<div class="col_one_third">
-											<label for="template-contactform-email">Correio eletrônico <small>*</small></label>
+											<label for="template-contactform-email">Email <small>*</small></label>
 											<input type="email" id="template-contactform-email" name="template-contactform-email" class="required email sm-form-control" />
 										</div>
 
@@ -626,7 +595,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										</div>
 
 										<div class="col_full hidden">
-											<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+											<input type="text" id="template-contactform-ln" name="template-contactform-ln" value="por" class="sm-form-control" />
 										</div>
 
 										<div class="col_full">
@@ -669,11 +638,11 @@ $("#send_form").click(function (ev) {
 				$('#template-testimonialform').clearForm();
 			}else if(data.status == 'error'){
 				$.each(data, function(i, v) {
-                                                                                                // For each record in the returned array
-                                                                                                if(i != 'status'){
-                                                                                                	error = error + '<li>'+v+'</li>';
-                                                                                                }
-                                                                                            });
+                                    // For each record in the returned array
+                                    if(i != 'status'){
+                                            error = error + '<li>'+v+'</li>';
+                                    }
+                                });
 				$('#contact-form-result').attr('data-notify-msg', error);
 				$('#contact-form-result').attr('data-notify-type', 'error');
 				SEMICOLON.widget.notifications($('#contact-form-result'));
@@ -698,9 +667,9 @@ ev.preventDefault();
 											<?php echo $direccion; ?>
 										</p>
 									</address>
-									<abbr title="Phone Number"><strong>Telefone:</strong></abbr><?php echo $telefono; ?><br>
-									<abbr title="Fax"><strong>Fax:</strong></abbr> <?php echo $fax; ?><br>
-									<abbr title="Email Address"><strong>Email:</strong></abbr><?php echo $email; ?>
+									<span title="Phone Number"><strong>Telefone:</strong></span><?php echo $telefono; ?><br>
+                                                                        <span title="Fax"><strong>Fax:</strong></span> <?php echo $fax; ?><br>
+									<span title="Email Address"><strong>Email:</strong></span><?php echo $email; ?>
 
 										<?php /* ?>
 									<div class="widget noborder notoppadding">
@@ -758,25 +727,7 @@ ev.preventDefault();
 		<!-- Footer
 		============================================= -->
 		<footer id="footer" class="dark">
-
-			<div class="container">
-
-				<!-- Footer Widgets
-				============================================= -->
-				<div class="footer-widgets-wrap clearfix">
-
-					<div class="col_two_third">
-
-						
-
-					</div>
-
-					
-
-				</div><!-- .footer-widgets-wrap end -->
-
-			</div>
-
+                    
 			<!-- Copyrights
 			============================================= -->
 			<div id="copyrights">
