@@ -130,7 +130,7 @@
 	</div>
 	<!--Header-->
 
-	prueba de conflicto hola como estas esta es la linea
+	hola como estas este es el conflicto
 
 	<div class="container">
 		<div class="col-xs-12">
