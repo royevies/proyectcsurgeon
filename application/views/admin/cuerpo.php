@@ -119,6 +119,7 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li id="cambio_usuario" style="cursor:pointer;"><a><span class="glyphicon glyphicon-user"></span> Cambiar Usuario</a></li>
 							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave</a></li>
 						</ul>
 					</div>
@@ -152,13 +153,14 @@
 
 				<ul id="pestanas" class="nav nav-tabs" data-tabs="tabs">
 					<li class="active"><a href="#editor_slider" data-toggle="tab" style="font-size:1.3em;">Slider</a></li>
-					<li ><a href="#mensajes_inicio" data-toggle="tab" style="font-size:1.3em;"> Mensajes del inicio</a></li>
+					<li ><a href="#mensajes_inicio" data-toggle="tab" style="font-size:1.3em;"> Items profesionales</a></li>
+					<li ><a href="#panel_eslogan" data-toggle="tab" style="font-size:1.3em;"> Eslogan</a></li>
 				</ul>
 
 				<div id="contenedor_pestanas" class="tab-content">
 					<div class="tab-pane active" id="editor_slider" style="background:rgba(0,0,0,0.2);">
 
-						<button id="boton_nuevo_slider" class="btn btn-success" style="float:right;margin:25px;"><span class="glyphicon glyphicon-plus"></span> Agregar imagenes al slider</button>
+						<button id="boton_nuevo_slider" class="btn btn-success" style="float:right;margin:25px;"><span class="glyphicon glyphicon-plus"></span> Agregar items al slider</button>
 						<div style="clear:both"></div>
 						<div id="agregar_nuevo_slider" style="padding:25px;display:none;margin-bottom:25px;">
 
@@ -168,7 +170,7 @@
 							<form id="form_sliders" action="<?=$this->config->base_url()?>index.php/admin/gestion_slider" method="post" enctype="multipart/form-data">
 								<input type="hidden" name="opcion_slider" value="opcion_slider">
 								<div id="inpuflivos" style="padding:50px;background:rgba(255,255,255,0.7);">
-									<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;">
+									<input type="file" name="archivosgaleria[]" accept="image/JPEG,image/png" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;">
 								</div>
 								<hr>
 								<button type="submit" id="guardar_sliders" class="btn btn-success" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar imagenes</button>
@@ -228,23 +230,27 @@
 
 					<div class="tab-pane" id="mensajes_inicio">
 						<?php 
+						/*
 						foreach ($bonus_cirujano as $bonus) {
 							$cirujias = $bonus->cirujias_realizadas;
 							$estudio = $bonus->horas_estudio;
 							$experiens = $bonus->anios_experiencia;
 							$certificaciones = $bonus->cerfificaciones;
 							$eslogan = $bonus->eslogan;
-						}
+							$eslogan_por = $bonus->eslogan_por;
+							$eslogan_por = $bonus->eslogan_por;
+						} */
+
 						?>
-						<form id="form_bonus" action="<?=$this->config->base_url()?>index.php/admin/bonus_cirujano" method="post" >
+						<form id="form_bonus" action="<?=$this->config->base_url()?>index.php/admin/bonus_cirujano_items" method="post" enctype="multipart/form-data">
 							<div class="col-xs-6">
 
 								<div class="thumbnail">
-									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/cirujias.png" style="margin-top:16px;">
+									<img src="<?=$this->config->base_url()?>fronted/img/iconos2/cirujias.png" style="margin-top:16px;">
 									<div class="caption">
 										<hr>
 										<h5 style="text-align:center;">CIRUGIAS REALIZADAS</h5>
-										<input type="text" class="form-control trigger_bonus" name="cirujias" value="<?=$cirujias;?>">
+										<input type="text" class="form-control trigger_bonus" name="cirujias" value="<?=$bonus_cirujano[0]->cirujias_realizadas;?>">
 									</div>
 								</div>
 							</div>
@@ -252,11 +258,11 @@
 							<div class="col-xs-6">
 
 								<div class="thumbnail">
-									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/reloj.png" style="margin-top:16px;">
+									<img src="<?=$this->config->base_url()?>fronted/img/iconos2/reloj.png" style="margin-top:16px;">
 									<div class="caption">
 										<hr>
 										<h5 style="text-align:center;">HORAS DE ESTUDIO</h5>
-										<input type="text" class="form-control trigger_bonus" name="horas_estudio" value="<?=$estudio;?>">
+										<input type="text" class="form-control trigger_bonus" name="horas_estudio" value="<?=$bonus_cirujano[0]->horas_estudio;?>">
 									</div>
 								</div>
 							</div>
@@ -264,11 +270,11 @@
 							<div class="col-xs-6">
 
 								<div class="thumbnail">
-									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/experiencia.png" style="margin-top:16px;">
+									<img src="<?=$this->config->base_url()?>fronted/img/iconos2/experiencia.png" style="margin-top:16px;">
 									<div class="caption">
 										<hr>
 										<h5 style="text-align:center;">AÑOS DE EXPERIENCIA</h5>
-										<input type="text" class="form-control trigger_bonus" name="experiencia" value="<?=$experiens;?>">
+										<input type="text" class="form-control trigger_bonus" name="experiencia" value="<?=$bonus_cirujano[0]->anios_experiencia;?>">
 									</div>
 								</div>
 							</div>
@@ -276,33 +282,70 @@
 							<div class="col-xs-6">
 
 								<div class="thumbnail">
-									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/title.png" style="margin-top:16px;">
+									<img src="<?=$this->config->base_url()?>fronted/img/iconos2/title.png" style="margin-top:16px;">
 									<div class="caption">
 										<hr>
 										<h5 style="text-align:center;">Nº CERTIFICACIONES</h5>
-										<input type="text" class="form-control trigger_bonus" name="certificaciones" value="<?=$certificaciones;?>">
+										<input type="text" class="form-control trigger_bonus" name="certificaciones" value="<?=$bonus_cirujano[0]->certificaciones;?>">
 									</div>
 								</div>
 							</div>
+
+
 
 							<div class="col-xs-12">
-
 								<div class="thumbnail">
-									<img src="<?=$this->config->base_url()?>/fronted/img/iconos2/eslogan.png" style="margin-top:16px;">
+									<img src="<?=$this->config->base_url()?>fronted/img/iconos2/galeria.png" style="margin-top:16px;">
 									<div class="caption">
 										<hr>
-										<h5 style="text-align:center;">ESLOGAN</h5>
-										<input type="text" class="form-control trigger_bonus" name="eslogan" value="<?=$eslogan;?>">
+										<h5 style="text-align:center;">Imagen de fondo items</h5>
+										<img class="img img-responsive" src="<?=$this->config->base_url()?>fronted_inicio/inicio/<?=$bonus_cirujano[0]->imagen_fondo_items?>" alt="">
+										<input type="hidden" name="fondo_items_viejo" value="<?=$bonus_cirujano[0]->imagen_fondo_items?>">
+										<input type="file" name="fondo_item_nuevo" class="form-control" style="height:auto;" title="cambiar">
 									</div>
 								</div>
 							</div>
+
 
 							<hr>
 
 							<button id="boton_bonus" style="float:right;" class="btn btn-success btn-lg" disabled="disabled" ><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 
+						</form>
+					</div>
+
+					<div class="tab-pane" id="panel_eslogan">
+						<form id="form_bonus2" action="<?=$this->config->base_url()?>index.php/admin/bonus_cirujano_eslogan" method="post" enctype="multipart/form-data">
+							<div class="col-xs-12">
+								<div class="thumbnail">
+									<img src="<?=$this->config->base_url()?>fronted/img/iconos2/eslogan.png" style="margin-top:16px;">
+									<div class="caption">
+										<hr>
+										<h5 style="text-align:center;">Eslogan Español</h5>
+										<input type="text" class="form-control trigger_bonus2" name="eslogan" value="<?=$bonus_cirujano[0]->eslogan;?>">
+										<h5 style="text-align:center;">Eslogan Portugues</h5>
+										<input type="text" class="form-control trigger_bonus2" name="eslogan_por" value="<?=$bonus_cirujano[0]->eslogan_por;?>">
+									</div>
+								</div>
+								<hr>
+							</div>
+
+							<div class="col-xs-12">
+								<div class="thumbnail">
+									<img src="<?=$this->config->base_url()?>fronted/img/iconos2/galeria.png" style="margin-top:16px;">
+									<div class="caption">
+										<hr>
+										<h5 style="text-align:center;">Imagen de fondo del eslogan</h5>
+										<img class="img img-responsive" src="<?=$this->config->base_url()?>/fronted_inicio/inicio/<?=$bonus_cirujano[0]->imagen_fondo_eslogan?>" alt="">
+										<input type="hidden" name="fondo_eslogan_viejo" value="<?=$bonus_cirujano[0]->imagen_fondo_eslogan?>">
+										<input type="file" name="fondo_eslogan_nuevo" class="form-control" style="height:auto;" title="cambiar">
+									</div>
+								</div>
+								<button id="boton_bonus2" style="float:right;" class="btn btn-success btn-lg" disabled="disabled" ><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+							</form>
 						</div>
-					</form>
+
+					</div>
 
 				</div>
 
@@ -375,11 +418,11 @@
 
 								<tr>
 									<td>
-										<input id="img_antes" name="img_antes"  type="file" style="height:auto" class="form-control" required="required">
+										<input id="img_antes" name="img_antes"  type="file" accept="image/JPEG,image/png" style="height:auto" class="form-control" required="required">
 									</td>
 									
 									<td>
-										<input  id="img_despues" name="img_despues" type="file" style="height:auto" class="form-control" required="required">										
+										<input  id="img_despues" name="img_despues" type="file" accept="image/JPEG,image/png" style="height:auto" class="form-control" required="required">										
 									</td>
 								</tr>
 							</table>
@@ -579,9 +622,6 @@
 			?>
 			<form id="" action="<?=$this->config->base_url()?>index.php/admin/datos_contacto" method="post">
 				
-				<p>Usuario de inicio de sesión:</p>
-				<input type="text" class="form-control datos_trigger" id="usuario_sesion" name="usuario_sesion" maxlength="11" value="<?=($usuario);?>">
-
 				<p>Dirección:</p>
 				<input type="text" class="form-control datos_trigger" id="direccion" name="direccion" maxlength="200" value="<?=($direccion);?>">
 
@@ -757,7 +797,7 @@
 			</div>
 
 			<div style="width:100px;display:inline;margin-right:16px;">
-				<button id="aprobar_testimonio" disabled="disabled" class="btn btn-success">Aprobar | Ocultar</button>
+				<button id="aprobar_testimonio" disabled="disabled" class="btn btn-success">Visible | Oculto</button>
 			</div>
 
 			<div style="width:100px;display:inline;">
@@ -786,7 +826,7 @@
 						<td style="background:lightgray;text-align:center;"><input type="checkbox" class="opciones_testimoniales contador_opciones_testimonios" style="border:none;background:none;width:21px;height:21px;" name="id_testimonio[]" value="<?=$test->id_testimonio;?>"> </td>
 						<td><img src="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"  width="50" height="50"> <?php echo $test->nombres_del_descriptor; ?></td>						
 						<td style="text-align:center;font-size:1.3em;background:lightgray;"><?php echo ($test->orden_inicio == 0 ? "<span class='glyphicon glyphicon-ban-circle' style='color:#000000;font-size:1.4em;' title='No leido'></span>" : "<span class='glyphicon glyphicon-ok' style='color:green;' title='Leido'></span>" ); ?></td>
-						<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Aprobado</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
+						<td><?php echo ( ( $test->aprobado == 1 ) ? "<p style='background:green;padding:12px;color:white;font-size:1.1em;text-align:center;'>Visible</p>" : "<p style='background:#f4ff81 ;padding:12px;color:black;font-size:1.1em;text-align:center;'>Oculto</p>" ); ?></td>
 						<td><button class="btn btn-success edit_test" data-id="<?=$test->id_testimonio;?>" data-nombres="<?=$test->nombres_del_descriptor;?>" data-email="<?=$test->email_del_descriptor;?>" data-titulo="<?=$test->titulo_testimonio;?>" data-detalle="<?=$test->detalle_testimonio;?>" data-imgtestview="<?=$this->config->base_url()."fronted_inicio/testimonios/".( $test->img_principal_testimonio == 'null' ? 'logo1.png' : $test->img_principal_testimonio );?>"><span class="glyphicon glyphicon-eye-open"></span></button></td>
 								<?php /* ?>
 								<td><button class="btn btn-danger del_test" data-id="<?=$test->id_testimonio;?>" ><span class="glyphicon glyphicon-remove"></span></button></td>
@@ -857,6 +897,18 @@ $(document).on("ready",function(){
 		$("#boton_bonus").removeAttr("disabled");
 	});
 
+	
+	$("input[name='fondo_item_nuevo']").on("click",function(){
+		$("#boton_bonus").removeAttr("disabled");
+	});
+
+	$(".trigger_bonus2").on("keyup",function(){
+		$("#boton_bonus2").removeAttr("disabled");
+	});
+
+	$("input[name='fondo_eslogan_nuevo']").on("click",function(){
+		$("#boton_bonus2").removeAttr("disabled");
+	});
 
 	$(".curriculum_trigger").on("keyup",function(){
 		$("#enviar_curriculum").removeAttr("disabled");
@@ -882,7 +934,6 @@ $(document).on("ready",function(){
 	/***************************************************************************************************************************/
 
 	$(".contador_opciones_slider").on("click",function(){
-		console.log( $(".contador_opciones_procedimiento:checked").length);
 
 		if( $(".contador_opciones_slider:checked").length > 0 ){			
 			$("#ordenar_slider,#eliminar_slider").removeAttr("disabled");
@@ -927,18 +978,36 @@ $(document).on("ready",function(){
 			$("#eliminar_procedimiento,#inicio_procedimiento").removeAttr("disabled");
 		}else if($(".contador_opciones_procedimiento:checked").length == 0){
 			$("#eliminar_procedimiento,#inicio_procedimiento").attr("disabled","disabled");
+				/*
+			if ($("#sel_all_procedimientos").attr("checked") == "checked" ){
+				$("#sel_all_procedimientos").removeAttr("checked")
+			}
+			*/
 		}
 
 	});
 
 	$("#sel_all_procedimientos").on("click",function(){
+		
 		$(".opciones_procedimiento").each(function(index, elemento) {
+
 			$(this).prop('checked', function(i, v) { return !v; });
+
+			/*
+			if( $(this).is(":checked") ){
+				$(this).removeAttr("checked");
+				console.log( $(elemento).attr("class") +" "+ $(elemento).attr("checked") );
+			}else if( $(this).attr("checked") == "undefined" ){
+				$(this).attr("checked","checked");
+				console.log( $(elemento).attr("class") +" "+ $(elemento).attr("checked") );
+			}*/
+
 		});
 
 		if( !$("#sel_all_procedimientos").is(":checked") && $(".contador_opciones_procedimiento:checked").length == 0 ){
 			$("#eliminar_procedimiento,#inicio_procedimiento").attr("disabled","disabled");
 		}
+
 	});
 	/***************************************************************************************************************************/
 
@@ -1163,6 +1232,10 @@ $("#cambio_clave").on("click",function(){
 $("#ventana_cambio_clave").dialog({width:"600px",title:"Cambio de clave de acceso al administrador de contenido",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});	
 });
 
+$("#cambio_usuario").on("click",function(){
+
+$("#ventana_cambio_usuario").dialog({width:"600px",title:"Cambio de usuario de acceso al administrador de contenido",modal:true,minHeight:"300px","resizable":false/*,position: "top"*/});	
+});
 
 $("#boton_cambiar_clave").on("click",function(e){
 	e.preventDefault();
@@ -1378,7 +1451,7 @@ $(".item_panel_control").on("click",function(){
 });
 
 function agregar(){
-	var file='<input type="file" name="archivosgaleria[]" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;margin-top:16px;;">';
+	var file='<input type="file" name="archivosgaleria[]" accept="image/JPEG,image/png" class="archivosgaleria form-control" style="border-radius:0px;display:inline;margin-right:10px;height:auto;margin-top:16px;">';
 	var nuevo_file = $(file);
 	$("#inpuflivos").append(nuevo_file);
 }

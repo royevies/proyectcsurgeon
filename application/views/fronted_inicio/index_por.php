@@ -195,31 +195,31 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						</div>
 
 
-						<div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/quirofano-azul-op.jpg');" data-stellar-background-ratio="0.3">
+						<div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/inicio/<?=$bonus_cirujano[0]->imagen_fondo_items; ?>');" data-stellar-background-ratio="0.3">
 
 							<div class="container clearfix">
 								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-magic"></i>
 									<div class="counter counter-lined"><span data-from="100" data-to="<?=$bonus_cirujano[0]->cirujias_realizadas?>" data-refresh-interval="50" data-speed="2000"></span>+</div>
-									<h5>Cirugias Realizadas</h5>
+									<h5>Cirurgias Realizadas</h5>
 								</div>
 
 								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="200">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-time"></i>
 									<div class="counter counter-lined"><span data-from="3000" data-to="<?=$bonus_cirujano[0]->horas_estudio?>" data-refresh-interval="100" data-speed="2500"></span>+</div>
-									<h5>Horas de Estudio</h5>
+									<h5>Horas de estudo</h5>
 								</div>
 
 								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn" data-delay="400">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-code"></i>
 									<div class="counter counter-lined"><span data-from="1" data-to="<?=$bonus_cirujano[0]->anios_experiencia?>" data-refresh-interval="25" data-speed="3500"></span>*</div>
-									<h5>Años de Experiencia</h5>
+									<h5>Anos de experiência</h5>
 								</div>
 
 								<div class="col_one_fourth nobottommargin center col_last" data-animate="bounceIn" data-delay="600">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-file-text"></i>
-									<div class="counter counter-lined"><span data-from="60" data-to="<?=$bonus_cirujano[0]->cerfificaciones?>" data-refresh-interval="30" data-speed="2700"></span>+</div>
-									<h5>Nº Certificaciones</h5>
+									<div class="counter counter-lined"><span data-from="60" data-to="<?=$bonus_cirujano[0]->certificaciones?>" data-refresh-interval="30" data-speed="2700"></span>+</div>
+									<h5>Nº Certificações</h5>
 								</div>
 
 							</div>
@@ -355,9 +355,9 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 					</div>
 
-					<div class="section parallax" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/images/parallax/3.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.3">
+					<div class="section parallax" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/inicio/<?=$bonus_cirujano[0]->imagen_fondo_eslogan; ?>'); padding: 100px 0;" data-stellar-background-ratio="0.3">
 						<div class="heading-block center nobottomborder nobottommargin">
-							<h2>"Belleza dura cinco minutos. Tal vez más tiempo si tiene un buen cirujano plástico."</h2>
+							<h2>"<?=$bonus_cirujano[0]->eslogan_por?>"</h2>
 						</div>
 					</div>
 

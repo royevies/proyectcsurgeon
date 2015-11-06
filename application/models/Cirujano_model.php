@@ -28,7 +28,7 @@
 		}
 
 		public function get_contactos(){
-			$query = $this->db->query("select * from contacto order by fecha_contacto desc");
+			$query = $this->db->query("select * from contacto order by id_contacto desc");
 			return $query;	
 		}
 
@@ -160,7 +160,7 @@
 		   }
 
 		   public function get_testimonios(){
-		   	return $this->db->query("select * from testimonios");
+		   	return $this->db->query("select * from testimonios order by id_testimonio desc");
 		   }
 
 		   public function get_testimonios_aprobados(){
@@ -224,8 +224,12 @@
 		   	return  $this->db->query("select * from bonos_cirujano");
 		   }
 
-		   public function cambiar_bonus_cirujanos($cirujias,$horas_estudio,$experiencia ,$certificaciones,$eslogan){
-		   	$this->db->query("update bonus_cirujanos set cirujias_realizadas = $cirujias, horas_estudio = $horas_estudio , anios_experiencia = $experiencia , certificaciones =$certificaciones,eslogan = '$eslogan'  where id_bonus_cirujano = 1 ");
+		   public function cambiar_bonus_items($cirujias,$horas_estudio,$experiencia ,$certificaciones,$img_fondo_items){
+		   	$this->db->query("update bonos_cirujano set cirujias_realizadas = $cirujias, horas_estudio = $horas_estudio , anios_experiencia = $experiencia , certificaciones =$certificaciones,imagen_fondo_items = '$img_fondo_items'  where id_bonus_cirujano = 1 ");
+		   }
+
+		   public function cambiar_bonus_eslogan($eslogan,$eslogan_por,$imagen_fondo_eslogan){
+		   	$this->db->query("update bonos_cirujano set eslogan = '$eslogan',eslogan_por = '$eslogan_por',imagen_fondo_eslogan = '$imagen_fondo_eslogan'  where id_bonus_cirujano = 1 ");
 		   }
 		   /*******************************Llave clase********************************************/
 		}

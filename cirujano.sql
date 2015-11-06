@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2015 a las 20:20:45
+-- Tiempo de generación: 06-11-2015 a las 02:35:09
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -33,16 +33,19 @@ CREATE TABLE `bonos_cirujano` (
   `cirujias_realizadas` int(11) NOT NULL,
   `horas_estudio` int(11) NOT NULL,
   `anios_experiencia` int(11) NOT NULL,
-  `cerfificaciones` int(11) NOT NULL,
-  `eslogan` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+  `certificaciones` int(11) NOT NULL,
+  `eslogan` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `eslogan_por` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `imagen_fondo_items` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `imagen_fondo_eslogan` varchar(250) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `bonos_cirujano`
 --
 
-INSERT INTO `bonos_cirujano` (`id_bonus_cirujano`, `cirujias_realizadas`, `horas_estudio`, `anios_experiencia`, `cerfificaciones`, `eslogan`) VALUES
-(1, 50, 1200, 15, 25, 'LA BELLEZA DURA CINCO MINUTOS. TAL VEZ MÁS TIEMPO SI TIENE UN BUEN CIRUJANO PLÁSTICO.');
+INSERT INTO `bonos_cirujano` (`id_bonus_cirujano`, `cirujias_realizadas`, `horas_estudio`, `anios_experiencia`, `certificaciones`, `eslogan`, `eslogan_por`, `imagen_fondo_items`, `imagen_fondo_eslogan`) VALUES
+(1, 50, 1200, 15, 25, 'fdsgdfgdfg f', 'eslogan por', 'quirofano-azul.jpg', 'rubia.jpg');
 
 -- --------------------------------------------------------
 
@@ -67,7 +70,10 @@ CREATE TABLE `contacto` (
 --
 
 INSERT INTO `contacto` (`id_contacto`, `nombres_contacto`, `servicio`, `telefono_movil_contacto`, `email_contacto`, `asunto_contacto`, `descripcion_contacto`, `fecha_contacto`, `visto`) VALUES
-(9, 'dsfvdsf', 'Rinoplastique', 'dfdsfdsdf', 'sdfdsz@gmail.com', 'dsfdsf', 'dfsdfsdf', '2015-10-29', 0);
+(9, 'dsfvdsf', 'Rinoplastique', 'dfdsfdsdf', 'sdfdsz@gmail.com', 'dsfdsf', 'dfsdfsdf', '2015-10-29', 0),
+(10, 'pepeto ', 'Rinoplastia', '787787789778', 'dksmvksdmvkd@gmail.com', 'dfjndjnfnendf fdjnfjndjf djfdnjfndnfjd', 'dsfsdfsdfdsfdfsdd', '2015-11-05', 0),
+(11, 'mickey', 'Rinoplastia', '787787789778', 'mouse@gmail.com', 'dkfmd kdmfklds kdmfkdm', 'dsfsdfsdfdsfdfsdddd', '2015-11-05', 0),
+(12, 'chavez', 'Rinoplastia', '787787789778', 'frias@gmail.com', 'dkfmd kdmfklds kdmfkdm', 'dsfsdfsdfdsfdfsdddd', '2015-11-05', 0);
 
 -- --------------------------------------------------------
 
@@ -167,7 +173,7 @@ CREATE TABLE `datos_contacto` (
 --
 
 INSERT INTO `datos_contacto` (`id_datos_contacto`, `direccion`, `email`, `clave_email`, `telefono`, `fax`, `facebook`, `twitter`, `instagram`, `googlepluss`) VALUES
-(1, 'nueva dir', 'jhonnyvanckruz@gmail.com', '123', '1111111111111', 'dsfdsf', 'dsfsd', 'fdsfds', '8888888888888888888888', 'vcxvxvx');
+(1, 'Moscu, Rusia', 'jhonnyvanckruz@gmail.com', '123', '1111111111111', 'dsfdsf', 'dsfsd', 'fdsfds', '8888888888888888888888', 'vcxvxvx');
 
 -- --------------------------------------------------------
 
@@ -264,13 +270,11 @@ CREATE TABLE `slider` (
 --
 
 INSERT INTO `slider` (`id_slider`, `slider`, `orden`) VALUES
-(19, 'jennifer.jpg', 3),
-(20, 'mamo.jpg', 1),
-(21, 'marcas.jpg', 2),
-(22, '1513750491_72708cf54f_b.jpg', 4),
-(23, 'jennifer.jpg', 5),
-(24, 'dama.jpg', 6),
-(25, 'quirofano-azul-op.jpg', 7);
+(25, 'quirofano-azul-op.jpg', 7),
+(28, 'wp_ss_20151105_0003.png', 8),
+(29, '2.jpg', 9),
+(30, 'silueta2.png', 10),
+(31, '7.jpg', 11);
 
 -- --------------------------------------------------------
 
@@ -298,7 +302,8 @@ INSERT INTO `testimonios` (`id_testimonio`, `nombres_del_descriptor`, `email_del
 (5, 'Karla', 'zxc@dsfssdac', 'dsfdsf', 'dsfdsfdsfd', 'koala.jpg', 1, 1),
 (6, 'Katiuska', 'csdc@ssssx', 'dsfdsf', 'eeeeeeeeeeeeeeeee', 'user.png', 0, 1),
 (12, 'dcdscd', 'dcds@gmail.com', NULL, NULL, '13.jpg', 0, 0),
-(14, 'sacsac', 'ascasc@gmail.com', NULL, NULL, 'testimonios.PNG', 1, 0);
+(14, 'sacsac', 'ascasc@gmail.com', NULL, NULL, 'testimonios.PNG', 1, 0),
+(15, 'dxfds', 'vcxv@gmail.com', NULL, NULL, 'rino.png', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -320,7 +325,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `nombres`, `apellidos`, `rol`) VALUES
-(1, 'doctorjulio', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Jhonny', 'Vasquez', 1);
+(1, 'doctorpepe', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Jhonny', 'Vasquez', 1);
 
 --
 -- Índices para tablas volcadas
@@ -417,7 +422,7 @@ ALTER TABLE `bonos_cirujano`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `contenido_curriculum`
 --
@@ -462,12 +467,12 @@ ALTER TABLE `procedimientos`
 -- AUTO_INCREMENT de la tabla `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT de la tabla `testimonios`
 --
 ALTER TABLE `testimonios`
-  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_testimonio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

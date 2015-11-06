@@ -4,6 +4,21 @@
 <?php /**************************Esta vacio pero se llena con javascript***************************/ ?>
 
 <?php /********************************************************************************/ ?>
+<div id="ventana_cambio_usuario" style="display:none;">
+	<form action="<?=$this->config->base_url()?>index.php/Admin/cambiar_usuario" method="post" id="form_cambiausuario">
+		<p>Usuario de inicio de sesión:</p>
+		<input type="text" class="form-control datos_trigger" id="usuario_sesion" name="usuario_sesion" maxlength="11" value="<?=$this->session->userdata('usuario');?>" >
+
+		<hr>
+		<p id="mensaje_cambia_usuario" style="font-size:1.1em;"></p>
+		<button type="submit" class="btn btn-success" style="float:right;" id="boton_cambiar_user">
+			<span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+		</button>
+	</form>
+</div>
+<?php /********************************************************************************/ ?>
+
+<?php /********************************************************************************/ ?>
 <div id="ventana_cambio_clave" style="display:none;	">
 	<form action="<?=$this->config->base_url()?>index.php/Admin/cambiar_clave" method="post" id="form_cambiaclave">
 		<p style="font-size:1.1em;">Nueva Clave:</p>

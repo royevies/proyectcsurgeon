@@ -87,7 +87,7 @@ class Admin  extends CI_Controller {
 	public function datos_contacto(){
 		if( $this->input->post() ){
 				#print_r($_POST);
-			$usuario = $this->input->post("usuario_sesion");
+
 			$direccion  = $this->input->post("direccion");
 			$email = $this->input->post("email");
 			$clave_email = $this->input->post("clave_email");
@@ -99,14 +99,13 @@ class Admin  extends CI_Controller {
 			$googlepluss = $this->input->post("gloogleplus");
 
 			$this->Cirujano_model->cambiar_datos($direccion,$email,$clave_email,$telefono,$fax,$facebook,$twiiter,$instagram,$googlepluss);
-			$this->Cirujano_model->cambiar_usuario($usuario);
+
 			redirect("Admin/panel?msg=Los datos han sido actualizados");
 		}else{
 			redirect("Admin");
 		}
 
 	}
-
 
 	public function guardar_testimonio(){
 		if( $this->input->post() ) {
@@ -389,20 +388,25 @@ class Admin  extends CI_Controller {
 				foreach ($_FILES["archivosgaleria"]["error"] as $key => $error){
 					if ($error == UPLOAD_ERR_OK){
 						if(  $_FILES["archivosgaleria"]["name"] != null){
-							$tmp_name 		= $_FILES["archivosgaleria"]["tmp_name"][$key];
-							$nombre_archivo = $_FILES["archivosgaleria"]["name"][$key];
-							$nombre_archivos[] = $_FILES["archivosgaleria"]["name"][$key];
-							move_uploaded_file($tmp_name,$uploads_dir.$nombre_archivo);
+
+							if( $_FILES["archivosgaleria"]["type"][$key] == "image/jpeg" || $_FILES["archivosgaleria"]["type"][$key] == "image/png" ){
+
+								$tmp_name 		= $_FILES["archivosgaleria"]["tmp_name"][$key];
+								$nombre_archivo = $_FILES["archivosgaleria"]["name"][$key];
+								$nombre_archivos[] = $_FILES["archivosgaleria"]["name"][$key];
+								move_uploaded_file($tmp_name,$uploads_dir.$nombre_archivo);
+							}/*else{
+								redirect("Admin/panel?msg=El formato de archivo no esta soportado por el slider");
+							}*/
 
 						}
-
 					}
 				}    
 
 				$num_archivos = sizeof($nombre_archivos);
 
 				$this->Cirujano_model->insert_galeria($nombre_archivos,$num_archivos);
-				redirect('Admin/panel?msg=Carrucel de imagenes actualizado');
+				redirect('Admin/panel?msg=Slider actualizado');
 
 			}else{
 				redirect('Admin');
@@ -478,6 +482,20 @@ class Admin  extends CI_Controller {
 				redirect("Admin");
 			}
 
+		}
+
+		public function cambiar_usuario(){
+			if( $this->input->post() && $this->session->userdata('usuario') ){
+
+				$usuario = $this->input->post("usuario_sesion");
+
+				$this->Cirujano_model->cambiar_usuario($usuario);
+
+				redirect("Admin/panel?msg=Usuario de acceso al adminnistrador actualizado");
+
+			}else{
+				redirect("Admin");
+			}
 		}
 
 		public function cambiar_clave(){
@@ -610,11 +628,50 @@ class Admin  extends CI_Controller {
 
 		}
 
-		public function bonus_cirujano(){
-			echo "<pre>";
-			print_r($_POST);
-			echo "</pre>";
+		public function bonus_cirujano_items(){
+			if( $this->input->post() ){
+
+				$cirujias        = $cirujias =$this->input->post("cirujias");	
+				$horas_estudio   = $this->input->post("horas_estudio");	
+				$experiencia     = $this->input->post("experiencia");	
+				$certificaciones = $this->input->post("certificaciones");
+				$img_fondo_items = ( isset($_FILES["fondo_item_nuevo"]["name"] ) && $_FILES["fondo_item_nuevo"]["name"] != null ? $_FILES["fondo_item_nuevo"]["name"] : $this->input->post("fondo_items_viejo") );	
+
+				$ruta_inicio = './fronted_inicio/inicio/';
+				opendir($ruta_inicio);
+
+				move_uploaded_file($_FILES["fondo_item_nuevo"]["tmp_name"],$ruta_inicio.$img_fondo_items);
+
+				$this->Cirujano_model->cambiar_bonus_items($cirujias,$horas_estudio,$experiencia ,$certificaciones,$img_fondo_items);
+
+				redirect("Admin/panel?msg=Items actualizados");
+			}else{
+				redirect("Admin");
+			}
+
+
 		}
+
+		public function bonus_cirujano_eslogan(){
+			if( $this->input->post() ){
+				$eslogan = $this->input->post("eslogan");
+				$eslogan_por = $this->input->post("eslogan_por");
+
+				$imagen_fondo_eslogan = ( isset($_FILES["fondo_eslogan_nuevo"]["name"] ) && $_FILES["fondo_eslogan_nuevo"]["name"] != null ? $_FILES["fondo_eslogan_nuevo"]["name"] : $this->input->post("fondo_eslogan_viejo") );	
+
+				$ruta_inicio2 = './fronted_inicio/inicio/';
+				opendir($ruta_inicio2);
+
+				move_uploaded_file($_FILES["fondo_eslogan_nuevo"]["tmp_name"],$ruta_inicio2.$imagen_fondo_eslogan);
+				$this->Cirujano_model->cambiar_bonus_eslogan($eslogan,$eslogan_por,$imagen_fondo_eslogan);
+				
+				redirect("Admin/panel?msg=Eslogan actualizado");
+			}else{
+				redirect("Admin");
+			}
+
+		}
+
 
 		///*************************************************************///
 		public function salir(){
