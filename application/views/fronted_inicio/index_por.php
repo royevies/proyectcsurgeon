@@ -266,10 +266,10 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                                                                                             <a href="<?=$this->config->base_url();?>index.php/por/foto_inicio/por/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
                                                                                     </div>
                                                                             </div>
-                    <!--                                		<div class="portfolio-desc">
-                                                                            <h3><a href="portfolio-single.html">Título Imagen</a></h3>
-                                                                            <span><a href="#">Sub</a>, <a href="#">Titulo</a></span>
-                                                                    </div>-->
+                                                                    <div class="portfolio-desc">
+                                                                            <h3><?=$p->titulo;?></h3>
+                                                                            <span><?=$p->sub_titulo;?></span>
+                                                                    </div>
                                                             </article>
                                                             <?php } ?>
 
