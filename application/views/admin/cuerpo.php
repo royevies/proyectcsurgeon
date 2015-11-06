@@ -130,7 +130,7 @@
 	</div>
 	<!--Header-->
 
-	hola como estas este es el conflicto
+	ksmlkdmslakdlkmaskdkmasklmdlkmaskmdkls
 
 	<div class="container">
 		<div class="col-xs-12">
