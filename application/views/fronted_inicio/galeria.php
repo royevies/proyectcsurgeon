@@ -49,7 +49,7 @@
                                         <h3><?=$g->titulo;?></h3>
                                         <span><?=$g->sub_titulo;?></span>
                                     </div>
-                                    <a href="<?=$this->config->base_url();?>index.php/web/fotos/<?=$g->id_procedimiento?>" class="left-icon" data-lightbox="ajax"><i class="icon-line-stack-2"></i></a>
+                                    <a href="<?=$this->config->base_url();?>index.php/web/fotos/<?=$ln?>/<?=$g->id_procedimiento?>" class="left-icon" data-lightbox="ajax"><i class="icon-line-stack-2"></i></a>
                                     
                                 </div>
                             </div>

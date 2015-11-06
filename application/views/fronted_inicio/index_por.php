@@ -191,7 +191,10 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								echo "</div>";
 							}}
 							?>
-							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/procedimientos"><i class="i-plain icon-plus"></i> VER MAIS</a></div>
+							<div class="clear"></div>
+
+							<!--<div class="fright"><a href="#"><i class="i-plain i-xlarge divcenter nobottommargin icon-plus"></i></a></div>-->
+							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/procedimientos"><i class="i-plain icon-plus"></i> Ver mais</a></div>
 						</div>
 
 
@@ -239,36 +242,40 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 						<!-- Portfolio Items
 						============================================= -->
-						<div id="portfolio" class="clearfix">
+						<div id="portfolio" class="clearfix portfolio-3">
 
 							<?php 
-							$count = 0;
-							foreach($procs_inicio as $p){ 
-								$count++;
-								$images = $this->Cirujano_model->ver_img_procedimientos($p->id_procedimiento)->result();
-								if ($count == 4)
-									break;
-								?>
-								<article class="portfolio-item pf-media pf-icons">
-									<div class="portfolio-image">
-										<a href="portfolio-single.html">
-											<?php  foreach ($images as $img) { ?>
-											
-											<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px; float: left;">
-											<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px">
-											
-											<?php } ?>
-										</a>
-										<div class="portfolio-overlay">
-											<a href="<?=$this->config->base_url();?>index.php/web/foto_inicio/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
-										</div>
-									</div>
-								</article>
-								<?php } ?>
+                                                            $count = 0;
+                                                            foreach($procs_inicio as $p){ 
+                                                                    $count++;
+                                                                    $images = $this->Cirujano_model->ver_img_procedimientos($p->id_procedimiento)->result();
+                                                                    if ($count == 4)
+                                                                            break;
+                                                                    ?>
+                                                                    <article class="portfolio-item pf-media pf-icons">
+                                                                            <div class="portfolio-image">
+                                                                                    <a href="portfolio-single.html">
+                                                                                            <?php  foreach ($images as $img) { ?>
+
+                                                                                            <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px; float: left;">
+                                                                                            <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_despues;?>" style="width: 185px">
+
+                                                                                            <?php } ?>
+                                                                                    </a>
+                                                                                    <div class="portfolio-overlay">
+                                                                                            <a href="<?=$this->config->base_url();?>index.php/por/foto_inicio/por/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
+                                                                                    </div>
+                                                                            </div>
+                    <!--                                		<div class="portfolio-desc">
+                                                                            <h3><a href="portfolio-single.html">Título Imagen</a></h3>
+                                                                            <span><a href="#">Sub</a>, <a href="#">Titulo</a></span>
+                                                                    </div>-->
+                                                            </article>
+                                                            <?php } ?>
 
 								<div class="clear"></div>
 
-								<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i>Ver mais</a></div>	
+								<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/galeria"><i class="i-plain icon-plus"></i>Ver mais</a></div>	
 
 							</div><!-- #portfolio end -->
 
@@ -283,7 +290,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<span>Conheça a minha formação e experiência.</span>
 						</div>
 
-						<div class="row common-height clearfix">
+						<!--<div class="row common-height clearfix">-->
+						<div class="row clearfix">
 							<?php 
 							foreach ($curriculum as $cul) {
 								$curriculum_julio = $cul->curriculum_completo;
@@ -294,7 +302,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								$img_curriculum_julio = $img_cul->img_curriculum;
 							}
 							?>
-							<div class="col-sm-5 col-padding" style="background: url('<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>') center center no-repeat; background-size: cover;"></div>
+							<div class="col-sm-5 col-padding" style="background: url('<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>') center center no-repeat; background-size: cover; height: 680px"></div>
 
 							<div class="col-sm-7 col-padding">
 								<div>
@@ -730,52 +738,7 @@ ev.preventDefault();
 
 		<!-- Footer
 		============================================= -->
-		<footer id="footer" class="dark">
-			
-			<!-- Copyrights
-			============================================= -->
-			<div id="copyrights">
-
-				<div class="container clearfix">
-
-					<div class="col_half">
-						Copyrights &copy; 2015 All Rights Reserved by Protos Tecnology.<br>
-						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
-					</div>
-
-					<div class="col_half col_last tright">
-						<div class="fright clearfix">
-							<a href="#" class="social-icon si-small si-borderless si-facebook">
-								<i class="icon-facebook"></i>
-								<i class="icon-facebook"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-twitter">
-								<i class="icon-twitter"></i>
-								<i class="icon-twitter"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-instagram">
-								<i class="icon-instagram"></i>
-								<i class="icon-instagram"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-gplus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
-							</a>
-						</div>
-
-						<div class="clear"></div>
-
-						<i class="icon-envelope2"></i> <?php echo $email; ?> <span class="middot">&middot;</span> <i class="icon-headphones"></i> <?php echo $telefono; ?> <span class="middot">&middot;</span> 
-					</div>
-
-				</div>
-
-			</div><!-- #copyrights end -->
-
-		</footer><!-- #footer end -->
+		<!-- #footer end -->
 
 	</div><!-- #wrapper end -->
 

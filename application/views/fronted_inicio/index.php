@@ -272,12 +272,12 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                                 					<?php  foreach ($images as $img) { ?>
                                 					
                                 					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px; float: left;">
-                                					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px">
+                                					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_despues;?>" style="width: 185px">
                                 					
                                 					<?php } ?>
                                 				</a>
                                 				<div class="portfolio-overlay">
-                                					<a href="<?=$this->config->base_url();?>index.php/web/foto_inicio/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
+                                					<a href="<?=$this->config->base_url();?>index.php/web/foto_inicio/es/<?=$p->id_procedimiento?>" class="center-icon" data-lightbox="ajax"><i class="icon-line-plus"></i></a>
                                 				</div>
                                 			</div>
 <!--                                		<div class="portfolio-desc">
@@ -304,7 +304,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                         		<span>Conoce mi formación y experiencia.</span>
                         	</div>
 
-                        	<div class="row common-height clearfix">
+                        	<!--<div class="row common-height clearfix">-->
+                        	<div class="row clearfix">
                         		<?php 
                         		foreach ($curriculum as $cul) {
                         			$curriculum_julio = $cul->curriculum_completo;
@@ -315,7 +316,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                         			$img_curriculum_julio = $img_cul->img_curriculum;
                         		}
                         		?>
-                        		<div class="col-sm-5 col-padding" style="background: url('<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>') center center no-repeat; background-size: cover;"></div>
+                        		<img class="col-sm-5 col-padding" src="<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>" style=" height: 680px">
+                        		<!--<div class="col-sm-5 col-padding" style="background: url('<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>') center center no-repeat; background-size: cover;"></div>-->
 
                         		<div class="col-sm-7 col-padding">
                         			<div>
@@ -755,52 +757,7 @@ ev.preventDefault();
 
 		<!-- Footer
 		============================================= -->
-		<footer id="footer" class="dark">
-
-			<!-- Copyrights
-			============================================= -->
-			<div id="copyrights">
-
-				<div class="container clearfix">
-
-					<div class="col_half">
-						Copyrights &copy; 2015 All Rights Reserved by Protos Tecnology.<br>
-						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
-					</div>
-
-					<div class="col_half col_last tright">
-						<div class="fright clearfix">
-							<a href="<?php echo $facebook; ?>" class="social-icon si-small si-borderless si-facebook">
-								<i class="icon-facebook"></i>
-								<i class="icon-facebook"></i>
-							</a>
-
-							<a href="<?php echo $twitter; ?>" class="social-icon si-small si-borderless si-twitter">
-								<i class="icon-twitter"></i>
-								<i class="icon-twitter"></i>
-							</a>
-
-							<a href="<?php echo $intagram; ?>" class="social-icon si-small si-borderless si-instagram">
-								<i class="icon-instagram"></i>
-								<i class="icon-instagram"></i>
-							</a>
-
-							<a href="<?php echo $googlepluss; ?>" class="social-icon si-small si-borderless si-gplus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
-							</a>
-						</div>
-
-						<div class="clear"></div>
-
-						<i class="icon-envelope2"></i> <?php echo $email; ?> <span class="middot">&middot;</span> <i class="icon-headphones"></i> <?php echo $telefono; ?> <span class="middot">&middot;</span> 
-					</div>
-
-				</div>
-
-			</div><!-- #copyrights end -->
-
-		</footer><!-- #footer end -->
+		<!-- #footer end -->
 
 	</div><!-- #wrapper end -->
 
