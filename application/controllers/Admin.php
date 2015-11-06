@@ -650,11 +650,50 @@ class Admin  extends CI_Controller {
 
 		}
 
-		public function bonus_cirujano(){
-			echo "<pre>";
-			print_r($_POST);
-			echo "</pre>";
+		public function bonus_cirujano_items(){
+			if( $this->input->post() ){
+
+				$cirujias        = $cirujias =$this->input->post("cirujias");	
+				$horas_estudio   = $this->input->post("horas_estudio");	
+				$experiencia     = $this->input->post("experiencia");	
+				$certificaciones = $this->input->post("certificaciones");
+				$img_fondo_items = ( isset($_FILES["fondo_item_nuevo"]["name"] ) && $_FILES["fondo_item_nuevo"]["name"] != null ? $_FILES["fondo_item_nuevo"]["name"] : $this->input->post("fondo_items_viejo") );	
+
+				$ruta_inicio = './fronted_inicio/inicio/';
+				opendir($ruta_inicio);
+
+				move_uploaded_file($_FILES["fondo_item_nuevo"]["tmp_name"],$ruta_inicio.$img_fondo_items);
+
+				$this->Cirujano_model->cambiar_bonus_items($cirujias,$horas_estudio,$experiencia ,$certificaciones,$img_fondo_items);
+
+				redirect("Admin/panel?msg=Items actualizados");
+			}else{
+				redirect("Admin");
+			}
+
+
 		}
+
+		public function bonus_cirujano_eslogan(){
+			if( $this->input->post() ){
+				$eslogan = $this->input->post("eslogan");
+				$eslogan_por = $this->input->post("eslogan_por");
+
+				$imagen_fondo_eslogan = ( isset($_FILES["fondo_eslogan_nuevo"]["name"] ) && $_FILES["fondo_eslogan_nuevo"]["name"] != null ? $_FILES["fondo_eslogan_nuevo"]["name"] : $this->input->post("fondo_eslogan_viejo") );	
+
+				$ruta_inicio2 = './fronted_inicio/inicio/';
+				opendir($ruta_inicio2);
+
+				move_uploaded_file($_FILES["fondo_eslogan_nuevo"]["tmp_name"],$ruta_inicio2.$imagen_fondo_eslogan);
+				$this->Cirujano_model->cambiar_bonus_eslogan($eslogan,$eslogan_por,$imagen_fondo_eslogan);
+				
+				redirect("Admin/panel?msg=Eslogan actualizado");
+			}else{
+				redirect("Admin");
+			}
+
+		}
+
 
 		///*************************************************************///
 		public function salir(){

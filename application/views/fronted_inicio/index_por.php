@@ -182,7 +182,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 						</div>
 
 
-						<div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/quirofano-azul-op.jpg');" data-stellar-background-ratio="0.3">
+						<div class="section dark parallax nobottommargin" style="padding: 80px 0;background-image: url('<?=$this->config->base_url();?>fronted_inicio/inicio/<?=$bonus_cirujano[0]->imagen_fondo_items; ?>');" data-stellar-background-ratio="0.3">
 
 							<div class="container clearfix">
 								<div class="col_one_fourth nobottommargin center" data-animate="bounceIn">
@@ -205,7 +205,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 								<div class="col_one_fourth nobottommargin center col_last" data-animate="bounceIn" data-delay="600">
 									<i class="i-plain i-xlarge divcenter nobottommargin icon-file-text"></i>
-									<div class="counter counter-lined"><span data-from="60" data-to="<?=$bonus_cirujano[0]->cerfificaciones?>" data-refresh-interval="30" data-speed="2700"></span>+</div>
+									<div class="counter counter-lined"><span data-from="60" data-to="<?=$bonus_cirujano[0]->certificaciones?>" data-refresh-interval="30" data-speed="2700"></span>+</div>
 									<h5>Nº Certificações</h5>
 								</div>
 
@@ -386,7 +386,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 
 					</div>
 
-					<div class="section parallax" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/inicio/<?=$bonus_cirujano[0]->imagen_fondo; ?>'); padding: 100px 0;" data-stellar-background-ratio="0.3">
+					<div class="section parallax" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/inicio/<?=$bonus_cirujano[0]->imagen_fondo_eslogan; ?>'); padding: 100px 0;" data-stellar-background-ratio="0.3">
 						<div class="heading-block center nobottomborder nobottommargin">
 							<h2>"<?=$bonus_cirujano[0]->eslogan_por?>"</h2>
 						</div>
