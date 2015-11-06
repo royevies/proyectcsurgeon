@@ -122,7 +122,7 @@
 							<li id="cambio_usuario" style="cursor:pointer;"><a><span class="glyphicon glyphicon-user"></span> Cambiar Nombre de usuario</a></li>
 							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave de acceso</a></li>
 						</ul>
-					</div>
+					</div>s
 
 				</div>
 			</div>
