@@ -15,7 +15,7 @@
 			<div class="swiper-container swiper-parent">
 				<div class="swiper-wrapper">
 					<?php foreach($slider_master as $slide){ ?>
-					<div class="swiper-slide" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/<?=$slide->slider?>');">
+					<div class="swiper-slide" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/slider/<?=$slide->slider?>');">
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
 								<h2 data-caption-animate="fadeInUp">Dr. Julio Reyes</h2>
@@ -163,7 +163,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								echo $y;
 							}
 						}
-						
+
 						if ($procs_inicio != null) {
 							$count = 0;
 							foreach ($procs_inicio as $pro) {
@@ -253,10 +253,10 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 									<div class="portfolio-image">
 										<a href="portfolio-single.html">
 											<?php  foreach ($images as $img) { ?>
-											
+
 											<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px; float: left;">
 											<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px">
-											
+
 											<?php } ?>
 										</a>
 										<div class="portfolio-overlay">
@@ -308,13 +308,13 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 										<div class="col-md-12">
 											<p style="text-align:justify;">										
 												<?php 
-												
+
 												echo $curriculum_julio;
 
 												?>
 											</p>
 
-											
+
 										</div>
 
 
@@ -731,7 +731,7 @@ ev.preventDefault();
 		<!-- Footer
 		============================================= -->
 		<footer id="footer" class="dark">
-			
+
 			<!-- Copyrights
 			============================================= -->
 			<div id="copyrights">
