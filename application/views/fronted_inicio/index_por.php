@@ -306,7 +306,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 									<div class="row clearfix">
 
 										<div class="col-md-12">
-											<p style="text-align:justify;">										
+											<p style="text-align:justify;white-space:pre-line;">										
 												<?php 
 
 												echo $curriculum_julio;
