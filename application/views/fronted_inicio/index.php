@@ -17,7 +17,7 @@
 			<div class="swiper-container swiper-parent">
 				<div class="swiper-wrapper">
 					<?php foreach($slider_master as $slide){ ?>
-					<div class="swiper-slide" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/foto/<?=$slide->slider?>');">
+					<div class="swiper-slide" style="background-image: url('<?=$this->config->base_url();?>fronted_inicio/slider/<?=$slide->slider?>');">
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
 								<h2 data-caption-animate="fadeInUp">Dr. Julio Reyes</h2>
@@ -281,15 +281,15 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                                 				</div>
                                 			</div>
                                 		<div class="portfolio-desc">
-                                			<h3><?=$p->titulo;?></h3>
-                                			<span><?=$p->sub_titulo;?></span>
-                                		</div>
+                                                        <h3><span><?=$p->titulo;?></span></h3>
+                                                        <span style="color:#444"><?=$p->sub_titulo;?></span>
+                                                </div>
                                 	</article>
                                 	<?php } ?>
 
                                 	<div class="clear"></div>
 
-                                	<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i> Leer mas</a></div>	
+                                	<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i> Ver mas</a></div>	
 
                                 </div><!-- #portfolio end -->
 
