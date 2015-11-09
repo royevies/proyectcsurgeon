@@ -270,10 +270,9 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                                 			<div class="portfolio-image">
                                 				<a href="portfolio-single.html">
                                 					<?php  foreach ($images as $img) { ?>
-                                					
+
                                 					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px; float: left;">
                                 					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_despues;?>" style="width: 185px">
-                                					
                                 					<?php } ?>
                                 				</a>
                                 				<div class="portfolio-overlay">

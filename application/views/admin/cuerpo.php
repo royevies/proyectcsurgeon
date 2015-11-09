@@ -119,8 +119,8 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li id="cambio_usuario" style="cursor:pointer;"><a><span class="glyphicon glyphicon-user"></span> Cambiar Nombre Usuario</a></li>
-							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave</a></li>
+							<li id="cambio_usuario" style="cursor:pointer;"><a><span class="glyphicon glyphicon-user"></span> Cambiar Nombre de usuario</a></li>
+							<li id="cambio_clave" style="cursor:pointer;"><a><span class="glyphicon glyphicon-pencil"></span> Cambiar Clave de acceso</a></li>
 						</ul>
 					</div>
 
@@ -129,7 +129,6 @@
 		</div>
 	</div>
 	<!--Header-->
-
 
 	<div class="container">
 		<div class="col-xs-12">
@@ -727,7 +726,7 @@
 			<button id="inicio_procedimiento" disabled="disabled" class="btn btn-success">Procesar en el inicio</button>
 		</div>
 
-		<button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"> Nuevo Procedimiento</span>	</button>
+		<button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus">Nuevo Procedimiento</span></button>
 
 	</div> 
 	<form id="form_procedimientos" action="<?=$this->config->base_url()?>index.php/admin/administrar_procedimiento" method="post">
@@ -1456,6 +1455,16 @@ $(".item_panel_control").on("click",function(){
 	});
 
 
+	$("#detalle_procedure,#detalle_procedure_por").jqEasyCounter({	
+		'maxChars': 1000,
+		'maxCharsWarning': 950,
+		'msgFontSize': '13px',
+		'msgfontcolor': '#000',
+		'msgfontfamily': 'verdana',
+		'msgtextalign': 'left',
+		'msgwarningcolor': '#f00',
+		'msgappendmethod': 'insertbefore'				
+	});
 	/******************************Fin ready******************************/	
 });
 
