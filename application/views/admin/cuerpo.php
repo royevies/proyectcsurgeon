@@ -514,7 +514,7 @@
 								<div style="font-size:1.3em;border-bottom:1px dotted #555;padding:5px;margin-bottom:12px;">Nueva</div>
 								<input type="hidden" id="id_curriculum" name="id_curriculum" value="<?=$id_curriculum?>">
 								<input type="hidden" id="img_curriculum_sola" name="img_curriculum_sola" value="<?=$img_curriculum_vitae?>">							
-								<input type="file" name="img_curriculum" class="form-control" style="height:auto;">							
+								<input type="file" name="img_curriculum" class="form-control" style="height:auto;" accept="image/JPEG,image/png">							
 							</div>
 						</div> 
 					</div>
@@ -702,7 +702,7 @@
 			</div>
 
 			<p>Imagen procedimiento:</p>
-			<input type="file" class="form-control" style="height:auto;" name="img_procedimiento">
+			<input type="file" class="form-control" style="height:auto;" name="img_procedimiento" accept="image/JPEG,image/png">
 
 			<hr>
 			<button type="submit" class="btn btn-success" style="float:right;">

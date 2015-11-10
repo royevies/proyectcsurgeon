@@ -99,7 +99,7 @@
 
 									<div class="col_two_third">
 										<label for="template-testimonialform-file">Tu foto <small>(Opcional)</small></label>
-										<input type="file" id="template-testimonialform-file" name="template-testimonialform-file" class="sm-form-control" />
+										<input type="file" id="template-testimonialform-file" name="template-testimonialform-file" class="sm-form-control" accept="image/JPEG,image/png"/>
 									</div>
 
 									<div class="clear"></div>
