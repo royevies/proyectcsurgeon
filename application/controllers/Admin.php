@@ -523,7 +523,7 @@ class Admin  extends CI_Controller {
 				$descripcion_contacto	= $this->input->post("template-contactform-message");
                                 $ln = $this->input->post("template-contactform-ln");
                                 
-                                $msj = $this->_validate($this->input->post(), $ln);
+                                $msj = $this->_validate_contact($this->input->post(), $ln);
 
 				if($msj['status'] == 'error'){
 					header('Content-type: application/json');
