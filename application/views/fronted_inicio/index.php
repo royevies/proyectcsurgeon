@@ -208,7 +208,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<div class="clear"></div>
 
 							<!--<div class="fright"><a href="#"><i class="i-plain i-xlarge divcenter nobottommargin icon-plus"></i></a></div>-->
-							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/procedimientos"><i class="i-plain icon-plus"></i> Leer mas</a></div>
+							<div class="fright"><a class="button button-3d nomargin button-small" href="<?=$this->config->base_url();?>index.php/web/procedimientos"><i class="icon-plus"></i> Leer mas</a></div>
 
 						</div>
 
@@ -271,8 +271,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                                 				<a href="portfolio-single.html">
                                 					<?php  foreach ($images as $img) { ?>
 
-                                					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 185px; float: left;">
-                                					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_despues;?>" style="width: 185px">
+                                					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_antes;?>" style="width: 50%; float: left;">
+                                					<img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$img->img_despues;?>" style="width: 50%">
                                 					<?php } ?>
                                 				</a>
                                 				<div class="portfolio-overlay">
@@ -281,14 +281,13 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                                 			</div>
                                 		<div class="portfolio-desc">
                                                         <h3><span><?=$p->titulo;?></span></h3>
-                                                        <span style="color:#444"><?=$p->sub_titulo;?></span>
                                                 </div>
                                 	</article>
                                 	<?php } ?>
 
                                 	<div class="clear"></div>
 
-                                	<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="i-plain icon-plus"></i> Ver mas</a></div>	
+                                        <div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin button-small" href="<?=$this->config->base_url();?>index.php/web/galeria"><i class="icon-plus"></i> Ver mas</a></div>	
 
                                 </div><!-- #portfolio end -->
 
@@ -315,8 +314,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                         			$img_curriculum_julio = $img_cul->img_curriculum;
                         		}
                         		?>
-                        		<img class="col-sm-5 col-padding" src="<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>" style=" height: 680px">
-                        		<!--<div class="col-sm-5 col-padding" style="background: url('<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>') center center no-repeat; background-size: cover;"></div>-->
+                        		<!--<img class="col-sm-5 col-padding" src="<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>" style=" height: 680px">-->
+                        		<div class="col-sm-5 col-padding" style="background: url('<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>') center center no-repeat; background-size: cover; height: 680px"></div>
 
                         		<div class="col-sm-7 col-padding">
                         			<div>
@@ -485,7 +484,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								</ul>
 
 
-								<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/web/testimonios"><i class="i-plain icon-plus"></i> Leer mas</a></div>
+								<div class="fright"><a class="button button-3d nomargin button-small" href="<?=$this->config->base_url();?>index.php/web/testimonios"><i class="icon-plus"></i> Leer mas</a></div>
 
 								<div class="clear"></div>
 
@@ -537,7 +536,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							zoom: 14,
 							markers: [
 							{
-								address: "Caracas, Venezuela",
+								address: "<?=( isset( $direccion ) ? $direccion : "La Santísima Trinidad, Bolivia"  );?>",
 								html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hola <span>Bienvenido</span></h4><p class="nobottommargin">Justo en este punto usted puede <strong>encontrar</strong> mi clinica.</p></div>',
 								icon: {
 									image: "<?=$this->config->base_url();?>fronted_inicio/images/icons/map-icon-red.png",
@@ -723,11 +722,6 @@ ev.preventDefault();
 										<a href="<?php echo $instagram; ?>" class="social-icon si-small si-dark si-instagram">
 											<i class="icon-instagram"></i>
 											<i class="icon-instagram"></i>
-										</a>
-
-										<a href="<?php echo $googlepluss; ?>" class="social-icon si-small si-dark si-gplus">
-											<i class="icon-gplus"></i>
-											<i class="icon-gplus"></i>
 										</a>
 
 									</div>

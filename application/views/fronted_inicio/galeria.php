@@ -36,7 +36,7 @@
 
                     <!-- Portfolio Items
                     ============================================= -->
-                    <div id="portfolio" class="portfolio-3 portfolio-nomargin clearfix">
+                    <div id="portfolio" class="portfolio-4 portfolio-nomargin clearfix">
 
                         <?php foreach($galeria as $g){ ?>
                         <article class="portfolio-item pf-icons pf-illustrations">

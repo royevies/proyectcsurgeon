@@ -194,7 +194,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							<div class="clear"></div>
 
 							<!--<div class="fright"><a href="#"><i class="i-plain i-xlarge divcenter nobottommargin icon-plus"></i></a></div>-->
-							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/procedimientos"><i class="i-plain icon-plus"></i> Ver mais</a></div>
+							<div class="fright"><a class="button button-3d nomargin button-small" href="<?=$this->config->base_url();?>index.php/por/procedimientos"><i class="icon-plus"></i> Ver mais</a></div>
 						</div>
 
 
@@ -268,14 +268,13 @@ $('#slide-number-total').html(swiperSlider.slides.length);
                                                                             </div>
                                                                     <div class="portfolio-desc">
                                                                             <h3><span><?=$p->titulo;?></span></h3>
-                                                                            <span style="color:#444"><?=$p->sub_titulo;?></span>
                                                                     </div>
                                                             </article>
                                                             <?php } ?>
 
 								<div class="clear"></div>
 
-								<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/galeria"><i class="i-plain icon-plus"></i>Ver mais</a></div>	
+								<div class="fright"><a  style="margin-right:1em;" class="button button-3d nomargin button-small" href="<?=$this->config->base_url();?>index.php/por/galeria"><i class="icon-plus"></i>Ver mais</a></div>	
 
 							</div><!-- #portfolio end -->
 
@@ -302,7 +301,8 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								$img_curriculum_julio = $img_cul->img_curriculum;
 							}
 							?>
-							<img class="col-sm-5 col-padding" src="<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>" style=" height: 680px">
+							<!--<img class="col-sm-5 col-padding" src="<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>" style=" height: 680px">-->
+                                                        <div class="col-sm-5 col-padding" style="background: url('<?=$this->config->base_url();?>fronted_inicio/curriculum/<?=$img_curriculum_julio; ?>') center center no-repeat; background-size: cover; height: 680px"></div>
 
 							<div class="col-sm-7 col-padding">
 								<div>
@@ -471,7 +471,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 								<?php */ ?>
 							</ul>
 
-							<div class="fright"><a class="button button-3d nomargin" href="<?=$this->config->base_url();?>index.php/por/testimonios"><i class="i-plain icon-plus"></i> Ver mais</a></div>
+							<div class="fright"><a class="button button-3d nomargin button-small" href="<?=$this->config->base_url();?>index.php/por/testimonios"><i class="icon-plus"></i> Ver mais</a></div>
 
 							<div class="clear"></div>
 
@@ -523,7 +523,7 @@ $('#slide-number-total').html(swiperSlider.slides.length);
 							zoom: 14,
 							markers: [
 							{
-								address: "Caracas, Venezuela",
+								address: "<?=( isset( $direccion ) ? $direccion : "La Santísima Trinidad, Bolivia"  );?>",
 								html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hola <span>Bienvenido</span></h4><p class="nobottommargin">Justo en este punto usted puede <strong>encontrar</strong> mi clinica.</p></div>',
 								icon: {
 									image: "<?=$this->config->base_url();?>fronted_inicio/images/icons/map-icon-red.png",
@@ -715,11 +715,6 @@ ev.preventDefault();
 											<i class="icon-instagram"></i>
 										</a>
 
-										<a href="<?php echo $googlepluss; ?>" class="social-icon si-small si-dark si-gplus">
-											<i class="icon-gplus"></i>
-											<i class="icon-gplus"></i>
-										</a>
-
 									</div>
 
 								</div><!-- .sidebar end -->
@@ -738,56 +733,7 @@ ev.preventDefault();
 
 		<!-- Footer
 		============================================= -->
-<<<<<<< HEAD
 		<!-- #footer end -->
-=======
-		<footer id="footer" class="dark">
-
-			<!-- Copyrights
-			============================================= -->
-			<div id="copyrights">
-
-				<div class="container clearfix">
-
-					<div class="col_half">
-						Copyrights &copy; 2015 All Rights Reserved by Protos Tecnology.<br>
-						<div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
-					</div>
-
-					<div class="col_half col_last tright">
-						<div class="fright clearfix">
-							<a href="#" class="social-icon si-small si-borderless si-facebook">
-								<i class="icon-facebook"></i>
-								<i class="icon-facebook"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-twitter">
-								<i class="icon-twitter"></i>
-								<i class="icon-twitter"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-instagram">
-								<i class="icon-instagram"></i>
-								<i class="icon-instagram"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless si-gplus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
-							</a>
-						</div>
-
-						<div class="clear"></div>
-
-						<i class="icon-envelope2"></i> <?php echo $email; ?> <span class="middot">&middot;</span> <i class="icon-headphones"></i> <?php echo $telefono; ?> <span class="middot">&middot;</span> 
-					</div>
-
-				</div>
-
-			</div><!-- #copyrights end -->
-
-		</footer><!-- #footer end -->
->>>>>>> upstream/master
 
 	</div><!-- #wrapper end -->
 

@@ -8,7 +8,7 @@
 
     <div class="fslider" data-pagi="false" data-animation="fade">
         <div class="flexslider">
-            <div class="slider-wrap" style="padding-left: 4%">
+            <div class="slider-wrap">
                 <?php if($imagenes){ ?>
                 <?php 
                 $count=0;
@@ -17,7 +17,7 @@
                     if ($count == 2)
                         break;
                     ?>
-                    <a ><div class="col_half nomargin"><img src="<?=$this->config->base_url();?>/fronted_inicio/procedimientos/<?=$imagen->img_antes?>" alt=""></div><div class="col_half col_last nomargin"><img src="<?=$this->config->base_url();?>/fronted_inicio/procedimientos/<?=$imagen->img_despues?>" alt=""></div></a>
+                    <a ><img src="<?=$this->config->base_url();?>/fronted_inicio/procedimientos/<?=$imagen->img_antes?>" alt="" style="width: 50%; float: left"><img src="<?=$this->config->base_url();?>/fronted_inicio/procedimientos/<?=$imagen->img_despues?>" alt="" style="width: 50%;"></a>
                 <?php } ?>
                 <?php }else{ ?>
                         <?php if($ln == "es"){ ?>
