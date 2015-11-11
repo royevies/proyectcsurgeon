@@ -624,11 +624,10 @@
 				<p>Dirección:</p>
 				<input type="text" class="form-control datos_trigger" id="direccion" name="direccion" maxlength="200" value="<?=($direccion);?>">
 
-				<p>Email:</p>
+				<p>Email (Donde llegarán las notificaciones del contacto):</p>
 				<input type="text" class="form-control datos_trigger" id="email" name="email" maxlength="200" value="<?=($email);?>">
 
-				<p>Clave Email (Para el envio de los correos) :</p>
-				<input type="password" class="form-control datos_trigger" id="clave_email " name="clave_email" maxlength="100" value="<?=($clave_email );?>">
+				<input type="hidden" class="form-control datos_trigger" id="clave_email " name="clave_email" maxlength="100" value="<?=($clave_email );?>">
 
 				<p>Telefono:</p>
 				<input type="text" class="form-control datos_trigger" id="telefono" name="telefono" maxlength="12" value="<?=($telefono);?>">
@@ -711,8 +710,10 @@
 		</form>
 	</div>
 
+	<div style="width:100%;height:150px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
+		<button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus"></span> Nuevo Procedimiento</button>
+	<div style="clear:both;"></div>
 	<hr>
-	<div style="width:100%;height:80px;padding:16px;background:lightgray;margin-bottom:21px;overflow:hidden;">
 
 		<div style="width:50px;display:inline;margin-right:16px;padding:7px;">
 			<input id="sel_all_procedimientos" class="contador_opciones_procedimiento" type="checkbox" style="border:none;background:none;width:25px;height:25px;">
@@ -726,7 +727,6 @@
 			<button id="inicio_procedimiento" disabled="disabled" class="btn btn-success">Procesar en el inicio</button>
 		</div>
 
-		<button class="btn btn-success" style="float:right;" id="nuevo_procedimiento"><span class="glyphicon glyphicon-plus">Nuevo Procedimiento</span></button>
 
 	</div> 
 	<form id="form_procedimientos" action="<?=$this->config->base_url()?>index.php/admin/administrar_procedimiento" method="post">

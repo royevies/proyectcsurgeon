@@ -539,25 +539,19 @@ class Admin  extends CI_Controller {
 						$descripcion_contacto
 						);
 
-						//cargamos la libreria email de ci
-					$this->load->library("email");
+			$usermail = "";
+			$passmail = "";
 
-					$configGmail = array(
-						'protocol' => 'smtp',
-						'smtp_host' => 'ssl://smtp.gmail.com',
-						'smtp_port' => 465,
-						'smtp_user' => 'jhonnyvanckruz@gmail.com',
-						'smtp_pass' => 'sdfd',
-						'mailtype' => 'html',
-						'charset' => 'utf-8',
-						'newline' => "\r\n"
-						);    
-					$this->email->initialize($configGmail);
-					$this->email->from('jhonnyvanckruz@gmail.com');
-					$this->email->to("jhonnyvanckruz@gmail.com");
-					$this->email->subject('Nuevo contacto');
-					$this->email->message('<h2>Email enviado con codeigniter haciendo uso del smtp de gmail</h2><hr><br> Bienvenido al web');
-					$this->email->send();
+			foreach ($this->Cirujano_model->ver_datos_contacto()->result() as $dat_con) {
+				$usermail = $dat_con->email;
+				$passmail = $dat_con->clave_email;
+			}
+
+				/*Envio del mail*/
+					if($usermail != "" && $passmail != ""){
+						$this->_sendmail($usermail, $asunto_contacto, $descripcion_contacto,$nombres_contacto,$servicio,$telefono_movil_contacto,$email_contacto);
+					}
+					/*Envio del mail*/
                                         
 					header('Content-type: application/json');
 					echo json_encode($msj);
@@ -568,6 +562,42 @@ class Admin  extends CI_Controller {
 			}
 
 		}
+
+
+public function _sendmail($to,$asunto,$mensaje,$nombres_contacto,$servicio,$telefono_movil_contacto,$email_contacto){
+
+	$para = $to;
+	$titulo = 'El título del correo';
+
+			$mensaje = '
+			<html>
+			<head>
+			  <title>Contacto página web</title>
+			  <meta charset="UTF-8">
+			</head>
+			<body>
+			  <h1>¡Tienes un nuevo mensaje en tu página web!</h1>
+			  <hr>
+			  <p style="white-spaces:pre-line;text-align:justify;padding:12px;"><b>Nombre del contacto:</b> '.$nombres_contacto.'</p>
+			  <p style="white-spaces:pre-line;text-align:justify;padding:12px;"><b>Servicio en el cual esta interesado el contacto:</b> '.$servicio.'</p>
+			  <p style="white-spaces:pre-line;text-align:justify;padding:12px;"><b>Telefono del contacto:</b> '.$telefono_movil_contacto.'</p>
+			  <p style="white-spaces:pre-line;text-align:justify;padding:12px;"><b>Email del contacto:</b> '.$email_contacto.'</p>
+			  <p style="white-spaces:pre-line;text-align:justify;padding:12px;">'.$mensaje.'</p>
+			   <hr>
+			  <p style="white-spaces:pre-line;text-align:justify;padding:12px;font-size:1em;">Este a sido un mensaje de notificación de la página web <a href="http://www.doctorjulioreyes.com/">www.doctorjulioreyes.com</a></p>
+			</body>
+			</html>
+			';
+
+	$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+	$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$cabeceras .= 'From: '. $para . "\r\n" . //La direccion de correo desde donde supuestamente se envió
+    'Reply-To:'. $para . "\r\n" . //La direccion de correo a donde se responderá (cuando el recepto haga click en RESPONDER)
+    'X-Mailer: PHP/' . phpversion();  //información sobre el sistema de envio de correos, en este caso la version de PHP
+ 
+	mail($para, $asunto, $mensaje, $cabeceras);
+
+}
 
 		public function ver_img_procedimientos(){
 			if( $this->input->post() ){
