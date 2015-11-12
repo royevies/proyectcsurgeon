@@ -3,7 +3,15 @@
 <head>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="SemiColonWeb" />
+<meta name="author" content="Doctor Julio Reyes, Cirujano Plastico, Jhonny Vasquez"/>
+<meta name="keywords" content="Cirujia plastica, Cirujano,Cirujano en bolivia,Cirujano en Brazil"/>
+<meta name="description" content="Página web personal del doctor julio reyes cirujano plastico actualmente en bolivia."/>
+
+<meta name="date" content="2015"/>
+<meta name="language" content="es"/>
+<meta name="robots" content="all"/>
+
+<meta name="copyright" content="2015 doctorjulioreyes.com Todos los derechos reservados."/> 
 
 	<!-- Stylesheets
 	============================================= -->
