@@ -56,7 +56,7 @@ class Web extends CI_Controller {
 		$this->load->view('fronted_inicio/head_inicio');
 		$this->load->view('fronted_inicio/header',[
 			"ruta_esp" => $this->config->base_url()."index.php/web/galeria",
-			"ruta_por" => $this->config->base_url()."index.php/web/galeria"
+			"ruta_por" => $this->config->base_url()."index.php/por/galeria"
 			]);
 		$this->load->view('fronted_inicio/galeria', ["galeria" => $procedimientos, "ln" => "es"] );
 		$this->load->view('fronted_inicio/footer',["datos_personales"   => $this->Cirujano_model->ver_datos_contacto()->result()]);
