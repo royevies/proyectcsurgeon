@@ -16,10 +16,10 @@
 			<div class="container clearfix">
 				<h1>Testimonios</h1>
 				<!--<span>Show what your Customers say about you</span>-->
-				<ol class="breadcrumb">
+<!--				<ol class="breadcrumb">
 					<li><a href="#">Home</a></li>
 					<li class="active">Testimonios</li>
-				</ol>
+				</ol>-->
 			</div>
 
 		</section><!-- #page-title end -->

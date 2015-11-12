@@ -6,7 +6,6 @@
 							$facebook  = "";
 							$twitter  = "";
 							$instagram  = "";
-							$googlepluss  = "";
 
 							foreach ($datos_personales as $dato) {
 								$direccion = $dato->direccion;
@@ -16,7 +15,6 @@
 								$facebook = $dato->facebook;
 								$twitter = $dato->twitter;
 								$instagram = $dato->instagram;
-								$googlepluss = $dato->googlepluss;
 							}
 
 							?>
@@ -48,11 +46,6 @@
 							<a href="<?php echo $instagram; ?>" class="social-icon si-small si-borderless si-instagram">
 								<i class="icon-instagram"></i>
 								<i class="icon-instagram"></i>
-							</a>
-
-							<a href="<?php echo $googlepluss; ?>" class="social-icon si-small si-borderless si-gplus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
 							</a>
 						</div>
 

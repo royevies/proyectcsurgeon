@@ -16,10 +16,10 @@
             <div class="container clearfix">
                 <h1>Procedimientos</h1>
                 <!--<span>Showcase of Our Beautiful Gallery in Various Columns</span>-->
-                <ol class="breadcrumb">
+<!--                <ol class="breadcrumb">
                     <li><a href="#">iniciação</a></li>
                     <li class="active">Procedimientos</li>
-                </ol>
+                </ol>-->
             </div>
 
         </section><!-- #page-title end -->
