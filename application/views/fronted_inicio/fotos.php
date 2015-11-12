@@ -15,9 +15,9 @@
                 <?php } ?>
                 <?php }else{ ?>
                         <?php if($ln == "es"){ ?>
-                            <div class="heading-block center dark"><h2>NO HAY IMAGENES DISPONIBLES</h2></div>
+                            <div class="heading-block center dark"><h2>TE INVITO A SOLICITAR UNA CONSULTA PARA VER MÁS DE MIS TRABAJOS.</h2></div>
                         <?php }else{ ?>
-                            <div class="heading-block center dark"><h2>Não há imagens disponíveis</h2></div>
+                            <div class="heading-block center dark"><h2>EU CONVIDO VOCÊ PARA SOLICITAR UMA CONSULTA PARA VER MAIS DE MEU TRABALHO.</h2></div>
                         <?php } ?>
                 <?php } ?>
             </div>
