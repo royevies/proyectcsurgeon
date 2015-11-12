@@ -427,7 +427,7 @@ class Admin  extends CI_Controller {
 						$this->Cirujano_model->actualizar_orden_slider($id_slider[$i],$orden[$i]);
 					}
 
-					redirect('Admin/panel?msg=Carrucel de imagenes actualizado');
+					redirect('Admin/panel?msg=Slider de imagenes actualizado');
 
 				}else if( $this->input->post("opcion_flag_slider")  == "eliminar"){
 
@@ -436,7 +436,7 @@ class Admin  extends CI_Controller {
 						//unlink();
 					}
 
-					redirect('Admin/panel?msg=Imagenes eliminadas del carrucel correctamente');
+					redirect('Admin/panel?msg=Imagenes eliminadas del slider correctamente');
 				}
 				
 			}else{
