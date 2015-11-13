@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html dir="ltr" lang="es">
 <head>
 
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="author" content="Doctor Julio Reyes, Cirujano Plastico, Jhonny Vasquez"/>
-<meta name="keywords" content="Cirujia plastica, Cirujano,Cirujano en bolivia,Cirujano en Brazil"/>
-<meta name="description" content="Página web personal del doctor julio reyes cirujano plastico actualmente en bolivia."/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="author" content="Doctor Julio Reyes, Cirujano Plastico"/>
+
+<meta name="keywords" content="Cirugia, plastica, Bolivia, cirujano, plástico, cirurgia, cirurgiao, Bolivia, Brasil, cirugia plastica, cirugia plastica bolivia, cirugia plastica santa cruz, cirugia plastica santa cruz de la sierra, cirujano plastico bolivia, cirujano plastico en bolivia, cirujano plastico santa cruz, cirujano plastico santa cruz de la sierra, cirugia plastica en bolivia, cirurgiao plástico, cirurgiao plástico brasil , cirurgiao plástico no brasil, cirurgiao plástico rondonia, cirurgiao plástico mato grosso, cirurgiao plástico mato grosso do sul, cirurgiao plástico acre, mejor cirujano plastico bolivia , mejor cirujano plastico de bolivia, melhor cirurgiao plastico brasil, melhor cirurgiao plastico do brasil"/>
+<meta name="description" content="Página web personal del doctor julio reyes cirujano plastico, su clinica actualmente esta en bolivia."/>
+<meta name="robots" content="all"/>
 
 <meta name="date" content="2015"/>
 <meta name="language" content="es"/>
-<meta name="robots" content="all"/>
-
 <meta name="copyright" content="2015 doctorjulioreyes.com Todos los derechos reservados."/> 
+	
+	<title>Dr. Julio Reyes | Cirujano Plastico</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 	<!-- Stylesheets
 	============================================= -->
@@ -23,16 +27,14 @@
 	<link rel="stylesheet" href="<?=$this->config->base_url();?>fronted_inicio/css/font-icons.css" type="text/css" />
 	<link rel="stylesheet" href="<?=$this->config->base_url();?>fronted_inicio/css/animate.css" type="text/css" />
 	<link rel="stylesheet" href="<?=$this->config->base_url();?>fronted_inicio/css/magnific-popup.css" type="text/css" />
-
 	<link rel="stylesheet" href="<?=$this->config->base_url();?>fronted_inicio/css/responsive.css" type="text/css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="<?=$this->config->base_url();?>fronted_inicio/css/colors.css" type="text/css" />
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 		<![endif]-->
 
 	<!-- Here goes your colors.css
 	============================================= -->
-	<link rel="stylesheet" href="<?=$this->config->base_url();?>fronted_inicio/css/colors.css" type="text/css" />
 
 	<!-- External JavaScripts
 	============================================= -->
@@ -42,6 +44,5 @@
 	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted/js/jquery-count/jquery.jqEasyCharCounter.min.js"></script>
 	<!-- Document Title
 	============================================= -->
-	<title>Inicio Dr. Julio Reyes | Cirujano Plastico</title>
 
 </head>
