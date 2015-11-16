@@ -1465,6 +1465,18 @@ $(".item_panel_control").on("click",function(){
 		'msgwarningcolor': '#f00',
 		'msgappendmethod': 'insertbefore'				
 	});
+
+		$("#detalle_procedimiento,#detalle_procedimiento_portugues").jqEasyCounter({	
+		'maxChars': 1000,
+		'maxCharsWarning': 950,
+		'msgFontSize': '13px',
+		'msgfontcolor': '#000',
+		'msgfontfamily': 'verdana',
+		'msgtextalign': 'left',
+		'msgwarningcolor': '#f00',
+		'msgappendmethod': 'insertbefore'				
+	});
+
 	/******************************Fin ready******************************/	
 });
 

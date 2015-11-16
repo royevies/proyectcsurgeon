@@ -60,7 +60,7 @@
 			<p style="font-size:1.1em;">Subtitulo Procedimiento:</p>
 			<input type="text" class="form-control" id="subtitulo_procedimiento" name="subtitulo_procedimiento" maxlength="140">
 			<p>Descripción Procedimiento:</p>
-			<textarea class="form-control" id="detalle_procedimiento" name="detalle_procedimiento" style="resizable:none;overflow-y:scroll;height:150px;" maxlength="500">
+			<textarea class="form-control" id="detalle_procedimiento" name="detalle_procedimiento" style="resizable:none;overflow-y:scroll;height:150px;">
 
 			</textarea>
 		</div>
@@ -71,7 +71,7 @@
 			<p style="font-size:1.1em;">Subtitulo Procedimiento:</p>
 			<input type="text" class="form-control" id="subtitulo_procedimiento_portugues" name="subtitulo_procedimiento_portugues" maxlength="140">
 			<p>Detalhe Procedimiento:</p>
-			<textarea class="form-control" id="detalle_procedimiento_portugues" name="detalle_procedimiento_portugues" style="resizable:none;overflow-y:scroll;height:150px;" maxlength="500">
+			<textarea class="form-control" id="detalle_procedimiento_portugues" name="detalle_procedimiento_portugues" style="resizable:none;overflow-y:scroll;height:150px;">
 
 			</textarea>
 		</div>
