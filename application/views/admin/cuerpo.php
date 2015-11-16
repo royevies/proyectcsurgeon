@@ -1152,7 +1152,7 @@ $.ajax({
 	data: { id_procedimiento : $(this).data("idimagen") },
 	url:   '<?=$this->config->base_url()?>index.php/admin/ver_img_procedimientos',
 	type:  'post',
-	timeout:7000,
+	timeout:9000,
 	beforeSend: function(){
 //$("#contenido_galeria_especifica").html("<img src='../../../../public_html/imagenes/484_azul.GIF'>");
 },
