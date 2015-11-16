@@ -1,5 +1,4 @@
 
-
 <body class="stretched">
 
 	<!-- Document Wrapper
@@ -760,21 +759,35 @@ ev.preventDefault();
 
 	<!-- Footer Scripts
 	============================================= -->
-	<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/functions.js"></script>
-	<script>
-		$(document).on("ready",function(){
 
+<script>
+$(document).on("ready",function(){
+	$.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) {
+		
+		if ( data.address.country != "" && data.address.country == "Brasil" ){
+			window.location.href = "<?=$this->config->base_url();?>index.php/por ";
+		}
+		 
+		//alert('País: ' + data.address.country);
+	});
+});
+</script>
 
-			$("#template-contactform-name").jqEasyCounter({	
-				'maxChars': 100,
-				'maxCharsWarning': 80,
-				'msgFontSize': '13px',
-				'msgfontcolor': '#000',
-				'msgfontfamily': 'verdana',
-				'msgtextalign': 'left',
-				'msgwarningcolor': '#f00',
-				'msgappendmethod': 'insertbefore'				
-			});
+<script type="text/javascript" src="<?=$this->config->base_url();?>fronted_inicio/js/functions.js"></script>
+
+<script>
+	$(document).on("ready",function(){
+
+		$("#template-contactform-name").jqEasyCounter({	
+			'maxChars': 100,
+			'maxCharsWarning': 80,
+			'msgFontSize': '13px',
+			'msgfontcolor': '#000',
+			'msgfontfamily': 'verdana',
+			'msgtextalign': 'left',
+			'msgwarningcolor': '#f00',
+			'msgappendmethod': 'insertbefore'				
+		});
 
 			$("#template-contactform-email").jqEasyCounter({	
 				'maxChars': 150,
@@ -787,16 +800,16 @@ ev.preventDefault();
 				'msgappendmethod': 'insertbefore'				
 			});
 
-			$("#template-contactform-phone").jqEasyCounter({	
-				'maxChars': 12,
-				'maxCharsWarning': 11,
-				'msgFontSize': '13px',
-				'msgfontcolor': '#000',
-				'msgfontfamily': 'verdana',
-				'msgtextalign': 'left',
-				'msgwarningcolor': '#f00',
-				'msgappendmethod': 'insertbefore'				
-			});
+		$("#template-contactform-phone").jqEasyCounter({	
+			'maxChars': 12,
+			'maxCharsWarning': 11,
+			'msgFontSize': '13px',
+			'msgfontcolor': '#000',
+			'msgfontfamily': 'verdana',
+			'msgtextalign': 'left',
+			'msgwarningcolor': '#f00',
+			'msgappendmethod': 'insertbefore'				
+		});
 
 			$("#template-contactform-subject").jqEasyCounter({	
 				'maxChars': 100,
@@ -809,18 +822,19 @@ ev.preventDefault();
 				'msgappendmethod': 'insertbefore'				
 			});
 
-			$("#template-contactform-message").jqEasyCounter({	
-				'maxChars': 256,
-				'maxCharsWarning': 120,
-				'msgFontSize': '13px',
-				'msgfontcolor': '#000',
-				'msgfontfamily': 'verdana',
-				'msgtextalign': 'left',
-				'msgwarningcolor': '#f00',
-				'msgappendmethod': 'insertbefore'				
-			});
-
+		$("#template-contactform-message").jqEasyCounter({	
+			'maxChars': 256,
+			'maxCharsWarning': 120,
+			'msgFontSize': '13px',
+			'msgfontcolor': '#000',
+			'msgfontfamily': 'verdana',
+			'msgtextalign': 'left',
+			'msgwarningcolor': '#f00',
+			'msgappendmethod': 'insertbefore'				
 		});
+
+	});
 </script>
+
 </body>
 </html>
