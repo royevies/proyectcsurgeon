@@ -95,7 +95,7 @@
 
                                         </div>
 
-                                        <p><?=$proc->detalle;?></p>
+                                        <p style="text-align:justify;line-height:1.4;font-size:1.1em;"><?=$proc->detalle;?></p>
 
                                         
 
@@ -119,7 +119,7 @@
 
                                         </div>
 
-                                        <p><?=$proc->detalle;?></p>
+                                        <p style="text-align:justify;line-height:1.4;font-size:1.1em;"><?=$proc->detalle;?></p>
 
                                         
 
