@@ -47,15 +47,17 @@
                     ============================================= -->
                     <div id="portfolio" class="portfolio-4 portfolio-nomargin clearfix">
 
-                        <?php foreach ($procedimientos as $proc) { ?>
+                        <?php foreach ($procedimientos as $proc) { 
+                            $ID = str_replace(" ", "_", $proc->titulo);
+                            ?>
                         <article class="portfolio-item">
                             <div class="portfolio-image">
-                                <a href="#" data-href="#<?=$proc->titulo;?>">
+                                <a href="#" data-href="#<?=$ID;?>">
                                     <img src="<?=$this->config->base_url();?>fronted_inicio/procedimientos/<?=$proc->img_principal_procedimiento?>" alt="Open Imagination">
                                 </a>
                                 <div class="portfolio-overlay" data-lightbox="gallery">
                                     <div class="portfolio-desc one-page-menu">
-                                        <a href="#" data-href="#<?=$proc->titulo;?>"><h3><?=$proc->titulo;?></h3></a>
+                                        <a href="#" data-href="#<?=$ID;?>"><h3><?=$proc->titulo;?></h3></a>
                                         <span><?=$proc->sub_titulo;?></span>
                                     </div>
                                 </div>
@@ -72,11 +74,13 @@
                     $count = 0;
                     foreach ($procedimientos as $proc) {
                         $count++;
+                        
+                        $ID = str_replace(" ", "_", $proc->titulo);
 
                         if($count % 2 != 0){
                 ?>
-                <section id="<?=$proc->titulo;?>" class="page-section">
-                    <div class="section nobg topmargin-lg nobottommargin">
+                <section id="<?=$ID;?>" class="page-section">
+                    <div class="section nobg notopmargin nobottommargin">
 
                         <div class="container clearfix">
 
@@ -106,8 +110,8 @@
                 </section>        
                 
                 <?php }else{ ?>
-                <section id="<?=$proc->titulo;?>" class="page-section">
-                    <div class="section nobg notopmargin noborder bottommargin-sm">
+                <section id="<?=$ID;?>" class="page-section">
+                    <div class="section nobg topmargin-lg noborder bottommargin-sm">
                         <div class="container clearfix">
 
                             <div class="col_half nobottommargin">
@@ -134,11 +138,10 @@
                         </div>
                     </div>
                 </section>
-
+                <?php }} ?>
             </div>
 
         </section><!-- #content end -->
-        <?php }} ?>
         <!-- Footer
         ============================================= -->
         

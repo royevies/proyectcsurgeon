@@ -50,7 +50,7 @@
 						<li>
 							<div class="testimonial">
 								<div class="testi-image">
-									<a href="#"><img src="<?=$this->config->base_url();?>fronted_inicio/testimonios/<?=$testimonio->img_principal_testimonio;?>" alt="Customer Testimonails"></a>
+									<img src="<?=$this->config->base_url();?>fronted_inicio/testimonios/<?=$testimonio->img_principal_testimonio;?>" alt="Customer Testimonails">
 								</div>
 								<div class="testi-content">
 									<p><?=$testimonio->detalle_testimonio;?></p>
